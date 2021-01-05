@@ -1,0 +1,56 @@
+--- 
+title: "Exploratory Data Analysis in the 21st Century"
+author: "Di Cook and Emi Tanaka"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: https://github.com/dicook/exploratory-data-analysis-in-the-21st-century
+description: "This is a book about EDA today."
+---
+
+# Preface
+
+<!-- Preface: Most often found in non-fiction books or academic writing, a preface is written from the point of view of the author. This short introductory statement reveals information about why the author wrote the book. A writer might also talk about themselves and why they are qualified to write about this topic. -->
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!-- https://www.masterclass.com/articles/how-to-write-a-preface-for-a-book#how-to-write-a-preface-in-4-steps
+- Explain why the author chose to write about this topic 
+- Reveal their motivation and inspiration for writing the book 
+- Describe the process of researching the topic of the book  - Outline the process of writing the book, including any challenges and how long it took 
+
+ Brevity Is Better. Be Interesting. Think of a Preface as a “Making of.” Inspire Readers by Sharing Your Passion. -->
+
+<!-- From my experience, also set out expectations. who should read it, what do they need to know before reading. 
+-->
+
+<!-- history and motivation -->
+
+Exploratory data analysis is about "playing in the sand with your data" to allow you to find the unexpected or at least get an understanding about the data that you have in hand. You can think about it as like travelling to a new place. You might have a purpose for visiting, perhaps to attend a conference, or family and friends. Some of your movements will be pre-determined, or guided by the advice of others, but hopefully you will spend some of the time you wandering around without guidance, perhaps even aimlessly. It is in these times you might find something special, a cafe in a garden with great carrot cake, a cuddling pair of rainbow lorikeets, a little library full of Jane Austen books, or even a cheap gas station. Walking around without an agenda helps you get to know the new neighbourhood. 
+
+The first book on exploratory data analysis was published by @tukey77. It has been the gold standard for learning about data analysis for many decades, although it has been quickly dated because all the techniques described can be accomplished with pencil and paper. Today, exploratory data analysis has come of age, and is a fundamental part of data science. Most of what we do in data analysis is conducted using the computer, not pencil and paper. Data sets are often quite large, too.
+
+<!-- why write this book -->
+
+There are many books, and courses on exploratory data analysis. Virtually all of these are missing key ingredients of Tukey's spirit. Exploratory data analysis has become synonymous with descriptive statistics, and this is sad. The exploratory part of exploratory data analysis has been subsumed by humdrum data summary. The purpose in writing this book is to communicate the enjoyment of working with data, to reclaim the original intent, to "forces us to notice what we never expected to see" [@tukey77], with modern computational techniques. 
+
+Talk about teaching
+
+<!-- what you need to know -->
+All of the examples in this book are produced using the open source software R. If you are new to R, a good place to start before reading this book is @r4ds. 
+
+Do they need to know some statistics?
+ 
+About the exercises.
+
+
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.

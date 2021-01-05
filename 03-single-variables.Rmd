@@ -1,0 +1,3 @@
+# Working with a single variable
+
+making transformations, detecting outliers, using robust statistics

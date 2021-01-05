@@ -1,0 +1,3 @@
+# Sculpting data using models
+
+checking assumptions, co-dependency and performing diagnostics
