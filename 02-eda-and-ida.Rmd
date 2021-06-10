@@ -1,2 +1,60 @@
 # EDA and IDA
 
+
+Data analysis is a process of cleaning, transforming,
+inspecting and modelling data with the aim of extracting
+information.
+
+
+Data analysis includes:
+
+* exploratory data analysis,
+* confirmatory data analysis, and
+* initial data analysis.
+
+In a confirmatory data analysis, the focus is on statistical inference
+and includes processes such as testing hypothesis, model
+selection, or predictive modelling.
+
+## Initial data analysis
+
+There are various definitions of IDA, much like there are
+numerous definitions for EDA. Some people would be practicing IDA without realising that it is
+IDA. Or other cases, a different name is used to describe the same
+process, such as Chatfield (1985) referring to IDA also as "initial
+examination of data" and Cox & Snell (1981) as "preliminary data
+anlysis" and Rao (1983) as "cross-examination of data". So what is IDA?
+
+The two main objectives for IDA are:
+1. data description, and
+2. model formulation
+
+IDA differs from the main analysis (i.e. usually fitting the
+model, conducting significance tests, making inferences or
+predictions).
+IDA is often unreported in the data analysis reports or
+scientific papers due to it being "uninteresting" or "obvious".
+The role of the main analysis is to answer the intended
+question(s) that the data were collected for.
+Sometimes IDA alone is sufficient.
+
+## Data description
+
+
+Data description should be one of the first steps in the data
+analysis to assess the structure and quality of the data. We refer them to occasionally as data sniffing or data scrutinizing. These include using common or domain knowledge to check if the recorded data have sensible values. E.g. Are positive values, e.g. height and weight, recorded as
+positive values with a plausible range? If the data are counts, are the recorded values contain noninteger values? For compositional data, do the values add up to 100% (or 1)? If not is that a measurement error or due to rounding? Or is another variable missing?
+
+
+In addition, numerical or graphical summaries may reveal that
+there is unwanted structure in the data. E.g., Does the treatment group have different demographic characteristics to the control group? Does the distribution of the data imply violations of assumptions for the main analysis?
+
+Data sniffing or data scrutinizing is a process that you get better
+at with practice and have familiarity with the domain area.
+
+Aside from checking the data structure or data quality, it's
+important to check how the data are understood by the
+computer, i.e. checking for data type is also important. E.g.,
+
+* Was the date read in as character?
+* Was a factor read in as numeric?
