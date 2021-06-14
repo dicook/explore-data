@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Exploratory Data Analysis in the 21st Century</title>
   <meta name="description" content="This is a book about EDA today." />
-  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Exploratory Data Analysis in the 21st Century" />
   <meta property="og:type" content="book" />
@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-01-05" />
+<meta name="date" content="2021-06-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,6 +33,7 @@
   
 
 <link rel="next" href="what-is-eda.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -50,22 +51,23 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,7 +87,7 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
@@ -118,6 +120,29 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 
@@ -136,7 +161,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is EDA?</a></li>
-<li class="chapter" data-level="3" data-path="eda-and-ida.html"><a href="eda-and-ida.html"><i class="fa fa-check"></i><b>3</b> EDA and IDA</a></li>
+<li class="chapter" data-level="3" data-path="eda-and-ida.html"><a href="eda-and-ida.html"><i class="fa fa-check"></i><b>3</b> EDA and IDA</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="eda-and-ida.html"><a href="eda-and-ida.html#initial-data-analysis"><i class="fa fa-check"></i><b>3.1</b> Initial data analysis</a></li>
+<li class="chapter" data-level="3.2" data-path="eda-and-ida.html"><a href="eda-and-ida.html#data-description"><i class="fa fa-check"></i><b>3.2</b> Data description</a></li>
+</ul></li>
 <li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a></li>
 <li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
 <li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
@@ -169,9 +198,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Exploratory Data Analysis in the 21st Century</h1>
 <p class="author"><em>Di Cook and Emi Tanaka</em></p>
-<p class="date"><em>2021-01-05</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-06-14</em></p>
 </div>
-<div id="preface" class="section level1">
+<div id="preface" class="section level1" number="1">
 <h1><span class="header-section-number">Chapter 1</span> Preface</h1>
 <!-- Preface: Most often found in non-fiction books or academic writing, a preface is written from the point of view of the author. This short introductory statement reveals information about why the author wrote the book. A writer might also talk about themselves and why they are qualified to write about this topic. -->
 <!-- https://www.masterclass.com/articles/how-to-write-a-preface-for-a-book#how-to-write-a-preface-in-4-steps
@@ -184,24 +213,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 -->
 <!-- history and motivation -->
 <p>Exploratory data analysis is about “playing in the sand with your data” to allow you to find the unexpected or at least get an understanding about the data that you have in hand. You can think about it as like travelling to a new place. You might have a purpose for visiting, perhaps to attend a conference, or family and friends. Some of your movements will be pre-determined, or guided by the advice of others, but hopefully you will spend some of the time you wandering around without guidance, perhaps even aimlessly. It is in these times you might find something special, a cafe in a garden with great carrot cake, a cuddling pair of rainbow lorikeets, a little library full of Jane Austen books, or even a cheap gas station. Walking around without an agenda helps you get to know the new neighbourhood.</p>
-<p>The first book on exploratory data analysis was published by <span class="citation">Tukey (<a href="#ref-tukey77" role="doc-biblioref">1977</a>)</span>. It has been the gold standard for learning about data analysis for many decades, although it has been quickly dated because all the techniques described can be accomplished with pencil and paper. Today, exploratory data analysis has come of age, and is a fundamental part of data science. Most of what we do in data analysis is conducted using the computer, not pencil and paper. Data sets are often quite large, too.</p>
+<p>The first book on exploratory data analysis was published by <span class="citation"><a href="#ref-tukey77" role="doc-biblioref">Tukey</a> (<a href="#ref-tukey77" role="doc-biblioref">1977</a>)</span>. It has been the gold standard for learning about data analysis for many decades, although it has been quickly dated because all the techniques described can be accomplished with pencil and paper. Today, exploratory data analysis has come of age, and is a fundamental part of data science. Most of what we do in data analysis is conducted using the computer, not pencil and paper. Data sets are often quite large, too.</p>
 <!-- why write this book -->
-<p>There are many books, and courses on exploratory data analysis. Virtually all of these are missing key ingredients of Tukey’s spirit. Exploratory data analysis has become synonymous with descriptive statistics, and this is sad. The exploratory part of exploratory data analysis has been subsumed by humdrum data summary. The purpose in writing this book is to communicate the enjoyment of working with data, to reclaim the original intent, to “forces us to notice what we never expected to see” <span class="citation">(Tukey <a href="#ref-tukey77" role="doc-biblioref">1977</a>)</span>, with modern computational techniques.</p>
+<p>There are many books, and courses on exploratory data analysis. Virtually all of these are missing key ingredients of Tukey’s spirit. Exploratory data analysis has become synonymous with descriptive statistics, and this is sad. The exploratory part of exploratory data analysis has been subsumed by humdrum data summary. The purpose in writing this book is to communicate the enjoyment of working with data, to reclaim the original intent, to “forces us to notice what we never expected to see” <span class="citation">(<a href="#ref-tukey77" role="doc-biblioref">Tukey 1977</a>)</span>, with modern computational techniques.</p>
 <p>Talk about teaching</p>
 <!-- what you need to know -->
-<p>All of the examples in this book are produced using the open source software R. If you are new to R, a good place to start before reading this book is <span class="citation">Wickham and Grolemund (<a href="#ref-r4ds" role="doc-biblioref">2017</a>)</span>.</p>
+<p>All of the examples in this book are produced using the open source software R. If you are new to R, a good place to start before reading this book is <span class="citation"><a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund</a> (<a href="#ref-r4ds" role="doc-biblioref">2017</a>)</span>.</p>
 <p>Do they need to know some statistics?</p>
 <p>About the exercises.</p>
 <p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
 
 </div>
 <h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-tukey77">
-<p>Tukey, John. 1977. <em>Exploratory Data Analysis</em>. Reading, MA: Addison-Wesley.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-tukey77" class="csl-entry">
+Tukey, John. 1977. <em>Exploratory Data Analysis</em>. Reading, MA: Addison-Wesley.
 </div>
-<div id="ref-r4ds">
-<p>Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>: O’Reilly.</p>
+<div id="ref-r4ds" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>: O’Reilly.
 </div>
 </div>
             </section>
@@ -233,6 +262,7 @@ gitbook.start({
 "weibo": false,
 "instapaper": false,
 "vk": false,
+"whatsapp": false,
 "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
