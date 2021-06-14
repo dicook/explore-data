@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Exploratory Data Analysis in the 21st Century</title>
+  <meta name="description" content="This is a book about EDA today." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Exploratory Data Analysis in the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book about EDA today." />
+  <meta name="github-repo" content="https://github.com/dicook/exploratory-data-analysis-in-the-21st-century" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Exploratory Data Analysis in the 21st Century" />
+  
+  <meta name="twitter:description" content="This is a book about EDA today." />
+  
+
+<meta name="author" content="Di Cook and Emi Tanaka" />
+
+
+<meta name="date" content="2021-06-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+<link rel="next" href="what-is-eda.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">This is a book about EDA today. </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is exploratory data analysis?</a></li>
+<li class="chapter" data-level="3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Initial Data Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#data-description"><i class="fa fa-check"></i><b>3.1</b> Data description</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-type"><i class="fa fa-check"></i><b>3.1.1</b> Checking the data type</a></li>
+<li class="chapter" data-level="3.1.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-quality"><i class="fa fa-check"></i><b>3.1.2</b> Checking the data quality</a></li>
+<li class="chapter" data-level="3.1.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-on-data-collection-method"><i class="fa fa-check"></i><b>3.1.3</b> Check on data collection method</a></li>
+<li class="chapter" data-level="3.1.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-for-experimental-data"><i class="fa fa-check"></i><b>3.1.4</b> Check for experimental data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation"><i class="fa fa-check"></i><b>3.2</b> Model formulation</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a></li>
+<li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
+<li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
+<li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a></li>
+<li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a></li>
+<li class="chapter" data-level="9" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>9</b> Exploring data having a space and time context</a></li>
+<li class="chapter" data-level="10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>10</b> Is what you see really there?</a></li>
+<li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href= https://github.com/dicook/exploratory-data-analysis-in-the-21st-century" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exploratory Data Analysis in the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Exploratory Data Analysis in the 21st Century</h1>
+<p class="author"><em>Di Cook and Emi Tanaka</em></p>
+<p class="date" style="margin-top: 1.5em;"><em>2021-06-14</em></p>
+</div>
+<div id="preface" class="section level1" number="1">
+<h1><span class="header-section-number">Chapter 1</span> Preface</h1>
+<!-- Preface: Most often found in non-fiction books or academic writing, a preface is written from the point of view of the author. This short introductory statement reveals information about why the author wrote the book. A writer might also talk about themselves and why they are qualified to write about this topic. -->
+<!-- https://www.masterclass.com/articles/how-to-write-a-preface-for-a-book#how-to-write-a-preface-in-4-steps
+- Explain why the author chose to write about this topic 
+- Reveal their motivation and inspiration for writing the book 
+- Describe the process of researching the topic of the book  - Outline the process of writing the book, including any challenges and how long it took 
+
+ Brevity Is Better. Be Interesting. Think of a Preface as a “Making of.” Inspire Readers by Sharing Your Passion. -->
+<!-- From my experience, also set out expectations. who should read it, what do they need to know before reading. 
+-->
+<!-- history and motivation -->
+<p>Exploratory data analysis is about “playing in the sand with your data” to allow you to find the unexpected or at least get an understanding about the data that you have in hand. You can think about it as like travelling to a new place. You might have a purpose for visiting, perhaps to attend a conference, or family and friends. Some of your movements will be pre-determined, or guided by the advice of others, but hopefully you will spend some of the time you wandering around without guidance, perhaps even aimlessly. It is in these times you might find something special, a cafe in a garden with great carrot cake, a cuddling pair of rainbow lorikeets, a little library full of Jane Austen books, or even a cheap gas station. Walking around without an agenda helps you get to know the new neighbourhood.</p>
+<p>The first book on exploratory data analysis was published by <span class="citation"><a href="#ref-tukey77" role="doc-biblioref">Tukey</a> (<a href="#ref-tukey77" role="doc-biblioref">1977</a>)</span>. It has been the gold standard for learning about data analysis for many decades, although it has been quickly dated because all the techniques described can be accomplished with pencil and paper. Today, exploratory data analysis has come of age, and is a fundamental part of data science. Most of what we do in data analysis is conducted using the computer, not pencil and paper. Data sets are often quite large, too.</p>
+<!-- why write this book -->
+<p>There are many books, and courses on exploratory data analysis. Virtually all of these are missing key ingredients of Tukey’s spirit. Exploratory data analysis has become synonymous with descriptive statistics, and this is sad. The exploratory part of exploratory data analysis has been subsumed by humdrum data summary. The purpose in writing this book is to communicate the enjoyment of working with data, to reclaim the original intent, to “forces us to notice what we never expected to see” <span class="citation">(<a href="#ref-tukey77" role="doc-biblioref">Tukey 1977</a>)</span>, with modern computational techniques.</p>
+<p>Talk about teaching</p>
+<!-- what you need to know -->
+<p>All of the examples in this book are produced using the open source software R. If you are new to R, a good place to start before reading this book is <span class="citation"><a href="#ref-r4ds" role="doc-biblioref">Wickham and Grolemund</a> (<a href="#ref-r4ds" role="doc-biblioref">2017</a>)</span>.</p>
+<p>Do they need to know some statistics?</p>
+<p>About the exercises.</p>
+<p><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-tukey77" class="csl-entry">
+Tukey, John. 1977. <em>Exploratory Data Analysis</em>. Reading, MA: Addison-Wesley.
+</div>
+<div id="ref-r4ds" class="csl-entry">
+Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>: O’Reilly.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="what-is-eda.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["eda-book.pdf", "eda-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
