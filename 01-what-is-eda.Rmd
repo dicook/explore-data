@@ -1,11 +1,15 @@
-# What is EDA? {#what-is-eda}
+# What is exploratory data analysis? {#what-is-eda}
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+Data analysis is a process of cleaning, transforming,
+inspecting and modelling data with the aim of extracting
+information.
 
-```{r nice-tab, tidy=FALSE}
-knitr::kable(
-  head(iris, 20), caption = 'Here is a nice table!',
-  booktabs = TRUE
-)
-```
 
+Data analysis includes:
+
+* exploratory data analysis,
+* confirmatory data analysis, and
+* initial data analysis.
+
+In a confirmatory data analysis, the focus is on statistical inference and includes processes such as testing hypothesis, model
+selection, or predictive modelling.

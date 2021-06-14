@@ -2,6 +2,8 @@ tab:nice-tab
 preface
 what-is-eda
 eda-and-ida
+initial-data-analysis
+data-description
 working-with-a-single-variable
 bivariate-dependencies-and-relationships
 going-beyond-two-variables
@@ -10,3 +12,10 @@ sculpting-data-using-models
 exploring-data-having-a-space-and-time-context
 is-what-you-see-really-there
 final-words
+initial-data-analysis-1
+model-formulation
+checking-the-data-quality
+checking-the-data-type
+tab:unnamed-chunk-7
+check-on-data-collection-method
+check-for-experimental-data
