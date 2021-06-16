@@ -390,7 +390,7 @@ There are many courses now, every introductory statistics course begins with exp
 
 ## The origins of EDA
 
-The field of exploratory data analysis came of age with the appearance of @tukey99. 
+The field of exploratory data analysis came of age with the appearance of Exploratory Data Analysis [@tukey77]. 
 
 <center><img src="images/tukey_cover.png" width="50%"></center>
 
