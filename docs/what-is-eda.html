@@ -797,7 +797,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <ul>
 <li>Because EDA is very graphical, it sometimes gives rise to a suspicion that patterns in the data are being detected and reported that are not really there.</li>
 <li>So many different combinations may be examined, that something is bound to be interesting.</li>
-<li>💀 Structure seen in the plot drives hypothesis testing (on same data).</li>
+<li>⚡ Structure seen in the plot drives hypothesis testing (on same data).</li>
 </ul>
 <p><em>Sometimes this is called data snooping.</em></p>
 <p>We snooped into the tips data, and from a few plots we learned an enormous amount of information about tipping: There is a scarcity of generous tippers, the variability in tips increases extraordinarily for smoking parties, and people tend to round their tips. These are very different types of tipping behaviors than what we learned from the regression model. The regression model was not compromised by what we learned from graphics, and indeed, <em>we have a richer and more informative analysis. Making plots of the data is just smart.</em></p>
@@ -880,6 +880,7 @@ Then you have a boxplot!-->
 <li>The range of the stem will run from 2 through 18. Write these numbers from smallest to largest vertical, keeping digits in place. Add a vertical line to the right of the numbers.</li>
 <li>Now work through the full set of numbers, writing the last digit against it’s corresponding stem.</li>
 <li>The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.</li>
+<li>And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.</li>
 </ol>
 
 <input id = erasecanvas1 type = 'checkbox' title='Check it to erase !'>
@@ -888,10 +889,10 @@ Then you have a boxplot!-->
 
 <input id = exportcanvas1 type = 'button' style = 'width:55px;' value = 'Export'>
 
-<canvas id="canvas1" width="900" height="450"></canvas>
+<canvas id="canvas1" width="690" height="350"></canvas>
 <script>
 const canvas1 = new fabric.Canvas('canvas1', {
-    backgroundColor: 'whitesmoke',
+    backgroundColor: '#a8a890',
     isDrawingMode: true
 
     });
@@ -913,7 +914,7 @@ canvas1drawingColorEl.onchange = function() {
 
     if (this.checked) {
 
-      canvas1.freeDrawingBrush.color  = 'whitesmoke';
+      canvas1.freeDrawingBrush.color  = '#a8a890';
 
     } else {
 
@@ -996,7 +997,7 @@ $('#exportcanvas1').click(function(){
   var txt2 = new fabric.Text("1699, 1499, 1099, 1693,", {
 
   left: 10,
-  top: 60,
+  top: 40,
   fontFamily: 'Courier',
   fontSize: 18,
   fontStyle: 'normal',
@@ -1024,7 +1025,7 @@ $('#exportcanvas1').click(function(){
   var txt3 = new fabric.Text("1166, 688, 1333, 895,", {
 
   left: 10,
-  top: 110,
+  top: 70,
   fontFamily: 'Courier',
   fontSize: 18,
   fontStyle: 'normal',
@@ -1052,7 +1053,7 @@ $('#exportcanvas1').click(function(){
   var txt3 = new fabric.Text("1775, 895, 1895, 795", {
 
   left: 10,
-  top: 160,
+  top: 100,
   fontFamily: 'Courier',
   fontSize: 18,
   fontStyle: 'normal',
@@ -1075,6 +1076,7 @@ $('#exportcanvas1').click(function(){
 
   canvas1.add(txt3);
 </script>
+<p>Wasn’t this fun!</p>
 </div>
 </div>
 <div id="schematic-summary" class="section level3" number="2.3.3">
@@ -1095,6 +1097,7 @@ $('#exportcanvas1').click(function(){
 <ol style="list-style-type: decimal">
 <li><p>Make a histogram of the total bill. Is there a similar pattern of multimodality?</p></li>
 <li><p>In the scatterplot of tip vs total bill, why is total on the horizontal axis?</p></li>
+<li><p>Make a stem-and-leaf plot of these numbers.</p></li>
 </ol>
 
 </div>

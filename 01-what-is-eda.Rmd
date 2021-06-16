@@ -464,13 +464,14 @@ Then you have a boxplot!-->
 2. The range of the stem will run from 2 through 18. Write these numbers from smallest to largest vertical, keeping digits in place. Add a vertical line to the right of the numbers.
 3. Now work through the full set of numbers, writing the last digit against it's corresponding stem.
 4. The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.
+5. And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.
 
 ```{r}
 library(fabricerin)
 fabric_drawing(cid = "canvas1", 
-               cwidth = 900, 
-               cheight = 450, 
-               cfill = "whitesmoke", 
+               cwidth = 690, 
+               cheight = 350, 
+               cfill = "#a8a890", 
                drawingWidth = 3, 
                gumSize = 10)
 fabric_text_add(cid = "canvas1", textId = "txt1",
@@ -479,18 +480,19 @@ fabric_text_add(cid = "canvas1", textId = "txt1",
                 fontFamily = "Courier", fontSize = 18)
 fabric_text_add(cid = "canvas1", textId = "txt2",
                 text = "1699, 1499, 1099, 1693,",
-                left = 10, top = 60, 
+                left = 10, top = 40, 
                 fontFamily = "Courier", fontSize = 18)
 fabric_text_add(cid = "canvas1", textId = "txt3",
                 text = "1166, 688, 1333, 895,",
-                left = 10, top = 110, 
+                left = 10, top = 70, 
                 fontFamily = "Courier", fontSize = 18)
 fabric_text_add(cid = "canvas1", textId = "txt3",
                 text = "1775, 895, 1895, 795",
-                left = 10, top = 160, 
+                left = 10, top = 100, 
                 fontFamily = "Courier", fontSize = 18)
 ```
 
+Wasn't this fun!
 :::
 
 ### Schematic summary
