@@ -13,7 +13,7 @@ pre code {
   white-space: inherit;
 }
 
-div.info, div.aim, div.eg, div.case {
+div.info, div.aim, div.eg, div.case, div.do {
   padding: 12px 24px 12px 30px;
   margin: 2em 0;
   background-color: rgba(2, 126, 182, 0.3);
@@ -31,7 +31,12 @@ div.case {
   border-left-color: #fb8500;
 }
 
-div.info::before, div.aim::before, div.eg::before, div.case::before {
+div.do {
+  background-color: #c0c030;
+  border-left-color: #607848;
+}
+
+div.info::before, div.aim::before, div.eg::before, div.case::before, .do::before {
   background-color: #006DAE;
   border-radius: 100%;
   color: #fff;
@@ -53,6 +58,11 @@ div.aim::before {
 div.case::before {
   background-color: #fb8500;
 }
+
 div.eg::before {
   background-color: #219ebc;
+}
+
+div.do::before {
+  background-color: #607848;
 }

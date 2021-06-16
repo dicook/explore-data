@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-16" />
+<meta name="date" content="2021-06-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -784,7 +784,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <ul>
 <li>Because EDA is very graphical, it sometimes gives rise to a suspicion that patterns in the data are being detected and reported that are not really there.</li>
 <li>So many different combinations may be examined, that something is bound to be interesting.</li>
-<li>⚡ Structure seen in the plot drives hypothesis testing (on same data).</li>
+<li>💀 Structure seen in the plot drives hypothesis testing (on same data).</li>
 </ul>
 <p><em>Sometimes this is called data snooping.</em></p>
 <p>We snooped into the tips data, and from a few plots we learned an enormous amount of information about tipping: There is a scarcity of generous tippers, the variability in tips increases extraordinarily for smoking parties, and people tend to round their tips. These are very different types of tipping behaviors than what we learned from the regression model. The regression model was not compromised by what we learned from graphics, and indeed, <em>we have a richer and more informative analysis. Making plots of the data is just smart.</em></p>
@@ -809,12 +809,22 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <img src="images/tukey_cover.png" width="50%">
 </center>
 <p><em>Tukey held that too much emphasis in statistics was placed on statistical hypothesis testing (confirmatory data analysis); more emphasis needed to be placed on using data to suggest hypotheses to test.</em></p>
+<div class="do">
+<p>Take a glimpse back in time is possible with the <a href="http://stat-graphics.org/movies/">American Statistical Association video lending library</a>.</p>
+<p>Watch <a href="https://www.youtube.com/embed/B7XoW2qiFUA">John Tukey talking about exploring high-dimensional data with an amazing new computer in 1973</a>, four years before the EDA book. Look out for these things:</p>
+<ul>
+<li>Tukey’s expertise is described as <em>for trial and error learning</em> and</li>
+<li>the computing equipment, especially how the human interacted with the screen,</li>
+<li>and the hair style of Jerry Friedman.</li>
+</ul>
+<p>The first 4.25 minutes are the best!</p>
+</div>
 </div>
 <div id="exercises" class="section level2" number="2.4">
 <h2><span class="header-section-number">2.4</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>Make a histogram of the total bill. Is there a similar pattern of multimodality?</p></li>
-<li><p>In the scatterplot of itp vs total bill, why is total on the horizontal axis?</p></li>
+<li><p>In the scatterplot of tip vs total bill, why is total on the horizontal axis?</p></li>
 </ol>
 
 </div>

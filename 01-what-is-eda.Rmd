@@ -396,8 +396,22 @@ The field of exploratory data analysis came of age when this book appeared in 19
 
 *Tukey held that too much emphasis in statistics was placed on statistical hypothesis testing (confirmatory data analysis); more emphasis needed to be placed on using data to suggest hypotheses to test.*
 
+::: do
+
+Take a glimpse back in time is possible with the [American Statistical Association video lending library](http://stat-graphics.org/movies/). 
+
+Watch [John Tukey talking about exploring high-dimensional data with an amazing new computer in 1973](https://www.youtube.com/embed/B7XoW2qiFUA), four years before the EDA book. Look out for these things:
+
+- Tukey's expertise is described as *for trial and error learning* and 
+- the computing equipment, especially how the human interacted with the screen,
+- and the hair style of Jerry Friedman.
+
+The first 4.25 minutes are the best!
+:::
+
+
 ## Exercises
 
 1. Make a histogram of the total bill. Is there a similar pattern of multimodality? 
 
-2. In the scatterplot of itp vs total bill, why is total on the horizontal axis?
+2. In the scatterplot of tip vs total bill, why is total on the horizontal axis?
