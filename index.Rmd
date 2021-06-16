@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: https://github.com/dicook/exploratory-data-analysis-in-the-21st-century
+github-repo: https://github.com/dicook/explore-data
 description: "This is a book about EDA today."
 ---
 
@@ -43,7 +43,7 @@ The first book on exploratory data analysis was published by @tukey77. It has be
 
 There are many books, and courses on exploratory data analysis. Virtually all of these are missing key ingredients of Tukey's spirit. Exploratory data analysis has become synonymous with descriptive statistics, and this is sad. The exploratory part of exploratory data analysis has been subsumed by humdrum data summary. The purpose in writing this book is to communicate the enjoyment of working with data, to reclaim the original intent, to "forces us to notice what we never expected to see" [@tukey77], with modern computational techniques. 
 
-Talk about teaching
+<!-- Talk about teaching -->
 
 <!-- what you need to know -->
 All of the examples in this book are produced using the open source software R. If you are new to R, a good place to start before reading this book is @r4ds. 
