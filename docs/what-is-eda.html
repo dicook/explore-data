@@ -166,7 +166,7 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is exploratory data analysis?</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#what-do-experts-say"><i class="fa fa-check"></i><b>2.1</b> What do experts say?</a></li>
+<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#what-are-current-interpretations"><i class="fa fa-check"></i><b>2.1</b> What are current interpretations?</a></li>
 <li class="chapter" data-level="2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#differentiating-from-traditional-analysis"><i class="fa fa-check"></i><b>2.2</b> Differentiating from traditional analysis</a>
 <ul>
 <li class="chapter" data-level="2.2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#from-the-case-study"><i class="fa fa-check"></i><b>2.2.1</b> From the case study</a></li>
@@ -176,6 +176,7 @@ div.csl-indent {
 <li class="chapter" data-level="2.2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#why-arent-there-more-resources-on-eda"><i class="fa fa-check"></i><b>2.2.5</b> Why aren’t there more resources on EDA?</a></li>
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.3</b> The origins of EDA</a></li>
+<li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Initial Data Analysis</a>
 <ul>
@@ -232,8 +233,8 @@ information.</p>
 <p>Before modelling and predicting, data should first be explored to uncover the patterns and structures that exist. Exploratory data analysis involves both numerical and visual techniques designed to reveal interesting information that may be hidden in the data. However, an analyst must be cautious not to over-interpret apparent patterns, and to make efforts assess the results of a data exploration are reliable for the data being studied and potentially for new data.</p>
 <!-- Inference and EDA -->
 <p>In a confirmatory data analysis, the focus is on statistical inference and includes processes such as testing hypothesis, model selection, or predictive modelling. Initial data analysis is an important part of this, to check the sometimes strict assumptions made in order to conduct inference.</p>
-<div id="what-do-experts-say" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> What do experts say?</h2>
+<div id="what-are-current-interpretations" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> What are current interpretations?</h2>
 <!-- Some common explanations -->
 <p>EDA today is prevalent, and there are many descriptions. It’s interesting to compare and contrast these, in relation to the original scope.</p>
 <p>From <a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">wikipedia</a></p>
@@ -302,7 +303,7 @@ information.</p>
 <p>Food servers’ tips in restaurants may be influenced by many factors, including the nature of the restaurant, size of the party, and table locations in the restaurant. Restaurant managers need to know which factors matter when they assign tables to food servers.</p>
 </blockquote>
 <p>and a description of the variables is as reported in <span class="citation"><a href="#ref-cookswayne07" role="doc-biblioref">Cook and Swayne</a> (<a href="#ref-cookswayne07" role="doc-biblioref">2007</a>)</span>:</p>
-<p><img src="images/tips.png" width="120%"></p>
+<p><img src="images/tips.png" width="90%"></p>
 </div>
 <div id="casestudyprocedure" class="section level4 unnumbered">
 <h4>Case study procedure</h4>
@@ -716,7 +717,6 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
 <p><img src="eda-book_files/figure-html/fitted_model-1.png" width="672" /></p>
 <p>The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see <a href="https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant">here</a>) and should also leave us with an unease that this policy is based on weak support.</p>
-<p><strong>Plots associated with pursuit of an answer to a question may be best described as what is called “initial data analysis.”</strong></p>
 </div>
 </div>
 <div id="what-would-be-eda" class="section level3" number="2.2.2">
@@ -724,6 +724,68 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 </div>
 <div id="general-strategy-for-eda" class="section level3" number="2.2.3">
 <h3><span class="header-section-number">2.2.3</span> General strategy for EDA</h3>
+<p>It’s a good idea to examine the data description, and the explanation of the variables. What does that look like here?
+- tip and totbill are quantitative, but generally we would think about tip as a percentage of the bill, so creating this new variable would be useful, too.
+- sex, smoker, day, time of day are categorical.
+- size is discrete/integer.</p>
+<p>The types of variables suggest what summaries to make.</p>
+<p>For the quantitative variables we would calculate
+- means, standard deviations, median, quartiles, minimum and maximum, and
+- also make histograms or density plots and scatterplots to explore bivariate relationships.</p>
+<p>For categorical variables, and integer variables with few categories, compute
+- counts and proportions, and
+- make bar charts and mosaic plots</p>
+<p>Thinking about relationships between categorical and quantitative variables, we could
+- calculate the numerical summaries by the categorical variable levels, and
+- make histograms and scatterplots, facetted by the categorical variables.</p>
+<div id="tip" class="section level4 unnumbered">
+<h4>Look at the distribution of tips, total bill.</h4>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="what-is-eda.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
+<span id="cb23-2"><a href="what-is-eda.html#cb23-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb23-3"><a href="what-is-eda.html#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb23-4"><a href="what-is-eda.html#cb23-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>)  </span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="eda-book_files/figure-html/tips-1.png" width="672" /></p>
+<p>Because, one binwidth is never enough …</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="what-is-eda.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
+<span id="cb25-2"><a href="what-is-eda.html#cb25-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="what-is-eda.html#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb25-4"><a href="what-is-eda.html#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="fl">0.5</span>,<span class="fl">10.5</span>,<span class="dv">1</span>), <span class="co">#&lt;&lt; </span></span>
+<span id="cb25-5"><a href="what-is-eda.html#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb25-6"><a href="what-is-eda.html#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb25-7"><a href="what-is-eda.html#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/tips2-1.png" width="672" /></p>
+<p>Big fat bins. Tips are skewed, which means most tips are relatively small.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="what-is-eda.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
+<span id="cb26-2"><a href="what-is-eda.html#cb26-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> </span>
+<span id="cb26-3"><a href="what-is-eda.html#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
+<span id="cb26-4"><a href="what-is-eda.html#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="fl">0.5</span>,<span class="fl">10.5</span>,<span class="fl">0.1</span>), <span class="co">#&lt;&lt;</span></span>
+<span id="cb26-5"><a href="what-is-eda.html#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
+<span id="cb26-6"><a href="what-is-eda.html#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
+<span id="cb26-7"><a href="what-is-eda.html#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/tips3-1.png" width="672" /></p>
+<p>Skinny bins. Tips are multimodal, and occurring at the full dollar and 50c amounts.</p>
+</div>
+<div id="tiptotal" class="section level4 unnumbered">
+<h4>Relationship between tip and total</h4>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="what-is-eda.html#cb27-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(tips, </span>
+<span id="cb27-2"><a href="what-is-eda.html#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>totbill, <span class="at">y=</span>tip)) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="what-is-eda.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb27-4"><a href="what-is-eda.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb27-5"><a href="what-is-eda.html#cb27-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span>
+<span id="cb27-6"><a href="what-is-eda.html#cb27-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/tips_tot-1.png" width="672" /></p>
+<p>Adding a regression line, helps to focus on a tipping standard, and whether individual tips are above or below expected.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="what-is-eda.html#cb28-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">intercept=</span><span class="dv">0</span>, <span class="co">#&lt;&lt;</span></span>
+<span id="cb28-2"><a href="what-is-eda.html#cb28-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb28-3"><a href="what-is-eda.html#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">45</span>, <span class="at">y=</span><span class="dv">10</span>, </span>
+<span id="cb28-4"><a href="what-is-eda.html#cb28-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">label=</span><span class="st">&quot;20% tip&quot;</span>) </span>
+<span id="cb28-5"><a href="what-is-eda.html#cb28-5" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/tips_tot2-1.png" width="672" /></p>
+</div>
+<div id="tipcategorical" class="section level4 unnumbered">
+<h4>Examine the distributions across categorical variables.</h4>
+</div>
 </div>
 <div id="isnt-it-data-snooping" class="section level3" number="2.2.4">
 <h3><span class="header-section-number">2.2.4</span> Isn’t it data snooping?</h3>
@@ -734,6 +796,13 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 </div>
 <div id="the-origins-of-eda" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> The origins of EDA</h2>
+</div>
+<div id="exercises" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li><p>Make a histogram of the total bill. Is there a similar pattern of multimodality?</p></li>
+<li><p>In the scatterplot of itp vs total bill, why is total on the horizontal axis?</p></li>
+</ol>
 
 </div>
 </div>
