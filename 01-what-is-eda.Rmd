@@ -390,7 +390,7 @@ There are many courses now, every introductory statistics course begins with exp
 
 ## The origins of EDA
 
-The field of exploratory data analysis came of age when this book appeared in 1977. 
+The field of exploratory data analysis came of age with the appearance of @tukey99. 
 
 <center><img src="images/tukey_cover.png" width="50%"></center>
 
@@ -492,8 +492,9 @@ fabric_text_add(cid = "canvas1", textId = "txt3",
                 fontFamily = "Courier", fontSize = 18)
 ```
 
-Wasn't this fun!
 :::
+
+Wasn't this fun! Sketching the numbers, checking them off, looking at the result. 
 
 ### Schematic summary
 
