@@ -21,31 +21,40 @@ In a confirmatory data analysis, the focus is on statistical inference and inclu
 EDA today is prevalent, and there are many descriptions. It's interesting to compare and contrast these, in relation to the original scope. 
 
 From [wikipedia](https://en.wikipedia.org/wiki/Exploratory_data_analysis)
+
 > In statistics, exploratory data analysis (EDA) is an approach to analyzing data sets to summarize their main characteristics, often with visual methods. A statistical model can be used or not, but primarily EDA is for seeing what the data can tell us beyond the formal modeling or hypothesis testing task. 
 
 In @r4ds
+
 > EDA is not a formal process with a strict set of rules. More than anything, EDA is a state of mind. During the initial phases of EDA you should feel free to investigate every idea that occurs to you. Some of these ideas will pan out, and some will be dead ends.
 
 The [National Institute of Standards and Technology](https://www.itl.nist.gov/div898/handbook/eda/section1/eda11.htm)
+
 > Exploratory Data Analysis (EDA) is an approach/philosophy for data analysis that employs a variety of techniques (mostly graphical) to (1) maximize insight into a data set; (2) uncover underlying structure; (3) extract important variables; (4) detect outliers and anomalies; (5) test underlying assumptions; (6) develop parsimonious models; and (7) determine optimal factor settings.
 
 The predictive analytics competition site [Kaggle](https://www.kaggle.com/pavansanagapati/a-simple-tutorial-on-exploratory-data-analysis) says
+
 > What is Exploratory Data Analysis (EDA)? (1) How to ensure you are ready to use machine learning algorithms in a project? (2) How to choose the most suitable algorithms for your data set? (3) How to define the feature variables that can potentially be used for machine learning?
 
 Legacy data analysis software system [SAS](https://seleritysas.com/blog/2020/05/08/exploratory-data-analysis-and-its-role-in-improving-business-operations/) says
+
 > EDA is necessary for the next stage of data research. If there was an analogy to exploratory data analysis, it would be that of a painter examining their tools and available time, before deciding on what best to paint.
 
 The massive online [John Hopkins EDA class](https://www.coursera.org/learn/exploratory-data-analysis#syllabus) describes it as
+
 > These techniques are typically applied before formal modeling commences and can help inform the development of more complex statistical models. Exploratory techniques are also important for eliminating or sharpening potential hypotheses about the world that can be addressed by the data.
 
 General information site [Towards Data Science](https://towardsdatascience.com/if-you-dont-find-anything-new-you-don-t-do-eda-right-d356f9995098) says
+
 > The purpose of doing the Exploratory Data Analysis or EDA is to find new information in data. The understanding of EDA that practitioners may not aware of, is the EDA uses a visually-examined dataset to understand and summarize the main characteristics of the dataset without having a prior hypothesis or relying upon statistical models.
 
 ## Differentiating from traditional analysis
 
 ### From the case study
 
-In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled "Practical Data Analysis: Case Studies in Business Statistics" by Bryant and Smith [@bryantsmith1995].
+In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled "Practical Data Analysis: Case Studies in Business Statistics" by Bryant and Smith [@bryantsmith1995]. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff's wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous. 
+
+
 
 ### What would be EDA
 
