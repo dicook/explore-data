@@ -21,6 +21,17 @@ description: "This is a book about EDA today."
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
 ), 'packages.bib')
+knitr::opts_chunk$set(
+  echo = FALSE,
+  warning = FALSE,
+  message = FALSE,
+  cache = FALSE,
+  fig.width = 6,
+  fig.height = 4,
+  fig.align = "center",
+  out.width = "90%",
+  fig.retina = 3
+)
 ```
 
 <!-- https://www.masterclass.com/articles/how-to-write-a-preface-for-a-book#how-to-write-a-preface-in-4-steps
