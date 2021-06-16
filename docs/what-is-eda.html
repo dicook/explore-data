@@ -53,8 +53,76 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
 /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
@@ -202,6 +270,454 @@ information.</p>
 <div id="from-the-case-study" class="section level3" number="2.2.1">
 <h3><span class="header-section-number">2.2.1</span> From the case study</h3>
 <p>In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled “Practical Data Analysis: Case Studies in Business Statistics” by Bryant and Smith <span class="citation">(<a href="#ref-bryantsmith1995" role="doc-biblioref">Bryant and Smith 1995</a>)</span>. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff’s wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous.</p>
+<div id="whatistipping" class="section level4 unnumbered">
+<h4>What is tipping?</h4>
+<p>According to <a href="https://www.washingtonpost.com/news/going-out-guide/wp/2016/09/15/tipping-can-be-complicated-these-are-the-basic-rules-you-should-know-about/">The basic rules of tipping that everyone should know about</a>:</p>
+<ul>
+<li>When you’re dining at a full-service restaurant
+<ul>
+<li>Tip 20 percent of your full bill.</li>
+</ul></li>
+<li>When you grab a cup of coffee
+<ul>
+<li>Round up or add a dollar if you’re a regular or ordered a complicated drink.</li>
+</ul></li>
+<li>When you have lunch at a food truck
+<ul>
+<li>Drop a few dollars into the tip jar, but a little less than you would at a dine-in spot.</li>
+</ul></li>
+<li>When you use a gift card
+<ul>
+<li>Tip on the total value of the meal, not just what you paid out of pocket.</li>
+</ul></li>
+</ul>
+</div>
+<div id="aboutthedata" class="section level4 unnumbered">
+<h4>About the data</h4>
+<p>The tips case study data is described as follows:</p>
+<blockquote>
+<p>In one restaurant, a food server recorded the following data on all customers they served during an interval of two and a half months in early 1990.</p>
+</blockquote>
+<blockquote>
+<p>Food servers’ tips in restaurants may be influenced by many factors, including the nature of the restaurant, size of the party, and table locations in the restaurant. Restaurant managers need to know which factors matter when they assign tables to food servers.</p>
+</blockquote>
+<p>and a description of the variables is as reported in <span class="citation"><a href="#ref-cookswayne07" role="doc-biblioref">Cook and Swayne</a> (<a href="#ref-cookswayne07" role="doc-biblioref">2007</a>)</span>:</p>
+<p><img src="images/tips.png" width="120%"></p>
+</div>
+<div id="casestudyprocedure" class="section level4 unnumbered">
+<h4>Case study procedure</h4>
+<p>The analysis of the data should follow these steps according to the book:</p>
+<ul>
+<li><em>Step 1</em>: Develop a model
+<ul>
+<li>Should the response be <code>tip</code> alone and use the total bill as a predictor?</li>
+<li>Should you create a new variable <code>tip rate</code> and use this as the response?</li>
+</ul></li>
+<li><em>Step 2</em>: Fit the full model with sex, smoker, day, time and size as predictors</li>
+<li><em>Step 3</em>: Refine model: Should some variables should be dropped?</li>
+<li><em>Step 4</em>: Check distribution of residuals</li>
+<li><em>Step 5</em>: Summarise the model, if X=something, what would be the expected tip</li>
+</ul>
+</div>
+<div id="step1" class="section level4 unnumbered">
+<h4>Step 1</h4>
+<p>Calculate tip % as tip/total bill <span class="math inline">\(\times\)</span> 100</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="what-is-eda.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</code></pre>
+<pre><code>## ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ dplyr   1.0.6
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   1.4.0     ✓ forcats 0.5.1</code></pre>
+<pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="what-is-eda.html#cb5-1" aria-hidden="true" tabindex="-1"></a>tips <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;http://ggobi.org/book/data/tips.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ────────────────────────────────────────────────────────
+## cols(
+##   obs = col_double(),
+##   totbill = col_double(),
+##   tip = col_double(),
+##   sex = col_character(),
+##   smoker = col_character(),
+##   day = col_character(),
+##   time = col_character(),
+##   size = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="what-is-eda.html#cb7-1" aria-hidden="true" tabindex="-1"></a>tips <span class="ot">&lt;-</span> tips <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="what-is-eda.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">tip_pct =</span> tip<span class="sc">/</span>totbill <span class="sc">*</span> <span class="dv">100</span>) <span class="co">#&lt;&lt;</span></span></code></pre></div>
+</div>
+<div id="step2" class="section level4 unnumbered">
+<h4>Step 2</h4>
+<p>Fit the full model with all variables</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="what-is-eda.html#cb8-1" aria-hidden="true" tabindex="-1"></a>tips_lm <span class="ot">&lt;-</span> tips <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="what-is-eda.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tip_pct, sex, smoker, day, time, size) <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="what-is-eda.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(tip_pct <span class="sc">~</span> ., <span class="at">data=</span>.) <span class="co">#&lt;&lt;</span></span></code></pre></div>
+<p>Summarise the model</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="what-is-eda.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(broom)</span>
+<span id="cb9-2"><a href="what-is-eda.html#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="what-is-eda.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(tips_lm) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb12-2"><a href="what-is-eda.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="what-is-eda.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() </span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+20.66
+</td>
+<td style="text-align:right;">
+2.49
+</td>
+<td style="text-align:right;">
+8.29
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sexM
+</td>
+<td style="text-align:right;">
+-0.85
+</td>
+<td style="text-align:right;">
+0.83
+</td>
+<td style="text-align:right;">
+-1.02
+</td>
+<td style="text-align:right;">
+0.31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+smokerYes
+</td>
+<td style="text-align:right;">
+0.36
+</td>
+<td style="text-align:right;">
+0.85
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+<td style="text-align:right;">
+0.67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daySat
+</td>
+<td style="text-align:right;">
+-0.18
+</td>
+<td style="text-align:right;">
+1.83
+</td>
+<td style="text-align:right;">
+-0.10
+</td>
+<td style="text-align:right;">
+0.92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+daySun
+</td>
+<td style="text-align:right;">
+1.67
+</td>
+<td style="text-align:right;">
+1.90
+</td>
+<td style="text-align:right;">
+0.88
+</td>
+<td style="text-align:right;">
+0.38
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+dayThu
+</td>
+<td style="text-align:right;">
+-1.82
+</td>
+<td style="text-align:right;">
+2.32
+</td>
+<td style="text-align:right;">
+-0.78
+</td>
+<td style="text-align:right;">
+0.43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+timeNight
+</td>
+<td style="text-align:right;">
+-2.34
+</td>
+<td style="text-align:right;">
+2.61
+</td>
+<td style="text-align:right;">
+-0.89
+</td>
+<td style="text-align:right;">
+0.37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+size
+</td>
+<td style="text-align:right;">
+-0.96
+</td>
+<td style="text-align:right;">
+0.42
+</td>
+<td style="text-align:right;">
+-2.28
+</td>
+<td style="text-align:right;">
+0.02
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="what-is-eda.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(tips_lm) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb13-2"><a href="what-is-eda.html#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(r.squared, statistic, p.value) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a href="what-is-eda.html#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+r.squared
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.042
+</td>
+<td style="text-align:right;">
+1.479
+</td>
+<td style="text-align:right;">
+0.175
+</td>
+</tr>
+</tbody>
+</table>
+<p>🤔 Which variable(s) would be considered important for predicting tip %?</p>
+</div>
+<div id="step3" class="section level4 unnumbered">
+<h4>Step 3</h4>
+<p>Refine the model.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="what-is-eda.html#cb14-1" aria-hidden="true" tabindex="-1"></a>tips_lm <span class="ot">&lt;-</span> tips <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="what-is-eda.html#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tip_pct, size) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb14-3"><a href="what-is-eda.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(tip_pct <span class="sc">~</span> ., <span class="at">data=</span>.) </span>
+<span id="cb14-4"><a href="what-is-eda.html#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(tips_lm) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb14-5"><a href="what-is-eda.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="what-is-eda.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>() </span></code></pre></div>
+<table class="table" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+term
+</th>
+<th style="text-align:right;">
+estimate
+</th>
+<th style="text-align:right;">
+std.error
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+(Intercept)
+</td>
+<td style="text-align:right;">
+18.44
+</td>
+<td style="text-align:right;">
+1.12
+</td>
+<td style="text-align:right;">
+16.47
+</td>
+<td style="text-align:right;">
+0.00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+size
+</td>
+<td style="text-align:right;">
+-0.92
+</td>
+<td style="text-align:right;">
+0.41
+</td>
+<td style="text-align:right;">
+-2.25
+</td>
+<td style="text-align:right;">
+0.03
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\widehat{tip %} = 18.44 - 0.92 \times size\]</span></p>
+<p>As the size of the dining party increases by one person the tip decreases by approximately 1%.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="what-is-eda.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(tips_lm) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb15-2"><a href="what-is-eda.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(r.squared, statistic, p.value) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="what-is-eda.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:right;">
+r.squared
+</th>
+<th style="text-align:right;">
+statistic
+</th>
+<th style="text-align:right;">
+p.value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+0.02
+</td>
+<td style="text-align:right;">
+5.042
+</td>
+<td style="text-align:right;">
+0.026
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="math inline">\(R^2 = 0.02\)</span>.</p>
+<p>This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be a good step to examine interaction terms.</p>
+<p><strong>What does <span class="math inline">\(R^2 = 0.02\)</span> mean?</strong></p>
+<p><span class="math inline">\(R^2 = 0.02\)</span> means that size explains just 2% of the variance in tip %. This is a very weak model.</p>
+<p>And <span class="math inline">\(R^2 = 0.04\)</span> is also a very weak model.</p>
+<p><strong>What do the <span class="math inline">\(F\)</span> statistic and <span class="math inline">\(p\)</span>-value mean?</strong></p>
+<p>Assume that we have a random sample from a population. Assume that the model for the population is</p>
+<p><span class="math display">\[ \widehat{tip %} = \beta_0 + \beta_1 sexM + ... + \beta_7 size \]</span>
+and we have observed</p>
+<p><span class="math display">\[ \widehat{tip %} = b_0 + b_1  sexM + ... + b_7 size \]</span>
+The <span class="math inline">\(F\)</span> statistic refers to</p>
+<p><span class="math display">\[ H_o: \beta_1 = ... = \beta_7 = 0 ~~ vs ~~ H_a: \text{at least one is not 0}\]</span>
+The <span class="math inline">\(p\)</span>-value is the probability that we observe the given <span class="math inline">\(F\)</span> value or larger, computed assuming <span class="math inline">\(H_o\)</span> is true.</p>
+<p><strong>What do the <span class="math inline">\(t\)</span> statistics and <span class="math inline">\(p\)</span>-value associated with model coeficients mean?</strong></p>
+<p>Assume that we have a random sample from a population. Assume that the model for the population is</p>
+<p><span class="math display">\[ \widehat{tip %} = \beta_0 + \beta_1 sexM + ... + \beta_7 size \]</span>
+and we have observed</p>
+<p><span class="math display">\[ \widehat{tip %} = b_0 + b_1  sexM + ... + b_7 size \]</span></p>
+<p>The <span class="math inline">\(t\)</span> statistics in the coefficient summary refer to</p>
+<p><span class="math display">\[ H_o: \beta_k = 0 ~~ vs ~~ H_a: \beta_k \neq 0 \]</span>
+The <span class="math inline">\(p\)</span>-value is the probability that we observe the given <span class="math inline">\(t\)</span> value or more extreme, computed assuming <span class="math inline">\(H_o\)</span> is true.</p>
+</div>
+<div id="modelchecking" class="section level4 unnumbered">
+<h4>Model checking</h4>
+<p>Normally, the final model summary would be accompanied diagnostic plots</p>
+<ul>
+<li>observed vs fitted values to check strength and appropriateness of the fit</li>
+<li>univariate plot, and normal probability plot, of residuals to check for normality</li>
+<li>in the simple final model like this, the observed vs predictor, with model overlaid would be advised to assess the model relative to the variability around the model</li>
+<li>when the final model has more terms, using a partial dependence plot to check the relative relationship between the response and predictors would be recommended.</li>
+</ul>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="what-is-eda.html#cb16-1" aria-hidden="true" tabindex="-1"></a>tips_aug <span class="ot">&lt;-</span> <span class="fu">augment</span>(tips_lm)</span>
+<span id="cb16-2"><a href="what-is-eda.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
+<span id="cb16-3"><a href="what-is-eda.html#cb16-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb16-4"><a href="what-is-eda.html#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
+<span id="cb16-5"><a href="what-is-eda.html#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) </span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="eda-book_files/figure-html/res_hist-1.png" width="672" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="what-is-eda.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
+<span id="cb18-2"><a href="what-is-eda.html#cb18-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb18-3"><a href="what-is-eda.html#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
+<span id="cb18-4"><a href="what-is-eda.html#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
+<span id="cb18-5"><a href="what-is-eda.html#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) <span class="sc">+</span></span>
+<span id="cb18-6"><a href="what-is-eda.html#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/res_qq-1.png" width="672" /></p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="what-is-eda.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
+<span id="cb19-2"><a href="what-is-eda.html#cb19-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb19-3"><a href="what-is-eda.html#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb19-4"><a href="what-is-eda.html#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-5"><a href="what-is-eda.html#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;observed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb19-6"><a href="what-is-eda.html#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;fitted&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="eda-book_files/figure-html/obs_fitted-1.png" width="672" /></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="what-is-eda.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
+<span id="cb21-2"><a href="what-is-eda.html#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>size, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
+<span id="cb21-3"><a href="what-is-eda.html#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-4"><a href="what-is-eda.html#cb21-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
+<span id="cb21-5"><a href="what-is-eda.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;tip %&quot;</span>)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="eda-book_files/figure-html/fitted_model-1.png" width="672" /></p>
+<p>The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see <a href="https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant">here</a>) and should also leave us with an unease that this policy is based on weak support.</p>
+<p><strong>Plots associated with pursuit of an answer to a question may be best described as what is called “initial data analysis.”</strong></p>
+</div>
 </div>
 <div id="what-would-be-eda" class="section level3" number="2.2.2">
 <h3><span class="header-section-number">2.2.2</span> What would be EDA</h3>
@@ -225,6 +741,9 @@ information.</p>
 <div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-bryantsmith1995" class="csl-entry">
 Bryant, Peter G., and Marlene A. Smith. 1995. <em>Practical Data Analysis: Case Studies in Business Statistics</em>. chicago: irwin.
+</div>
+<div id="ref-cookswayne07" class="csl-entry">
+Cook, D., and D. Swayne. 2007. <em><span>I</span>nteractive and <span>D</span>ynamic <span>G</span>raphics for <span>D</span>ata <span>A</span>nalysis with Examples Using <span>R</span> and <span>GG</span>obi</em>. New York: Springer.
 </div>
 <div id="ref-r4ds" class="csl-entry">
 Wickham, Hadley, and Garrett Grolemund. 2017. <em>R for Data Science</em>. <a href="https://r4ds.had.co.nz">https://r4ds.had.co.nz</a>: O’Reilly.
@@ -287,6 +806,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

@@ -54,7 +54,191 @@ General information site [Towards Data Science](https://towardsdatascience.com/i
 
 In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled "Practical Data Analysis: Case Studies in Business Statistics" by Bryant and Smith [@bryantsmith1995]. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff's wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous. 
 
+#### What is tipping? {-#whatistipping}
 
+According to [The basic rules of tipping that everyone should know about](https://www.washingtonpost.com/news/going-out-guide/wp/2016/09/15/tipping-can-be-complicated-these-are-the-basic-rules-you-should-know-about/):
+
+- When you're dining at a full-service restaurant
+    - Tip 20 percent of your full bill.
+- When you grab a cup of coffee
+    - Round up or add a dollar if you're a regular or ordered a complicated drink.
+- When you have lunch at a food truck
+    - Drop a few dollars into the tip jar, but a little less than you would at a dine-in spot.
+- When you use a gift card
+    - Tip on the total value of the meal, not just what you paid out of pocket.
+
+#### About the data {-#aboutthedata}
+
+The tips case study data is described as follows:
+
+> In one restaurant, a food server recorded the following data on all customers they served during an interval of two and a half months in early 1990.
+
+> Food servers’ tips in restaurants may be influenced by many factors, including the nature of the restaurant, size of the party, and table locations in the restaurant. Restaurant managers need to know which factors matter when they assign tables to food servers.
+
+and a description of the variables is as reported in @cookswayne07:
+
+<img src="images/tips.png" width="120%">
+
+#### Case study procedure {-#casestudyprocedure}
+
+The analysis of the data should follow these steps according to the book:
+
+- *Step 1*: Develop a model
+    - Should the response be `tip` alone and use the total bill as a predictor?
+    - Should you create a new variable `tip rate` and use this as the response?
+- *Step 2*: Fit the full model with sex, smoker, day, time and size as predictors
+- *Step 3*: Refine model: Should some variables should be dropped?
+- *Step 4*: Check distribution of residuals
+- *Step 5*: Summarise the model, if X=something, what would be the expected tip
+
+#### Step 1 {-#step1}
+
+Calculate tip % as tip/total bill $\times$ 100
+
+```{r}
+library(tidyverse)
+tips <- read_csv("http://ggobi.org/book/data/tips.csv")
+```
+
+```{r echo = TRUE}
+tips <- tips %>%
+  mutate(tip_pct = tip/totbill * 100) #<<
+```
+
+#### Step 2 {-#step2}
+
+Fit the full model with all variables
+
+```{r echo = TRUE}
+tips_lm <- tips %>%
+  select(tip_pct, sex, smoker, day, time, size) %>%
+  lm(tip_pct ~ ., data=.) #<<
+```
+
+Summarise the model
+
+```{r modela, echo=TRUE}
+library(broom)
+library(kableExtra)
+tidy(tips_lm) %>% #<<
+  kable(digits=2) %>% 
+  kable_styling() 
+```
+
+```{r modelb, echo=TRUE}
+glance(tips_lm) %>% #<<
+  select(r.squared, statistic, p.value) %>% 
+  kable(digits=3)
+```
+
+`r emo::ji("thinking")` Which variable(s) would be considered important for predicting tip %?
+
+#### Step 3 {-#step3}
+
+Refine the model.
+
+```{r model_smalla, echo=TRUE}
+tips_lm <- tips %>%
+  select(tip_pct, size) %>% #<<
+  lm(tip_pct ~ ., data=.) 
+tidy(tips_lm) %>% #<<
+  kable(digits=2) %>% 
+  kable_styling() 
+```
+
+$$\widehat{tip %} = 18.44 - 0.92 \times size$$
+
+As the size of the dining party increases by one person the tip decreases by approximately 1%.
+
+```{r model_smallb, echo=TRUE}
+glance(tips_lm) %>% #<<
+  select(r.squared, statistic, p.value) %>% 
+  kable(digits=3)
+```
+
+$R^2 = 0.02$.
+
+This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be a good step to examine interaction terms. 
+
+**What does $R^2 = 0.02$ mean?**
+
+$R^2 = 0.02$ means that size explains just 2% of the variance in tip %. This is a very weak model. 
+
+And $R^2 = 0.04$ is also a very weak model.
+
+**What do the $F$ statistic and $p$-value mean?**
+
+Assume that we have a random sample from a population. Assume that the model for the population is 
+
+$$ \widehat{tip %} = \beta_0 + \beta_1 sexM + ... + \beta_7 size $$
+and we have observed
+
+$$ \widehat{tip %} = b_0 + b_1  sexM + ... + b_7 size $$
+The $F$ statistic refers to 
+
+$$ H_o: \beta_1 = ... = \beta_7 = 0 ~~ vs ~~ H_a: \text{at least one is not 0}$$
+The $p$-value is the probability that we observe the given $F$ value or larger, computed assuming $H_o$ is true.
+
+**What do the $t$ statistics and $p$-value associated with model coeficients mean?**
+
+Assume that we have a random sample from a population. Assume that the model for the population is 
+
+$$ \widehat{tip %} = \beta_0 + \beta_1 sexM + ... + \beta_7 size $$
+and we have observed
+
+$$ \widehat{tip %} = b_0 + b_1  sexM + ... + b_7 size $$
+
+The $t$ statistics in the coefficient summary refer to 
+
+$$ H_o: \beta_k = 0 ~~ vs ~~ H_a: \beta_k \neq 0 $$
+The $p$-value is the probability that we observe the given $t$ value or more extreme, computed assuming $H_o$ is true.
+
+#### Model checking {-#modelchecking}
+
+Normally, the final model summary would be accompanied diagnostic plots
+
+- observed vs fitted values to check strength and appropriateness of the fit
+- univariate plot, and normal probability plot, of residuals to check for normality
+- in the simple final model like this, the observed vs predictor, with model overlaid would be advised to assess the model relative to the variability around the model
+- when the final model has more terms, using a partial dependence plot to check the relative relationship between the response and predictors would be recommended.
+
+```{r res_hist, echo=TRUE}
+tips_aug <- augment(tips_lm)
+ggplot(tips_aug, 
+    aes(x=.resid)) + #<<
+  geom_histogram() +
+  xlab("residuals") 
+```
+
+```{r res_qq, echo=TRUE}
+ggplot(tips_aug, 
+    aes(sample=.resid)) + #<<
+  stat_qq() +
+  stat_qq_line() +
+  xlab("residuals") +
+  theme(aspect.ratio=1)
+```
+
+```{r obs_fitted, echo=TRUE}
+ggplot(tips_aug, 
+    aes(x=.fitted, y=tip_pct)) + #<<
+  geom_point() +
+  geom_smooth(method="lm") +
+  xlab("observed") +
+  ylab("fitted")
+```
+
+```{r fitted_model, echo=TRUE}
+ggplot(tips_aug, 
+    aes(x=size, y=tip_pct)) + #<<
+  geom_point() +
+  geom_smooth(method="lm") +
+  ylab("tip %")
+```
+
+The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see [here](https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant)) and should also leave us with an unease that this policy is based on weak support.
+
+**Plots associated with pursuit of an answer to a question may be best described as what is called "initial data analysis".**
 
 ### What would be EDA
 
