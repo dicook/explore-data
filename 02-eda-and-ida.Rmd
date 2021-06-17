@@ -249,3 +249,178 @@ High sulphur and high manure seems to best for the yield of brussel sprouts. Any
 ```{block, type="info", echo = TRUE}
 Note: there are variety of ways to do IDA and you don't need to prescribe to what we show you.
 ```
+
+### Review: Linear models in R 
+
+Consider the bivariate data `cars` were it contains the variables `dist` (distance travelled) and `speed` (speed of the car) with the data shown in Figure \@ref(fig:plot-cars).
+
+(ref:plot-cars) The plot of the speed of cars vs. the distance travelled. 
+
+```{r plot-cars, echo = FALSE, warning = FALSE, message = FALSE, fig.cap="(ref:plot-cars)"}
+ggplot(cars, aes(dist, speed)) +
+  geom_point() + 
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+thes models can be fitted in R as follows:
+
+```{r fit1, eval = FALSE}
+lm(speed ~ dist, data = cars)
+```
+
+which is the same as 
+
+```{r fit2, eval = FALSE}
+lm(speed ~ 1 + dist, data = cars)
+```
+
+and for $i = 1, ... `r nrow(cars)`$ mathematically can be written as 
+
+$$y_i = \beta_0 + \beta_1 x_i + e_i,$$
+where: 
+
+* $y_i$ and $x_i$ are the speed (in mph) and stopping distance (in ft), respectively of the $i$-th car,
+* $\beta_0$ and $\beta_1$ are intercept and slope, respectively, and 
+* $e_i$ is the random error, typically assuming that $e_i \sim N(0, \sigma^2)$. 
+
+## Model formulation
+
+* Say, we are interested in characterising the price of the diamond in terms of its carat. 
+
+```{r plot-diamond, echo = FALSE}
+diamonds %>% 
+  ggplot(aes(carat, price)) +
+  geom_point(alpha = 0.3)
+```
+
+Looking at this plot, would you fit a linear model with formula `price ~ 1 + carat`? What about `price ~ poly(carat, 2)` which is the same as fitting:
+
+$$y_i = \beta_0 + \beta_1x_i + \beta_2x_i^2 + e_i.$$
+Do we need to modify the assumption of the error distribution? Should we make some transformation before modelling? Are there other candidate models? By the way do you notice a wall like structure for prices at 1, 1.5 and 2 carat?
+
+Notice that we did no formal statistical inference as we initially try to formulate the model. The goal of the main analysis is to characterise the price of a diamond by its carat. This may involve:
+
+* formal inference for model selection, 
+* justification of the selected "final" model, and
+* fitting the final model. 
+
+There may be in fact far more models considered but discarded at the IDA stage. These discarded models are hardly ever reported. Consequently, majority of reported statistics give a distorted view and it's important to remind yourself what might *not* be reported.
+
+<blockquote>
+"All models are approximate and tentative; approximate in the sense that no model is exactly true and tentative in that they may be modified in the light of further data"
+
+-- Chatfield (1985)
+</blockquote>
+
+<blockquote>
+"All models are wrong but some are useful"
+
+-- George Box
+</blockquote>
+
+::: case
+A wheat breeding trial to test 107 varieties (also called genotype) is conducted in a field experiment laid out in a rectangular array with 22 rows and 15 columns.
+
+:::
+
+```{r}
+data("gilmour.serpentine", package = "agridat")
+```
+
+### Experimental Design 
+
+The experiment employs what is referred to as a randomised complete block design (RCBD) (technically it is near-complete and not exactly RCBD due to check varieties have double the replicates of test varieties).
+
+RCBD means that:
+
+* the there are equal number of replicates for each treatment (here it is gen);
+* each treatment appears exactly once in each block;
+* the blocks are of the same size; and
+* each treatment are randomised within block.
+
+In agricultural field experiments, blocks are formed spatially by grouping plots within contiguous areas (called `rep` here).
+
+The boundaries of blocks may be chosen arbitrary.
+
+
+* In the main analysis, people would commonly analyse this using what is called **two-way ANOVA** model (with no interaction effect).
+* The two-way ANOVA model has the form
+<center>
+<code>yield = mean + block + treatment + error</code>
+</center>
+* So for this data,
+```{r, echo = TRUE}
+fit <- lm(yield ~ 1 + rep + gen, 
+          data = gilmour.serpentine)
+```
+
+```{r, echo = TRUE}
+summary(fit)
+```
+
+```{r, echo = FALSE}
+library(tidycat)
+est <- fit %>% 
+  broom::tidy() %>% 
+  tidy_categorical(fit, include_reference = TRUE) %>% 
+  filter(variable == "gen")
+```
+
+```{r top10geno-model, echo = FALSE, fig.height = 8, fig.width = 5}
+est %>% 
+  mutate(gen = fct_reorder(level, estimate)) %>% 
+  filter(gen %in% levels(gen)[c(1:10, (107 - 9): 107)]) %>% 
+  ggplot(aes(estimate, gen)) + 
+  geom_point(size = 2) +
+  ggtitle("Top 10 and bottom 10\n genotype by model est.")
+```
+
+```{r top10geno-mean, echo = FALSE, fig.height = 8, fig.width = 5}
+gilmour.serpentine %>% 
+  mutate(gen = fct_reorder(gen, yield, mean)) %>% 
+  filter(gen %in% levels(gen)[c(1:10, (107 - 9): 107)]) %>% 
+  ggplot(aes(yield, gen)) + 
+  geom_point(size = 2) +
+  ggtitle("Top 10 and bottom 10\n genotype by mean yield")
+```
+```{r top10geno-median, echo = FALSE, fig.height = 8, fig.width = 5}
+gilmour.serpentine %>% 
+  mutate(gen = fct_reorder(gen, yield, median)) %>% 
+  filter(gen %in% levels(gen)[c(1:10, (107 - 9): 107)]) %>% 
+  ggplot(aes(yield, gen)) + 
+  geom_point(size = 2) +
+  ggtitle("Top 10 and bottom 10\n genotype by median yield")
+```
+
+Do you notice anything from below?
+
+```{r gilmour-plot, echo = FALSE, fig.height = 7, fig.width = 7}
+gilmour.serpentine %>% 
+  mutate(row = factor(row),
+         col = factor(col)) %>% 
+  ggplot(aes(col, row, fill = yield)) + 
+  geom_tile(color = "black", size = 2) + 
+  coord_equal() + 
+  scale_fill_continuous_sequential(palette = "Greens 3")
+```
+
+* It's well known in agricultural field trials that spatial variations are introduced in traits; this could be because of the fertility trend, management practices or other reasons.
+* In the IDA stage, you investigate to identify these spatial variations - you cannot just simply fit a two-way ANOVA model!
+
+<blockquote>
+Teaching of Statistics should provide a more balanced blend of IDA and inference
+
+-- Chatfield (1985)
+</blockquote>
+
+
+Yet there is still very little emphasis of it in teaching and also at times in practice. So don't forget to do IDA!
+
+
+## Summary
+
+* **_Initial data analysis_** (IDA) is a model-focussed exploration of data with two main objectives:
+  * **_data description_** including scrutinizing for data quality, and
+  * **_model formulation_** without any formal statistical inference.
+* IDA hardly sees the limelight even if it's the very foundation of what the main analysis is built on.
+
