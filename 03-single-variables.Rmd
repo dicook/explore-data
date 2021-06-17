@@ -1,3 +1,486 @@
 # Working with a single variable
 
 making transformations, detecting outliers, using robust statistics
+
+
+
+## Possible features of continuous variables
+
+```{r plots, echo = FALSE, fig.width = 4, fig.height = 2}
+some_df <- tibble(id = 1:200) %>% 
+  mutate(x1 = rexp(n()),
+         p1 = rbinom(n(), 1, 0.98),
+         x2 = p1 * rnorm(n()) + (1 - p1) * runif(n(), 4, 5),
+         p2 = rbinom(n(), 1, 0.6),
+         x3 = p2 * rnorm(n()) + (1 - p2) * rnorm(n(), 8, 2),
+         x4 = p2 * runif(n(), 1, 3) + (1 - p2) * runif(n(), 4, 10),
+         x5 = sample(0:10, size = n(), replace = TRUE, prob = c(0.6, rep(0.04, each = 10))),
+         x6 = sample(18:30, size = n(), replace = TRUE),
+         p3 = rbinom(n(), 1, 0.98), 
+         x7 = p3 * rnorm(n()) + (1 - p3) * runif(n(), -10, -3))
+
+ggplot(some_df, aes(x1)) + 
+  geom_histogram(binwidth = 0.3) + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x2, "")) + 
+  geom_boxplot(binwidth = 0.3) + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x3)) + 
+  geom_density() + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x4, y = 1)) + 
+  geom_point() + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x5)) + 
+  geom_bar() + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x6)) + 
+  geom_histogram(binwidth = 0.1) + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+
+ggplot(some_df, aes(x7)) + 
+  geom_dotplot() + 
+  theme_void() + 
+  annotate("rect", xmin = -Inf, xmax = sort(some_df$x7)[3] + 0.5, ymin = 0, ymax = Inf, fill = "red", alpha = 0.3) + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+```
+
+Feature | Example | Description
+--- | --- | ---
+Asymmetry | <img src="../_bookdown_files/eda-book_files/figure-html/plots-1.png" height ="58px">| The distribution is not symmetrical.
+Outliers |<img src="../_bookdown_files/eda-book_files/figure-html/plots-2.png" height ="58px"> | Some observations are that are far from the rest.
+Multimodality | <img src="../_bookdown_files/eda-book_files/figure-html/plots-3.png" height ="58px">  | There are more than one "peak" in the observations. 
+Gaps |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-4.png" height ="58px"> | Some continuous interval that are contained within the range but no observations exists. 
+Heaping |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-5.png" height ="58px"> |  Some values occur unexpectedly often.
+Discretized |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-6.png" height ="58px"> | Only certain values are found, e.g. due to rounding.
+Implausible |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-7.png" height ="58px"> | Values outside of plausible or likely range.
+
+## Numerical features of a single contiuous variables
+
+```{r example-plot, fig.height = 1.3}
+ggplot(some_df, aes(x1)) + 
+  geom_histogram(binwidth = 0.2, fill = "pink", color = "black") + 
+  theme_void() + 
+  theme(axis.line.x = element_line(color = "black", size = 2))
+```
+
+
+* A measure of **_central tendency_**, e.g. mean, median and mode.
+* A measure of **_dispersion_** (also called variability or spread), e.g. variance, standard deviation and interquartile range.
+* There are other measures, e.g. **_skewness_** and **_kurtosis_** that measures "tailedness", but these are not as common as the measures of first two. 
+* The mean is also the _first moment_ and variance, skewness and kurtosis are _second, third, and fourth central moments_. 
+* **Significance tests** or **hypothesis tests**: When testing for $H_0: \mu = \mu_0$ vs. $H_1: \mu \neq \mu_0$ (often $\mu_0 = 0$), the $t$-test is commonly used if the underlying data are believed to be normally distributed.
+
+
+## Outliers
+
+**Outliers** are *observations* that are significantly different from the majority.
+]
+
+
+* Outliers can occur by chance in almost all distributions, but could be indicative of a measurement error, a different population, or an issue with the sampling process.
+* Outlying values of independent variables are referred to as **high-leverage points**, although this distinction is not particularly important when analysing a single continuous variable.
+
+
+## Closer look at the _boxplot_
+
+
+```{r annotated-boxplot, fig.height = 3}
+fn <- quantile(mtcars$wt, c(0, 0.25, 0.5, 0.75, 1), type = 7)
+iqr <- fn[4] - fn[2]
+ggplot(mtcars, aes(wt, "")) + 
+  geom_boxplot(size = 1.4, width = 0.2, outlier.color = "#006DAE",
+               outlier.size = 3, outlier.fill = "#006DAE") + 
+  geom_dotplot(binwidth = 0.1, fill = "gray") + 
+  annotate("line", x = fn[c(2,4)], y = 1.3, size = 1.3, color = "#C8008F") +
+  annotate("segment", x = fn[c(2, 4, 3)], xend = fn[c(2,4, 3)],
+           y = c(1.25, 1.25, 0.75), yend = c(1.35, 1.35, 0.9), size = 1.3, color = "#C8008F") +
+  annotate("text", x = c(mean(fn[c(2, 4)]), fn[3]), y = c(1.4, 0.7), label = c("IQR", "median"), size = 10, color = "#C8008F") + 
+  # some reason vline didn't work
+  annotate("segment", x = c(fn[4] + 1.5 * iqr, fn[2] - 1.5 * iqr),  xend = c(fn[4] + 1.5 * iqr, fn[2] - 1.5 * iqr), y = -Inf, yend = Inf, linetype = "dashed") + 
+  theme_void()
+```
+
+
+* Observations that are outside the range of lower to upper thresholds are referred at times as .monash-blue[outliers].
+* Plotting boxplots for data from a skewed distribution will almost always show these "outliers" but these are not necessary outliers.
+* Some definitions of outliers assume a symmetrical population distribution (e.g. in boxplots or observations a certain standard deviations away from the mean) and these definitions are ill-suited for asymmetrical distributions.
+
+
+## Robust statistics: measure of central tendency
+
+```{r robust-mean, fig.height = 3.5}
+df <- tibble(x = rnorm(200) + c(rep(0, each = 195), rep(10, 5)))
+ggplot(df, aes(x)) + 
+  geom_histogram() + 
+  geom_vline(xintercept = mean(df$x),
+             color = "#EE0220", size = 1.3) + 
+  geom_vline(xintercept = median(df$x),
+             color = "#746FB2", size = 1.3) + 
+  theme_void()
+```
+
+
+* **Mean** is a non-robust measure of location. 
+* Some robust measures of locations are:
+  * **Median** is the 50% quantile of the observations
+  * **Trimmed mean** is the sample mean after discarding observations at the tails. 
+  * **Winsorized mean** is the sample mean after replacing observations at the tails with the minimum or maximum of the observations that remain.
+
+## Robust statistics: measure of dispersion
+
+* **Standard deviation** or its square, **variance*, is a popular choice of measure of dispersion but is not robust to outliers. 
+* Standard deviation for sample $x_1, ..., x_n$ is calculated as 
+$$\sqrt{\sum_{i=1}^n \frac{(x_i - \bar{x})^2}{n - 1}}$$
+* Interquartile range is the difference between 1st and 3rd quartile and is more robust measure of spread than above.
+* Median absolute deviance (MAD) is also more robust and defined as 
+$$\text{median}(|x_i - \bar{x}|).$$
+
+
+
+## Transformations
+
+* Transformations to data are used as an attempt to stabilize the variance or make the data symmetrical.
+* Log and square root transformations are popular.
+* A range of $\lambda$ values for (one-parameter) Box-Cox transformation is sometimes used to test for optimal transformation:
+$$y(\lambda) = \begin{cases}\dfrac{(y^\lambda - 1)}{\lambda}\\ \log(y)\end{cases}$$
+
+::: case 
+
+Children and midparents heights 
+
+```{r galton-data, include = FALSE}
+data(galton, package = "UsingR")
+df2 <- galton %>% 
+  pivot_longer(everything(), 
+               names_to = "person", 
+               values_to = "height") 
+```
+
+:::
+
+```{r galton-plot1, fig.width = 6.4}
+ggplot(df2, aes(height)) + 
+  geom_histogram(binwidth = 1) + 
+  facet_wrap(~ person, scale = "free") + 
+  labs(x = "Height (inches)", y = "Frequency")
+
+```
+```{r galton-plot2}
+ggplot(df2, aes(height)) + 
+  geom_histogram(binwidth = 1) + 
+  facet_grid(. ~ person) + 
+  labs(x = "Height (inches)", y = "Frequency")
+```
+
+* Midparent's height is an average of the father's height and 1.08 times the mother's height. 
+* The data contains 205 parents and 928 children.
+```{r galtond-data-head}
+galton %>% 
+  arrange(parent, child) %>% 
+  as_tibble() %>% 
+  print(n = 3)
+```
+* The data included families of 1 to 15 children, so in the extreme case, one midparent data point is repeated 15 times in the data.
+* The frequency of midparents heights therefore are over-represented with parents with large family size.
+
+```{r galton-plot3, fig.width = 6.4}
+ggplot(df2, aes(height)) + 
+  geom_histogram(binwidth = 1, aes(y = stat(density))) + 
+  facet_wrap(~ person) + 
+  labs(x = "Height (inches)", y = "Density")
+
+```
+```{r galton-plot4, fig.width = 6.4}
+ggplot(df2, aes(height)) + 
+  geom_histogram(binwidth = 0.1, aes(y = stat(density))) + 
+  facet_wrap(~ person) + 
+  labs(x = "Height (inches)", y = "Density")
+```
+
+
+* Changing the bin width of histogram from 1 to 0.1, we can see the data have been rounded and hence some precision is lost in the data.
+* The data confirms this with most children's height recorded with ".2" at the end and most midparents heights recorded with ".5" at the end.
+
+
+```{r galton-plot5}
+df2sum <- df2 %>% 
+  group_by(person) %>% 
+  summarise(med = median(height))
+
+ggplot(df2, aes(height)) + 
+  geom_histogram(binwidth = 1) + 
+  facet_grid(person ~ ., as.table = FALSE) + 
+  geom_vline(data = df2sum, 
+             aes(xintercept = med), 
+             color = "red", size = 2) + 
+  labs(x = "Height (inches)", y = "Frequency")
+
+```
+
+```{r galton-plot6}
+ggplot(df2, aes(height, person)) + 
+  geom_boxplot() + 
+  labs(x = "Height (inches)", y = "")
+
+```
+
+* Aligning the histogram vertically makes it easier to compare the heights of children and midparents. 
+* The side-by-side boxplots makes it easy to see the variability of the heights of the midparents are smaller than the children. 
+* The smaller variability is expected because the midparents heights are average of two values.
+* We can also see that the median height is larger for the midparents than children.
+* You may think that the heights of children should be **_bimodal_**, _one peak for **male**_ and the _other peak for **female**_. But that is not necessary the case as we'll see next.
+
+
+::: case
+
+Self-reported heights 
+```{r}
+data("heights", package = "dslabs")
+```
+
+
+:::
+
+```{r dslabs-heights-1}
+ggplot(heights, aes(height)) + 
+  geom_density(aes(fill = sex), size = 2) +
+  scale_fill_discrete_qualitative() + 
+  labs(x = "Height (inches)", y = "Density") + 
+  theme(legend.position = c(0.2, 0.8)) 
+
+```
+
+```{r dslabs-heights-2}
+ggplot(heights, aes(height)) + 
+  geom_density(fill = "#027EB6", size = 2) +
+  labs(x = "Height (inches)", y = "Density")
+
+```
+
+* You can see that drawing separate density plots for each sexes shows that the women are on average shorter than men.
+* The bimodality is however not visible when the data are combined.
+
+
+::: case 
+
+Men's heights 
+
+:::
+
+
+```{r pearson-height-data, include = FALSE}
+data(father.son, package = "UsingR")
+df4 <- father.son %>% 
+  pivot_longer(everything(), 
+               names_to = "status", 
+               values_to = "height") %>% 
+  mutate(status = recode(status, 
+                         fheight = "father",
+                         sheight = "son"))
+```
+
+```{r pearson-height-plot1, fig.width = 6.4}
+ggplot(df4, aes(height)) + 
+  geom_histogram(binwidth = 1, aes(y = stat(density))) + 
+  facet_grid(status ~ .) +
+  geom_density(color = "red", size = 2) + 
+  labs(x = "Height (inches)", y = "Density")
+
+```
+```{r pearson-height-plot2}
+ggplot(df4, aes(sample = height)) +
+  geom_qq_line(color = "red", size = 2) + 
+  geom_qq() +
+  facet_grid(. ~ status) + 
+  labs(x = "Theoretical quantiles", y = "Sample quantiles")
+
+```
+
+```{r pearson-height-plot3, fig.height = 2}
+ggplot(df4, aes(height, status)) + 
+  geom_boxplot() + 
+  labs(x = "Height (inches)", y = "")
+
+```
+
+* The height distribution of the son appears more normal than of the father looking at the density plot.
+* Looking at the Q-Q plots, this however looks the other way around.
+* The heights are recorded to five decimal places (e.g. `65.04851`). 
+* It's unlikely that the heights were measured to such high precision and rather that someone must have "jittered" the data (i.e. added some small random perturbation to the observation). 
+
+::: case 
+
+Boston housing data
+:::
+
+
+```{r boston-data, include = FALSE}
+data(bostonc, package = "DAAG")
+df5 <- read_tsv(bostonc[10:length(bostonc)]) 
+```
+
+```{r boston-data-longer, include = FALSE}
+df5long <- df5 %>% pivot_longer(MEDV:LSTAT,
+                             names_to = "var",
+                             values_to = "value") %>% 
+  filter(!var %in% c("CHAS", "B", "ZN"))
+```
+
+```{r boston-plot1, fig.width = 6.4}
+ggplot(df5, aes(MEDV)) + 
+  geom_histogram(binwidth = 1, color = "black", fill = "#008A25") + 
+  labs(x = "Median housing value (US$1000)", y = "Frequency")
+
+```
+
+* Thre is a large frequency in the final bin.
+* There is a decline in observations in the $40-49K range as well as dip in observations around $26K and $34K.
+* The histogram is using a bin width of 1 unit and is **left-open** (or **right-closed**): (4.5, 5.5], (5.5, 6.5] ... (49.5, 50.5].
+* Occasionally, whether it is left- or right-open can make a difference.
+
+```{r boston-plot2, fig.height = 2}
+ggplot(df5, aes(MEDV, y = "")) + 
+  geom_boxplot(fill = "#008A25") + 
+  labs(x = "Median housing value (US$1000)", y = "") + 
+  theme(axis.line.y = element_blank())
+
+```
+```{r boston-plot3, fig.height = 2}
+ggplot(df5, aes(MEDV, y = "")) + 
+  geom_jitter() + 
+  labs(x = "Median housing value (US$1000)", y = "") + 
+  theme(axis.line.y = element_blank())
+
+```
+```{r boston-plot4, fig.height = 3.5}
+ggplot(df5, aes(MEDV)) + 
+  geom_density() + 
+  geom_rug() + 
+  labs(x = "Median housing value (US$1000)", y = "") + 
+  theme(axis.line.y = element_blank())
+
+```
+
+* Density plots depend on the bandwidth chosen and more than often do not estimate well at boundary cases.
+* There are various way to present features of the data using a plot and what works for one person, may not be as straightforward for another. 
+* Be prepared to do multiple plots. 
+
+```{r boston-plot5, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0",  color = "black", binwidth = 0.2) + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin width = 0.2, Left-open") 
+
+```
+```{r boston-plot6, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0",  color = "black", binwidth = 0.5) + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin width = 0.5, Left-open") 
+
+```
+```{r boston-plot7, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0",  color = "black", bin = 30) + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin number = 30, Left-open") 
+
+```
+```{r boston-plot8, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0", color = "black", binwidth = 0.2, closed = "left") + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin width = 0.2, Right-open") 
+
+```
+```{r boston-plot9, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0", color = "black", binwidth = 0.5, closed = "left") + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin width = 0.5, Right-open") 
+
+```
+```{r boston-plot10, fig.height = 2}
+ggplot(df5, aes(PTRATIO)) + 
+  geom_histogram(fill = "#9651A0", color = "black",
+                 bin = 30, closed = "left") + 
+  labs(x = "Pupil-teacher ratio by town", y = "",
+       title = "Bin number = 30, Right-open") 
+
+```
+```{r boston-plotx, fig.height = 6, fig.width = 8}
+ggplot(df5long, aes(value)) +
+  geom_histogram() +
+  facet_wrap( ~var, scale = "free") + 
+  labs(x = "", y = "") + 
+  theme(axis.text = element_text(size = 12))
+
+```
+
+* CRIM: per capita crime rate by town 
+* INDUS: proportion of non-retail business acres per town
+* NOX: nitrogen oxides concentration (parts per 10 million)
+* RM: average number of room per dwelling
+* AGE: proportion of owner-occupied units built prior to 1940
+* DIS: weighted mean of distances to 5 Boston employment centres
+* RAD: index of accessibility to radial highways
+* TAX: full-value property tax rate per $10K
+* PTRATIO: pupil-teacher ratio by town 
+* LSTAT: lower status of the population (%)
+* MEDV: median value of owner-occupied homes in $1000s
+
+::: case 
+
+Movie length
+
+:::
+
+```{r movies-data, include = FALSE}
+data(movies, package = "ggplot2movies")
+```
+
+```{r movies-plot1}
+ggplot(movies, aes(length)) +
+  geom_histogram() + 
+  labs(x = "Length of movie (minutes)", y = "Frequency")
+
+```
+```{r movies-plot2, fig.width = 5.3}
+ggplot(movies, aes(length, y = "")) +
+  geom_boxplot() + 
+  labs(x = "Length of movie (minutes)", y = "") + 
+  theme(axis.line.y = element_blank())
+
+```
+
+
+* Upon further exploration, you can find the two movies that are well over 16 hours long are: 
+```{r}
+movies %>% 
+  filter(length > 1000) %>% 
+  pull(title) %>% 
+  cat(sep = "\n")
+```
+
+* We can restrict our attention to films under 3 hours:
+
+```{r movies-plot3, fig.width = 9}
+movies %>% 
+  filter(length < 180) %>% 
+  ggplot(aes(length)) +
+  geom_histogram(binwidth = 1, fill = "#795549", color = "black") + 
+  labs(x = "Length of movie (minutes)", y = "Frequency") 
+
+```

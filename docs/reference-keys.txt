@@ -37,3 +37,10 @@ fig:plot-cars
 model-formulation-1
 experimental-design
 summary
+possible-features-of-continuous-variables
+numerical-features-of-a-single-contiuous-variables
+outliers
+closer-look-at-the-boxplot
+robust-statistics-measure-of-central-tendency
+robust-statistics-measure-of-dispersion
+transformations

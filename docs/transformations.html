@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Transformations | Exploratory Data Analysis in the 21st Century</title>
+  <meta name="description" content="This is a book about EDA today." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Transformations | Exploratory Data Analysis in the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book about EDA today." />
+  <meta name="github-repo" content="https://github.com/dicook/explore-data" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Transformations | Exploratory Data Analysis in the 21st Century" />
+  
+  <meta name="twitter:description" content="This is a book about EDA today." />
+  
+
+<meta name="author" content="Di Cook and Emi Tanaka" />
+
+
+<meta name="date" content="2021-06-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="working-with-a-single-variable.html"/>
+<link rel="next" href="bivariate-dependencies-and-relationships.html"/>
+<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">This is a book about EDA today. </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is exploratory data analysis?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#current-interpretations"><i class="fa fa-check"></i><b>2.1</b> Current interpretations</a></li>
+<li class="chapter" data-level="2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#differentiating-from-traditional-analysis"><i class="fa fa-check"></i><b>2.2</b> Differentiating from traditional analysis</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#from-the-case-study"><i class="fa fa-check"></i><b>2.2.1</b> From the case study</a></li>
+<li class="chapter" data-level="2.2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#eda-approach"><i class="fa fa-check"></i><b>2.2.2</b> EDA approach</a></li>
+<li class="chapter" data-level="2.2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#summarising-the-difference"><i class="fa fa-check"></i><b>2.2.3</b> Summarising the difference</a></li>
+<li class="chapter" data-level="2.2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#reality-check"><i class="fa fa-check"></i><b>2.2.4</b> Reality check</a></li>
+<li class="chapter" data-level="2.2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#what-is-eda-1"><i class="fa fa-check"></i><b>2.2.5</b> What is EDA?</a></li>
+<li class="chapter" data-level="2.2.6" data-path="what-is-eda.html"><a href="what-is-eda.html#isnt-it-data-snooping"><i class="fa fa-check"></i><b>2.2.6</b> Isn’t it data snooping?</a></li>
+<li class="chapter" data-level="2.2.7" data-path="what-is-eda.html"><a href="what-is-eda.html#why-arent-there-more-resources-on-eda"><i class="fa fa-check"></i><b>2.2.7</b> Why aren’t there more resources on EDA?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.3</b> The origins of EDA</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#guiding-principles"><i class="fa fa-check"></i><b>2.3.1</b> Guiding principles</a></li>
+<li class="chapter" data-level="2.3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#scratching-down-numbers"><i class="fa fa-check"></i><b>2.3.2</b> Scratching down numbers</a></li>
+<li class="chapter" data-level="2.3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#schematic-summary"><i class="fa fa-check"></i><b>2.3.3</b> Schematic summary</a></li>
+<li class="chapter" data-level="2.3.4" data-path="what-is-eda.html"><a href="what-is-eda.html#easy-re-expression"><i class="fa fa-check"></i><b>2.3.4</b> Easy re-expression</a></li>
+<li class="chapter" data-level="2.3.5" data-path="what-is-eda.html"><a href="what-is-eda.html#effective-comparison"><i class="fa fa-check"></i><b>2.3.5</b> Effective comparison</a></li>
+<li class="chapter" data-level="2.3.6" data-path="what-is-eda.html"><a href="what-is-eda.html#plots-of-relationship"><i class="fa fa-check"></i><b>2.3.6</b> Plots of relationship</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Initial Data Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#data-description"><i class="fa fa-check"></i><b>3.1</b> Data description</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-type"><i class="fa fa-check"></i><b>3.1.1</b> Checking the data type</a></li>
+<li class="chapter" data-level="3.1.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-quality"><i class="fa fa-check"></i><b>3.1.2</b> Checking the data quality</a></li>
+<li class="chapter" data-level="3.1.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-on-data-collection-method"><i class="fa fa-check"></i><b>3.1.3</b> Check on data collection method</a></li>
+<li class="chapter" data-level="3.1.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-for-experimental-data"><i class="fa fa-check"></i><b>3.1.4</b> Check for experimental data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation"><i class="fa fa-check"></i><b>3.2</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#review-linear-models-in-r"><i class="fa fa-check"></i><b>3.2.1</b> Review: Linear models in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation-1"><i class="fa fa-check"></i><b>3.3</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#experimental-design"><i class="fa fa-check"></i><b>3.3.1</b> Experimental Design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#possible-features-of-continuous-variables"><i class="fa fa-check"></i><b>4.1</b> Possible features of continuous variables</a></li>
+<li class="chapter" data-level="4.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-features-of-a-single-contiuous-variables"><i class="fa fa-check"></i><b>4.2</b> Numerical features of a single contiuous variables</a></li>
+<li class="chapter" data-level="4.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#outliers"><i class="fa fa-check"></i><b>4.3</b> Outliers</a></li>
+<li class="chapter" data-level="4.4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#closer-look-at-the-boxplot"><i class="fa fa-check"></i><b>4.4</b> Closer look at the <em>boxplot</em></a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
+<li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="transformations.html"><a href="transformations.html"><i class="fa fa-check"></i><b>5</b> Transformations</a></li>
+<li class="chapter" data-level="6" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>6</b> Bivariate dependencies and relationships</a></li>
+<li class="chapter" data-level="7" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>7</b> Going beyond two variables</a></li>
+<li class="chapter" data-level="8" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>8</b> Making comparisons between groups and strata</a></li>
+<li class="chapter" data-level="9" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>9</b> Sculpting data using models</a></li>
+<li class="chapter" data-level="10" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>10</b> Exploring data having a space and time context</a></li>
+<li class="chapter" data-level="11" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>11</b> Is what you see really there?</a></li>
+<li class="chapter" data-level="12" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>12</b> Final words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href= https://github.com/dicook/exploratory-data-analysis-in-the-21st-century" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exploratory Data Analysis in the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="transformations" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Transformations</h1>
+<ul>
+<li>Transformations to data are used as an attempt to stabilize the variance or make the data symmetrical.</li>
+<li>Log and square root transformations are popular.</li>
+<li>A range of <span class="math inline">\(\lambda\)</span> values for (one-parameter) Box-Cox transformation is sometimes used to test for optimal transformation:
+<span class="math display">\[y(\lambda) = \begin{cases}\dfrac{(y^\lambda - 1)}{\lambda}\\ \log(y)\end{cases}\]</span></li>
+</ul>
+<div class="case">
+<p>Children and midparents heights</p>
+</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="transformations.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df2, <span class="fu">aes</span>(height)) <span class="sc">+</span> </span>
+<span id="cb7-2"><a href="transformations.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb7-3"><a href="transformations.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> person, <span class="at">scale =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb7-4"><a href="transformations.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (inches)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/galton-plot1-1.png" width="614.4" /></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="transformations.html#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df2, <span class="fu">aes</span>(height)) <span class="sc">+</span> </span>
+<span id="cb8-2"><a href="transformations.html#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>) <span class="sc">+</span> </span>
+<span id="cb8-3"><a href="transformations.html#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(. <span class="sc">~</span> person) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="transformations.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Height (inches)&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Frequency&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/galton-plot2-1.png" width="672" /></p>
+<ul>
+<li>Midparent’s height is an average of the father’s height and 1.08 times the mother’s height.</li>
+<li>The data contains 205 parents and 928 children.</li>
+</ul>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="transformations.html#cb9-1" aria-hidden="true" tabindex="-1"></a>galton <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a href="transformations.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(parent, child) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-3"><a href="transformations.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as_tibble</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a href="transformations.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="at">n =</span> <span class="dv">3</span>)</span></code></pre></div>
+<pre><code>## # A tibble: 928 x 2
+##   child parent
+##   &lt;dbl&gt;  &lt;dbl&gt;
+## 1  61.7     64
+## 2  63.2     64
+## 3  63.2     64
+## # … with 925 more rows</code></pre>
+<ul>
+<li>The data included families of 1 to 15 children, so in the extreme case, one midparent data point is repeated 15 times in the data.</li>
+<li>The frequency of midparents heights therefore are over-represented with parents with large family size.</li>
+</ul>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="working-with-a-single-variable.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bivariate-dependencies-and-relationships.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["eda-book.pdf", "eda-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
