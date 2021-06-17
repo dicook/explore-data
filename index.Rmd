@@ -17,6 +17,7 @@ description: "This is a book about EDA today."
 <!-- Preface: Most often found in non-fiction books or academic writing, a preface is written from the point of view of the author. This short introductory statement reveals information about why the author wrote the book. A writer might also talk about themselves and why they are qualified to write about this topic. -->
 
 ```{r include=FALSE}
+library(colorspace)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'
@@ -25,7 +26,8 @@ knitr::opts_chunk$set(
   echo = FALSE,
   warning = FALSE,
   message = FALSE,
-  cache = FALSE,
+  cache = TRUE, # sorry Di! I like cache!
+  cache.path = "cache/", 
   fig.width = 6,
   fig.height = 4,
   fig.align = "center",
