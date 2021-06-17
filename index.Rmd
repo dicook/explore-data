@@ -28,6 +28,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   cache = TRUE, # sorry Di! I like cache!
   cache.path = "cache/", 
+  fig.path = "docs/images/",
   fig.width = 6,
   fig.height = 4,
   fig.align = "center",
