@@ -484,3 +484,343 @@ movies %>%
   labs(x = "Length of movie (minutes)", y = "Frequency") 
 
 ```
+
+## Categorical variables
+
+There are two types of categorical variables:
+
+* **Nominal** where there is no intrinsic ordering to the categories. E.g. blue, grey, black, white.
+* **Ordinal** where there is a clear order to the categories. E.g. Strongly disagree, disagree, neutral, agree, strongly agree.
+
+### Categorical factors un R
+
+* In R, categorical variables may be encoded as **factors**.
+```{r factors, echo = TRUE}
+data <- c(2, 2, 1, 1, 3, 3, 3, 1)
+factor(data)
+```
+* You can easily change the labels of the variables:
+```{r factor-labels, echo = TRUE}
+factor(data, labels = c("I", "II", "III"))
+```
+* Order of the factors are determined by the input:
+
+```{r factor-input, echo = TRUE}
+# numerical input are ordered in increasing order #<<
+factor(c(1, 3, 10))
+# character input are ordered alphabetically #<<
+factor(c("1", "3", "10"))
+# you can specify order of levels explicitly #<<
+factor(c("1", "3", "10"),  levels = c("1", "3", "10"))
+```
+### Numerical factors in R
+
+```{r, echo = TRUE, warning = TRUE}
+x <- factor(c(10, 20, 30, 10, 20))
+mean(x)
+```
+
+<i class="fas fa-exclamation-triangle"></i> `as.numeric` function returns the internal integer values of the factor
+```{r, echo = TRUE}
+mean(as.numeric(x))
+```
+
+You probably want to use:
+
+```{r, echo = TRUE}
+mean(as.numeric(levels(x)[x]))
+```
+```{r, echo = TRUE}
+mean(as.numeric(as.character(x)))
+```
+
+
+### Example: German Bundestag Election 2009
+
+```{r btw2009-data, include = FALSE}
+data("btw2009", package = "flexclust")
+east <- c("Brandenburg", "Mecklenburg-Vorpommern", "Sachsen",
+          "Sachsen-Anhalt", "Thueringen")
+df1 <- btw2009 %>%  
+  group_by(state) %>% 
+  summarise(voters = sum(eligible) / 1e6) %>% 
+  mutate(loc = ifelse(state %in% east, "East", "West"))
+```
+
+```{r btw2009-plot1, fig.height = 7, fig.width = 5.1}
+df1 %>% 
+  ggplot(aes(voters, state)) + 
+  geom_col() + 
+  labs(x = "Voters (millions)", y = "") 
+
+```
+
+```{r btw2009-plot2, fig.height = 7, fig.width = 5.1}
+df1 %>% 
+  mutate(state = fct_reorder(state, voters)) %>% 
+  ggplot(aes(voters, state)) + 
+  geom_col() + 
+  labs(x = "Voters (millions)", y = "") 
+
+```
+
+```{r btw2009-plot3, fig.height = 7, fig.width = 5.1}
+df1 %>% 
+  mutate(state = fct_reorder(state, voters)) %>% 
+  ggplot(aes(voters, state)) + 
+  geom_col() + 
+  labs(x = "Voters (millions)", y = "") + 
+  facet_grid(loc ~ ., scale = "free_y") 
+  
+```
+
+## Order nominal variables meaningfully
+
+<i class="fas fa-code"></i> **Coding tip**: use below functions to easily change the order of factor levels
+
+```{r, eval = FALSE, echo = TRUE}
+stats::reorder(factor, value, mean)
+forcats::fct_reorder(factor, value, median)
+forcats::fct_reorder2(factor, value1, value2, func)
+```
+
+## Example: Aspirin use after heart attack
+
+```{r meta-data, include = FALSE}
+data("Fleiss93", package = "meta")
+df8 <- Fleiss93 %>% 
+  mutate(total = n.e + n.c)
+```
+
+```{r meta-plot1}
+df8 %>% 
+  mutate(study = fct_reorder(study, desc(total))) %>% 
+  ggplot(aes(study, total)) + 
+  geom_col() + 
+  labs(x = "", y = "Frequency") + 
+  guides(x = guide_axis(n.dodge = 2))
+
+```
+
+```{r meta-plot2}
+df8 %>% 
+  mutate(study = ifelse(total < 2000, "Other", study),
+         study = fct_reorder(study, desc(total))) %>% 
+  ggplot(aes(study, total)) + 
+  geom_col() + 
+  labs(x = "", y = "Frequency") 
+
+```
+
+* Meta-analysis is a statistical analysis that combines the results of multiple scientific studies.
+* This data studies the use of aspirin for death prevention after myocardial infarction, or in plain terms, a heart attack.
+* The ISIS-2 study has more patients than all other studies combined.
+* You could consider lumping the categories with low frequencies together.
+
+## Consider combining factor levels with low frequencies
+
+<i class="fas fa-code"></i> **Coding tip**: the following family of functions help to easily lump factor levels together:
+
+```{r fct_lump, echo = TRUE, eval = FALSE}
+forcats::fct_lump()
+forcats::fct_lump_lowfreq()
+forcats::fct_lump_min()
+forcats::fct_lump_n()
+forcats::fct_lump_prop()
+# if conditioned on another variable
+ifelse(cond, "Other", factor)
+dplyr::case_when(cond1 ~ "level1",
+                 cond2 ~ "level2",
+                 TRUE ~ "Other")
+```
+
+## Anorexia
+
+```{r anorexia-data, include = FALSE}
+data(anorexia, package = "MASS")
+
+df9tab <- table(anorexia$Treat) %>% 
+  as.data.frame() %>% 
+  rename(Treatment = Var1, Frequency = Freq)
+
+```
+
+```{r anorexia-plot1}
+ggplot(anorexia, aes(Treat)) + 
+  geom_bar() + 
+  labs(x = "", y = "Frequency") 
+
+```
+```{r anorexia-plot2, echo = TRUE, eval = FALSE}
+ggplot(anorexia, aes(Treat)) + 
+  stat_count(geom = "point", size = 4) +
+  stat_count(geom = "line", group = 1) +
+  labs(y = "Frequency", x = "")
+```
+
+* This can be appropriate depending on what you want to communicate. 
+* A barplot occupies more area compared to a point and the area does a better job of communicating size.
+* A line is suggestive of a trend. 
+
+
+`geom_bar` or `geom_col`?
+
+```{r eg, echo = TRUE}
+df <- data.frame(var = c("F", "F", "M", "M", "F"))
+dftab <- as.data.frame(table(df$var))
+
+df
+dftab
+```
+
+## Titanic
+
+```{r titanic-data, include = FALSE}
+df9 <- as_tibble(Titanic)
+```
+
+```{r titanic-plot1, fig.height = 1.7, fig.width = 4}
+df9 %>% 
+  group_by(Class) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Class, total)) + 
+  geom_col(fill = "#ee64a4") + 
+  labs(x = "", y = "Frequency") 
+
+```
+```{r titanic-plot2, fig.height = 1.7, fig.width = 3}
+df9 %>% 
+  group_by(Sex) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Sex, total)) + 
+  geom_col(fill = "#746FB2") + 
+  labs(x = "", y = "Frequency") 
+
+```
+
+```{r titanic-plot3, fig.height = 1.7, fig.width = 3}
+df9 %>% 
+  group_by(Age) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Age, total)) + 
+  geom_col(fill = "#C8008F") + 
+  labs(x = "", y = "Frequency") 
+
+```
+
+```{r titanic-plot4, fig.height = 1.7, fig.width = 3}
+df9 %>% 
+  group_by(Survived) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Survived, total)) + 
+  geom_col(fill = "#795549") + 
+  labs(x = "Survived", y = "Frequency") 
+
+```
+
+**What does the graphs for each categorical variable tell us?**
+
+* There were more crews than 1st to 3rd class passengers
+* There were far more males on ship; possibly because majority of crew members were male. You can further explore this by constructing two-way tables or graphs that consider both variables.
+* Most passengers were adults. 
+* More than two-thirds of passengers died. 
+
+
+## Coloring bars
+
+```{r, fig.width = 10}
+g1 <- df9 %>% 
+  group_by(Class) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Class, total)) + 
+  geom_col() + 
+  labs(x = "", y = "Frequency") 
+
+g2 <- df9 %>% 
+  group_by(Class) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Class, total)) + 
+  geom_col(fill = "#006DAE") + 
+  guides(fill = FALSE) + 
+  labs(x = "", y = "Frequency") + 
+  scale_fill_discrete_qualitative()
+
+g3 <- df9 %>% 
+  group_by(Class) %>% 
+  summarise(total = sum(n)) %>% 
+  ggplot(aes(Class, total)) + 
+  geom_col(aes(fill = Class)) + 
+  guides(fill = FALSE) + 
+  labs(x = "", y = "Frequency") + 
+  scale_fill_discrete_qualitative()
+
+g1 + g2 + g3
+```
+
+
+* Colour here doesn't add information as the x-axis already tells us about the categories, but colouring bars can make it more visually appealing. 
+* If you have too many categories colour won't work well to differentiate the categories. 
+
+
+## Opinion poll in Ireland Aug 2013
+
+```{r poll-data, include = FALSE}
+df11 <- tibble(party = c("Fine Gael", "Labour", "Fianna Fail",
+                         "Sinn Fein", "Indeps", "Green", "Undecided"),
+               nos = c(181, 51, 171, 119, 91, 4, 368)) 
+df11v2 <- df11 %>% filter(party != "Undecided")
+df11
+```
+
+```{r poll-plot1, fig.width = 7}
+g11 <- df11 %>% 
+  ggplot(aes("", nos, fill = party)) + 
+  geom_col(color = "black") + 
+  labs(y = "", x = "") + 
+  coord_polar("y") +
+  theme(axis.line = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text = element_blank(),
+        panel.grid.major = element_blank()) +
+  scale_fill_discrete_qualitative(name = "Party")
+g11
+
+```
+
+```{r poll-plot2, fig.width = 7}
+g11 %+% df11v2 + 
+  # below is needed to keep the same color scheme as before
+  scale_fill_manual(values = qualitative_hcl(7)[1:6])
+
+```
+
+* Pie chart is popular in mainstream media but are not generally recommended as people are generally poor at comparing angles.
+* 3D pie charts should definitely be avoided!
+* Here you can see that there are many people that are "Undecided" for which political party to support and failing to account for this paints a different picture. 
+
+
+Piechart is a stacked barplot just with a transformed coordinate system
+
+
+```{r barplot, echo = TRUE, fig.height = 2, fig.width = 3}
+df <- data.frame(var = c("A", "B", "C"), perc = c(40, 40, 20))
+g <- ggplot(df, aes("", perc, fill = var)) + 
+  geom_col()
+g
+```
+```{r piechart, echo = TRUE, fig.height = 2, fig.width = 3}
+g + coord_polar("y")
+```
+
+Roseplot is a barplot just with a transformed coordinate system
+
+```{r nonstacked-barplot, echo = TRUE, fig.height = 2, fig.width = 10}
+dummy <- data.frame(var = LETTERS[1:20], 
+                 n = round(rexp(20, 1/100)))
+g <- ggplot(dummy, aes(var, n)) + geom_col(fill = "pink", color = "black")
+g
+```
+
+```{r roseplot, echo = TRUE, fig.height = 2, fig.width = 3}
+g + coord_polar("x") + theme_void()
+```

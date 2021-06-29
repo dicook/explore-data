@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-17" />
+<meta name="date" content="2021-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,13 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/fabric-3.6.3/fabric.min.js"></script>
+<script src="libs/FileSaver-2.0.2/FileSaver.min.js"></script>
+<script src="libs/jQuery-3.5.1/jquery-3.5.1.min.js"></script>
 
 
 <style type="text/css">
@@ -203,7 +210,16 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a></li>
+<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#possible-features-of-continuous-variables"><i class="fa fa-check"></i><b>4.1</b> Possible features of continuous variables</a></li>
+<li class="chapter" data-level="4.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-features-of-a-single-contiuous-variables"><i class="fa fa-check"></i><b>4.2</b> Numerical features of a single contiuous variables</a></li>
+<li class="chapter" data-level="4.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#outliers"><i class="fa fa-check"></i><b>4.3</b> Outliers</a></li>
+<li class="chapter" data-level="4.4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#closer-look-at-the-boxplot"><i class="fa fa-check"></i><b>4.4</b> Closer look at the <em>boxplot</em></a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
+<li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
+<li class="chapter" data-level="4.7" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#transformations"><i class="fa fa-check"></i><b>4.7</b> Transformations</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
 <li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
 <li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a></li>
@@ -280,117 +296,90 @@ computer, i.e. checking for data type is also important. E.g.,</p>
 <h3><span class="header-section-number">3.1.1</span> Checking the data type</h3>
 <div class="eg">
 <p><strong>Example 1</strong>: Consider the following data stored as an excel sheet.</p>
-<p><img src="images/example-data-type.png" width="300px" /></p>
+<p><img src="images/example-data-type.png" width="300px" style="display: block; margin: auto;" /></p>
 <p>We read this data into R as below.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="initial-data-analysis.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-2"><a href="initial-data-analysis.html#cb1-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">&quot;data/example-data-type.xlsx&quot;</span>)</span></code></pre></div>
 <p>Below is a print out of the data object. Are there any issues here?</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="initial-data-analysis.html#cb2-1" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 4
-##      id date                loc       temp
-##   &lt;dbl&gt; &lt;dttm&gt;              &lt;chr&gt;    &lt;dbl&gt;
-## 1     1 2010-01-03 00:00:00 New York  42  
-## 2     2 2010-02-03 00:00:00 New York  41.4
-## 3     3 2010-03-03 00:00:00 New York  38.5
-## 4     4 2010-04-03 00:00:00 New York  41.1
-## 5     5 2010-05-03 00:00:00 New York  39.8</code></pre>
+##      id
+##   &lt;dbl&gt;
+## 1     1
+## 2     2
+## 3     3
+## 4     4
+## 5     5
+## # … with 3 more
+## #   variables:
+## #   date &lt;dttm&gt;,
+## #   loc &lt;chr&gt;,
+## #   temp &lt;dbl&gt;</code></pre>
 </div>
 <p>In the United States, it is common to use the date format MM/DD/YYYY while the rest of the world commonly use DD/MM/YYYY or YYYY/MM/DD. It is highly probable that the dates are 1st-5th March and not 3rd of Jan-May. You can <strong>validate data with external sources</strong>, e.g. say the temperature at New York during the two choices suggest that the dates are 1st-5th March.</p>
 <p>The benefit of working with data grounded in the real world process is that there are generally means to sanity check. You can robustify your workflow by ensuring that you have an explicit check for the expected data type (and values) in your code.</p>
 <p>In the code below, we write our expected types and further coerce some data types to what we want.</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="initial-data-analysis.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb4-2"><a href="initial-data-analysis.html#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">read_excel</span>(<span class="st">&quot;data/example-data-type.xlsx&quot;</span>, </span>
-<span id="cb4-3"><a href="initial-data-analysis.html#cb4-3" aria-hidden="true" tabindex="-1"></a>                   <span class="at">col_types =</span> <span class="fu">c</span>(<span class="st">&quot;text&quot;</span>, <span class="st">&quot;date&quot;</span>, <span class="st">&quot;text&quot;</span>, <span class="st">&quot;numeric&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb4-4"><a href="initial-data-analysis.html#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">id =</span> <span class="fu">as.factor</span>(id),</span>
-<span id="cb4-5"><a href="initial-data-analysis.html#cb4-5" aria-hidden="true" tabindex="-1"></a>         <span class="at">date =</span> <span class="fu">as.character</span>(date),</span>
-<span id="cb4-6"><a href="initial-data-analysis.html#cb4-6" aria-hidden="true" tabindex="-1"></a>         <span class="at">date =</span> <span class="fu">as.Date</span>(date, <span class="at">format =</span> <span class="st">&quot;%Y-%d-%m&quot;</span>))</span></code></pre></div>
 <pre><code>## # A tibble: 5 x 4
-##   id    date       loc       temp
-##   &lt;fct&gt; &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;
-## 1 1     2010-03-01 New York  42  
-## 2 2     2010-03-02 New York  41.4
-## 3 3     2010-03-03 New York  38.5
-## 4 4     2010-03-04 New York  41.1
-## 5 5     2010-03-05 New York  39.8</code></pre>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="initial-data-analysis.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;data/example-data-type.csv&quot;</span>,</span>
-<span id="cb6-2"><a href="initial-data-analysis.html#cb6-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">id =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb6-3"><a href="initial-data-analysis.html#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">date =</span> <span class="fu">col_date</span>(<span class="at">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>),</span>
-<span id="cb6-4"><a href="initial-data-analysis.html#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">loc =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb6-5"><a href="initial-data-analysis.html#cb6-5" aria-hidden="true" tabindex="-1"></a>                          <span class="at">temp =</span> <span class="fu">col_double</span>()))</span></code></pre></div>
+##   id    date      
+##   &lt;fct&gt; &lt;date&gt;    
+## 1 1     2010-03-01
+## 2 2     2010-03-02
+## 3 3     2010-03-03
+## 4 4     2010-03-04
+## 5 5     2010-03-05
+## # … with 2 more
+## #   variables:
+## #   loc &lt;chr&gt;,
+## #   temp &lt;dbl&gt;</code></pre>
 <pre><code>## # A tibble: 5 x 4
-##   id    date       loc       temp
-##   &lt;fct&gt; &lt;date&gt;     &lt;chr&gt;    &lt;dbl&gt;
-## 1 1     2010-03-01 New York  42  
-## 2 2     2010-03-02 New York  41.4
-## 3 3     2010-03-03 New York  38.5
-## 4 4     2010-03-04 New York  41.1
-## 5 5     2010-03-05 New York  39.8</code></pre>
+##   id    date      
+##   &lt;fct&gt; &lt;date&gt;    
+## 1 1     2010-03-01
+## 2 2     2010-03-02
+## 3 3     2010-03-03
+## 4 4     2010-03-04
+## 5 5     2010-03-05
+## # … with 2 more
+## #   variables:
+## #   loc &lt;chr&gt;,
+## #   temp &lt;dbl&gt;</code></pre>
 <p>The checks (or coercions) ensure that even if the data are updated, you can have some confidence that any data type error will be picked up before further analysis.</p>
 </div>
 <div id="checking-the-data-quality" class="section level3" number="3.1.2">
 <h3><span class="header-section-number">3.1.2</span> Checking the data quality</h3>
 <p>Numerical or graphical summaries, or even just eye-balling the data, helps to uncover some data quality issues. Do you see any issues for the data below?</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="initial-data-analysis.html#cb8-1" aria-hidden="true" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/example-data-quality.csv&quot;</span>,</span>
-<span id="cb8-2"><a href="initial-data-analysis.html#cb8-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">id =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb8-3"><a href="initial-data-analysis.html#cb8-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">date =</span> <span class="fu">col_date</span>(<span class="at">format =</span> <span class="st">&quot;%m/%d/%y&quot;</span>),</span>
-<span id="cb8-4"><a href="initial-data-analysis.html#cb8-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">loc =</span> <span class="fu">col_character</span>(),</span>
-<span id="cb8-5"><a href="initial-data-analysis.html#cb8-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">temp =</span> <span class="fu">col_double</span>()))</span>
-<span id="cb8-6"><a href="initial-data-analysis.html#cb8-6" aria-hidden="true" tabindex="-1"></a>df2</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
-##   id    date       loc        temp
-##   &lt;fct&gt; &lt;date&gt;     &lt;chr&gt;     &lt;dbl&gt;
-## 1 1     2010-03-01 New York   42  
-## 2 2     2010-03-02 New York   41.4
-## 3 3     2010-03-03 New York   38.5
-## 4 4     2010-03-04 New York   41.1
-## 5 5     2010-03-05 New York   39.8
-## 6 6     2020-03-01 Melbourne  30.6
-## 7 7     2020-03-02 Melbourne  17.9
-## 8 8     2020-03-03 Melbourne  18.6
-## 9 9     2020-03-04 &lt;NA&gt;       21.3</code></pre>
+##   id    date      
+##   &lt;fct&gt; &lt;date&gt;    
+## 1 1     2010-03-01
+## 2 2     2010-03-02
+## 3 3     2010-03-03
+## 4 4     2010-03-04
+## 5 5     2010-03-05
+## 6 6     2020-03-01
+## 7 7     2020-03-02
+## 8 8     2020-03-03
+## 9 9     2020-03-04
+## # … with 2 more
+## #   variables:
+## #   loc &lt;chr&gt;,
+## #   temp &lt;dbl&gt;</code></pre>
 <p>There is a missing value in <code>loc</code>. Temperature is in Farenheit for New York but Celsius in Melbourne. You can find this out again using external sources.</p>
 <div class="case">
 <p>Consider the soybean study conducted in Brazil (cite Lehner 2016). This study collected multiple traits of soybeans grown at multiple locations over years.</p>
 </div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="initial-data-analysis.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(naniar)</span>
-<span id="cb10-2"><a href="initial-data-analysis.html#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;lehner.soybeanmold&quot;</span>, <span class="at">package =</span> <span class="st">&quot;agridat&quot;</span>)</span>
-<span id="cb10-3"><a href="initial-data-analysis.html#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vis_miss</span>(lehner.soybeanmold)</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p><img src="docs/images/unnamed-chunk-14-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Inspecting the data reveals that there are a number of missing values for sclerotia and these values do not necessary appear missing at random. We could check if observational units that are missing values for sclerotia, have different yield say.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="initial-data-analysis.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lehner.soybeanmold, <span class="fu">aes</span>(sclerotia, yield)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="initial-data-analysis.html#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_miss_point</span>()</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="docs/images/unnamed-chunk-15-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>We could also compare the new data with old data.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="initial-data-analysis.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(inspectdf)</span>
-<span id="cb12-2"><a href="initial-data-analysis.html#cb12-2" aria-hidden="true" tabindex="-1"></a>soy_old <span class="ot">&lt;-</span> lehner.soybeanmold <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="initial-data-analysis.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="dv">2010</span><span class="sc">:</span><span class="dv">2011</span>)</span>
-<span id="cb12-4"><a href="initial-data-analysis.html#cb12-4" aria-hidden="true" tabindex="-1"></a>soy_new <span class="ot">&lt;-</span> lehner.soybeanmold <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="initial-data-analysis.html#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2012</span>)</span>
-<span id="cb12-6"><a href="initial-data-analysis.html#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="initial-data-analysis.html#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="fu">inspect_cor</span>(soy_old, soy_new) <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="initial-data-analysis.html#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_plot</span>()</span></code></pre></div>
-<pre><code>## Warning: Columns with 0 variance found: year</code></pre>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="docs/images/unnamed-chunk-16-1.png" width="90%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="check-on-data-collection-method" class="section level3" number="3.1.3">
 <h3><span class="header-section-number">3.1.3</span> Check on data collection method</h3>
 <p>Next we study the data from ABS that shows the total number of people employed in a given month from February 1976 to December 2019 using the original time series.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="initial-data-analysis.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readabs)</span>
-<span id="cb14-2"><a href="initial-data-analysis.html#cb14-2" aria-hidden="true" tabindex="-1"></a>employed <span class="ot">&lt;-</span> <span class="fu">read_abs</span>(<span class="at">series_id =</span> <span class="st">&quot;A84423085A&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-3"><a href="initial-data-analysis.html#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">month =</span> lubridate<span class="sc">::</span><span class="fu">month</span>(date),</span>
-<span id="cb14-4"><a href="initial-data-analysis.html#cb14-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">year =</span> <span class="fu">factor</span>(lubridate<span class="sc">::</span><span class="fu">year</span>(date))) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-5"><a href="initial-data-analysis.html#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">!=</span> <span class="st">&quot;2020&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb14-6"><a href="initial-data-analysis.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(date, month, year, value) </span></code></pre></div>
 <p>Do you notice anything?</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="initial-data-analysis.html#cb15-1" aria-hidden="true" tabindex="-1"></a>employed  <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="initial-data-analysis.html#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(month, value, <span class="at">color =</span> year)) <span class="sc">+</span> </span>
-<span id="cb15-3"><a href="initial-data-analysis.html#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
-<span id="cb15-4"><a href="initial-data-analysis.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">&quot;1978 Feb - 2019 Dec&quot;</span>) </span></code></pre></div>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-11-1.png" width="1152" /></p>
+<p><img src="docs/images/unnamed-chunk-18-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Why do you think the number of people employed is going up each year?</p>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-12-1.png" width="576" /></p>
+<p><img src="docs/images/unnamed-chunk-19-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>There’s a suspicious change in August numbers from 2014.</p>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="docs/images/unnamed-chunk-20-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>A potential explanation for this is that there was a <em>change in the survey from 2014</em>. Also see <a href="https://robjhyndman.com/hyndsight/abs-seasonal-adjustment-2/" class="uri">https://robjhyndman.com/hyndsight/abs-seasonal-adjustment-2/</a></p>
 <p><strong>Check if the <em>data collection</em> method has been consistent.</strong></p>
 </div>
@@ -398,19 +387,8 @@ computer, i.e. checking for data type is also important. E.g.,</p>
 <h3><span class="header-section-number">3.1.4</span> Check for experimental data</h3>
 <p>For experimental data, there would generally be some descriptions that include the experimental layout and any randomisation process of controlled variables (e.g. treatments) to units.</p>
 <p>Consider the experiment below. The experiment tests the effects of 9 fertilizer treatments on the yield of brussel sprouts on a field laid out in a rectangular array of 6 rows and 8 columns.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="initial-data-analysis.html#cb16-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">&quot;data/example-experimental-data.csv&quot;</span>, </span>
-<span id="cb16-2"><a href="initial-data-analysis.html#cb16-2" aria-hidden="true" tabindex="-1"></a>                <span class="at">col_types =</span> <span class="fu">cols</span>(<span class="at">row =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb16-3"><a href="initial-data-analysis.html#cb16-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">col =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb16-4"><a href="initial-data-analysis.html#cb16-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">yield =</span> <span class="fu">col_double</span>(),</span>
-<span id="cb16-5"><a href="initial-data-analysis.html#cb16-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">trt =</span> <span class="fu">col_factor</span>(),</span>
-<span id="cb16-6"><a href="initial-data-analysis.html#cb16-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">block =</span> <span class="fu">col_factor</span>()))</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-15-1.png" width="672" /><img src="eda-book_files/figure-html/unnamed-chunk-15-2.png" width="672" /></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="initial-data-analysis.html#cb17-1" aria-hidden="true" tabindex="-1"></a>df3 <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a href="initial-data-analysis.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trt =</span> <span class="fu">fct_reorder</span>(trt, yield)) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a href="initial-data-analysis.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trt, yield)) <span class="sc">+</span> </span>
-<span id="cb17-4"><a href="initial-data-analysis.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">alpha =</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
-<span id="cb17-5"><a href="initial-data-analysis.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">x =</span> <span class="fu">guide_axis</span>(<span class="at">n.dodge =</span> <span class="dv">2</span>))</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="docs/images/unnamed-chunk-22-1.png" width="90%" style="display: block; margin: auto;" /><img src="docs/images/unnamed-chunk-22-2.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/unnamed-chunk-23-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>High sulphur and high manure seems to best for the yield of brussel sprouts. Any issues here?</p>
 </div>
 </div>
@@ -425,16 +403,14 @@ Note: there are variety of ways to do IDA and you don’t need to prescribe to w
 <h3><span class="header-section-number">3.2.1</span> Review: Linear models in R</h3>
 <p>Consider the bivariate data <code>cars</code> were it contains the variables <code>dist</code> (distance travelled) and <code>speed</code> (speed of the car) with the data shown in Figure <a href="initial-data-analysis.html#fig:plot-cars">3.1</a>.</p>
 
-<div class="figure"><span id="fig:plot-cars"></span>
-<img src="eda-book_files/figure-html/plot-cars-1.png" alt="The plot of the speed of cars vs. the distance travelled." width="672" />
+<div class="figure" style="text-align: center"><span id="fig:plot-cars"></span>
+<img src="docs/images/plot-cars-1.png" alt="The plot of the speed of cars vs. the distance travelled." width="90%" />
 <p class="caption">
 Figure 3.1: The plot of the speed of cars vs. the distance travelled.
 </p>
 </div>
 <p>thes models can be fitted in R as follows:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="initial-data-analysis.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(speed <span class="sc">~</span> dist, <span class="at">data =</span> cars)</span></code></pre></div>
 <p>which is the same as</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="initial-data-analysis.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(speed <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> dist, <span class="at">data =</span> cars)</span></code></pre></div>
 <p>and for <span class="math inline">\(i = 1, ... 50\)</span> mathematically can be written as</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1 x_i + e_i,\]</span>
 where:</p>
@@ -450,7 +426,7 @@ where:</p>
 <ul>
 <li>Say, we are interested in characterising the price of the diamond in terms of its carat.</li>
 </ul>
-<p><img src="eda-book_files/figure-html/plot-diamond-1.png" width="672" /></p>
+<p><img src="docs/images/plot-diamond-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Looking at this plot, would you fit a linear model with formula <code>price ~ 1 + carat</code>? What about <code>price ~ poly(carat, 2)</code> which is the same as fitting:</p>
 <p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + \beta_2x_i^2 + e_i.\]</span>
 Do we need to modify the assumption of the error distribution? Should we make some transformation before modelling? Are there other candidate models? By the way do you notice a wall like structure for prices at 1, 1.5 and 2 carat?</p>
@@ -472,7 +448,6 @@ Do we need to modify the assumption of the error distribution? Should we make so
 <div class="case">
 <p>A wheat breeding trial to test 107 varieties (also called genotype) is conducted in a field experiment laid out in a rectangular array with 22 rows and 15 columns.</p>
 </div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="initial-data-analysis.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;gilmour.serpentine&quot;</span>, <span class="at">package =</span> <span class="st">&quot;agridat&quot;</span>)</span></code></pre></div>
 <div id="experimental-design" class="section level3" number="3.3.1">
 <h3><span class="header-section-number">3.3.1</span> Experimental Design</h3>
 <p>The experiment employs what is referred to as a randomised complete block design (RCBD) (technically it is near-complete and not exactly RCBD due to check varieties have double the replicates of test varieties).</p>
@@ -493,139 +468,586 @@ Do we need to modify the assumption of the error distribution? Should we make so
 </center></li>
 <li>So for this data,</li>
 </ul>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="initial-data-analysis.html#cb21-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> rep <span class="sc">+</span> gen, </span>
-<span id="cb21-2"><a href="initial-data-analysis.html#cb21-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> gilmour.serpentine)</span></code></pre></div>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="initial-data-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="initial-data-analysis.html#cb22-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(yield <span class="sc">~</span> <span class="dv">1</span> <span class="sc">+</span> rep <span class="sc">+</span> gen, </span>
+<span id="cb22-2"><a href="initial-data-analysis.html#cb22-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> gilmour.serpentine)</span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="initial-data-analysis.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = yield ~ 1 + rep + gen, data = gilmour.serpentine)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -245.070  -69.695   -1.182   71.427  250.652 
+##      Min       1Q 
+## -245.070  -69.695 
+##   Median       3Q 
+##   -1.182   71.427 
+##      Max 
+##  250.652 
 ## 
 ## Coefficients:
-##                 Estimate Std. Error t value Pr(&gt;|t|)    
-## (Intercept)      720.248     67.335  10.697  &lt; 2e-16 ***
-## repR2             96.100     15.585   6.166 3.29e-09 ***
-## repR3           -129.845     15.585  -8.331 8.44e-15 ***
-## gen(WqKPWmH*3Ag   24.333     94.372   0.258 0.796766    
-## genAMERY         -93.333     94.372  -0.989 0.323747    
-## genANGAS        -132.667     94.372  -1.406 0.161192    
-## genAROONA       -153.667     94.372  -1.628 0.104884    
-## genBATAVIA      -175.333     94.372  -1.858 0.064513 .  
-## genBD231         -70.333     94.372  -0.745 0.456895    
-## genBEULAH       -173.667     94.372  -1.840 0.067074 .  
-## genBLADE        -270.000     94.372  -2.861 0.004628 ** 
-## genBT_SCHOMBURG  -49.000     94.372  -0.519 0.604125    
-## genCADOUX       -223.333     94.372  -2.367 0.018820 *  
-## genCONDOR       -124.333     94.372  -1.317 0.189041    
-## genCORRIGIN     -217.667     94.372  -2.306 0.022010 *  
-## genCUNNINGHAM   -254.667     94.372  -2.699 0.007502 ** 
-## genDGR/MNX-9-9e  -47.667     94.372  -0.505 0.613996    
-## genDOLLARBIRD   -200.667     94.372  -2.126 0.034584 *  
-## genEXCALIBUR     -55.000     94.372  -0.583 0.560621    
-## genGOROKE       -141.667     94.372  -1.501 0.134743    
-## genHALBERD       -53.333     94.372  -0.565 0.572551    
-## genHOUTMAN      -209.333     94.372  -2.218 0.027560 *  
-## genJANZ         -214.667     94.372  -2.275 0.023884 *  
-## genK2011-5*      -87.333     94.372  -0.925 0.355758    
-## genKATUNGA      -110.333     94.372  -1.169 0.243609    
-## genKIATA        -165.667     94.372  -1.755 0.080565 .  
-## genKITE         -180.000     94.372  -1.907 0.057772 .  
-## genKULIN         -91.000     94.372  -0.964 0.335964    
-## genLARK         -336.333     94.372  -3.564 0.000448 ***
-## genLOWAN        -152.333     94.372  -1.614 0.107915    
-## genM4997        -146.000     94.372  -1.547 0.123277    
-## genM5075        -194.667     94.372  -2.063 0.040304 *  
-## genM5097        -102.667     94.372  -1.088 0.277826    
-## genMACHETE      -231.333     94.372  -2.451 0.015010 *  
-## genMEERING      -247.667     94.372  -2.624 0.009286 ** 
-## genMOLINEUX     -165.667     94.372  -1.755 0.080565 .  
-## genOSPREY       -162.000     94.372  -1.717 0.087451 .  
-## genOUYEN        -136.667     94.372  -1.448 0.148986    
-## genOXLEY        -221.667     94.372  -2.349 0.019713 *  
-## genPELSART      -200.333     94.372  -2.123 0.034882 *  
-## genPEROUSE      -283.667     94.372  -3.006 0.002955 ** 
-## genRAC655       -112.667     94.372  -1.194 0.233813    
-## genRAC655&#39;S&#39;    -113.667     94.372  -1.204 0.229702    
-## genRAC696         -3.667     94.372  -0.039 0.969042    
-## genRAC710        -51.000     94.372  -0.540 0.589455    
-## genRAC750        -77.333     94.372  -0.819 0.413410    
-## genRAC759        -42.000     94.372  -0.445 0.656721    
-## genRAC772          5.000     94.372   0.053 0.957794    
-## genRAC777       -172.333     94.372  -1.826 0.069183 .  
-## genRAC779          3.667     94.372   0.039 0.969042    
-## genRAC787       -118.000     94.372  -1.250 0.212486    
-## genRAC791        -72.667     94.372  -0.770 0.442120    
-## genRAC792       -102.333     94.372  -1.084 0.279385    
-## genRAC798         -1.667     94.372  -0.018 0.985926    
-## genRAC804        -45.000     94.372  -0.477 0.633949    
-## genRAC805        -43.000     94.372  -0.456 0.649093    
-## genRAC806        -35.333     94.372  -0.374 0.708462    
-## genRAC807        -91.333     94.372  -0.968 0.334201    
-## genRAC808        -54.000     94.372  -0.572 0.567765    
-## genRAC809        -43.333     94.372  -0.459 0.646559    
-## genRAC810       -131.667     94.372  -1.395 0.164359    
-## genRAC811         42.333     94.372   0.449 0.654174    
-## genRAC812        -94.000     94.372  -0.996 0.320310    
-## genRAC813        -83.333     94.372  -0.883 0.378179    
-## genRAC814        -72.333     94.372  -0.766 0.444214    
-## genRAC815       -111.000     94.372  -1.176 0.240781    
-## genRAC816        -66.333     94.372  -0.703 0.482862    
-## genRAC817       -100.000     94.372  -1.060 0.290466    
-## genRAC818       -107.000     94.372  -1.134 0.258101    
-## genRAC819       -121.333     94.372  -1.286 0.199895    
-## genRAC820         -1.000     94.372  -0.011 0.991555    
-## genRAC821        -98.333     94.372  -1.042 0.298560    
-## genROSELLA      -184.333     94.372  -1.953 0.052050 .  
-## genSCHOMBURGK   -132.333     94.372  -1.402 0.162242    
-## genSHRIKE       -128.000     94.372  -1.356 0.176376    
-## genSPEAR        -254.667     94.372  -2.699 0.007502 ** 
-## genSTILETTO     -157.000     94.372  -1.664 0.097603 .  
-## genSUNBRI       -218.333     94.372  -2.314 0.021612 *  
-## genSUNFIELD     -206.667     94.372  -2.190 0.029576 *  
-## genSUNLAND      -182.667     94.372  -1.936 0.054192 .  
-## genSWIFT        -197.000     94.372  -2.087 0.037990 *  
-## genTASMAN       -161.000     94.372  -1.706 0.089410 .  
-## genTATIARA       -64.333     94.372  -0.682 0.496142    
-## genTINCURRIN     -19.000     81.728  -0.232 0.816382    
-## genTRIDENT      -132.667     94.372  -1.406 0.161192    
-## genVF299         -66.333     94.372  -0.703 0.482862    
-## genVF300        -111.667     94.372  -1.183 0.237976    
-## genVF302        -108.333     94.372  -1.148 0.252234    
-## genVF508          11.667     94.372   0.124 0.901725    
-## genVF519          -1.000     94.372  -0.011 0.991555    
-## genVF655        -160.167     81.728  -1.960 0.051283 .  
-## genVF664        -106.667     94.372  -1.130 0.259583    
-## genVG127        -109.667     94.372  -1.162 0.246460    
-## genVG503         -43.000     94.372  -0.456 0.649093    
-## genVG506        -108.667     94.372  -1.151 0.250782    
-## genVG701         -19.333     94.372  -0.205 0.837867    
-## genVG714        -108.333     94.372  -1.148 0.252234    
-## genVG878          52.333     94.372   0.555 0.579767    
-## genWARBLER      -217.000     94.372  -2.299 0.022415 *  
-## genWI216           4.000     94.372   0.042 0.966230    
-## genWI221         -17.333     94.372  -0.184 0.854440    
-## genWI231        -218.333     94.372  -2.314 0.021612 *  
-## genWI232         -56.333     94.372  -0.597 0.551165    
-## genWILGOYNE     -131.000     94.372  -1.388 0.166496    
-## genWW1402       -117.333     94.372  -1.243 0.215071    
-## genWW1477       -185.667     81.728  -2.272 0.024064 *  
-## genWW1831        -86.667     94.372  -0.918 0.359435    
-## genWYUNA        -176.667     94.372  -1.872 0.062524 .  
-## genYARRALINKA   -245.000     94.372  -2.596 0.010061 *  
+##                 Estimate
+## (Intercept)      720.248
+## repR2             96.100
+## repR3           -129.845
+## gen(WqKPWmH*3Ag   24.333
+## genAMERY         -93.333
+## genANGAS        -132.667
+## genAROONA       -153.667
+## genBATAVIA      -175.333
+## genBD231         -70.333
+## genBEULAH       -173.667
+## genBLADE        -270.000
+## genBT_SCHOMBURG  -49.000
+## genCADOUX       -223.333
+## genCONDOR       -124.333
+## genCORRIGIN     -217.667
+## genCUNNINGHAM   -254.667
+## genDGR/MNX-9-9e  -47.667
+## genDOLLARBIRD   -200.667
+## genEXCALIBUR     -55.000
+## genGOROKE       -141.667
+## genHALBERD       -53.333
+## genHOUTMAN      -209.333
+## genJANZ         -214.667
+## genK2011-5*      -87.333
+## genKATUNGA      -110.333
+## genKIATA        -165.667
+## genKITE         -180.000
+## genKULIN         -91.000
+## genLARK         -336.333
+## genLOWAN        -152.333
+## genM4997        -146.000
+## genM5075        -194.667
+## genM5097        -102.667
+## genMACHETE      -231.333
+## genMEERING      -247.667
+## genMOLINEUX     -165.667
+## genOSPREY       -162.000
+## genOUYEN        -136.667
+## genOXLEY        -221.667
+## genPELSART      -200.333
+## genPEROUSE      -283.667
+## genRAC655       -112.667
+## genRAC655&#39;S&#39;    -113.667
+## genRAC696         -3.667
+## genRAC710        -51.000
+## genRAC750        -77.333
+## genRAC759        -42.000
+## genRAC772          5.000
+## genRAC777       -172.333
+## genRAC779          3.667
+## genRAC787       -118.000
+## genRAC791        -72.667
+## genRAC792       -102.333
+## genRAC798         -1.667
+## genRAC804        -45.000
+## genRAC805        -43.000
+## genRAC806        -35.333
+## genRAC807        -91.333
+## genRAC808        -54.000
+## genRAC809        -43.333
+## genRAC810       -131.667
+## genRAC811         42.333
+## genRAC812        -94.000
+## genRAC813        -83.333
+## genRAC814        -72.333
+## genRAC815       -111.000
+## genRAC816        -66.333
+## genRAC817       -100.000
+## genRAC818       -107.000
+## genRAC819       -121.333
+## genRAC820         -1.000
+## genRAC821        -98.333
+## genROSELLA      -184.333
+## genSCHOMBURGK   -132.333
+## genSHRIKE       -128.000
+## genSPEAR        -254.667
+## genSTILETTO     -157.000
+## genSUNBRI       -218.333
+## genSUNFIELD     -206.667
+## genSUNLAND      -182.667
+## genSWIFT        -197.000
+## genTASMAN       -161.000
+## genTATIARA       -64.333
+## genTINCURRIN     -19.000
+## genTRIDENT      -132.667
+## genVF299         -66.333
+## genVF300        -111.667
+## genVF302        -108.333
+## genVF508          11.667
+## genVF519          -1.000
+## genVF655        -160.167
+## genVF664        -106.667
+## genVG127        -109.667
+## genVG503         -43.000
+## genVG506        -108.667
+## genVG701         -19.333
+## genVG714        -108.333
+## genVG878          52.333
+## genWARBLER      -217.000
+## genWI216           4.000
+## genWI221         -17.333
+## genWI231        -218.333
+## genWI232         -56.333
+## genWILGOYNE     -131.000
+## genWW1402       -117.333
+## genWW1477       -185.667
+## genWW1831        -86.667
+## genWYUNA        -176.667
+## genYARRALINKA   -245.000
+##                 Std. Error
+## (Intercept)         67.335
+## repR2               15.585
+## repR3               15.585
+## gen(WqKPWmH*3Ag     94.372
+## genAMERY            94.372
+## genANGAS            94.372
+## genAROONA           94.372
+## genBATAVIA          94.372
+## genBD231            94.372
+## genBEULAH           94.372
+## genBLADE            94.372
+## genBT_SCHOMBURG     94.372
+## genCADOUX           94.372
+## genCONDOR           94.372
+## genCORRIGIN         94.372
+## genCUNNINGHAM       94.372
+## genDGR/MNX-9-9e     94.372
+## genDOLLARBIRD       94.372
+## genEXCALIBUR        94.372
+## genGOROKE           94.372
+## genHALBERD          94.372
+## genHOUTMAN          94.372
+## genJANZ             94.372
+## genK2011-5*         94.372
+## genKATUNGA          94.372
+## genKIATA            94.372
+## genKITE             94.372
+## genKULIN            94.372
+## genLARK             94.372
+## genLOWAN            94.372
+## genM4997            94.372
+## genM5075            94.372
+## genM5097            94.372
+## genMACHETE          94.372
+## genMEERING          94.372
+## genMOLINEUX         94.372
+## genOSPREY           94.372
+## genOUYEN            94.372
+## genOXLEY            94.372
+## genPELSART          94.372
+## genPEROUSE          94.372
+## genRAC655           94.372
+## genRAC655&#39;S&#39;        94.372
+## genRAC696           94.372
+## genRAC710           94.372
+## genRAC750           94.372
+## genRAC759           94.372
+## genRAC772           94.372
+## genRAC777           94.372
+## genRAC779           94.372
+## genRAC787           94.372
+## genRAC791           94.372
+## genRAC792           94.372
+## genRAC798           94.372
+## genRAC804           94.372
+## genRAC805           94.372
+## genRAC806           94.372
+## genRAC807           94.372
+## genRAC808           94.372
+## genRAC809           94.372
+## genRAC810           94.372
+## genRAC811           94.372
+## genRAC812           94.372
+## genRAC813           94.372
+## genRAC814           94.372
+## genRAC815           94.372
+## genRAC816           94.372
+## genRAC817           94.372
+## genRAC818           94.372
+## genRAC819           94.372
+## genRAC820           94.372
+## genRAC821           94.372
+## genROSELLA          94.372
+## genSCHOMBURGK       94.372
+## genSHRIKE           94.372
+## genSPEAR            94.372
+## genSTILETTO         94.372
+## genSUNBRI           94.372
+## genSUNFIELD         94.372
+## genSUNLAND          94.372
+## genSWIFT            94.372
+## genTASMAN           94.372
+## genTATIARA          94.372
+## genTINCURRIN        81.728
+## genTRIDENT          94.372
+## genVF299            94.372
+## genVF300            94.372
+## genVF302            94.372
+## genVF508            94.372
+## genVF519            94.372
+## genVF655            81.728
+## genVF664            94.372
+## genVG127            94.372
+## genVG503            94.372
+## genVG506            94.372
+## genVG701            94.372
+## genVG714            94.372
+## genVG878            94.372
+## genWARBLER          94.372
+## genWI216            94.372
+## genWI221            94.372
+## genWI231            94.372
+## genWI232            94.372
+## genWILGOYNE         94.372
+## genWW1402           94.372
+## genWW1477           81.728
+## genWW1831           94.372
+## genWYUNA            94.372
+## genYARRALINKA       94.372
+##                 t value
+## (Intercept)      10.697
+## repR2             6.166
+## repR3            -8.331
+## gen(WqKPWmH*3Ag   0.258
+## genAMERY         -0.989
+## genANGAS         -1.406
+## genAROONA        -1.628
+## genBATAVIA       -1.858
+## genBD231         -0.745
+## genBEULAH        -1.840
+## genBLADE         -2.861
+## genBT_SCHOMBURG  -0.519
+## genCADOUX        -2.367
+## genCONDOR        -1.317
+## genCORRIGIN      -2.306
+## genCUNNINGHAM    -2.699
+## genDGR/MNX-9-9e  -0.505
+## genDOLLARBIRD    -2.126
+## genEXCALIBUR     -0.583
+## genGOROKE        -1.501
+## genHALBERD       -0.565
+## genHOUTMAN       -2.218
+## genJANZ          -2.275
+## genK2011-5*      -0.925
+## genKATUNGA       -1.169
+## genKIATA         -1.755
+## genKITE          -1.907
+## genKULIN         -0.964
+## genLARK          -3.564
+## genLOWAN         -1.614
+## genM4997         -1.547
+## genM5075         -2.063
+## genM5097         -1.088
+## genMACHETE       -2.451
+## genMEERING       -2.624
+## genMOLINEUX      -1.755
+## genOSPREY        -1.717
+## genOUYEN         -1.448
+## genOXLEY         -2.349
+## genPELSART       -2.123
+## genPEROUSE       -3.006
+## genRAC655        -1.194
+## genRAC655&#39;S&#39;     -1.204
+## genRAC696        -0.039
+## genRAC710        -0.540
+## genRAC750        -0.819
+## genRAC759        -0.445
+## genRAC772         0.053
+## genRAC777        -1.826
+## genRAC779         0.039
+## genRAC787        -1.250
+## genRAC791        -0.770
+## genRAC792        -1.084
+## genRAC798        -0.018
+## genRAC804        -0.477
+## genRAC805        -0.456
+## genRAC806        -0.374
+## genRAC807        -0.968
+## genRAC808        -0.572
+## genRAC809        -0.459
+## genRAC810        -1.395
+## genRAC811         0.449
+## genRAC812        -0.996
+## genRAC813        -0.883
+## genRAC814        -0.766
+## genRAC815        -1.176
+## genRAC816        -0.703
+## genRAC817        -1.060
+## genRAC818        -1.134
+## genRAC819        -1.286
+## genRAC820        -0.011
+## genRAC821        -1.042
+## genROSELLA       -1.953
+## genSCHOMBURGK    -1.402
+## genSHRIKE        -1.356
+## genSPEAR         -2.699
+## genSTILETTO      -1.664
+## genSUNBRI        -2.314
+## genSUNFIELD      -2.190
+## genSUNLAND       -1.936
+## genSWIFT         -2.087
+## genTASMAN        -1.706
+## genTATIARA       -0.682
+## genTINCURRIN     -0.232
+## genTRIDENT       -1.406
+## genVF299         -0.703
+## genVF300         -1.183
+## genVF302         -1.148
+## genVF508          0.124
+## genVF519         -0.011
+## genVF655         -1.960
+## genVF664         -1.130
+## genVG127         -1.162
+## genVG503         -0.456
+## genVG506         -1.151
+## genVG701         -0.205
+## genVG714         -1.148
+## genVG878          0.555
+## genWARBLER       -2.299
+## genWI216          0.042
+## genWI221         -0.184
+## genWI231         -2.314
+## genWI232         -0.597
+## genWILGOYNE      -1.388
+## genWW1402        -1.243
+## genWW1477        -2.272
+## genWW1831        -0.918
+## genWYUNA         -1.872
+## genYARRALINKA    -2.596
+##                 Pr(&gt;|t|)
+## (Intercept)      &lt; 2e-16
+## repR2           3.29e-09
+## repR3           8.44e-15
+## gen(WqKPWmH*3Ag 0.796766
+## genAMERY        0.323747
+## genANGAS        0.161192
+## genAROONA       0.104884
+## genBATAVIA      0.064513
+## genBD231        0.456895
+## genBEULAH       0.067074
+## genBLADE        0.004628
+## genBT_SCHOMBURG 0.604125
+## genCADOUX       0.018820
+## genCONDOR       0.189041
+## genCORRIGIN     0.022010
+## genCUNNINGHAM   0.007502
+## genDGR/MNX-9-9e 0.613996
+## genDOLLARBIRD   0.034584
+## genEXCALIBUR    0.560621
+## genGOROKE       0.134743
+## genHALBERD      0.572551
+## genHOUTMAN      0.027560
+## genJANZ         0.023884
+## genK2011-5*     0.355758
+## genKATUNGA      0.243609
+## genKIATA        0.080565
+## genKITE         0.057772
+## genKULIN        0.335964
+## genLARK         0.000448
+## genLOWAN        0.107915
+## genM4997        0.123277
+## genM5075        0.040304
+## genM5097        0.277826
+## genMACHETE      0.015010
+## genMEERING      0.009286
+## genMOLINEUX     0.080565
+## genOSPREY       0.087451
+## genOUYEN        0.148986
+## genOXLEY        0.019713
+## genPELSART      0.034882
+## genPEROUSE      0.002955
+## genRAC655       0.233813
+## genRAC655&#39;S&#39;    0.229702
+## genRAC696       0.969042
+## genRAC710       0.589455
+## genRAC750       0.413410
+## genRAC759       0.656721
+## genRAC772       0.957794
+## genRAC777       0.069183
+## genRAC779       0.969042
+## genRAC787       0.212486
+## genRAC791       0.442120
+## genRAC792       0.279385
+## genRAC798       0.985926
+## genRAC804       0.633949
+## genRAC805       0.649093
+## genRAC806       0.708462
+## genRAC807       0.334201
+## genRAC808       0.567765
+## genRAC809       0.646559
+## genRAC810       0.164359
+## genRAC811       0.654174
+## genRAC812       0.320310
+## genRAC813       0.378179
+## genRAC814       0.444214
+## genRAC815       0.240781
+## genRAC816       0.482862
+## genRAC817       0.290466
+## genRAC818       0.258101
+## genRAC819       0.199895
+## genRAC820       0.991555
+## genRAC821       0.298560
+## genROSELLA      0.052050
+## genSCHOMBURGK   0.162242
+## genSHRIKE       0.176376
+## genSPEAR        0.007502
+## genSTILETTO     0.097603
+## genSUNBRI       0.021612
+## genSUNFIELD     0.029576
+## genSUNLAND      0.054192
+## genSWIFT        0.037990
+## genTASMAN       0.089410
+## genTATIARA      0.496142
+## genTINCURRIN    0.816382
+## genTRIDENT      0.161192
+## genVF299        0.482862
+## genVF300        0.237976
+## genVF302        0.252234
+## genVF508        0.901725
+## genVF519        0.991555
+## genVF655        0.051283
+## genVF664        0.259583
+## genVG127        0.246460
+## genVG503        0.649093
+## genVG506        0.250782
+## genVG701        0.837867
+## genVG714        0.252234
+## genVG878        0.579767
+## genWARBLER      0.022415
+## genWI216        0.966230
+## genWI221        0.854440
+## genWI231        0.021612
+## genWI232        0.551165
+## genWILGOYNE     0.166496
+## genWW1402       0.215071
+## genWW1477       0.024064
+## genWW1831       0.359435
+## genWYUNA        0.062524
+## genYARRALINKA   0.010061
+##                    
+## (Intercept)     ***
+## repR2           ***
+## repR3           ***
+## gen(WqKPWmH*3Ag    
+## genAMERY           
+## genANGAS           
+## genAROONA          
+## genBATAVIA      .  
+## genBD231           
+## genBEULAH       .  
+## genBLADE        ** 
+## genBT_SCHOMBURG    
+## genCADOUX       *  
+## genCONDOR          
+## genCORRIGIN     *  
+## genCUNNINGHAM   ** 
+## genDGR/MNX-9-9e    
+## genDOLLARBIRD   *  
+## genEXCALIBUR       
+## genGOROKE          
+## genHALBERD         
+## genHOUTMAN      *  
+## genJANZ         *  
+## genK2011-5*        
+## genKATUNGA         
+## genKIATA        .  
+## genKITE         .  
+## genKULIN           
+## genLARK         ***
+## genLOWAN           
+## genM4997           
+## genM5075        *  
+## genM5097           
+## genMACHETE      *  
+## genMEERING      ** 
+## genMOLINEUX     .  
+## genOSPREY       .  
+## genOUYEN           
+## genOXLEY        *  
+## genPELSART      *  
+## genPEROUSE      ** 
+## genRAC655          
+## genRAC655&#39;S&#39;       
+## genRAC696          
+## genRAC710          
+## genRAC750          
+## genRAC759          
+## genRAC772          
+## genRAC777       .  
+## genRAC779          
+## genRAC787          
+## genRAC791          
+## genRAC792          
+## genRAC798          
+## genRAC804          
+## genRAC805          
+## genRAC806          
+## genRAC807          
+## genRAC808          
+## genRAC809          
+## genRAC810          
+## genRAC811          
+## genRAC812          
+## genRAC813          
+## genRAC814          
+## genRAC815          
+## genRAC816          
+## genRAC817          
+## genRAC818          
+## genRAC819          
+## genRAC820          
+## genRAC821          
+## genROSELLA      .  
+## genSCHOMBURGK      
+## genSHRIKE          
+## genSPEAR        ** 
+## genSTILETTO     .  
+## genSUNBRI       *  
+## genSUNFIELD     *  
+## genSUNLAND      .  
+## genSWIFT        *  
+## genTASMAN       .  
+## genTATIARA         
+## genTINCURRIN       
+## genTRIDENT         
+## genVF299           
+## genVF300           
+## genVF302           
+## genVF508           
+## genVF519           
+## genVF655        .  
+## genVF664           
+## genVG127           
+## genVG503           
+## genVG506           
+## genVG701           
+## genVG714           
+## genVG878           
+## genWARBLER      *  
+## genWI216           
+## genWI221           
+## genWI231        *  
+## genWI232           
+## genWILGOYNE        
+## genWW1402          
+## genWW1477       *  
+## genWW1831          
+## genWYUNA        .  
+## genYARRALINKA   *  
 ## ---
-## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## Signif. codes:  
+##   0 &#39;***&#39; 0.001
+##   &#39;**&#39; 0.01 &#39;*&#39;
+##   0.05 &#39;.&#39; 0.1 &#39;  &#39; 1
 ## 
 ## Residual standard error: 115.6 on 221 degrees of freedom
 ## Multiple R-squared:  0.6226, Adjusted R-squared:  0.4381 
 ## F-statistic: 3.375 on 108 and 221 DF,  p-value: 1.081e-14</code></pre>
-<p><img src="eda-book_files/figure-html/top10geno-model-1.png" width="480" /></p>
-<p><img src="eda-book_files/figure-html/top10geno-mean-1.png" width="480" />
-<img src="eda-book_files/figure-html/top10geno-median-1.png" width="480" /></p>
+<p><img src="docs/images/top10geno-model-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/top10geno-mean-1.png" width="90%" style="display: block; margin: auto;" />
+<img src="docs/images/top10geno-median-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Do you notice anything from below?</p>
-<p><img src="eda-book_files/figure-html/gilmour-plot-1.png" width="672" /></p>
+<p><img src="docs/images/gilmour-plot-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>It’s well known in agricultural field trials that spatial variations are introduced in traits; this could be because of the fertility trend, management practices or other reasons.</li>
 <li>In the IDA stage, you investigate to identify these spatial variations - you cannot just simply fit a two-way ANOVA model!</li>

@@ -18,6 +18,7 @@ description: "This is a book about EDA today."
 
 ```{r include=FALSE}
 library(colorspace)
+library(patchwork)
 # automatically create a bib database for R packages
 knitr::write_bib(c(
   .packages(), 'bookdown', 'knitr', 'rmarkdown'

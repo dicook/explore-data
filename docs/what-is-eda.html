@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-17" />
+<meta name="date" content="2021-06-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -200,9 +200,26 @@ div.csl-indent {
 <li class="chapter" data-level="3.1.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-on-data-collection-method"><i class="fa fa-check"></i><b>3.1.3</b> Check on data collection method</a></li>
 <li class="chapter" data-level="3.1.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-for-experimental-data"><i class="fa fa-check"></i><b>3.1.4</b> Check for experimental data</a></li>
 </ul></li>
-<li class="chapter" data-level="3.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation"><i class="fa fa-check"></i><b>3.2</b> Model formulation</a></li>
+<li class="chapter" data-level="3.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation"><i class="fa fa-check"></i><b>3.2</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#review-linear-models-in-r"><i class="fa fa-check"></i><b>3.2.1</b> Review: Linear models in R</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a></li>
+<li class="chapter" data-level="3.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation-1"><i class="fa fa-check"></i><b>3.3</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#experimental-design"><i class="fa fa-check"></i><b>3.3.1</b> Experimental Design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#possible-features-of-continuous-variables"><i class="fa fa-check"></i><b>4.1</b> Possible features of continuous variables</a></li>
+<li class="chapter" data-level="4.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-features-of-a-single-contiuous-variables"><i class="fa fa-check"></i><b>4.2</b> Numerical features of a single contiuous variables</a></li>
+<li class="chapter" data-level="4.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#outliers"><i class="fa fa-check"></i><b>4.3</b> Outliers</a></li>
+<li class="chapter" data-level="4.4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#closer-look-at-the-boxplot"><i class="fa fa-check"></i><b>4.4</b> Closer look at the <em>boxplot</em></a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
+<li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
+<li class="chapter" data-level="4.7" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#transformations"><i class="fa fa-check"></i><b>4.7</b> Transformations</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
 <li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
 <li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a></li>
@@ -680,27 +697,27 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb8-3"><a href="what-is-eda.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb8-4"><a href="what-is-eda.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb8-5"><a href="what-is-eda.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) </span></code></pre></div>
-<p><img src="eda-book_files/figure-html/res_hist-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/res_hist-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="what-is-eda.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb9-2"><a href="what-is-eda.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb9-3"><a href="what-is-eda.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
 <span id="cb9-4"><a href="what-is-eda.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
 <span id="cb9-5"><a href="what-is-eda.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) <span class="sc">+</span></span>
 <span id="cb9-6"><a href="what-is-eda.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/res_qq-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/res_qq-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="what-is-eda.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb10-2"><a href="what-is-eda.html#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb10-3"><a href="what-is-eda.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb10-4"><a href="what-is-eda.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-5"><a href="what-is-eda.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;observed&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-6"><a href="what-is-eda.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;fitted&quot;</span>)</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/obs_fitted-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/obs_fitted-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="what-is-eda.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb11-2"><a href="what-is-eda.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>size, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb11-3"><a href="what-is-eda.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb11-4"><a href="what-is-eda.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb11-5"><a href="what-is-eda.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;tip %&quot;</span>)</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/fitted_model-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/fitted_model-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see <a href="https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant">here</a>) and should also leave us with an unease that this policy is based on weak support.</p>
 </div>
 </div>
@@ -726,7 +743,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb12-2"><a href="what-is-eda.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb12-3"><a href="what-is-eda.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
 <span id="cb12-4"><a href="what-is-eda.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>)  </span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Because, one binwidth is never enough …</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="what-is-eda.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
 <span id="cb13-2"><a href="what-is-eda.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span></span>
@@ -735,7 +752,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb13-5"><a href="what-is-eda.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb13-6"><a href="what-is-eda.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb13-7"><a href="what-is-eda.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips2-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Big fat bins. Tips are skewed, which means most tips are relatively small.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="what-is-eda.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
 <span id="cb14-2"><a href="what-is-eda.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> </span>
@@ -744,7 +761,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb14-5"><a href="what-is-eda.html#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb14-6"><a href="what-is-eda.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb14-7"><a href="what-is-eda.html#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips3-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips3-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Skinny bins. Tips are multimodal, and occurring at the full dollar and 50c amounts.</p>
 </div>
 <div id="tiptotal" class="section level4 unnumbered">
@@ -755,20 +772,20 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb15-4"><a href="what-is-eda.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
 <span id="cb15-5"><a href="what-is-eda.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span>
 <span id="cb15-6"><a href="what-is-eda.html#cb15-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips_tot-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips_tot-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Adding a regression line, helps to focus on a tipping standard, and whether individual tips are above or below expected.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="what-is-eda.html#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">intercept=</span><span class="dv">0</span>, <span class="co">#&lt;&lt;</span></span>
 <span id="cb16-2"><a href="what-is-eda.html#cb16-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb16-3"><a href="what-is-eda.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">45</span>, <span class="at">y=</span><span class="dv">10</span>, </span>
 <span id="cb16-4"><a href="what-is-eda.html#cb16-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">label=</span><span class="st">&quot;20% tip&quot;</span>) </span>
 <span id="cb16-5"><a href="what-is-eda.html#cb16-5" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips_tot2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips_tot2-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Most tips less than 20%, there are more “skin flints” than generous diners. There are a couple of big tips, and we can see the banding horizontally that is the rounding seen from the histogram of tips.</p>
 </div>
 <div id="tipcategorical" class="section level4 unnumbered">
 <h4>Examine the distributions across categorical variables.</h4>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="what-is-eda.html#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(smoker<span class="sc">~</span>sex) <span class="co">#&lt;&lt;</span></span></code></pre></div>
-<p><img src="eda-book_files/figure-html/tips_sexsmoke-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="docs/images/tips_sexsmoke-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>The bigger bills tend to be paid by men (and females that smoke).</li>
 <li>Except for three diners, female non-smokers are very consistent tippers, probably around 15-18% though.</li>
@@ -797,7 +814,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <ul>
 <li>Because EDA is very graphical, it sometimes gives rise to a suspicion that patterns in the data are being detected and reported that are not really there.</li>
 <li>So many different combinations may be examined, that something is bound to be interesting.</li>
-<li>☠️ Structure seen in the plot drives hypothesis testing (on same data).</li>
+<li>💀 Structure seen in the plot drives hypothesis testing (on same data).</li>
 </ul>
 <p><em>Sometimes this is called data snooping.</em></p>
 <p>We snooped into the tips data, and from a few plots we learned an enormous amount of information about tipping: There is a scarcity of generous tippers, the variability in tips increases extraordinarily for smoking parties, and people tend to round their tips. These are very different types of tipping behaviors than what we learned from the regression model. The regression model was not compromised by what we learned from graphics, and indeed, <em>we have a richer and more informative analysis. Making plots of the data is just smart.</em></p>
