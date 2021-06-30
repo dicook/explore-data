@@ -69,3 +69,16 @@ barley-yield
 olive-oils
 england-and-east-indies-trade-data
 melbournes-daily-maximum-temperature
+modelling-and-testing-for-comparisons
+pest-resistance-maize-1
+two-sample-parametric-tests-t-test
+confidence-interval-for-two-sample-difference
+two-sample-non-parametric-tests
+wilcoxon-rank-sum-test
+weight-gain-of-calves
+weight-gain-of-calves-1
+soil-nitrogen
+controlling-the-family-wise-error-rate
+unadjusted
+bonferonni-adjustment
+mystery-data

@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-29" />
+<meta name="date" content="2021-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -220,6 +220,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.10" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#olive-oils"><i class="fa fa-check"></i><b>7.10</b> Olive oils</a></li>
 <li class="chapter" data-level="7.11" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#england-and-east-indies-trade-data"><i class="fa fa-check"></i><b>7.11</b> England and East Indies trade data</a></li>
 <li class="chapter" data-level="7.12" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#melbournes-daily-maximum-temperature"><i class="fa fa-check"></i><b>7.12</b> Melbourne’s daily maximum temperature</a></li>
+<li class="chapter" data-level="7.13" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#modelling-and-testing-for-comparisons"><i class="fa fa-check"></i><b>7.13</b> Modelling and testing for comparisons</a></li>
+<li class="chapter" data-level="7.14" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize-1"><i class="fa fa-check"></i><b>7.14</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="7.15" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-parametric-tests-t-test"><i class="fa fa-check"></i><b>7.15</b> Two-sample parametric tests: <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="7.16" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#confidence-interval-for-two-sample-difference"><i class="fa fa-check"></i><b>7.16</b> Confidence interval for two sample difference</a></li>
+<li class="chapter" data-level="7.17" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-non-parametric-tests"><i class="fa fa-check"></i><b>7.17</b> Two sample non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="7.17.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>7.17.1</b> Wilcoxon rank-sum test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.18" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves"><i class="fa fa-check"></i><b>7.18</b> Weight gain of calves</a>
+<ul>
+<li class="chapter" data-level="7.18.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves-1"><i class="fa fa-check"></i><b>7.18.1</b> Weight gain of calves</a></li>
+</ul></li>
+<li class="chapter" data-level="7.19" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#soil-nitrogen"><i class="fa fa-check"></i><b>7.19</b> Soil nitrogen</a></li>
+<li class="chapter" data-level="7.20" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#controlling-the-family-wise-error-rate"><i class="fa fa-check"></i><b>7.20</b> Controlling the family-wise error rate</a></li>
+<li class="chapter" data-level="7.21" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#unadjusted"><i class="fa fa-check"></i><b>7.21</b> Unadjusted</a></li>
+<li class="chapter" data-level="7.22" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#bonferonni-adjustment"><i class="fa fa-check"></i><b>7.22</b> Bonferonni adjustment</a></li>
+<li class="chapter" data-level="7.23" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#mystery-data"><i class="fa fa-check"></i><b>7.23</b> Mystery data</a></li>
 </ul></li>
 <li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a></li>
 <li class="chapter" data-level="9" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>9</b> Exploring data having a space and time context</a></li>
@@ -779,6 +796,374 @@ At the heart of quantitative reasoning is a single question: <b class="monash-bl
 <li>How are the temperature different across months?</li>
 <li>What about the temperature within a month?</li>
 </ul>
+</div>
+<div id="modelling-and-testing-for-comparisons" class="section level2" number="7.13">
+<h2><span class="header-section-number">7.13</span> Modelling and testing for comparisons</h2>
+</div>
+<div id="pest-resistance-maize-1" class="section level2" number="7.14">
+<h2><span class="header-section-number">7.14</span> Pest resistance maize</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="making-comparisons-between-groups-and-strata.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df1, <span class="fu">aes</span>(gen, abundance, <span class="at">color =</span> gen)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="making-comparisons-between-groups-and-strata.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  ggbeeswarm<span class="sc">::</span><span class="fu">geom_quasirandom</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb27-3"><a href="making-comparisons-between-groups-and-strata.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>species, <span class="at">scales =</span> <span class="st">&quot;free&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb27-4"><a href="making-comparisons-between-groups-and-strata.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete_qualitative</span>() <span class="sc">+</span> </span>
+<span id="cb27-5"><a href="making-comparisons-between-groups-and-strata.html#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> </span>
+<span id="cb27-6"><a href="making-comparisons-between-groups-and-strata.html#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Abundance&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb27-7"><a href="making-comparisons-between-groups-and-strata.html#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">vjust =</span> <span class="fl">0.5</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/pest-plot1-1.png" width="480" /></p>
+<ul>
+<li>The experiment compared abundance of spiders and thrips on <em>Bt</em> variety to the abundance of those on isogenic control variety.</li>
+<li>Would you say that the abundance of spiders and/or thrips are comparable between <em>Bt</em> variety and isogenic variety?</li>
+</ul>
+</div>
+<div id="two-sample-parametric-tests-t-test" class="section level2" number="7.15">
+<h2><span class="header-section-number">7.15</span> Two-sample parametric tests: <span class="math inline">\(t\)</span>-test</h2>
+<ul>
+<li>Assumes the two samples are independent and from the <span class="math inline">\(N(\mu_x, \sigma^2_x)\)</span> and <span class="math inline">\(N(\mu_y, \sigma^2_y)\)</span>, respectively.</li>
+</ul>
+<p><span class="math display">\[H_0: \mu_x - \mu_y = 0~\text{ vs. }~H_1: \mu_x - \mu_y \neq 0\]</span></p>
+<p><span class="math display">\[T^* = \frac{\bar{X} - \bar{Y}}{SE(\bar{X} - \bar{Y})}.\]</span>
+* Assuming <span class="math inline">\(\sigma^2_x = \sigma^2_y\)</span>, then <span class="math inline">\(T^* \sim t_{n_x + n_y - 2}.\)</span>
+* A <span class="math inline">\(100(1 - \alpha)\%\)</span> confidence interval for <span class="math inline">\(\mu_x - \mu_y\)</span> is given as <span class="math inline">\((L, U)\)</span> such that:
+<span class="math display">\[P(L&lt;\mu_x - \mu_y &lt; U) = 1 - \frac{\alpha}{2}.\]</span>
+* If <span class="math inline">\(0 \in (L, U)\)</span>, consistent with <span class="math inline">\(H_0\)</span>.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="making-comparisons-between-groups-and-strata.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(gathmann.bt,</span>
+<span id="cb28-2"><a href="making-comparisons-between-groups-and-strata.html#cb28-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">t.test</span>(thysan[gen<span class="sc">==</span><span class="st">&quot;ISO&quot;</span>],</span>
+<span id="cb28-3"><a href="making-comparisons-between-groups-and-strata.html#cb28-3" aria-hidden="true" tabindex="-1"></a>            thysan[gen<span class="sc">==</span><span class="st">&quot;Bt&quot;</span>],</span>
+<span id="cb28-4"><a href="making-comparisons-between-groups-and-strata.html#cb28-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb28-5"><a href="making-comparisons-between-groups-and-strata.html#cb28-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">var.equal =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb28-6"><a href="making-comparisons-between-groups-and-strata.html#cb28-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">conf.level =</span> <span class="fl">0.95</span>))</span></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  thysan[gen == &quot;ISO&quot;] and thysan[gen == &quot;Bt&quot;]
+## t = -3.2182, df = 14, p-value = 0.006192
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -9.248813 -1.851187
+## sample estimates:
+## mean of x mean of y 
+##     8.725    14.275</code></pre>
+</div>
+<div id="confidence-interval-for-two-sample-difference" class="section level2" number="7.16">
+<h2><span class="header-section-number">7.16</span> Confidence interval for two sample difference</h2>
+<ul>
+<li>In the right, a 95% confidence interval for population mean difference is constructed repeatedly, assuming population mean difference is Normally distributed, from 100 samples of the same population.</li>
+<li>The population mean is zero.</li>
+<li>Each confidence interval is calculated as
+<span class="math display">\[\bar{X} - \bar{Y} \pm \color{red}{t_{n-2, 0.975}}\times SE(\bar{X} - \bar{Y})\]</span>
+where <span class="math inline">\(t_{n-2, 0.975}\)</span> is <span class="math inline">\(t^*\)</span> such that <span class="math display">\[P(t_{n-2} &lt; t^*) =  0.975.\]</span></li>
+</ul>
+</div>
+<div id="two-sample-non-parametric-tests" class="section level2" number="7.17">
+<h2><span class="header-section-number">7.17</span> Two sample non-parametric tests</h2>
+<div id="wilcoxon-rank-sum-test" class="section level3" number="7.17.1">
+<h3><span class="header-section-number">7.17.1</span> Wilcoxon rank-sum test</h3>
+<ul>
+<li>Suppose that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are randomly selected values from two populations.</li>
+</ul>
+<p><span class="math display">\[H_0: P(X &gt; Y) = P(X &lt; Y)\]</span>
+vs.</p>
+<p><span class="math display">\[H_1: P(X&gt;Y)\neq P(X&lt;Y)\]</span>
+* All observations are ranked.
+* Test statistic is based on the sum of the ranks of one group.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="making-comparisons-between-groups-and-strata.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(gathmann.bt,</span>
+<span id="cb30-2"><a href="making-comparisons-between-groups-and-strata.html#cb30-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">wilcox.test</span>(thysan[gen<span class="sc">==</span><span class="st">&quot;ISO&quot;</span>],</span>
+<span id="cb30-3"><a href="making-comparisons-between-groups-and-strata.html#cb30-3" aria-hidden="true" tabindex="-1"></a>                 thysan[gen<span class="sc">==</span><span class="st">&quot;Bt&quot;</span>],</span>
+<span id="cb30-4"><a href="making-comparisons-between-groups-and-strata.html#cb30-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>,</span>
+<span id="cb30-5"><a href="making-comparisons-between-groups-and-strata.html#cb30-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">conf.int =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb30-6"><a href="making-comparisons-between-groups-and-strata.html#cb30-6" aria-hidden="true" tabindex="-1"></a>                 <span class="at">conf.level =</span> <span class="fl">0.95</span>))</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum exact test
+## 
+## data:  thysan[gen == &quot;ISO&quot;] and thysan[gen == &quot;Bt&quot;]
+## W = 7, p-value = 0.006993
+## alternative hypothesis: true location shift is not equal to 0
+## 95 percent confidence interval:
+##  -9.4 -2.4
+## sample estimates:
+## difference in location 
+##                   -6.3</code></pre>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="making-comparisons-between-groups-and-strata.html#cb32-1" aria-hidden="true" tabindex="-1"></a>gathmann.bt</span></code></pre></div>
+<pre><code>##    gen thysan aranei
+## 1   Bt   16.6   0.80
+## 2   Bt   16.4   0.80
+## 3   Bt   11.0   0.60
+## 4   Bt   16.8   0.40
+## 5   Bt   10.6   0.60
+## 6   Bt   18.4   0.80
+## 7   Bt   14.2   0.00
+## 8   Bt   10.2   0.60
+## 9  ISO    6.2   0.75
+## 10 ISO   10.0   0.20
+## 11 ISO   11.8   1.00
+## 12 ISO   15.6   0.80
+## 13 ISO    7.6   0.00
+## 14 ISO    7.4   0.00
+## 15 ISO    7.2   0.60
+## 16 ISO    4.0   0.40</code></pre>
+<p><span class="math display">\[\texttt{thysan}_i = \beta_0 + \beta_1\mathbb{I}(\texttt{gen}_i=\texttt{ISO}) + e_i\]</span>
+where <span class="math inline">\(e_i \sim NID(0, \sigma^2)\)</span>.</p>
+<ul>
+<li>The least squares estimate for <span class="math inline">\(\hat{\beta}_1 = \bar{X} - \bar{Y}.\)</span></li>
+</ul>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="making-comparisons-between-groups-and-strata.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(thysan <span class="sc">~</span> gen, <span class="at">data =</span> gathmann.bt) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a href="making-comparisons-between-groups-and-strata.html#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">confint</span>(<span class="st">&quot;genISO&quot;</span>, <span class="at">level =</span> <span class="fl">0.95</span>)</span></code></pre></div>
+<pre><code>##            2.5 %    97.5 %
+## genISO -9.248813 -1.851187</code></pre>
+<ul>
+<li>Notice that the above confidence interval is the same confidence interval from the <span class="math inline">\(t\)</span>-test!</li>
+</ul>
+</div>
+</div>
+<div id="weight-gain-of-calves" class="section level2" number="7.18">
+<h2><span class="header-section-number">7.18</span> Weight gain of calves</h2>
+<ul>
+<li>67 calves born in 1975 across 11 herds are fed of one of three diets with low, medium or high energy with their initial and final weights recorded.</li>
+</ul>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="making-comparisons-between-groups-and-strata.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df4, <span class="fu">aes</span>(when, weight, <span class="at">color =</span> diet, <span class="at">group =</span> animal)) <span class="sc">+</span> </span>
+<span id="cb36-2"><a href="making-comparisons-between-groups-and-strata.html#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb36-3"><a href="making-comparisons-between-groups-and-strata.html#cb36-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>herd, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb36-4"><a href="making-comparisons-between-groups-and-strata.html#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb36-5"><a href="making-comparisons-between-groups-and-strata.html#cb36-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Weight&quot;</span>, <span class="at">color =</span> <span class="st">&quot;Diet&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/diet-plot22-1.png" width="1344" /></p>
+<div id="weight-gain-of-calves-1" class="section level3" number="7.18.1">
+<h3><span class="header-section-number">7.18.1</span> Weight gain of calves</h3>
+<ul>
+<li>Modelling the response as weight gain with diet factor:</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="making-comparisons-between-groups-and-strata.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>((weight2 <span class="sc">-</span> weight1) <span class="sc">~</span> diet, <span class="at">data =</span> urquhart.feedlot))</span></code></pre></div>
+<pre><code>## (Intercept)     dietLow  dietMedium 
+##  332.666667   -4.666667  -33.971014</code></pre>
+<ul>
+<li>The herd is thought to be an important factor contributing to the response.</li>
+<li>Modelling the response as weight gain with diet and herd factor:</li>
+</ul>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="making-comparisons-between-groups-and-strata.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># herd needs to be factor not integer</span></span>
+<span id="cb39-2"><a href="making-comparisons-between-groups-and-strata.html#cb39-2" aria-hidden="true" tabindex="-1"></a>dat4 <span class="ot">&lt;-</span> <span class="fu">mutate</span>(urquhart.feedlot,  <span class="at">herdf =</span> <span class="fu">factor</span>(herd))</span>
+<span id="cb39-3"><a href="making-comparisons-between-groups-and-strata.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>((weight2 <span class="sc">-</span> weight1) <span class="sc">~</span> herdf <span class="sc">+</span> diet, <span class="at">data =</span> dat4))</span></code></pre></div>
+<pre><code>## (Intercept)      herdf9     herdf16     herdf19     herdf24     herdf31 
+##  354.257353  -91.148529  -51.312039    7.410059  -63.221311   -4.666667 
+##     herdf32     herdf33     herdf34     herdf35     herdf36     dietLow 
+##  -51.189338  -36.083555  -15.179622   -3.423367  -34.974083    2.872233 
+##  dietMedium 
+##  -23.580408</code></pre>
+<ul>
+<li>Last model is the same as modelling the final weight with the initial weight as a covariate with slope fixed to 1:</li>
+</ul>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="making-comparisons-between-groups-and-strata.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(weight2 <span class="sc">~</span> <span class="fu">offset</span>(weight1) <span class="sc">+</span> herdf <span class="sc">+</span> diet, </span>
+<span id="cb41-2"><a href="making-comparisons-between-groups-and-strata.html#cb41-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> dat4)) </span></code></pre></div>
+<pre><code>## (Intercept)      herdf9     herdf16     herdf19     herdf24     herdf31 
+##  354.257353  -91.148529  -51.312039    7.410059  -63.221311   -4.666667 
+##     herdf32     herdf33     herdf34     herdf35     herdf36     dietLow 
+##  -51.189338  -36.083555  -15.179622   -3.423367  -34.974083    2.872233 
+##  dietMedium 
+##  -23.580408</code></pre>
+<ul>
+<li>Estimating slope for initial weight from the data:</li>
+</ul>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="making-comparisons-between-groups-and-strata.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">lm</span>(weight2 <span class="sc">~</span> weight1 <span class="sc">+</span> herdf <span class="sc">+</span> diet,</span>
+<span id="cb43-2"><a href="making-comparisons-between-groups-and-strata.html#cb43-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> dat4)) </span></code></pre></div>
+<pre><code>## (Intercept)     weight1      herdf9     herdf16     herdf19     herdf24 
+##  200.440174    1.243238  -79.102111  -51.238137   -6.864643  -75.406093 
+##     herdf31     herdf32     herdf33     herdf34     herdf35     herdf36 
+##  -33.044411  -56.517848  -62.152563  -23.610465  -29.219641  -75.555713 
+##     dietLow  dietMedium 
+##    1.212633  -30.912720</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="making-comparisons-between-groups-and-strata.html#cb45-1" aria-hidden="true" tabindex="-1"></a>dat4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight2 <span class="sc">~</span> weight1 <span class="sc">+</span> herdf <span class="sc">+</span> diet, <span class="at">data =</span> dat4) <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">augment</span>() </span>
+<span id="cb45-2"><a href="making-comparisons-between-groups-and-strata.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat4, <span class="fu">aes</span>(.fitted, .resid)) <span class="sc">+</span></span>
+<span id="cb45-3"><a href="making-comparisons-between-groups-and-strata.html#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">select</span>(dat4, <span class="sc">-</span>herdf), <span class="at">size =</span> <span class="dv">2</span>, <span class="at">color =</span> <span class="st">&quot;gray&quot;</span>) <span class="sc">+</span> </span>
+<span id="cb45-4"><a href="making-comparisons-between-groups-and-strata.html#cb45-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="fu">aes</span>(<span class="at">color =</span> herdf)) <span class="sc">+</span> </span>
+<span id="cb45-5"><a href="making-comparisons-between-groups-and-strata.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
+<span id="cb45-6"><a href="making-comparisons-between-groups-and-strata.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Residual&quot;</span>) <span class="sc">+</span></span>
+<span id="cb45-7"><a href="making-comparisons-between-groups-and-strata.html#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete_qualitative</span>() <span class="sc">+</span></span>
+<span id="cb45-8"><a href="making-comparisons-between-groups-and-strata.html#cb45-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>herdf, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span> <span class="fu">guides</span>(<span class="at">color =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/fit-semi-final-1.png" width="1392" /></p>
+</div>
+</div>
+<div id="soil-nitrogen" class="section level2" number="7.19">
+<h2><span class="header-section-number">7.19</span> Soil nitrogen</h2>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="making-comparisons-between-groups-and-strata.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gomez.nitrogen, <span class="fu">aes</span>(trt, nitro, <span class="at">color =</span> stage)) <span class="sc">+</span> </span>
+<span id="cb46-2"><a href="making-comparisons-between-groups-and-strata.html#cb46-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb46-3"><a href="making-comparisons-between-groups-and-strata.html#cb46-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete_qualitative</span>() <span class="sc">+</span></span>
+<span id="cb46-4"><a href="making-comparisons-between-groups-and-strata.html#cb46-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Fertilizer treatment&quot;</span>, </span>
+<span id="cb46-5"><a href="making-comparisons-between-groups-and-strata.html#cb46-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Soil nitrogen content (%)&quot;</span>,</span>
+<span id="cb46-6"><a href="making-comparisons-between-groups-and-strata.html#cb46-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">&quot;Growth stage&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/soil-plot1-1.png" width="768" /></p>
+<ul>
+<li>Soil nitrogen content with 8 different fertilizer treatment is measured at 3 growth stage:
+<ul>
+<li>P1 = 15 days post transplanting</li>
+<li>P2 = 40 days post transplanting</li>
+<li>P3 = panicle initiation</li>
+</ul></li>
+<li>Clearly the growth stage affects the soil nitrogen content but this makes it hard to compare the fertilizer treatments.</li>
+<li>Let’s model the nitrogen content as:</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="making-comparisons-between-groups-and-strata.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(nitro <span class="sc">~</span> stage <span class="sc">+</span> trt, <span class="at">data =</span> gomez.nitrogen)</span></code></pre></div>
+<ul>
+<li>Considering just the stage effect:</li>
+</ul>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="making-comparisons-between-groups-and-strata.html#cb48-1" aria-hidden="true" tabindex="-1"></a>fit1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(nitro <span class="sc">~</span> stage, <span class="at">data =</span> gomez.nitrogen)</span>
+<span id="cb48-2"><a href="making-comparisons-between-groups-and-strata.html#cb48-2" aria-hidden="true" tabindex="-1"></a>fit1data <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(fit1) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-3"><a href="making-comparisons-between-groups-and-strata.html#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(gomez.nitrogen, <span class="at">by=</span><span class="fu">c</span>(<span class="st">&quot;nitro&quot;</span>, <span class="st">&quot;stage&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb48-4"><a href="making-comparisons-between-groups-and-strata.html#cb48-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trt =</span> <span class="fu">fct_reorder</span>(trt, .resid))</span>
+<span id="cb48-5"><a href="making-comparisons-between-groups-and-strata.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fit1data, <span class="fu">aes</span>(trt, .resid)) <span class="sc">+</span></span>
+<span id="cb48-6"><a href="making-comparisons-between-groups-and-strata.html#cb48-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb48-7"><a href="making-comparisons-between-groups-and-strata.html#cb48-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Fertilizer treatment&quot;</span>, </span>
+<span id="cb48-8"><a href="making-comparisons-between-groups-and-strata.html#cb48-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Residual of fit1&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<ul>
+<li>Here we expect no pattern:</li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="making-comparisons-between-groups-and-strata.html#cb49-1" aria-hidden="true" tabindex="-1"></a>fit2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(nitro <span class="sc">~</span> stage <span class="sc">+</span> trt, </span>
+<span id="cb49-2"><a href="making-comparisons-between-groups-and-strata.html#cb49-2" aria-hidden="true" tabindex="-1"></a>           <span class="at">data =</span> gomez.nitrogen)</span>
+<span id="cb49-3"><a href="making-comparisons-between-groups-and-strata.html#cb49-3" aria-hidden="true" tabindex="-1"></a>fit2data <span class="ot">&lt;-</span> broom<span class="sc">::</span><span class="fu">augment</span>(fit2) <span class="sc">%&gt;%</span> </span>
+<span id="cb49-4"><a href="making-comparisons-between-groups-and-strata.html#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">trt =</span> <span class="fu">fct_reorder</span>(trt, .resid))</span>
+<span id="cb49-5"><a href="making-comparisons-between-groups-and-strata.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(fit2data, <span class="fu">aes</span>(trt, .resid)) <span class="sc">+</span></span>
+<span id="cb49-6"><a href="making-comparisons-between-groups-and-strata.html#cb49-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span> </span>
+<span id="cb49-7"><a href="making-comparisons-between-groups-and-strata.html#cb49-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Fertilizer treatment&quot;</span>, </span>
+<span id="cb49-8"><a href="making-comparisons-between-groups-and-strata.html#cb49-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Residual of fit2&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="making-comparisons-between-groups-and-strata.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(emmeans)</span>
+<span id="cb50-2"><a href="making-comparisons-between-groups-and-strata.html#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">pairs</span>(<span class="fu">emmeans</span>(fit2, <span class="st">&quot;trt&quot;</span>), <span class="at">adjust=</span><span class="st">&quot;none&quot;</span>))</span></code></pre></div>
+<pre><code>##  contrast estimate    SE df lower.CL  upper.CL
+##  T1 - T2   -0.2117 0.116 86  -0.4420  0.018654
+##  T1 - T3   -0.3375 0.116 86  -0.5678 -0.107180
+##  T1 - T4   -0.2308 0.116 86  -0.4612 -0.000513
+##  T1 - T5   -0.0717 0.116 86  -0.3020  0.158654
+##  T1 - T6   -0.1492 0.116 86  -0.3795  0.081154
+##  T1 - T7   -0.3592 0.116 86  -0.5895 -0.128846
+##  T1 - T8   -0.2333 0.116 86  -0.4637 -0.003013
+##  T2 - T3   -0.1258 0.116 86  -0.3562  0.104487
+##  T2 - T4   -0.0192 0.116 86  -0.2495  0.211154
+##  T2 - T5    0.1400 0.116 86  -0.0903  0.370320
+##  T2 - T6    0.0625 0.116 86  -0.1678  0.292820
+##  T2 - T7   -0.1475 0.116 86  -0.3778  0.082820
+##  T2 - T8   -0.0217 0.116 86  -0.2520  0.208654
+##  T3 - T4    0.1067 0.116 86  -0.1237  0.336987
+##  T3 - T5    0.2658 0.116 86   0.0355  0.496154
+##  T3 - T6    0.1883 0.116 86  -0.0420  0.418654
+##  T3 - T7   -0.0217 0.116 86  -0.2520  0.208654
+##  T3 - T8    0.1042 0.116 86  -0.1262  0.334487
+##  T4 - T5    0.1592 0.116 86  -0.0712  0.389487
+##  T4 - T6    0.0817 0.116 86  -0.1487  0.311987
+##  T4 - T7   -0.1283 0.116 86  -0.3587  0.101987
+##  T4 - T8   -0.0025 0.116 86  -0.2328  0.227820
+##  T5 - T6   -0.0775 0.116 86  -0.3078  0.152820
+##  T5 - T7   -0.2875 0.116 86  -0.5178 -0.057180
+##  T5 - T8   -0.1617 0.116 86  -0.3920  0.068654
+##  T6 - T7   -0.2100 0.116 86  -0.4403  0.020320
+##  T6 - T8   -0.0842 0.116 86  -0.3145  0.146154
+##  T7 - T8    0.1258 0.116 86  -0.1045  0.356154
+## 
+## Results are averaged over the levels of: stage 
+## Confidence level used: 0.95</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="making-comparisons-between-groups-and-strata.html#cb52-1" aria-hidden="true" tabindex="-1"></a>CI.none <span class="ot">&lt;-</span> <span class="fu">confint</span>(<span class="fu">pairs</span>(<span class="fu">emmeans</span>(fit2, <span class="st">&quot;trt&quot;</span>), <span class="at">adjust=</span><span class="st">&quot;none&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb52-2"><a href="making-comparisons-between-groups-and-strata.html#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isSig =</span> <span class="sc">!</span>(upper.CL <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> lower.CL <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
+<span id="cb52-3"><a href="making-comparisons-between-groups-and-strata.html#cb52-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">contrast =</span> <span class="fu">reorder</span>(contrast, estimate))</span>
+<span id="cb52-4"><a href="making-comparisons-between-groups-and-strata.html#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(CI.none, <span class="fu">aes</span>(estimate, contrast))  <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>lower.CL, <span class="at">xend=</span>upper.CL, <span class="at">y=</span>contrast, <span class="at">yend=</span>contrast, <span class="at">colour=</span>isSig), <span class="at">show.legend =</span> F, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span> </span>
+<span id="cb52-5"><a href="making-comparisons-between-groups-and-strata.html#cb52-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>, <span class="at">size=</span><span class="fl">1.5</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-4-1.png" width="768" />
+* From above, the 6 pairs of treatments: T3 &amp; T5, T1 &amp; T4, T1 &amp; T8, T6 &amp; T7, T1 &amp; T3, T1 &amp; T7 are significantly different.
+* These confidence intervals are constructed <em>without taking any regard for others</em>.</p>
+</div>
+<div id="controlling-the-family-wise-error-rate" class="section level2" number="7.20">
+<h2><span class="header-section-number">7.20</span> Controlling the family-wise error rate</h2>
+</div>
+<div id="unadjusted" class="section level2" number="7.21">
+<h2><span class="header-section-number">7.21</span> Unadjusted</h2>
+<ul>
+<li>Each interval has been constructed using a procedure so that when the model is correct,
+the probability that the “correct” population contrast is covered is 0.95. . . individually.</li>
+</ul>
+<p><span class="math display">\[\bar{X} - \bar{Y} \pm \color{red}{t_{n-t,1 - \alpha/2}}\times SE(\bar{X} - \bar{Y})\]</span>
+where <span class="math inline">\(\alpha = 0.05\)</span> and <span class="math inline">\(t\)</span> is the number of treatments.</p>
+<ul>
+<li>But, what is the probability that all intervals cover their corresponding true values simultaneously?</li>
+</ul>
+</div>
+<div id="bonferonni-adjustment" class="section level2" number="7.22">
+<h2><span class="header-section-number">7.22</span> Bonferonni adjustment</h2>
+<ul>
+<li>We can adjust the individual <span class="math inline">\(100(1-\alpha)\%\)</span> confidence intervals so</li>
+</ul>
+<p><span class="math display">\[\bar{X} - \bar{Y} \pm \color{red}{t_{n-t,1 - \alpha/(2m)}}\times SE(\bar{X} - \bar{Y})\]</span>
+where <span class="math inline">\(m\)</span> is the number of pairwise comparisons.</p>
+<ul>
+<li>So for 8 treatments, the number of pairwise comparisons is</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="making-comparisons-between-groups-and-strata.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">choose</span>(<span class="dv">8</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code>## [1] 28</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="making-comparisons-between-groups-and-strata.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(<span class="fu">pairs</span>(<span class="fu">emmeans</span>(fit2, <span class="st">&quot;trt&quot;</span>),</span>
+<span id="cb55-2"><a href="making-comparisons-between-groups-and-strata.html#cb55-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">adjust=</span><span class="st">&quot;bonferroni&quot;</span>))</span></code></pre></div>
+<pre><code>##  contrast estimate    SE df lower.CL upper.CL
+##  T1 - T2   -0.2117 0.116 86   -0.585   0.1619
+##  T1 - T3   -0.3375 0.116 86   -0.711   0.0361
+##  T1 - T4   -0.2308 0.116 86   -0.604   0.1427
+##  T1 - T5   -0.0717 0.116 86   -0.445   0.3019
+##  T1 - T6   -0.1492 0.116 86   -0.523   0.2244
+##  T1 - T7   -0.3592 0.116 86   -0.733   0.0144
+##  T1 - T8   -0.2333 0.116 86   -0.607   0.1402
+##  T2 - T3   -0.1258 0.116 86   -0.499   0.2477
+##  T2 - T4   -0.0192 0.116 86   -0.393   0.3544
+##  T2 - T5    0.1400 0.116 86   -0.234   0.5136
+##  T2 - T6    0.0625 0.116 86   -0.311   0.4361
+##  T2 - T7   -0.1475 0.116 86   -0.521   0.2261
+##  T2 - T8   -0.0217 0.116 86   -0.395   0.3519
+##  T3 - T4    0.1067 0.116 86   -0.267   0.4802
+##  T3 - T5    0.2658 0.116 86   -0.108   0.6394
+##  T3 - T6    0.1883 0.116 86   -0.185   0.5619
+##  T3 - T7   -0.0217 0.116 86   -0.395   0.3519
+##  T3 - T8    0.1042 0.116 86   -0.269   0.4777
+##  T4 - T5    0.1592 0.116 86   -0.214   0.5327
+##  T4 - T6    0.0817 0.116 86   -0.292   0.4552
+##  T4 - T7   -0.1283 0.116 86   -0.502   0.2452
+##  T4 - T8   -0.0025 0.116 86   -0.376   0.3711
+##  T5 - T6   -0.0775 0.116 86   -0.451   0.2961
+##  T5 - T7   -0.2875 0.116 86   -0.661   0.0861
+##  T5 - T8   -0.1617 0.116 86   -0.535   0.2119
+##  T6 - T7   -0.2100 0.116 86   -0.584   0.1636
+##  T6 - T8   -0.0842 0.116 86   -0.458   0.2894
+##  T7 - T8    0.1258 0.116 86   -0.248   0.4994
+## 
+## Results are averaged over the levels of: stage 
+## Confidence level used: 0.95 
+## Conf-level adjustment: bonferroni method for 28 estimates</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="making-comparisons-between-groups-and-strata.html#cb57-1" aria-hidden="true" tabindex="-1"></a>CI.none <span class="ot">&lt;-</span> <span class="fu">confint</span>(<span class="fu">pairs</span>(<span class="fu">emmeans</span>(fit2, <span class="st">&quot;trt&quot;</span>), <span class="at">adjust=</span><span class="st">&quot;bonferroni&quot;</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb57-2"><a href="making-comparisons-between-groups-and-strata.html#cb57-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">isSig =</span> <span class="sc">!</span>(upper.CL <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> lower.CL <span class="sc">&lt;</span> <span class="dv">0</span>),</span>
+<span id="cb57-3"><a href="making-comparisons-between-groups-and-strata.html#cb57-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">contrast =</span> <span class="fu">reorder</span>(contrast, estimate))</span>
+<span id="cb57-4"><a href="making-comparisons-between-groups-and-strata.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(CI.none, <span class="fu">aes</span>(estimate, contrast))  <span class="sc">+</span> <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x=</span>lower.CL, <span class="at">xend=</span>upper.CL, <span class="at">y=</span>contrast, <span class="at">yend=</span>contrast, <span class="at">colour=</span>isSig), <span class="at">show.legend =</span> F, <span class="at">size=</span><span class="fl">1.5</span>) <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)<span class="sc">+</span> </span>
+<span id="cb57-5"><a href="making-comparisons-between-groups-and-strata.html#cb57-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept=</span><span class="dv">0</span>, <span class="at">size=</span><span class="fl">1.5</span>, <span class="at">color=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
+<ul>
+<li>Now none are significantly different.</li>
+<li>Note: Bonferroni adjustment is quite conservative.</li>
+</ul>
+</div>
+<div id="mystery-data" class="section level2" number="7.23">
+<h2><span class="header-section-number">7.23</span> Mystery data</h2>
+<ul>
+<li>Many inferences, e.g. using confidence intervals or <span class="math inline">\(p\)</span>-values, are based on assumptions being met.</li>
+<li>From the model fit below can we suggest the following model?</li>
+</ul>
+<p><span class="math display">\[\hat{Y} = -0.002 + 0.979x_1 + 0.998x_2 + 0.973x_3 + 0.995x_4\]</span></p>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="making-comparisons-between-groups-and-strata.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4, <span class="at">data=</span>mystery_data) <span class="sc">%&gt;%</span> broom<span class="sc">::</span><span class="fu">tidy</span>()</span></code></pre></div>
+<pre><code>## # A tibble: 5 x 5
+##   term        estimate std.error statistic p.value
+##   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 (Intercept) -0.00204    0.0109    -0.187   0.852
+## 2 x1           0.979      0.0151    64.8     0    
+## 3 x2           0.998      0.0155    64.4     0    
+## 4 x3           0.973      0.0154    63.1     0    
+## 5 x4           0.995      0.0109    91.6     0</code></pre>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="making-comparisons-between-groups-and-strata.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(y <span class="sc">~</span> x1 <span class="sc">+</span> x2 <span class="sc">+</span> x3 <span class="sc">+</span> x4, <span class="at">data=</span>mystery_data) <span class="sc">%&gt;%</span> </span>
+<span id="cb60-2"><a href="making-comparisons-between-groups-and-strata.html#cb60-2" aria-hidden="true" tabindex="-1"></a>  broom<span class="sc">::</span><span class="fu">augment</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb60-3"><a href="making-comparisons-between-groups-and-strata.html#cb60-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(.fitted, .resid)) <span class="sc">+</span> </span>
+<span id="cb60-4"><a href="making-comparisons-between-groups-and-strata.html#cb60-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb60-5"><a href="making-comparisons-between-groups-and-strata.html#cb60-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">&quot;Fitted Values&quot;</span>, <span class="at">y=</span><span class="st">&quot;Residual&quot;</span>) </span></code></pre></div>
+<p><img src="eda-book_files/figure-html/simpson-fit-1.png" width="672" /></p>
+<p>Moral of the story: Don’t forget to check model diagnostics.</p>
 
 </div>
 </div>
@@ -839,6 +1224,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
