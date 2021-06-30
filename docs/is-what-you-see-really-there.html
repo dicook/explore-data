@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-28" />
+<meta name="date" content="2021-06-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,13 +53,6 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
-<script src="libs/kePrint-0.0.1/kePrint.js"></script>
-<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
-<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
-<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
-<script src="libs/fabric-3.6.3/fabric.min.js"></script>
-<script src="libs/FileSaver-2.0.2/FileSaver.min.js"></script>
-<script src="libs/jQuery-3.5.1/jquery-3.5.1.min.js"></script>
 
 
 <style type="text/css">
@@ -127,28 +120,6 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -219,13 +190,118 @@ div.csl-indent {
 <li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
 <li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
 <li class="chapter" data-level="4.7" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#transformations"><i class="fa fa-check"></i><b>4.7</b> Transformations</a></li>
+<li class="chapter" data-level="4.8" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-variables"><i class="fa fa-check"></i><b>4.8</b> Categorical variables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-factors-un-r"><i class="fa fa-check"></i><b>4.8.1</b> Categorical factors un R</a></li>
+<li class="chapter" data-level="4.8.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-factors-in-r"><i class="fa fa-check"></i><b>4.8.2</b> Numerical factors in R</a></li>
+<li class="chapter" data-level="4.8.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-german-bundestag-election-2009"><i class="fa fa-check"></i><b>4.8.3</b> Example: German Bundestag Election 2009</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#order-nominal-variables-meaningfully"><i class="fa fa-check"></i><b>4.9</b> Order nominal variables meaningfully</a></li>
+<li class="chapter" data-level="4.10" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-aspirin-use-after-heart-attack"><i class="fa fa-check"></i><b>4.10</b> Example: Aspirin use after heart attack</a></li>
+<li class="chapter" data-level="4.11" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#consider-combining-factor-levels-with-low-frequencies"><i class="fa fa-check"></i><b>4.11</b> Consider combining factor levels with low frequencies</a></li>
+<li class="chapter" data-level="4.12" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#anorexia"><i class="fa fa-check"></i><b>4.12</b> Anorexia</a></li>
+<li class="chapter" data-level="4.13" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#titanic"><i class="fa fa-check"></i><b>4.13</b> Titanic</a></li>
+<li class="chapter" data-level="4.14" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#coloring-bars"><i class="fa fa-check"></i><b>4.14</b> Coloring bars</a></li>
+<li class="chapter" data-level="4.15" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#opinion-poll-in-ireland-aug-2013"><i class="fa fa-check"></i><b>4.15</b> Opinion poll in Ireland Aug 2013</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
 <li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
-<li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a></li>
-<li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a></li>
+<li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize"><i class="fa fa-check"></i><b>7.1</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="7.2" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#maize-kernels"><i class="fa fa-check"></i><b>7.2</b> Maize kernels</a></li>
+<li class="chapter" data-level="7.3" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-like-with-like"><i class="fa fa-check"></i><b>7.3</b> Comparing like-with-like</a></li>
+<li class="chapter" data-level="7.4" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#multi-environment-soybean-trial"><i class="fa fa-check"></i><b>7.4</b> Multi-environment soybean trial</a></li>
+<li class="chapter" data-level="7.5" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#types-of-comparison"><i class="fa fa-check"></i><b>7.5</b> Types of comparison</a></li>
+<li class="chapter" data-level="7.6" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-of-calves-with-different-diets"><i class="fa fa-check"></i><b>7.6</b> Weight of calves with different diets</a></li>
+<li class="chapter" data-level="7.7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#swiss-bank-notes"><i class="fa fa-check"></i><b>7.7</b> Swiss bank notes</a></li>
+<li class="chapter" data-level="7.8" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-graphically"><i class="fa fa-check"></i><b>7.8</b> Comparing graphically</a></li>
+<li class="chapter" data-level="7.9" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#barley-yield"><i class="fa fa-check"></i><b>7.9</b> Barley Yield</a></li>
+<li class="chapter" data-level="7.10" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#olive-oils"><i class="fa fa-check"></i><b>7.10</b> Olive oils</a></li>
+<li class="chapter" data-level="7.11" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#england-and-east-indies-trade-data"><i class="fa fa-check"></i><b>7.11</b> England and East Indies trade data</a></li>
+<li class="chapter" data-level="7.12" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#melbournes-daily-maximum-temperature"><i class="fa fa-check"></i><b>7.12</b> Melbourne’s daily maximum temperature</a></li>
+<li class="chapter" data-level="7.13" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#modelling-and-testing-for-comparisons"><i class="fa fa-check"></i><b>7.13</b> Modelling and testing for comparisons</a></li>
+<li class="chapter" data-level="7.14" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize-1"><i class="fa fa-check"></i><b>7.14</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="7.15" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-parametric-tests-t-test"><i class="fa fa-check"></i><b>7.15</b> Two-sample parametric tests: <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="7.16" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#confidence-interval-for-two-sample-difference"><i class="fa fa-check"></i><b>7.16</b> Confidence interval for two sample difference</a></li>
+<li class="chapter" data-level="7.17" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-non-parametric-tests"><i class="fa fa-check"></i><b>7.17</b> Two sample non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="7.17.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>7.17.1</b> Wilcoxon rank-sum test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.18" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves"><i class="fa fa-check"></i><b>7.18</b> Weight gain of calves</a>
+<ul>
+<li class="chapter" data-level="7.18.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves-1"><i class="fa fa-check"></i><b>7.18.1</b> Weight gain of calves</a></li>
+</ul></li>
+<li class="chapter" data-level="7.19" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#soil-nitrogen"><i class="fa fa-check"></i><b>7.19</b> Soil nitrogen</a></li>
+<li class="chapter" data-level="7.20" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#controlling-the-family-wise-error-rate"><i class="fa fa-check"></i><b>7.20</b> Controlling the family-wise error rate</a></li>
+<li class="chapter" data-level="7.21" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#unadjusted"><i class="fa fa-check"></i><b>7.21</b> Unadjusted</a></li>
+<li class="chapter" data-level="7.22" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#bonferonni-adjustment"><i class="fa fa-check"></i><b>7.22</b> Bonferonni adjustment</a></li>
+<li class="chapter" data-level="7.23" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#mystery-data"><i class="fa fa-check"></i><b>7.23</b> Mystery data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#parametric-regression"><i class="fa fa-check"></i><b>8.1</b> Parametric regression</a></li>
+<li class="chapter" data-level="8.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#example"><i class="fa fa-check"></i><b>8.2</b> Example</a></li>
+<li class="chapter" data-level="8.3" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-parametric-models"><i class="fa fa-check"></i><b>8.3</b> Simulating data from parametric models</a></li>
+<li class="chapter" data-level="8.4" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#logistic-regression"><i class="fa fa-check"></i><b>8.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="8.5" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#menarche"><i class="fa fa-check"></i><b>8.5</b> Menarche</a></li>
+<li class="chapter" data-level="8.6" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-logistic-regression"><i class="fa fa-check"></i><b>8.6</b> Simulating data from logistic regression</a></li>
+<li class="chapter" data-level="8.7" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-logistic-regression-models"><i class="fa fa-check"></i><b>8.7</b> Diagnostics for logistic regression models</a></li>
+<li class="chapter" data-level="8.8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-linear-models"><i class="fa fa-check"></i><b>8.8</b> Diagnostics for linear models</a></li>
+<li class="chapter" data-level="8.9" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a1-eepsilon_i-0-for-i1ldotsn"><i class="fa fa-check"></i><b>8.9</b> Assessing (A1) <span class="math inline">\(E(\epsilon_i) = 0\)</span> for <span class="math inline">\(i=1,\ldots,n\)</span></a></li>
+<li class="chapter" data-level="8.10" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a2-a3"><i class="fa fa-check"></i><b>8.10</b> Assessing (A2)-(A3)</a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#in-r"><i class="fa fa-check"></i><b>8.10.1</b> In R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.11" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#examining-the-simulated-data-further"><i class="fa fa-check"></i><b>8.11</b> Examining the simulated data further</a></li>
+<li class="chapter" data-level="8.12" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#revisiting-outliers"><i class="fa fa-check"></i><b>8.12</b> Revisiting outliers</a></li>
+<li class="chapter" data-level="8.13" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#pop-quiz"><i class="fa fa-check"></i><b>8.13</b> Pop Quiz</a></li>
+<li class="chapter" data-level="8.14" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#outlying-values"><i class="fa fa-check"></i><b>8.14</b> Outlying values</a></li>
+<li class="chapter" data-level="8.15" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#leverage"><i class="fa fa-check"></i><b>8.15</b> Leverage</a></li>
+<li class="chapter" data-level="8.16" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#studentized-residuals"><i class="fa fa-check"></i><b>8.16</b> Studentized residuals</a></li>
+<li class="chapter" data-level="8.17" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#cooks-distance"><i class="fa fa-check"></i><b>8.17</b> Cook’s distance</a></li>
+<li class="chapter" data-level="8.18" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#social-media-marketing"><i class="fa fa-check"></i><b>8.18</b> Social media marketing</a></li>
+<li class="chapter" data-level="8.19" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#extracting-values-from-models-in-r"><i class="fa fa-check"></i><b>8.19</b> Extracting values from models in R</a></li>
+<li class="chapter" data-level="8.20" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#non-parametric-regression"><i class="fa fa-check"></i><b>8.20</b> Non-parametric regression</a>
+<ul>
+<li class="chapter" data-level="8.20.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#loess"><i class="fa fa-check"></i><b>8.20.1</b> LOESS</a></li>
+</ul></li>
+<li class="chapter" data-level="8.21" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-span-changes-the-loess-fit"><i class="fa fa-check"></i><b>8.21</b> How <code>span</code> changes the loess fit</a></li>
+<li class="chapter" data-level="8.22" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-loess-works"><i class="fa fa-check"></i><b>8.22</b> How <code>loess</code> works</a></li>
+<li class="chapter" data-level="8.23" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#us-economic-time-series"><i class="fa fa-check"></i><b>8.23</b> US economic time series</a></li>
+<li class="chapter" data-level="8.24" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-to-fit-loess-curves-in-r"><i class="fa fa-check"></i><b>8.24</b> How to fit LOESS curves in R?</a>
+<ul>
+<li class="chapter" data-level="8.24.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#model-fitting"><i class="fa fa-check"></i><b>8.24.1</b> Model fitting</a></li>
+<li class="chapter" data-level="8.24.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#showing-it-on-the-plot"><i class="fa fa-check"></i><b>8.24.2</b> Showing it on the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.25" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#why-non-parametric-regression"><i class="fa fa-check"></i><b>8.25</b> Why non-parametric regression?</a></li>
+<li class="chapter" data-level="8.26" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#bluegills"><i class="fa fa-check"></i><b>8.26</b> Bluegills</a></li>
+<li class="chapter" data-level="8.27" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#soil-resistivity-in-a-field"><i class="fa fa-check"></i><b>8.27</b> Soil resistivity in a field</a></li>
+<li class="chapter" data-level="8.28" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#conditioning-plots-coplots"><i class="fa fa-check"></i><b>8.28</b> Conditioning plots (Coplots)</a></li>
+<li class="chapter" data-level="8.29" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#coplots-via-ggplot2"><i class="fa fa-check"></i><b>8.29</b> Coplots via <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>9</b> Exploring data having a space and time context</a></li>
-<li class="chapter" data-level="10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>10</b> Is what you see really there?</a></li>
+<li class="chapter" data-level="10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>10</b> Is what you see really there?</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#revisiting-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Revisiting hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#testing-coin-bias"><i class="fa fa-check"></i><b>10.1.1</b> Testing coin bias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#frequentist-hypotheses-testing-framework"><i class="fa fa-check"></i><b>10.2</b> (Frequentist) hypotheses testing framework</a></li>
+<li class="chapter" data-level="10.3" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#judicial-system"><i class="fa fa-check"></i><b>10.3</b> Judicial system</a></li>
+<li class="chapter" data-level="10.4" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference"><i class="fa fa-check"></i><b>10.4</b> Visual inference</a></li>
+<li class="chapter" data-level="10.5" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-more-formally"><i class="fa fa-check"></i><b>10.5</b> Visual inference more formally</a></li>
+<li class="chapter" data-level="10.6" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#uniformity-trial-of-peanuts"><i class="fa fa-check"></i><b>10.6</b> Uniformity trial of peanuts</a></li>
+<li class="chapter" data-level="10.7" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-and-practical-significance"><i class="fa fa-check"></i><b>10.7</b> Statistical significance and practical significance</a></li>
+<li class="chapter" data-level="10.8" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-of-the-data-plot"><i class="fa fa-check"></i><b>10.8</b> Statistical significance of the data plot</a></li>
+<li class="chapter" data-level="10.9" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#lineup-of-small-effect-difference"><i class="fa fa-check"></i><b>10.9</b> Lineup of small effect difference</a></li>
+<li class="chapter" data-level="10.10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#some-considerations-in-visual-inference"><i class="fa fa-check"></i><b>10.10</b> Some considerations in visual inference</a></li>
+<li class="chapter" data-level="10.11" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-with-the-nullabor"><i class="fa fa-check"></i><b>10.11</b> Visual inference with the <code>nullabor</code> 📦</a></li>
+<li class="chapter" data-level="10.12" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#potato-scab-infection"><i class="fa fa-check"></i><b>10.12</b> Potato scab infection</a></li>
+<li class="chapter" data-level="10.13" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#black-cherry-trees"><i class="fa fa-check"></i><b>10.13</b> Black Cherry Trees</a></li>
+<li class="chapter" data-level="10.14" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#temperatures-of-stars"><i class="fa fa-check"></i><b>10.14</b> Temperatures of stars</a></li>
+<li class="chapter" data-level="10.15" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#foreign-exchange-rate"><i class="fa fa-check"></i><b>10.15</b> Foreign exchange rate</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -250,8 +326,511 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="is-what-you-see-really-there" class="section level1" number="10">
 <h1><span class="header-section-number">Chapter 10</span> Is what you see really there?</h1>
-<p>Using computational tools to determine whether what is seen in the data can be assumed to apply more broadly</p>
+<div id="revisiting-hypothesis-testing" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Revisiting hypothesis testing</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="is-what-you-see-really-there.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb1-2"><a href="is-what-you-see-really-there.html#cb1-2" aria-hidden="true" tabindex="-1"></a>head <span class="ot">&lt;-</span> <span class="st">&#39;&lt;img src=&quot;images/Australian_Fifty_Cents_Obv.jpg&quot; height = &quot;50px&quot; style=&quot;vertical-align:middle;&quot;&gt;&#39;</span></span>
+<span id="cb1-3"><a href="is-what-you-see-really-there.html#cb1-3" aria-hidden="true" tabindex="-1"></a>tail <span class="ot">&lt;-</span> <span class="st">&#39;&lt;img src=&quot;images/Australian_50c_Coin.png&quot; height = &quot;50px&quot; style=&quot;vertical-align:middle;&quot;&gt;&#39;</span></span></code></pre></div>
+<div id="testing-coin-bias" class="section level3" number="10.1.1">
+<h3><span class="header-section-number">10.1.1</span> Testing coin bias</h3>
+<ul>
+<li>Suppose I have a coin that I’m going to flip <img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"></li>
+<li>If the coin is unbiased, what is the probability it will show heads?</li>
+<li>Yup, the probability should be 0.5.</li>
+<li>So how would I test if a coin is biased or unbiased?</li>
+<li>We’ll collect some data.</li>
+<li><strong>Experiment 1</strong>: I flipped the coin 10 times and this is the result:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="is-what-you-see-really-there.html#cb2-1" aria-hidden="true" tabindex="-1"></a>samp10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(head, tail), <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">3</span>)))</span>
+<span id="cb2-2"><a href="is-what-you-see-really-there.html#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(samp10, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<p><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;">
+* The result is 7 head and 3 tails. So 70% are heads.
+* Do you believe the coin is biased based on this data?
+* <strong>Experiment 2</strong>: Suppose now I flip the coin 100 times and this is the outcome:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="is-what-you-see-really-there.html#cb3-1" aria-hidden="true" tabindex="-1"></a>samp100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">rep</span>(<span class="fu">c</span>(head, tail), <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">30</span>)))</span>
+<span id="cb3-2"><a href="is-what-you-see-really-there.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="fu">paste0</span>(samp100, <span class="at">collapse =</span> <span class="st">&quot;&quot;</span>))</span></code></pre></div>
+<p><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_Fifty_Cents_Obv.jpg" height = "50px" style="vertical-align:middle;"><img src="images/Australian_50c_Coin.png" height = "50px" style="vertical-align:middle;">
+* We observe 70 heads and 30 tails. So again 70% are heads.
+* Based on this data, do you think the coin is biased?</p>
+</div>
+</div>
+<div id="frequentist-hypotheses-testing-framework" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> (Frequentist) hypotheses testing framework</h2>
+<ul>
+<li>Suppose <span class="math inline">\(X\)</span> is the number of heads out of <span class="math inline">\(n\)</span> independent tosses.</li>
+<li>Let <span class="math inline">\(p\)</span> be the probability of getting a head for this coin.</li>
+</ul>
+<table>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Hypotheses</strong></td>
+<td><span class="math inline">\(H_0: p = 0.5\)</span> vs. <span class="math inline">\(H_1: p \neq 0.5\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Assumptions</strong></td>
+<td>Each toss is independent with equal chance of getting a head.</td>
+</tr>
+<tr class="odd">
+<td><strong>Test statistic</strong></td>
+<td><span class="math inline">\(X \sim B(n, p)\)</span>. Recall <span class="math inline">\(E(X) = np\)</span>.<br> The observed test statistic is denoted <span class="math inline">\(x\)</span>.</td>
+</tr>
+<tr class="even">
+<td><strong>P-value</strong> <br>.font_small[(or critical value or confidence interval)]</td>
+<td><span class="math inline">\(P(\mid X - np\mid \geq \mid x - np\mid )\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong><i class="fas fa-gavel"></i> Conclusion</strong></td>
+<td>Reject null hypothesis when the <span class="math inline">\(p\)</span>-value is less than<br> some significance level <span class="math inline">\(\alpha\)</span>. Usually <span class="math inline">\(\alpha = 0.05\)</span>.</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>The p-value for experiment 1 is <span class="math inline">\(P(|X - 5| \geq 2) \approx 0.34\)</span>.</li>
+<li>The p-value for experiment 2 is <span class="math inline">\(P(|X - 50| \geq 20) \approx 0.00008\)</span>.</li>
+</ul>
+</div>
+<div id="judicial-system" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Judicial system</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="is-what-you-see-really-there.html#cb4-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images/judicial-court.png&quot;</span>)</span></code></pre></div>
+<p><img src="images/judicial-court.png" width="251" /></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="is-what-you-see-really-there.html#cb5-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">&quot;images/statistical-court.png&quot;</span>)</span></code></pre></div>
+<p><img src="images/statistical-court.png" width="178" /></p>
+<ul>
+<li>Evidence by test statistic</li>
+<li>Judgement by p-value, critical value or confidence interval</li>
+<li>Does the test statistic have to be a <em>numerical summary statistics</em>?</li>
+</ul>
+</div>
+<div id="visual-inference" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Visual inference</h2>
+<ul>
+<li>Hypothesis testing in visual inference framework is where:
+<ul>
+<li><i class="fas fa-search"></i> the <strong><em>test statistic is a plot</em></strong> and</li>
+<li><i class="fas fa-gavel"></i> judgement is by human perceptions.</li>
+</ul></li>
+</ul>
+<p>A residual plot after modelling high-density lipoprotein in human blood.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="is-what-you-see-really-there.html#cb6-1" aria-hidden="true" tabindex="-1"></a>samples <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(here<span class="sc">::</span><span class="fu">here</span>(<span class="st">&quot;data/HDLsamples.csv&quot;</span>))</span></code></pre></div>
+<pre><code>## 
+## ── Column specification ──────────────────────────────────────────────────────
+## cols(
+##   HDL = col_double(),
+##   cholesterol = col_double(),
+##   trigylceride = col_double(),
+##   SPB = col_double()
+## )</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="is-what-you-see-really-there.html#cb8-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(HDL <span class="sc">~</span> cholesterol <span class="sc">+</span> trigylceride <span class="sc">+</span> SPB, <span class="at">data =</span> samples)</span>
+<span id="cb8-2"><a href="is-what-you-see-really-there.html#cb8-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">augment</span>(fit)</span>
+<span id="cb8-3"><a href="is-what-you-see-really-there.html#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(.fitted, .std.resid)) <span class="sc">+</span> </span>
+<span id="cb8-4"><a href="is-what-you-see-really-there.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb8-5"><a href="is-what-you-see-really-there.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">linetype =</span> <span class="st">&quot;dashed&quot;</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="is-what-you-see-really-there.html#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Fitted values&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Studentised residuals&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/HDL-resplot-1.png" width="672" /></p>
+<ul>
+<li><p>You (and many other people) actually do visual inference many times but generally in an informal fashion.</p></li>
+<li><p>Here, we are making an inference on whether the residual plot has any patterns based on a single data plot.</p></li>
+<li><p>Data plots tend to be over-interpreted</p></li>
+<li><p>Reading data plots require calibration</p></li>
+</ul>
+</div>
+<div id="visual-inference-more-formally" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Visual inference more formally</h2>
+<ol style="list-style-type: decimal">
+<li><p>State your null and alternate hypotheses.</p></li>
+<li><p>Define a <b>visual test statistic</b>, <span class="math inline">\(V(.)\)</span>, i.e. a function of a sample to a plot.</p></li>
+<li><p>Define a <b>null generating method</b> to generate <b>null data</b>, <span class="math inline">\(\boldsymbol{y}_0\)</span>.</p></li>
+<li><p><span class="math inline">\(V(\boldsymbol{y})\)</span> maps the actual data, <span class="math inline">\(\boldsymbol{y}\)</span>, to the plot. We call this the <b class="monash-blue">data plot</b>.</p></li>
+<li><p><span class="math inline">\(V(\boldsymbol{y}_0)\)</span> maps a null data to a plot of the same form. We call this the <b class="monash-blue">null plot</b>. We repeat this <span class="math inline">\(m - 1\)</span> times to generate <span class="math inline">\(m-1\)</span> null plots.</p></li>
+<li><p>A <b class="monash-blue">lineup</b> displays these <span class="math inline">\(m\)</span> plots in a random order.</p></li>
+<li><p>Ask <span class="math inline">\(n\)</span> human viewers to select a plot in the lineup that looks different to others without any context given.</p></li>
+<li><p>State your null and alternate hypotheses.</p></li>
+<li><p>Define a <strong>visual test statistic</strong>, <span class="math inline">\(V(.)\)</span>, i.e. a function of a sample to a plot.</p></li>
+<li><p>Define a <strong>null generating method</strong> to generate <strong>null data</strong>, <span class="math inline">\(\boldsymbol{y}_0\)</span>.</p></li>
+<li><p><span class="math inline">\(V(\boldsymbol{y})\)</span> maps the actual data, <span class="math inline">\(\boldsymbol{y}\)</span>, to the plot. We call this the .monash-blue[<strong>data plot</strong>].</p></li>
+<li><p><span class="math inline">\(V(\boldsymbol{y}_0)\)</span> maps a null data to a plot of the same form. We call this the .monash-blue[<strong>null plot</strong>]. We repeat this <span class="math inline">\(m - 1\)</span> times to generate <span class="math inline">\(m-1\)</span> null plots.</p></li>
+<li><p>A .monash-blue[<strong>lineup</strong>] displays these <span class="math inline">\(m\)</span> plots in a random order.</p></li>
+<li><p>Ask <span class="math inline">\(n\)</span> human viewers to select a plot in the lineup that looks different to others without any context given.</p></li>
+</ol>
+<p>Suppose <span class="math inline">\(x\)</span> out of <span class="math inline">\(n\)</span> people correctly identified the data plot from a lineup, then
+* the <strong>visual inference p-value</strong> is given as <span class="math display">\[P(X \geq x)\]</span> where <span class="math inline">\(X \sim B(n, 1/m)\)</span>, and
+* the .monash-blue[<strong>power of a lineup</strong>] is estimated as <span class="math inline">\(x/n\)</span>.</p>
+</div>
+<div id="uniformity-trial-of-peanuts" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Uniformity trial of peanuts</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="is-what-you-see-really-there.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bancroft.peanut.uniformity, <span class="fu">aes</span>(<span class="fu">factor</span>(col), <span class="fu">factor</span>(row), <span class="at">fill =</span> yield)) <span class="sc">+</span> </span>
+<span id="cb9-2"><a href="is-what-you-see-really-there.html#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_tile</span>(<span class="at">color =</span> <span class="st">&quot;black&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb9-3"><a href="is-what-you-see-really-there.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>block) <span class="sc">+</span></span>
+<span id="cb9-4"><a href="is-what-you-see-really-there.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_continuous_sequential</span>(<span class="at">palette =</span> <span class="st">&quot;YlGn&quot;</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="is-what-you-see-really-there.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Column&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Row&quot;</span>, <span class="at">fill =</span> <span class="st">&quot;Yield&quot;</span>)</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/peanut-plot-1.png" width="576" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="is-what-you-see-really-there.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(bancroft.peanut.uniformity, <span class="fu">aes</span>(yield)) <span class="sc">+</span> </span>
+<span id="cb10-2"><a href="is-what-you-see-really-there.html#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb10-3"><a href="is-what-you-see-really-there.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>block) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="is-what-you-see-really-there.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Yield&quot;</span>)</span></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="eda-book_files/figure-html/peanut-plot2-1.png" width="576" /></p>
+<ul>
+<li>Same peanut variety planted in Alabama field in two blocks of rectangular array of 18 rows by 6 plots.</li>
+<li>The yield (in pounds) is measured.</li>
+<li>Are the yields from the two blocks similar?</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="is-what-you-see-really-there.html#cb12-1" aria-hidden="true" tabindex="-1"></a>bancroft.peanut.uniformity <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a href="is-what-you-see-really-there.html#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(block) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a href="is-what-you-see-really-there.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean =</span> <span class="fu">mean</span>(yield), <span class="at">SD =</span> <span class="fu">sd</span>(yield)) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-4"><a href="is-what-you-see-really-there.html#cb12-4" aria-hidden="true" tabindex="-1"></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">col.names =</span> <span class="fu">c</span>(<span class="st">&quot;Block&quot;</span>, <span class="st">&quot;Mean&quot;</span>, <span class="st">&quot;Std. Dev&quot;</span>),</span>
+<span id="cb12-5"><a href="is-what-you-see-really-there.html#cb12-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">digits =</span> <span class="dv">3</span>) </span></code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+Block
+</th>
+<th style="text-align:right;">
+Mean
+</th>
+<th style="text-align:right;">
+Std. Dev
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+B1
+</td>
+<td style="text-align:right;">
+2.458
+</td>
+<td style="text-align:right;">
+0.392
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+B2
+</td>
+<td style="text-align:right;">
+2.049
+</td>
+<td style="text-align:right;">
+0.422
+</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="is-what-you-see-really-there.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(bancroft.peanut.uniformity, </span>
+<span id="cb13-2"><a href="is-what-you-see-really-there.html#cb13-2" aria-hidden="true" tabindex="-1"></a>     <span class="fu">t.test</span>(yield[block<span class="sc">==</span><span class="st">&quot;B1&quot;</span>], yield[block<span class="sc">==</span><span class="st">&quot;B2&quot;</span>]))</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  yield[block == &quot;B1&quot;] and yield[block == &quot;B2&quot;]
+## t = 7.3979, df = 212.85, p-value = 3.149e-12
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.3004162 0.5186579
+## sample estimates:
+## mean of x mean of y 
+##  2.458148  2.048611</code></pre>
+<ol style="list-style-type: decimal">
+<li><span class="math inline">\(H_0: \mu_1 = \mu_1 \quad \text{ vs. } \quad H_1: \mu_1 \neq \mu_2\)</span> where <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span> are yield means of block 1 and 2, respectively.</li>
+<li>We choose our visual test statistic <span class="math inline">\(V_1\)</span> as a side-by-side boxplots of yield by block.</li>
+<li>We generate the null data from <span class="math inline">\(N(\bar{y}, s^2)\)</span> where <span class="math inline">\(\bar{y}\)</span> and <span class="math inline">\(s\)</span> are the sample mean and sample standard deviation of the yields.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="is-what-you-see-really-there.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(nullabor)</span>
+<span id="cb15-2"><a href="is-what-you-see-really-there.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb15-3"><a href="is-what-you-see-really-there.html#cb15-3" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_dist</span>(<span class="st">&quot;yield&quot;</span>, <span class="at">dist =</span> <span class="st">&quot;norm&quot;</span>, </span>
+<span id="cb15-4"><a href="is-what-you-see-really-there.html#cb15-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">params =</span> <span class="fu">list</span>(<span class="at">mean =</span> <span class="fu">mean</span>(bancroft.peanut.uniformity<span class="sc">$</span>yield),</span>
+<span id="cb15-5"><a href="is-what-you-see-really-there.html#cb15-5" aria-hidden="true" tabindex="-1"></a>                                  <span class="at">sd =</span> <span class="fu">sd</span>(bancroft.peanut.uniformity<span class="sc">$</span>yield)))</span>
+<span id="cb15-6"><a href="is-what-you-see-really-there.html#cb15-6" aria-hidden="true" tabindex="-1"></a>lineup1 <span class="ot">&lt;-</span> <span class="fu">lineup</span>(method, <span class="at">true =</span> bancroft.peanut.uniformity, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 um&quot;)</code></pre>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="is-what-you-see-really-there.html#cb17-1" aria-hidden="true" tabindex="-1"></a>lineup1 <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="is-what-you-see-really-there.html#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(block, yield)) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="is-what-you-see-really-there.html#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="is-what-you-see-really-there.html#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="is-what-you-see-really-there.html#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb17-6"><a href="is-what-you-see-really-there.html#cb17-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/peanut-lineup-1.png" width="1248" /></p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="is-what-you-see-really-there.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 um&quot;)</span></span>
+<span id="cb18-2"><a href="is-what-you-see-really-there.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># kyuu</span></span></code></pre></div>
+<ul>
+<li>So <span contenteditable="true">   <span class="math inline">\(x\)</span>   </span> out of <span contenteditable="true">   <span class="math inline">\(n\)</span>   </span> of you chose the data plot.</li>
+<li>So the visual inference p-value is <span class="math inline">\(P(X \geq x)\)</span> where <span class="math inline">\(X \sim B(n, 1/10)\)</span>.</li>
+<li>In R, this is</li>
+</ul>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="is-what-you-see-really-there.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">-</span> <span class="fu">pbinom</span>(x <span class="sc">-</span> <span class="dv">1</span>, n, <span class="dv">1</span><span class="sc">/</span><span class="dv">10</span>) </span>
+<span id="cb19-2"><a href="is-what-you-see-really-there.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># OR </span></span>
+<span id="cb19-3"><a href="is-what-you-see-really-there.html#cb19-3" aria-hidden="true" tabindex="-1"></a>nullabor<span class="sc">::</span><span class="fu">pvisual</span>(x, n, <span class="dv">10</span>)</span></code></pre></div>
+<ul>
+<li>The power of the lineup is given as</li>
+</ul>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="is-what-you-see-really-there.html#cb20-1" aria-hidden="true" tabindex="-1"></a>x<span class="sc">/</span>n</span>
+<span id="cb20-2"><a href="is-what-you-see-really-there.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># OR (need to use development one)</span></span>
+<span id="cb20-3"><a href="is-what-you-see-really-there.html#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(&quot;devtools&quot;)</span></span>
+<span id="cb20-4"><a href="is-what-you-see-really-there.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># devtools::install_github(&quot;dicook/nullabor&quot;)</span></span>
+<span id="cb20-5"><a href="is-what-you-see-really-there.html#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">pic_id =</span> <span class="dv">1</span>, <span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span>n, </span>
+<span id="cb20-6"><a href="is-what-you-see-really-there.html#cb20-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">response =</span> <span class="dv">1</span>, <span class="co"># dummy responses</span></span>
+<span id="cb20-7"><a href="is-what-you-see-really-there.html#cb20-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">detected =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="fu">c</span>(x, n <span class="sc">-</span> x))) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-8"><a href="is-what-you-see-really-there.html#cb20-8" aria-hidden="true" tabindex="-1"></a>    nullabor<span class="sc">::</span><span class="fu">visual_power</span>(<span class="dv">10</span>)</span></code></pre></div>
+<p>What about if we change the visual test statistic?</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="is-what-you-see-really-there.html#cb21-1" aria-hidden="true" tabindex="-1"></a>lineup2 <span class="ot">&lt;-</span> lineup1 <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a href="is-what-you-see-really-there.html#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.sample2 =</span> <span class="fu">factor</span>(.sample, <span class="at">labels =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)),</span>
+<span id="cb21-3"><a href="is-what-you-see-really-there.html#cb21-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">.sample2 =</span> <span class="fu">factor</span>(.sample2, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb21-4"><a href="is-what-you-see-really-there.html#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="is-what-you-see-really-there.html#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup2, <span class="fu">aes</span>(block, yield)) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="is-what-you-see-really-there.html#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="is-what-you-see-really-there.html#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample2, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb21-8"><a href="is-what-you-see-really-there.html#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb21-9"><a href="is-what-you-see-really-there.html#cb21-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/peanut-lineup2-1.png" width="1248" /></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="is-what-you-see-really-there.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lineup2 %&gt;% filter(.sample==9)</span></span>
+<span id="cb22-2"><a href="is-what-you-see-really-there.html#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># yon</span></span></code></pre></div>
+<p>What about this one?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="is-what-you-see-really-there.html#cb23-1" aria-hidden="true" tabindex="-1"></a>lineup3 <span class="ot">&lt;-</span> lineup1 <span class="sc">%&gt;%</span> </span>
+<span id="cb23-2"><a href="is-what-you-see-really-there.html#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.sample2 =</span> <span class="fu">factor</span>(.sample, <span class="at">labels =</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>)),</span>
+<span id="cb23-3"><a href="is-what-you-see-really-there.html#cb23-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">.sample2 =</span> <span class="fu">factor</span>(.sample2, <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>))</span>
+<span id="cb23-4"><a href="is-what-you-see-really-there.html#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="is-what-you-see-really-there.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup3, <span class="fu">aes</span>(block, yield)) <span class="sc">+</span></span>
+<span id="cb23-6"><a href="is-what-you-see-really-there.html#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>() <span class="sc">+</span></span>
+<span id="cb23-7"><a href="is-what-you-see-really-there.html#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample2, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb23-8"><a href="is-what-you-see-really-there.html#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb23-9"><a href="is-what-you-see-really-there.html#cb23-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/peanut-lineup3-1.png" width="1248" /></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="is-what-you-see-really-there.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lineup3 %&gt;% filter(.sample==9)</span></span>
+<span id="cb24-2"><a href="is-what-you-see-really-there.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># san</span></span></code></pre></div>
+<ul>
+<li>For the scatter plot <span contenteditable="true">   <span class="math inline">\(x_2\)</span>   </span> out of <span contenteditable="true">   <span class="math inline">\(n_2\)</span>   </span> of you chose the data plot.</li>
+<li>So the visual inference p-value is <span class="math inline">\(P(X_2 \geq x_2)\)</span> where <span class="math inline">\(X_2 \sim B(n_2, 1/10)\)</span>.</li>
+<li>For the jittered plot <span contenteditable="true">   <span class="math inline">\(x_3\)</span>   </span> out of <span contenteditable="true">   <span class="math inline">\(n_3\)</span>   </span> of you chose the data plot.</li>
+<li>So the visual inference p-value is <span class="math inline">\(P(X_3 \geq x_3)\)</span> where <span class="math inline">\(X_3 \sim B(n_3, 1/10)\)</span>.
+So the power difference is <span class="math inline">\(100\times \left|\dfrac{x_2}{n_2} - \dfrac{x_3}{n_3}\right|\%\)</span>.</li>
+</ul>
+<p>What if we change the null generating method so that instead we permute the block labels?</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="is-what-you-see-really-there.html#cb25-1" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_permute</span>(<span class="st">&quot;block&quot;</span>)</span>
+<span id="cb25-2"><a href="is-what-you-see-really-there.html#cb25-2" aria-hidden="true" tabindex="-1"></a>lineup_v2 <span class="ot">&lt;-</span> <span class="fu">lineup</span>(method, <span class="at">true =</span> bancroft.peanut.uniformity, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 u4&quot;)</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="is-what-you-see-really-there.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_v2, <span class="fu">aes</span>(block, yield)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="is-what-you-see-really-there.html#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb27-3"><a href="is-what-you-see-really-there.html#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb27-4"><a href="is-what-you-see-really-there.html#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb27-5"><a href="is-what-you-see-really-there.html#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/peanut-lineup-v2-1.png" width="1248" /></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="is-what-you-see-really-there.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 u4&quot;)</span></span>
+<span id="cb28-2"><a href="is-what-you-see-really-there.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co"># nana</span></span></code></pre></div>
+</div>
+<div id="statistical-significance-and-practical-significance" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Statistical significance and practical significance</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="is-what-you-see-really-there.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb29-2"><a href="is-what-you-see-really-there.html#cb29-2" aria-hidden="true" tabindex="-1"></a>sim <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">id =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10000000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb29-3"><a href="is-what-you-see-really-there.html#cb29-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">mutate</span>(<span class="at">y =</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>), <span class="fu">rnorm</span>(<span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>, <span class="fl">0.001</span>)),</span>
+<span id="cb29-4"><a href="is-what-you-see-really-there.html#cb29-4" aria-hidden="true" tabindex="-1"></a>                <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">&quot;A&quot;</span>, <span class="st">&quot;B&quot;</span>), <span class="at">each =</span> <span class="fu">n</span>()<span class="sc">/</span><span class="dv">2</span>))</span>
+<span id="cb29-5"><a href="is-what-you-see-really-there.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(sim, <span class="fu">mean</span>(y[group<span class="sc">==</span><span class="st">&quot;A&quot;</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[group<span class="sc">==</span><span class="st">&quot;B&quot;</span>]))</span></code></pre></div>
+<pre><code>## [1] -0.001443504</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="is-what-you-see-really-there.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(sim, <span class="fu">t.test</span>(y[group<span class="sc">==</span><span class="st">&quot;A&quot;</span>], y[group<span class="sc">==</span><span class="st">&quot;B&quot;</span>]))</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  y[group == &quot;A&quot;] and y[group == &quot;B&quot;]
+## t = -2.2819, df = 1e+07, p-value = 0.0225
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.0026833804 -0.0002036271
+## sample estimates:
+##    mean of x    mean of y 
+## 0.0001819234 0.0016254271</code></pre>
+<ul>
+<li>Notice here the real difference in the two groups is small (0.001) here.</li>
+<li>The two groups have a slightly different but the true difference is small, you might not care.</li>
+<li>The <strong>practical significance</strong> takes into account the effect size.</li>
+</ul>
+</div>
+<div id="statistical-significance-of-the-data-plot" class="section level2" number="10.8">
+<h2><span class="header-section-number">10.8</span> Statistical significance of the data plot</h2>
+<ul>
+<li>Unlike conventional hypothesis testing, visual inference p-value depends on:
+<ul>
+<li>the visual test statistic <span class="math inline">\(V\)</span>,</li>
+<li>the individuals’ visual perceptions,</li>
+<li>the number of <span class="math inline">\(K\)</span> observers,</li>
+<li>the size <span class="math inline">\(m\)</span> of the lineup, and</li>
+<li>the effect size.</li>
+</ul></li>
+<li>The concept of conventional p-value is difficult for those that are not trained in statistics.</li>
+<li>The lineup is easier to understand to both novices and experts.</li>
+</ul>
+</div>
+<div id="lineup-of-small-effect-difference" class="section level2" number="10.9">
+<h2><span class="header-section-number">10.9</span> Lineup of small effect difference</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="is-what-you-see-really-there.html#cb33-1" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_permute</span>(<span class="st">&quot;group&quot;</span>)</span>
+<span id="cb33-2"><a href="is-what-you-see-really-there.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co"># this takes too long with my computer</span></span>
+<span id="cb33-3"><a href="is-what-you-see-really-there.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let&#39;s just subset the data</span></span>
+<span id="cb33-4"><a href="is-what-you-see-really-there.html#cb33-4" aria-hidden="true" tabindex="-1"></a>lineup_v3 <span class="ot">&lt;-</span> <span class="fu">lineup</span>(method, <span class="at">true =</span> <span class="fu">sample_n</span>(sim, <span class="dv">10000</span>), <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 7Z&quot;)</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="is-what-you-see-really-there.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(lineup_v3, <span class="fu">aes</span>(group, y)) <span class="sc">+</span></span>
+<span id="cb35-2"><a href="is-what-you-see-really-there.html#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb35-3"><a href="is-what-you-see-really-there.html#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb35-4"><a href="is-what-you-see-really-there.html#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb35-5"><a href="is-what-you-see-really-there.html#cb35-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<p><img src="eda-book_files/figure-html/sim-lineup-1.png" width="1248" /></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="is-what-you-see-really-there.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 7Z&quot;)</span></span>
+<span id="cb36-2"><a href="is-what-you-see-really-there.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># jyuu</span></span></code></pre></div>
+<p>For computational reasons, only 10,000 data points for each plot are used above.</p>
+</div>
+<div id="some-considerations-in-visual-inference" class="section level2" number="10.10">
+<h2><span class="header-section-number">10.10</span> Some considerations in visual inference</h2>
+<ul>
+<li>In practice you don’t want to bias the judgement of the human viewers so for a proper visual inference:
+<ul>
+<li>you should <em>not</em> show the data plot before the lineup</li>
+<li>you should <em>not</em> give the context of the data</li>
+<li>you should remove labels in plots</li>
+</ul></li>
+<li>You can crowd source these by paying for services like:
+<ul>
+<li><a href="https://www.mturk.com/">Amazon Mechanical Turk</a>,</li>
+<li><a href="https://appen.com/figure-eight-is-now-appen/">Appen (formerly Figure Eight)</a> and</li>
+<li><a href="https://www.labvanced.com/">LABVANCED</a>.</li>
+</ul></li>
+<li>If the data is for research purposes, then you may need ethics approval for publication.</li>
+</ul>
+</div>
+<div id="visual-inference-with-the-nullabor" class="section level2" number="10.11">
+<h2><span class="header-section-number">10.11</span> Visual inference with the <code>nullabor</code> 📦</h2>
+<div id="nullabor-ggplot2" class="section level4" number="10.11.0.1">
+<h4><span class="header-section-number">10.11.0.1</span> <code>nullabor</code> + <code>ggplot2</code></h4>
+<ul>
+<li>You can construct the null data “by hand” as you have done for Exercise 4 (d) in tutorial 9.</li>
+<li>You will then need to create null plots and then randomly place the data plot to present the lineup.</li>
+<li>You’ll need to know which one is the data plot so you can tell if viewer’s chose the lineup or not.</li>
+<li>The <code>nullabor</code> package makes it easy to create the data for the lineup and you can use <code>ggplot2</code> to construct the lineup.</li>
+</ul>
+<p><img src="eda-book_files/figure-html/ex1-plot-1.png" width="672" /></p>
+<ul>
+<li>Experiment was conducted to investigate the effect of sulfur on controlling scab disease in potatoes.</li>
+<li>There were seven treatments in total: control plus spring and fall application of 300, 600 or 1200 lbs/acres of sulfur.</li>
+<li>Employs a completely randomised design with 8 replications for control and 4 replications for other treatments.</li>
+</ul>
+</div>
+</div>
+<div id="potato-scab-infection" class="section level2" number="10.12">
+<h2><span class="header-section-number">10.12</span> Potato scab infection</h2>
+<ul>
+<li>We are testing <span class="math inline">\(H_0: \mu_1 = \mu_2 = ... = \mu_7\)</span> vs. <span class="math inline">\(H_1:\)</span> at least one mean is different to others.</li>
+<li>Here we don’t have to many observation per treatment so we can use a dotplot.</li>
+<li>For the method to generate null, we consider permuting the treatment labels.</li>
+</ul>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="is-what-you-see-really-there.html#cb37-1" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_permute</span>(<span class="st">&quot;trt&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Then we generate the null data, also embedding the actual data in a random position. .font_small[Make sure to <code>set.seed</code> to get the same random instance.]</li>
+</ul>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="is-what-you-see-really-there.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb38-2"><a href="is-what-you-see-really-there.html#cb38-2" aria-hidden="true" tabindex="-1"></a>line_df <span class="ot">&lt;-</span> <span class="fu">lineup</span>(method, <span class="at">true =</span> cochran.crd, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 ua&quot;)</code></pre>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="is-what-you-see-really-there.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(line_df)</span></code></pre></div>
+<pre><code>## Rows: 320
+## Columns: 5
+## $ inf     &lt;int&gt; 9, 12, 18, 10, 24, 17, 30, 16, 10, 7, 4, 10, 21, 24, 29, 12,…
+## $ trt     &lt;fct&gt; S3, F12, S3, F3, O, F3, F12, O, S12, F6, O, F6, S3, F3, O, F…
+## $ row     &lt;int&gt; 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, …
+## $ col     &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, 5, 6, 7, 8, 1, 2, 3, 4, …
+## $ .sample &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …</code></pre>
+<ul>
+<li>The <code>.sample</code> variable has information of which sample it is.</li>
+<li>One of the <code>.sample</code> number belongs to the real data.</li>
+</ul>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="is-what-you-see-really-there.html#cb42-1" aria-hidden="true" tabindex="-1"></a>line_df <span class="sc">%&gt;%</span> </span>
+<span id="cb42-2"><a href="is-what-you-see-really-there.html#cb42-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(trt, inf)) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="is-what-you-see-really-there.html#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">3</span>, <span class="at">alpha =</span> <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb42-4"><a href="is-what-you-see-really-there.html#cb42-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>.sample, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb42-5"><a href="is-what-you-see-really-there.html#cb42-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text =</span> <span class="fu">element_blank</span>(), <span class="co"># remove data context</span></span>
+<span id="cb42-6"><a href="is-what-you-see-really-there.html#cb42-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.title =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="is-what-you-see-really-there.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">decrypt</span>(<span class="st">&quot;bhMq KJPJ 62 sSQ6P6S2 ua&quot;</span>)</span></code></pre></div>
+<pre><code>## [1] &quot;True data in position  5&quot;</code></pre>
+</div>
+<div id="black-cherry-trees" class="section level2" number="10.13">
+<h2><span class="header-section-number">10.13</span> Black Cherry Trees</h2>
+<p><img src="eda-book_files/figure-html/ex2-plot-1.png" width="672" /></p>
+<ul>
+<li>Data measures the diameter, height and volume of timber in 31 felled black cherry trees.</li>
+<li>We fit the model</li>
+</ul>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="is-what-you-see-really-there.html#cb45-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Girth) <span class="sc">+</span> <span class="fu">log</span>(Height),</span>
+<span id="cb45-2"><a href="is-what-you-see-really-there.html#cb45-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> trees)</span>
+<span id="cb45-3"><a href="is-what-you-see-really-there.html#cb45-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb45-4"><a href="is-what-you-see-really-there.html#cb45-4" aria-hidden="true" tabindex="-1"></a>fit_df <span class="ot">&lt;-</span> trees <span class="sc">%&gt;%</span> </span>
+<span id="cb45-5"><a href="is-what-you-see-really-there.html#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># below are needed for lineup</span></span>
+<span id="cb45-6"><a href="is-what-you-see-really-there.html#cb45-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">.resid =</span> <span class="fu">residuals</span>(fit),</span>
+<span id="cb45-7"><a href="is-what-you-see-really-there.html#cb45-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">.fitted =</span> <span class="fu">fitted</span>(fit))</span></code></pre></div>
+<ul>
+<li>We are testing <span class="math inline">\(H_0:\)</span> errors are <span class="math inline">\(NID(0, \sigma^2)\)</span> vs. <span class="math inline">\(H_1:\)</span> errors are not <span class="math inline">\(NID(0, \sigma^2)\)</span>.</li>
+<li>We will use the residual plot as the visual statistic.</li>
+<li>For the method to generate null, we generate residuals from random draws from <span class="math inline">\(N(0, \hat{\sigma}^2)\)</span>.</li>
+</ul>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="is-what-you-see-really-there.html#cb46-1" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Girth) <span class="sc">+</span> <span class="fu">log</span>(Height),</span>
+<span id="cb46-2"><a href="is-what-you-see-really-there.html#cb46-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method =</span> <span class="st">&quot;pboot&quot;</span>)</span></code></pre></div>
+<ul>
+<li>Then we generate the lineup data.</li>
+</ul>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="is-what-you-see-really-there.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2020</span>)</span>
+<span id="cb47-2"><a href="is-what-you-see-really-there.html#cb47-2" aria-hidden="true" tabindex="-1"></a>line_df <span class="ot">&lt;-</span> <span class="fu">lineup</span>(method, <span class="at">true =</span> fit_df, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 uT&quot;)</code></pre>
+<p><img src="eda-book_files/figure-html/ex2-lineplot-1.png" width="1344" /></p>
+<ul>
+<li>We can have:
+<ul>
+<li><code>method = "pboot"</code>,</li>
+<li><code>method = "boot"</code> or</li>
+<li><code>method = "rotate"</code><br />
+for different (and valid) methods to generate null data when fitting a linear model.</li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="is-what-you-see-really-there.html#cb49-1" aria-hidden="true" tabindex="-1"></a>method <span class="ot">&lt;-</span> <span class="fu">null_lm</span>(<span class="fu">log</span>(Volume) <span class="sc">~</span> <span class="fu">log</span>(Girth) <span class="sc">+</span> <span class="fu">log</span>(Height),</span>
+<span id="cb49-2"><a href="is-what-you-see-really-there.html#cb49-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">method =</span> <span class="st">&quot;boot&quot;</span>) <span class="co">#&lt;&lt;</span></span></code></pre></div>
+<ul>
+<li>We can also consider using a different visual statisitc, e.g. QQ-plot to assess normality.</li>
+</ul>
+</div>
+<div id="temperatures-of-stars" class="section level2" number="10.14">
+<h2><span class="header-section-number">10.14</span> Temperatures of stars</h2>
+<ul>
+<li>The data consists of the surface temperature in Kelvin degrees of 96 stars.</li>
+<li>We want to check if the surface temperature has an exponential distribution.</li>
+<li>We use histogram with 30 bins as our visual test statistic.</li>
+<li>For the null data, we will generate from an exponential distribution.</li>
+</ul>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="is-what-you-see-really-there.html#cb50-1" aria-hidden="true" tabindex="-1"></a>line_df <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_dist</span>(<span class="st">&quot;temp&quot;</span>, <span class="st">&quot;exp&quot;</span>, <span class="fu">list</span>(<span class="at">rate =</span> <span class="dv">1</span><span class="sc">/</span><span class="fu">mean</span>(dslabs<span class="sc">::</span>stars<span class="sc">$</span>temp))),</span>
+<span id="cb50-2"><a href="is-what-you-see-really-there.html#cb50-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">true =</span> dslabs<span class="sc">::</span>stars,</span>
+<span id="cb50-3"><a href="is-what-you-see-really-there.html#cb50-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 ug&quot;)</code></pre>
+<ul>
+<li>Note: the rate in an exponential distribution can be estimated from the inverse of the sample mean.</li>
+</ul>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="eda-book_files/figure-html/stars-lineup-1.png" width="1344" /></p>
+</div>
+<div id="foreign-exchange-rate" class="section level2" number="10.15">
+<h2><span class="header-section-number">10.15</span> Foreign exchange rate</h2>
+<ul>
+<li>The data contains the daily exchange rate of 1 AUD to 1 USD between 9th Jan 2018 to 21st Feb 2018.</li>
+<li>Does the rate follow an ARIMA model?</li>
+</ul>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="is-what-you-see-really-there.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(aud, <span class="at">package =</span> <span class="st">&quot;nullabor&quot;</span>)</span>
+<span id="cb53-2"><a href="is-what-you-see-really-there.html#cb53-2" aria-hidden="true" tabindex="-1"></a>line_df <span class="ot">&lt;-</span> <span class="fu">lineup</span>(<span class="fu">null_ts</span>(<span class="st">&quot;rate&quot;</span>, forecast<span class="sc">::</span>auto.arima), <span class="at">true =</span> aud, <span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## decrypt(&quot;bhMq KJPJ 62 sSQ6P6S2 um&quot;)</code></pre>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="is-what-you-see-really-there.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(line_df, <span class="fu">aes</span>(date, rate)) <span class="sc">+</span></span>
+<span id="cb56-2"><a href="is-what-you-see-really-there.html#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb56-3"><a href="is-what-you-see-really-there.html#cb56-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> .sample, <span class="at">scales =</span> <span class="st">&quot;free_y&quot;</span>, <span class="at">nrow =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb56-4"><a href="is-what-you-see-really-there.html#cb56-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb56-5"><a href="is-what-you-see-really-there.html#cb56-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">axis.text =</span> <span class="fu">element_blank</span>())</span></code></pre></div>
 
+</div>
 </div>
             </section>
 

@@ -1,3 +1,694 @@
 # Sculpting data using models
 
-checking assumptions, co-dependency and performing diagnostics
+
+## Parametric regression
+
+* **Parametric** means that the researcher or analyst assumes in advance that the data fits some type of distribution (e.g. the normal distribution). E.g. one may assume that
+$$\color{blue}{y_i} = \color{red}{\beta_0} + \color{red}{\beta_1} \color{blue}{x_i} + \color{red}{\beta_2} \color{blue}{x_i^2} + \epsilon_i,$$
+where $\epsilon_i \sim N(0, \color{red}{\sigma^2})$.
+
+  * $\color{red}{red} = \text{estimated}$
+  * $\color{blue}{blue} = \text{observed}$
+* Because some type of distribution is assumed in advance, parametric fitting can lead to fitting a smooth curve that misrepresents the data.
+
+## Example
+
+```{r quad-good-fit, fig.height = 3, fig.width = 6}
+set.seed(1)
+tibble(id = 1:200) %>% 
+  mutate(x = runif(n(), -10, 10),
+         y = x^2 + rnorm(n(), 0, 5)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE,
+              formula = y ~ poly(x, 2),
+              size = 2, color = "red")
+```
+
+Still assuming a quadratic fit:
+
+```{r quad-bad-fit, fig.height = 3, fig.width = 6}
+tibble(id = 1:200) %>% 
+  mutate(x = runif(n(), -10, 10),
+         y = x^3 + rnorm(n(), 0, 5)) %>% 
+  ggplot(aes(x, y)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE,
+              formula = y ~ poly(x, 2),
+              size = 2, color = "red")
+```
+
+
+## Simulating data from parametric models
+
+* If a model is say:
+$$y = x^2 + e, \qquad e \sim N(0, 2^2)$$
+we can simulate say $200$ observations from this model for $x\in(-10,10)$ by code as shown on the right. 
+```{r sim-quad, include = FALSE}
+set.seed(1)
+df <- tibble(id = 1:200) %>% 
+        mutate(x = runif(n(), -10, 10),
+               y = x^2 + rnorm(n(), 0, 2))
+df
+```
+```{r sim-plot, fig.height = 3, fig.width = 4}
+ggplot(df, aes(x, y)) +
+  geom_point()
+```
+
+## Logistic regression
+
+* Not all parametric models assume Normally distributed errors.
+* Logistic regression models the relationship between a set of explanatory variables $(x_{i1}, ..., x_{ik})$ and a set of .monash-blue[**binary outcomes**] $Y_i$ for $i = 1, ..., r$.
+* We assume that $Y_i \sim B(n_i, p_i)$ and the model is given by 
+
+$$\text{logit}(p_i) = \text{ln}\left(\dfrac{p_i}{1 - p_i}\right) = \beta_0 + \beta_1x_{i1} + ... + \beta_k x_{ik}.$$
+* The function $f(p) = \text{ln}\left(\dfrac{p}{1 - p}\right)$ is called the .monash-blue[**logit**] function, continuous with range $(-\infty, \infty)$, and if $p$ is the probablity of an event, $f(p)$ is the log of the odds.
+
+## Menarche
+
+In 1965, the average age of 25 homogeneous groups of girls was
+recorded along with the number of girls who have reached
+menarche out of the total in each group.
+
+```{r menarche-data, include = FALSE}
+data(menarche, package = "MASS")
+skimr::skim(menarche)
+```
+```{r menarche-plot, fig.height = 4, fig.width = 5}
+ggplot(menarche, aes(Age, Menarche/Total)) + 
+  geom_point() +
+  geom_smooth(method = "glm",
+              formula = y ~ x,
+              se = FALSE,
+              method.args = list(family = "binomial"))
+```
+
+## Simulating data from logistic regression 
+
+```{r logit, echo = TRUE}
+fit1 <- glm(Menarche/Total ~ Age, 
+            family = "binomial", 
+            data = menarche)
+(beta <- coef(fit1))
+```
+
+* The fitted regression model is given as:
+$$\text{logit}(\hat{p}_i) = \hat{\beta}_0  + \hat{\beta}_1 x_{i1}.$$
+* Taking the exponential of both sides and rearranging we get
+$$\hat{p}_i = \dfrac{1}{1 + e^{-(\hat{\beta}_0  + \hat{\beta}_1 x_{i1})}}.$$
+
+```{r sim-logistic, echo = TRUE}
+menarche %>% 
+  rowwise() %>% # simulating from first principles
+  mutate(
+    phat = 1/(1 + exp(-(beta[1] + beta[2] * Age))),
+    simMenarche = rbinom(1, Total, phat)) #<<
+```
+
+ If simulating data from a model object, `simulate` function usually can do this for you!
+
+## Diagnostics for logistic regression models
+
+* One diagnostic is to compare the observed and expected proportions under the logistic regression fit.
+
+```{r fit-logistic, echo = TRUE}
+df1 <- menarche %>% 
+  mutate(
+    pexp = 1/(1 + exp(-(beta[1] + beta[2] * Age))),
+    pobs = Menarche / Total)
+```
+```{r plot-logistic, fig.height = 4, fig.width = 4}
+ggplot(df1, aes(pobs, pexp)) +
+  geom_point() + 
+  geom_abline(slope = 1, intercept = 0,
+              color = "red") +
+  labs(x = "Observed proportion",
+       y = "Expected proportion")
+```
+
+* Goodness-of-fit type test is used commonly to assess the fit as well.
+
+* E.g. Hosmer–Lemeshow test, where test statistic is given as 
+
+
+$$H = \sum_{i = 1}^r \left(\dfrac{(O_{1i} - E_{1g})^2}{E_{1i}} + \dfrac{(O_{0i} - E_{0g})^2}{E_{0i}}\right)$$
+where $O_{1i}$ $(E_{1i})$ and $O_{0i}$ $(E_{0i})$ are observed (expected) frequencies for successful and non-successful events for group $i$, respectively.
+
+```{r HLtest, echo = TRUE}
+vcdExtra::HLtest(fit1)
+```
+
+## Diagnostics for linear models
+
+Assumptions for linear models
+
+For $i \in \{1, ..., n\}$,
+
+$$Y_i = \beta_0 + \beta_1x_{i1} + ... + \beta_{k}x_{ik} + \epsilon_i,$$
+where $\epsilon_i \sim NID(0, \sigma^2)$ or in matrix format,
+
+$$\boldsymbol{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}, \quad \boldsymbol{\epsilon} \sim N(\boldsymbol{0}, \sigma^2 \mathbf{I}_n)$$
+
+* $\boldsymbol{Y} = (Y_1, ..., Y_n)^\top$,
+* $\boldsymbol{\beta} = (\beta_0, ..., \beta_k)^\top$,
+* $\boldsymbol{\epsilon} = (\epsilon_1, ..., \epsilon_n)^\top$, and
+* $\mathbf{X} = \begin{bmatrix}\boldsymbol{1}_n & \boldsymbol{x}_1 & ... & \boldsymbol{x}_k \end{bmatrix}$, where $\boldsymbol{x}_j =(x_{1j}, ..., x_{nj})^\top$ for $j \in \{1, ..., k\}$
+
+For $i \in \{1, ..., n\}$,
+
+$$Y_i = \beta_0 + \beta_1x_{i1} + ... + \beta_{k}x_{ik} + \epsilon_i,$$
+where $\color{red}{\epsilon_i \sim NID(0, \sigma^2)}$ or in matrix format,
+
+$$\boldsymbol{Y} = \mathbf{X}\boldsymbol{\beta} + \boldsymbol{\epsilon}, \quad \color{red}{\boldsymbol{\epsilon} \sim N(\boldsymbol{0}, \sigma^2 \mathbf{I}_n)}$$
+
+* $\boldsymbol{Y} = (Y_1, ..., Y_n)^\top$,
+* $\boldsymbol{\beta} = (\beta_0, ..., \beta_k)^\top$, 
+* $\boldsymbol{\epsilon} = (\epsilon_1, ..., \epsilon_n)^\top$, and 
+* $\mathbf{X} = \begin{bmatrix}\boldsymbol{1}_n & \boldsymbol{x}_1 & ... & \boldsymbol{x}_k \end{bmatrix}$, where 
+* $\boldsymbol{x}_j =(x_{1j}, ..., x_{nj})^\top$ for $j \in \{1, ..., k\}$
+
+This means that we assume
+
+1. $E(\epsilon_i) = 0$ for $i \in \{1, ..., n\}.$
+2. $\epsilon_1, ..., \epsilon_n$ are independent.
+3. $Var(\epsilon_i) = \sigma^2$ for $i \in \{1, ..., n\}$ (i.e. homogeneity).
+4. $\epsilon_1, ..., \epsilon_n$ are normally distributed.
+
+So how do we check it?
+
+Plot $Y_i$ vs $x_i$ to see if there is $\approx$ a linear relationship between $Y$ and $x$.
+
+```{r, echo=F, fig.height=3, fig.width=3, fig.align="center"}
+dat <- read_csv(here::here("data/sleep.csv"))
+dat %>%
+  ggplot(aes(log(BodyWt), log(BrainWt))) + geom_point() +
+  geom_smooth(method="lm", se=F) +
+  labs(x="log(Body) (kg)", y="log(Brain) (g)") 
+```
+
+A boxplot of the residuals $R_i$ to check for symmetry.
+```{r, echo=F, fig.height=2.5, fig.width=2.5, fig.align="center", dev='svg', dev.args=list(bg = "transparent")}
+lm(log(BrainWt) ~ log(BodyWt), data=dat) %>%
+  augment() %>% 
+  ggplot(aes(1,.std.resid)) + 
+  geom_boxplot() + 
+  labs(x="", y="Residual") + 
+  theme(axis.text.x = element_blank())
+```
+
+To check the homoscedasticity assumption, plot $R_i$ vs $x_i$. There should be no obvious patterns.
+
+```{r, echo=F, fig.height=2.2, fig.width=2.2, fig.align="center", dev='svg', dev.args=list(bg = "transparent")}
+lm(log(BrainWt) ~ log(BodyWt), data=dat) %>%
+  augment() %>% 
+  ggplot(aes(`log(BodyWt)`, .std.resid)) + 
+  geom_point() + 
+  labs(x="log(Body) (kg)", y="Residual") +
+  geom_hline(yintercept=0, color="blue") 
+```
+A normal Q-Q plot, i.e. a plot of the ordered residuals vs $\Phi^{-1}(\frac{i}{n+1})$.
+
+```{r, echo=F, fig.height=2.2, fig.width=2.2, fig.align="center", dev='svg', dev.args=list(bg = "transparent")}
+lm(log(BrainWt) ~ log(BodyWt), data=dat) %>%
+  augment() %>% 
+  ggplot(aes(sample=.std.resid)) + 
+  stat_qq() + stat_qq_line(color="blue")
+```
+
+## Assessing (A1) $E(\epsilon_i) = 0$ for $i=1,\ldots,n$
+
+* It is a property of the least squares method that $$\sum_{i=1}^n R_i = 0,\quad
+\text{so}\quad \bar R_i  = 0$$ for $R_i = Y_i - \hat{Y}_i$, hence (A1)  will always appear valid "overall". 
+* Trend in residual versus fitted values or covariate can indicate "local"
+failure of (A1). 
+* What do you conclude from the following plots?
+
+```{r sim-plots, echo=F, fig.width=12, fig.height=3, dev='svg', dev.args=list(bg = "transparent")}
+set.seed(2019)
+n <- 100
+x <- seq(0, 1, length.out = n)
+y1 <- x + rnorm(n) / 3                 #  Linear
+y2 <- 3 * (x - 0.5) ^ 2 + 
+  c(rnorm(n / 2)/3, rnorm(n / 2)/6)  #  Quadratic
+y3 <- - 0.25 * sin(20 * x - 0.2) + x + rnorm(n) / 3    #  Non-linear
+g1 <- lm(y1 ~ x) %>% augment() %>%
+  ggplot(aes(.fitted, .resid)) + 
+  geom_point() + 
+  labs(x="Fitted Values", y="Residual", tag="(1)") +
+  geom_hline(yintercept=0, color="blue") 
+g2 <- lm(y2 ~ x) %>% augment() %>%
+  ggplot(aes(.fitted, .resid)) + 
+  geom_point() + 
+  labs(x="Fitted Values", y="Residual", tag="(2)") +
+  geom_hline(yintercept=0, color="blue") 
+g3 <- lm(y3 ~ x) %>% augment() %>%
+  ggplot(aes(.fitted, .resid)) + 
+  geom_point() +
+  labs(x="Fitted Values", y="Residual", tag="(3)") +
+  geom_hline(yintercept=0, color="blue") 
+
+g1 + g2 + g3
+```
+
+## Assessing (A2)-(A3) 
+
+(A2) $\epsilon_1, \ldots ,\epsilon_n$ are independent
+
+* If (A2) is correct, then residuals should appear randomly scattered
+about zero if plotted against fitted values or covariate.
+* Long sequences of positive residuals followed by sequences of negative residuals in $R_i$ vs $x_i$ plot suggests that the error terms are not independent.
+
+(A3) $Var(\epsilon_i) = \sigma^2$ for $i=1,\ldots,n$
+
+* If (A3) holds then the spread of the residuals should be roughly the same across the fitted values or covariate. 
+
+Q-Q Plots
+
+* The function `qqnorm(x)` produces a Q-Q plot of the ordered vector `x` against the quantiles of the normal distribution.
+* The $n$ chosen normal quantiles $\Phi^{-1}(\frac{i}{n+1})$ are easy to calculate but more sophisticated ways exist:
+   * $\frac{i}{n+1} \mapsto \frac{i-3/8}{n+1/4}$, default in `qqnorm`. 
+   * $\frac{i}{n+1} \mapsto \frac{i-1/3}{n+1/3}$, recommended by Hyndman and Fan (1996).
+
+### In R
+
+```{r, echo = T, eval = F}
+fit <- lm(y ~ x)
+```
+
+
+By "hand"
+```{r, eval=F, echo = T}
+plot(qnorm((1:n) / (n + 1)), sort(resid(fit)))
+```
+
+By `base`
+
+```{r, eval=F, echo = T}
+qqnorm(resid(fit))
+qqline(resid(fit))
+```
+
+By `ggplot2`
+
+```{r, eval=F, echo = T}
+data.frame(residual = resid(fit)) %>% 
+  ggplot(aes(sample = residual)) + 
+  stat_qq() + stat_qq_line(color="blue")
+```
+
+##  Examining the simulated data further
+
+```{r, echo=F, fig.height=4, fig.width=8, fig.align="center"}
+dat3sim <- data.frame(y=c(y1, y2, y3), x=rep(x, times=3), Simulation=rep(1:3, each=length(x)))
+dat3sim %>%
+  ggplot(aes(x,y)) + geom_point() +
+  geom_smooth(method="lm", se=F) + facet_grid( . ~ Simulation) +
+  theme(axis.text = element_blank())
+```
+
+```{r, echo=F, fig.height=4, fig.width=8, fig.align="center",y2dev='svg', dev.args=list(bg = "transparent")}
+M1 <- lm(y1 ~ x); M2 <- lm(y2 ~ x); M3 <- lm(y3 ~ x)
+data.frame(residual=c(resid(M1), resid(M2), resid(M3)),
+           Simulation=rep(1:3, each=length(x))) %>%
+  ggplot(aes(x=factor(Simulation), y=residual)) + geom_boxplot() + labs(x="", y="Residual")
+```
+
+
+```{r, echo=F, fig.height=4, fig.width=8, fig.align="center",y2dev='svg', dev.args=list(bg = "transparent")}
+data.frame(residual=c(resid(M1), resid(M2), resid(M3)),
+           Simulation=rep(1:3, each=length(x))) %>%
+  ggplot(aes(sample=residual)) + stat_qq() + 
+  stat_qq_line(color="blue") +
+  facet_grid( . ~ Simulation) 
+```
+Simulation scheme
+```{r, echo = TRUE}
+n <- 100
+x <- seq(0, 1, length.out = n)
+y1 <- x + rnorm(n) / 3                  #  Linear
+y2 <- 3 * (x - 0.5) ^ 2 + 
+  c(rnorm(n / 2)/3, rnorm(n / 2)/6)     #  Quadratic
+y3 <- -0.25 * sin(20 * x - 0.2) + 
+  x + rnorm(n) / 3                      #  Non-linear
+
+M1 <- lm(y1 ~ x); M2 <- lm(y2 ~ x); M3 <- lm(y3 ~ x)
+
+```
+
+## Revisiting outliers
+
+* We defined [outliers in week 4](https://eda.numbat.space/lectures/lecture-04a#9) as "observations that are significantly different from the majority" when studying univariate variables.
+* There is actually no hard and fast definition. <br><br>
+
+We can also define an outlier as a data point that emanates from a different model than do the rest of the data.
+
+* Notice that this makes this definition *dependent on the model* in question.
+
+## Pop Quiz
+
+Would you consider the yellow points below as outliers?
+
+```{r, echo=F, fig.height=5, fig.width=10, fig.align="center"}
+n <- 20
+set.seed(1)
+shifty <- rep(0, n); shifty[5] <- 10
+g1 <- data.frame(x=seq(1, 20, 1)) %>% 
+    mutate(y=x + rnorm(n, 0, 1)) %>% 
+  ggplot(aes(x, y + shifty, color=factor(shifty))) + geom_point(size=6) + 
+  labs(x="x", y="y", tag="(A)") +
+  guides(color=F) +
+  scale_color_manual(values = c("black", "yellow"))
+
+n <- 20
+set.seed(2)
+g2 <- data.frame(x=c(seq(1, 19, 1), 30)) %>% 
+    mutate(y=x + rnorm(n, 0, 1)) %>% 
+  ggplot(aes(x, y, color=factor(c(rep(0,19), 1)))) + geom_point(size=6) + 
+  labs(x="x", y="y", tag="(B)") +
+  guides(color=F)+
+  scale_color_manual(values = c("black", "yellow"))
+
+g1 + g2 
+```
+
+## Outlying values 
+
+* As with simple linear regression the fitted model should not be used to predict $Y$ values for $\boldsymbol{x}$ combinations that are well away from the set of observed $\boldsymbol{x}_i$ values. 
+* This is not always easy to detect!
+
+```{r, fig.height = 4}
+tibble(id = 1:20) %>% 
+  mutate(x1 = runif(n()),
+         x2 = 1 - 4 * x1 + x1^2 + rnorm(n(), 0, 0.1)) %>% 
+  add_row(x1 = 0.6, x2 = 0.6) %>% 
+  ggplot(aes(x1, x2)) +
+  geom_point(size = 4) + 
+  annotate("text", x = 0.55, y = 0.55, label = "P", 
+           size = 10)
+```
+
+* Here, a point labelled P has $x_1$ and $x_2$ coordinates well within their respective ranges but P is not close to the observed sample values in 2-dimensional space. 
+
+* In higher dimensions this type of behaviour is even harder to detect but we need to be on guard against extrapolating to extreme values. 
+
+## Leverage 
+
+* The matrix $\mathbf{H} = \mathbf{X}(\mathbf{X}^\top\mathbf{X})^{-1}\mathbf{X}^\top$ is referred to as the .monash-blue[**hat matrix**].
+* The $i$-th diagonal element of $\mathbf{H}$, $h_{ii}$, is called the .monash-blue[**leverage**] of the $i$-th observation.
+* Leverages are always between zero and one,
+$$0 \leq h_{ii} \leq 1.$$
+* Notice that leverages are not dependent on the response!
+* Points with high leverage can exert a lot of influence on the parameter estimates
+
+## Studentized residuals
+
+In order to obtain residuals with equal variance, many texts recommend using the .monash-blue[**studentised residuals**]
+$$R_i^* = \dfrac{R_i} {\hat{\sigma} \sqrt{1 - h_{ii}}}$$
+for diagnostic checks.
+
+## Cook's distance
+
+* Cook's distance, $D$, is another measure of influence: 
+\begin{eqnarray*}
+D_i &=& \dfrac{(\hat{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}_{[-i]})^\top Var(\hat{\boldsymbol{\beta}})^{-1}(\hat{\boldsymbol{\beta}}- \hat{\boldsymbol{\beta}}_{[-i]})}{p}\\
+&=&\frac{R_i^2 h_{ii}}{(1-h_{ii})^2p\hat\sigma^2},
+\end{eqnarray*}
+where $p$ is the number of elements in $\boldsymbol{\beta}$, $\hat{\boldsymbol{\beta}}_{[-i]}$ and $\hat Y_{j[-i]}$ are least squares estimates and the fitted value obtained by fitting the model ignoring the $i$-th data point $(\boldsymbol{x}_i,Y_i)$, respectively.
+
+## Social media marketing
+
+Data collected from advertising experiment to study the impact of three advertising medias (youtube, facebook and newspaper) on sales.
+
+```{r marketing-data, include = FALSE}
+data(marketing, package="datarium")
+skimr::skim(marketing)
+```
+```{r marketing-plot, fig.height = 6, fig.width = 7}
+GGally::ggpairs(marketing, progress=F)
+```
+
+## Extracting values from models in R
+
+* The leverage value, studentised residual and Cook's distance can be easily extracted from a model object using `broom::augment`.
+  * `.hat` is the leverage value
+  * `.std.resid` is the studentised residual
+  * `.cooksd` is the Cook's distance
+
+```{r, echo = TRUE}
+fit <- lm(sales ~ youtube * facebook, data = marketing)
+broom::augment(fit)
+
+```
+
+## Non-parametric regression
+
+### LOESS
+
+* LOESS (LOcal regrESSion) and LOWESS (LOcally WEighted
+Scatterplot Smoothing) are .monash-blue[**non-parametric regression**] methods (LOESS is a generalisation of LOWESS)
+* **LOESS fits a low order polynomial to a subset of neighbouring data** and can be fitted using `loess` function in `R`
+* a user specified "bandwidth" or "smoothing parameter" $\color{blue}{\alpha}$ determines how much of the data is used to fit each local polynomial.
+
+```{r dummy, fig.height = 3.2, fig.width = 6}
+df2 <- tibble(id = 1:200) %>% 
+  mutate(x = runif(n(), -10, 10),
+         y = 0.5 * x + 3 * sin(x) + rnorm(n(), 0, 2))
+
+```
+```{r df2-plot, fig.height = 3}
+ggplot(df2, aes(x, y)) +
+  geom_point() +
+  geom_smooth(se = FALSE, color = "red",
+              # note "loess" doesn't take method.args! 
+              # looks like a BUG in ggplot2
+              method = stats::loess, size = 1,
+              method.args = list(span = 0.4)) 
+```
+
+* $\alpha \in \left(\frac{\lambda + 1}{n}, 1\right)$ (default `span=0.75`) where $\lambda$ is the degree of the local polynomial (default `degree=2`) and $n$ is the number of observations.
+* Large $\alpha$ produce a smoother fit.
+* Small $\alpha$ overfits the data with the fitted regression capturing the random error in the data.
+
+## How `span` changes the loess fit
+
+```{r loess-span, fig.height = 5, fig.width = 8, out.width = "90%"}
+library(gganimate)
+fits <- tibble(span = seq(.1, 1, .05)) %>%
+  rowwise() %>%
+  do(mutate(augment(loess(y ~ x, df2, span = .$span)),
+            span = .$span))
+
+p <- ggplot(fits, aes(x, y)) +
+  geom_point() +
+  geom_line(aes(y = .fitted), color = "red", size = 1.2) +
+  labs(title = 'span = {closest_state}')
+
+p + transition_states(
+    span,
+    transition_length = 2,
+    state_length = 1
+  )
+```
+
+Code inspired by http://varianceexplained.org/files/loess.html
+
+
+## How `loess` works
+
+```{r animate-loess, gganimate = list(nframes = 500), fig.height = 5, fig.width = 8, out.width = "90%"}
+dat <- df2 %>%
+  crossing(center = unique(df2$x)) %>%
+  mutate(dist = abs(x - center)) %>%
+  filter(rank(dist) / n() <= .4) %>%
+  mutate(weight = (1 - (dist / max(dist)) ^ 3) ^ 3) %>% 
+  arrange(x, center)
+p <- ggplot(dat, aes(x, y)) +
+  geom_point(data = df2, color = "gray") +
+  geom_point(aes(alpha = weight), color = "#6600cc") +
+  geom_smooth(data = df2,
+              se = FALSE, color = "red",
+              method = stats::loess, size = 1,
+              method.args = list(span = 0.4)) +
+  geom_smooth(aes(group = center, weight = weight), method = stats::lm, se = FALSE, formula = y ~ poly(x, 2)) +
+  geom_vline(aes(xintercept = center), lty = 2) +
+  labs("span = 0.4") +
+  guides(alpha = FALSE)#+
+  #ggforce::facet_wrap_paginate(~center, nrow = 3, ncol = 3)
+p + transition_states(center, 
+                      transition_length = 1, 
+                      state_length = 1)
+```
+
+## US economic time series
+
+This dataset was produced from US economic time series data available from http://research.stlouisfed.org/fred2. 
+
+
+```{r economics-data, include = FALSE}
+data(economics, package = "ggplot2")
+skimr::skim(economics)
+```
+```{r economics-plot, fig.height = 6, fig.width = 7}
+ggplot(economics, aes(date, uempmed)) + 
+  geom_point() +
+  geom_smooth(method = loess, se = FALSE,
+              method.args = list(span = 0.1)) +
+  labs(x = "Date", y = "Median unemployment duration")
+```
+
+## How to fit LOESS curves in R?
+
+### Model fitting
+
+The model can be fitted using the `loess` function where 
+
+* the default  span is 0.75 and 
+* the default local polynomial degree is 2.
+
+```{r loess, echo = TRUE}
+fit <- economics %>% 
+          mutate(index = 1:n()) %>% 
+          loess(uempmed ~ index, #<<
+                data = ., #<<
+                span = 0.75, #<<
+                degree = 2) #<<
+```
+
+### Showing it on the plot
+
+In `ggplot`, you can add the loess using `geom_smooth` with `method = loess` and method arguments passed as list:
+```{r loess-ggplot, echo = TRUE, fig.height = 3}
+ggplot(economics, aes(date, uempmed)) +
+  geom_point() + 
+  geom_smooth(method = loess,  #<<
+              method.args = list(span = 0.75, #<<
+                                 degree = 2)) #<<
+```
+
+## Why non-parametric regression?
+
+* Fitting a line to a scatter plot where noisy data values, sparse data points or weak inter-relationships interfere with your ability to see a line of best fit.
+* Linear regression where least squares fitting doesn't create a line of good fit or is too labour intensive to use.
+* Data exploration and analysis.
+* Recall: In a parametric regression, some type of distribution is assumed in advance; therefore fitted model can lead to fitting a smooth curve that
+misrepresents the data.
+* In those cases, non-parametric regression may be a better choice. 
+* *Can you think of where it might be useful?*
+
+
+## Bluegills
+
+Data were collected on length (in mm) and the age (in years) of 78 bluegills captured from Lake Mary, Minnesota in 1981.
+
+Which fit looks better?
+
+```{r bluegills-data, include = FALSE}
+bg_df <- read.table(here::here("data/bluegills.txt"),
+           header = TRUE)
+skimr::skim(bg_df)
+```
+```{r bluegills-plot1, fig.height = 4, fig.width = 6}
+ggplot(bg_df, aes(age, length)) + 
+  geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  labs(tag = "(A)", title = "Linear regression", x = "Age (in years)", y = "Length (in mm)")
+```
+```{r bluegills-plot2, fig.height = 4, fig.width = 6}
+ggplot(bg_df, aes(age, length)) + 
+  geom_point() +
+  geom_smooth(method = lm, se = FALSE,
+              formula = y ~ poly(x, 2)) +
+  labs(tag = "(B)", title = "Quadratic regression",
+       x = "Age (in years)", y = "Length (in mm)")
+```
+
+* Let's have a look at the residual plots.
+* Do you see any patterns on either residual plot?
+
+```{r bluegills-fit, include = FALSE}
+fit1 <- lm(length ~ age, data = bg_df)
+fit2 <- lm(length ~ poly(age, 2), data = bg_df)
+df1 <- augment(fit1)
+df2 <- mutate(augment(fit2), age = bg_df$age)
+summary(fit1)
+summary(fit2)
+```
+```{r bluegills-resplot1, fig.height = 4, fig.width = 6}
+ggplot(df1, aes(age, .std.resid)) + 
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  labs(x = "Age", y = "Residual",
+       tag = "(A)", title = "Linear regression")
+```
+
+```{r bluegills-resplot2, fig.height = 4, fig.width = 6}
+ggplot(df2, aes(age, .std.resid)) + 
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  labs(x = "Age", y = "Residual",
+       tag = "(B)", title = "Quadratic regression")
+```
+
+The structure is easily visible with the LOESS curve:
+
+```{r bluegills-lresplot1, fig.height = 4, fig.width = 6}
+ggplot(df1, aes(age, .std.resid)) + 
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  labs(x = "Age", y = "Residual",
+       tag = "(A)", title = "Linear regression") +
+  geom_smooth(method = loess, color = "red",
+              se = FALSE)
+```
+
+```{r bluegills-lresplot2, fig.height = 4, fig.width = 6}
+ggplot(df2, aes(age, .std.resid)) + 
+  geom_point() +
+  geom_hline(yintercept = 0) +
+  labs(x = "Age", y = "Residual",
+       tag = "(B)", title = "Quadratic regression") +
+  geom_smooth(method = loess, color = "red",
+              se = FALSE)
+```
+
+## Soil resistivity in a field
+
+This data contains measurement of soil resistivity of an agricultural field.
+
+```{r cleveland-data, include = FALSE}
+data(cleveland.soil, package = "agridat")
+skimr::skim(cleveland.soil)
+```
+
+```{r cleveland-plot1, fig.height = 5, fig.width = 4}
+ggplot(cleveland.soil, aes(easting, northing)) +
+  geom_point()
+```
+
+```{r cleveland-plot2, fig.height = 5, fig.width = 7}
+library(lattice)
+cloud(resistivity ~ easting * northing, pch = ".", data = cleveland.soil)
+```
+
+## Conditioning plots (Coplots)
+
+```{r coplots, echo = TRUE, fig.height = 5.7, fig.width = 10}
+library(lattice)
+xyplot(resistivity ~ northing | equal.count(easting, 12),
+       data = cleveland.soil, cex = 0.2,  
+       type = c("p", "smooth"), col.line = "red", 
+       col = "gray", lwd = 2)
+```
+
+## Coplots via `ggplot2`
+
+* Coplots with `ggplot2` where the panels have overlapping observations is tricky.
+* Below creates a plot for non-overlapping intervals of `easting`:
+
+```{r ggcoplots, echo = TRUE, fig.height = 4, fig.width = 10}
+ggplot(cleveland.soil, aes(northing, resistivity)) +
+  geom_point(color = "gray") + 
+  geom_smooth(method = "loess", color = "red", se = FALSE) +
+  facet_wrap(~ cut_number(easting, 12))
+```
