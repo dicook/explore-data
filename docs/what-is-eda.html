@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-06-28" />
+<meta name="date" content="2021-07-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="initial-data-analysis.html"/>
-<script src="libs/header-attrs-2.8/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -57,6 +57,10 @@
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
 <script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<script src="libs/htmlwidgets-1.5.3/htmlwidgets.js"></script>
+<script src="libs/viz-1.8.2/viz.js"></script>
+<link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+<script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
 <script src="libs/fabric-3.6.3/fabric.min.js"></script>
 <script src="libs/FileSaver-2.0.2/FileSaver.min.js"></script>
 <script src="libs/jQuery-3.5.1/jquery-3.5.1.min.js"></script>
@@ -169,27 +173,28 @@ div.csl-indent {
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
 <li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is exploratory data analysis?</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#current-interpretations"><i class="fa fa-check"></i><b>2.1</b> Current interpretations</a></li>
-<li class="chapter" data-level="2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#differentiating-from-traditional-analysis"><i class="fa fa-check"></i><b>2.2</b> Differentiating from traditional analysis</a>
+<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#common-descriptions"><i class="fa fa-check"></i><b>2.1</b> Common descriptions</a></li>
+<li class="chapter" data-level="2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#components-of-data-analysis"><i class="fa fa-check"></i><b>2.2</b> Components of data analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#differentiating-eda-from-cda"><i class="fa fa-check"></i><b>2.3</b> Differentiating EDA from CDA</a>
 <ul>
-<li class="chapter" data-level="2.2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#from-the-case-study"><i class="fa fa-check"></i><b>2.2.1</b> From the case study</a></li>
-<li class="chapter" data-level="2.2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#eda-approach"><i class="fa fa-check"></i><b>2.2.2</b> EDA approach</a></li>
-<li class="chapter" data-level="2.2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#summarising-the-difference"><i class="fa fa-check"></i><b>2.2.3</b> Summarising the difference</a></li>
-<li class="chapter" data-level="2.2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#reality-check"><i class="fa fa-check"></i><b>2.2.4</b> Reality check</a></li>
-<li class="chapter" data-level="2.2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#what-is-eda-1"><i class="fa fa-check"></i><b>2.2.5</b> What is EDA?</a></li>
-<li class="chapter" data-level="2.2.6" data-path="what-is-eda.html"><a href="what-is-eda.html#isnt-it-data-snooping"><i class="fa fa-check"></i><b>2.2.6</b> Isn’t it data snooping?</a></li>
-<li class="chapter" data-level="2.2.7" data-path="what-is-eda.html"><a href="what-is-eda.html#why-arent-there-more-resources-on-eda"><i class="fa fa-check"></i><b>2.2.7</b> Why aren’t there more resources on EDA?</a></li>
+<li class="chapter" data-level="2.3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#from-the-case-study"><i class="fa fa-check"></i><b>2.3.1</b> From the case study</a></li>
+<li class="chapter" data-level="2.3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#eda-approach"><i class="fa fa-check"></i><b>2.3.2</b> EDA approach</a></li>
+<li class="chapter" data-level="2.3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#what-we-learned-from-eda"><i class="fa fa-check"></i><b>2.3.3</b> What we learned from EDA</a></li>
+<li class="chapter" data-level="2.3.4" data-path="what-is-eda.html"><a href="what-is-eda.html#reality-check"><i class="fa fa-check"></i><b>2.3.4</b> Reality check</a></li>
+<li class="chapter" data-level="2.3.5" data-path="what-is-eda.html"><a href="what-is-eda.html#what-is-eda-1"><i class="fa fa-check"></i><b>2.3.5</b> What is EDA?</a></li>
+<li class="chapter" data-level="2.3.6" data-path="what-is-eda.html"><a href="what-is-eda.html#isnt-it-data-snooping"><i class="fa fa-check"></i><b>2.3.6</b> Isn’t it data snooping?</a></li>
+<li class="chapter" data-level="2.3.7" data-path="what-is-eda.html"><a href="what-is-eda.html#why-arent-there-more-resources-on-eda"><i class="fa fa-check"></i><b>2.3.7</b> Why aren’t there more resources on EDA?</a></li>
 </ul></li>
-<li class="chapter" data-level="2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.3</b> The origins of EDA</a>
+<li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.4</b> The origins of EDA</a>
 <ul>
-<li class="chapter" data-level="2.3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#guiding-principles"><i class="fa fa-check"></i><b>2.3.1</b> Guiding principles</a></li>
-<li class="chapter" data-level="2.3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#scratching-down-numbers"><i class="fa fa-check"></i><b>2.3.2</b> Scratching down numbers</a></li>
-<li class="chapter" data-level="2.3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#schematic-summary"><i class="fa fa-check"></i><b>2.3.3</b> Schematic summary</a></li>
-<li class="chapter" data-level="2.3.4" data-path="what-is-eda.html"><a href="what-is-eda.html#easy-re-expression"><i class="fa fa-check"></i><b>2.3.4</b> Easy re-expression</a></li>
-<li class="chapter" data-level="2.3.5" data-path="what-is-eda.html"><a href="what-is-eda.html#effective-comparison"><i class="fa fa-check"></i><b>2.3.5</b> Effective comparison</a></li>
-<li class="chapter" data-level="2.3.6" data-path="what-is-eda.html"><a href="what-is-eda.html#plots-of-relationship"><i class="fa fa-check"></i><b>2.3.6</b> Plots of relationship</a></li>
+<li class="chapter" data-level="2.4.1" data-path="what-is-eda.html"><a href="what-is-eda.html#guiding-principles"><i class="fa fa-check"></i><b>2.4.1</b> Guiding principles</a></li>
+<li class="chapter" data-level="2.4.2" data-path="what-is-eda.html"><a href="what-is-eda.html#scratching-down-numbers"><i class="fa fa-check"></i><b>2.4.2</b> Scratching down numbers</a></li>
+<li class="chapter" data-level="2.4.3" data-path="what-is-eda.html"><a href="what-is-eda.html#schematic-summary"><i class="fa fa-check"></i><b>2.4.3</b> Schematic summary</a></li>
+<li class="chapter" data-level="2.4.4" data-path="what-is-eda.html"><a href="what-is-eda.html#easy-re-expression"><i class="fa fa-check"></i><b>2.4.4</b> Easy re-expression</a></li>
+<li class="chapter" data-level="2.4.5" data-path="what-is-eda.html"><a href="what-is-eda.html#effective-comparison"><i class="fa fa-check"></i><b>2.4.5</b> Effective comparison</a></li>
+<li class="chapter" data-level="2.4.6" data-path="what-is-eda.html"><a href="what-is-eda.html#plots-of-relationship"><i class="fa fa-check"></i><b>2.4.6</b> Plots of relationship</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.4</b> Exercises</a></li>
+<li class="chapter" data-level="2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.5</b> Exercises</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Initial Data Analysis</a>
 <ul>
@@ -219,13 +224,118 @@ div.csl-indent {
 <li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
 <li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
 <li class="chapter" data-level="4.7" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#transformations"><i class="fa fa-check"></i><b>4.7</b> Transformations</a></li>
+<li class="chapter" data-level="4.8" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-variables"><i class="fa fa-check"></i><b>4.8</b> Categorical variables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-factors-un-r"><i class="fa fa-check"></i><b>4.8.1</b> Categorical factors un R</a></li>
+<li class="chapter" data-level="4.8.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-factors-in-r"><i class="fa fa-check"></i><b>4.8.2</b> Numerical factors in R</a></li>
+<li class="chapter" data-level="4.8.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-german-bundestag-election-2009"><i class="fa fa-check"></i><b>4.8.3</b> Example: German Bundestag Election 2009</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#order-nominal-variables-meaningfully"><i class="fa fa-check"></i><b>4.9</b> Order nominal variables meaningfully</a></li>
+<li class="chapter" data-level="4.10" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-aspirin-use-after-heart-attack"><i class="fa fa-check"></i><b>4.10</b> Example: Aspirin use after heart attack</a></li>
+<li class="chapter" data-level="4.11" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#consider-combining-factor-levels-with-low-frequencies"><i class="fa fa-check"></i><b>4.11</b> Consider combining factor levels with low frequencies</a></li>
+<li class="chapter" data-level="4.12" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#anorexia"><i class="fa fa-check"></i><b>4.12</b> Anorexia</a></li>
+<li class="chapter" data-level="4.13" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#titanic"><i class="fa fa-check"></i><b>4.13</b> Titanic</a></li>
+<li class="chapter" data-level="4.14" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#coloring-bars"><i class="fa fa-check"></i><b>4.14</b> Coloring bars</a></li>
+<li class="chapter" data-level="4.15" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#opinion-poll-in-ireland-aug-2013"><i class="fa fa-check"></i><b>4.15</b> Opinion poll in Ireland Aug 2013</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a></li>
 <li class="chapter" data-level="6" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>6</b> Going beyond two variables</a></li>
-<li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a></li>
-<li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a></li>
+<li class="chapter" data-level="7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>7</b> Making comparisons between groups and strata</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize"><i class="fa fa-check"></i><b>7.1</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="7.2" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#maize-kernels"><i class="fa fa-check"></i><b>7.2</b> Maize kernels</a></li>
+<li class="chapter" data-level="7.3" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-like-with-like"><i class="fa fa-check"></i><b>7.3</b> Comparing like-with-like</a></li>
+<li class="chapter" data-level="7.4" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#multi-environment-soybean-trial"><i class="fa fa-check"></i><b>7.4</b> Multi-environment soybean trial</a></li>
+<li class="chapter" data-level="7.5" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#types-of-comparison"><i class="fa fa-check"></i><b>7.5</b> Types of comparison</a></li>
+<li class="chapter" data-level="7.6" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-of-calves-with-different-diets"><i class="fa fa-check"></i><b>7.6</b> Weight of calves with different diets</a></li>
+<li class="chapter" data-level="7.7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#swiss-bank-notes"><i class="fa fa-check"></i><b>7.7</b> Swiss bank notes</a></li>
+<li class="chapter" data-level="7.8" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-graphically"><i class="fa fa-check"></i><b>7.8</b> Comparing graphically</a></li>
+<li class="chapter" data-level="7.9" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#barley-yield"><i class="fa fa-check"></i><b>7.9</b> Barley Yield</a></li>
+<li class="chapter" data-level="7.10" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#olive-oils"><i class="fa fa-check"></i><b>7.10</b> Olive oils</a></li>
+<li class="chapter" data-level="7.11" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#england-and-east-indies-trade-data"><i class="fa fa-check"></i><b>7.11</b> England and East Indies trade data</a></li>
+<li class="chapter" data-level="7.12" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#melbournes-daily-maximum-temperature"><i class="fa fa-check"></i><b>7.12</b> Melbourne’s daily maximum temperature</a></li>
+<li class="chapter" data-level="7.13" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#modelling-and-testing-for-comparisons"><i class="fa fa-check"></i><b>7.13</b> Modelling and testing for comparisons</a></li>
+<li class="chapter" data-level="7.14" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize-1"><i class="fa fa-check"></i><b>7.14</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="7.15" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-parametric-tests-t-test"><i class="fa fa-check"></i><b>7.15</b> Two-sample parametric tests: <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="7.16" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#confidence-interval-for-two-sample-difference"><i class="fa fa-check"></i><b>7.16</b> Confidence interval for two sample difference</a></li>
+<li class="chapter" data-level="7.17" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-non-parametric-tests"><i class="fa fa-check"></i><b>7.17</b> Two sample non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="7.17.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>7.17.1</b> Wilcoxon rank-sum test</a></li>
+</ul></li>
+<li class="chapter" data-level="7.18" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves"><i class="fa fa-check"></i><b>7.18</b> Weight gain of calves</a>
+<ul>
+<li class="chapter" data-level="7.18.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves-1"><i class="fa fa-check"></i><b>7.18.1</b> Weight gain of calves</a></li>
+</ul></li>
+<li class="chapter" data-level="7.19" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#soil-nitrogen"><i class="fa fa-check"></i><b>7.19</b> Soil nitrogen</a></li>
+<li class="chapter" data-level="7.20" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#controlling-the-family-wise-error-rate"><i class="fa fa-check"></i><b>7.20</b> Controlling the family-wise error rate</a></li>
+<li class="chapter" data-level="7.21" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#unadjusted"><i class="fa fa-check"></i><b>7.21</b> Unadjusted</a></li>
+<li class="chapter" data-level="7.22" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#bonferonni-adjustment"><i class="fa fa-check"></i><b>7.22</b> Bonferonni adjustment</a></li>
+<li class="chapter" data-level="7.23" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#mystery-data"><i class="fa fa-check"></i><b>7.23</b> Mystery data</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>8</b> Sculpting data using models</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#parametric-regression"><i class="fa fa-check"></i><b>8.1</b> Parametric regression</a></li>
+<li class="chapter" data-level="8.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#example"><i class="fa fa-check"></i><b>8.2</b> Example</a></li>
+<li class="chapter" data-level="8.3" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-parametric-models"><i class="fa fa-check"></i><b>8.3</b> Simulating data from parametric models</a></li>
+<li class="chapter" data-level="8.4" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#logistic-regression"><i class="fa fa-check"></i><b>8.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="8.5" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#menarche"><i class="fa fa-check"></i><b>8.5</b> Menarche</a></li>
+<li class="chapter" data-level="8.6" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-logistic-regression"><i class="fa fa-check"></i><b>8.6</b> Simulating data from logistic regression</a></li>
+<li class="chapter" data-level="8.7" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-logistic-regression-models"><i class="fa fa-check"></i><b>8.7</b> Diagnostics for logistic regression models</a></li>
+<li class="chapter" data-level="8.8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-linear-models"><i class="fa fa-check"></i><b>8.8</b> Diagnostics for linear models</a></li>
+<li class="chapter" data-level="8.9" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a1-eepsilon_i-0-for-i1ldotsn"><i class="fa fa-check"></i><b>8.9</b> Assessing (A1) <span class="math inline">\(E(\epsilon_i) = 0\)</span> for <span class="math inline">\(i=1,\ldots,n\)</span></a></li>
+<li class="chapter" data-level="8.10" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a2-a3"><i class="fa fa-check"></i><b>8.10</b> Assessing (A2)-(A3)</a>
+<ul>
+<li class="chapter" data-level="8.10.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#in-r"><i class="fa fa-check"></i><b>8.10.1</b> In R</a></li>
+</ul></li>
+<li class="chapter" data-level="8.11" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#examining-the-simulated-data-further"><i class="fa fa-check"></i><b>8.11</b> Examining the simulated data further</a></li>
+<li class="chapter" data-level="8.12" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#revisiting-outliers"><i class="fa fa-check"></i><b>8.12</b> Revisiting outliers</a></li>
+<li class="chapter" data-level="8.13" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#pop-quiz"><i class="fa fa-check"></i><b>8.13</b> Pop Quiz</a></li>
+<li class="chapter" data-level="8.14" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#outlying-values"><i class="fa fa-check"></i><b>8.14</b> Outlying values</a></li>
+<li class="chapter" data-level="8.15" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#leverage"><i class="fa fa-check"></i><b>8.15</b> Leverage</a></li>
+<li class="chapter" data-level="8.16" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#studentized-residuals"><i class="fa fa-check"></i><b>8.16</b> Studentized residuals</a></li>
+<li class="chapter" data-level="8.17" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#cooks-distance"><i class="fa fa-check"></i><b>8.17</b> Cook’s distance</a></li>
+<li class="chapter" data-level="8.18" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#social-media-marketing"><i class="fa fa-check"></i><b>8.18</b> Social media marketing</a></li>
+<li class="chapter" data-level="8.19" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#extracting-values-from-models-in-r"><i class="fa fa-check"></i><b>8.19</b> Extracting values from models in R</a></li>
+<li class="chapter" data-level="8.20" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#non-parametric-regression"><i class="fa fa-check"></i><b>8.20</b> Non-parametric regression</a>
+<ul>
+<li class="chapter" data-level="8.20.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#loess"><i class="fa fa-check"></i><b>8.20.1</b> LOESS</a></li>
+</ul></li>
+<li class="chapter" data-level="8.21" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-span-changes-the-loess-fit"><i class="fa fa-check"></i><b>8.21</b> How <code>span</code> changes the loess fit</a></li>
+<li class="chapter" data-level="8.22" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-loess-works"><i class="fa fa-check"></i><b>8.22</b> How <code>loess</code> works</a></li>
+<li class="chapter" data-level="8.23" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#us-economic-time-series"><i class="fa fa-check"></i><b>8.23</b> US economic time series</a></li>
+<li class="chapter" data-level="8.24" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-to-fit-loess-curves-in-r"><i class="fa fa-check"></i><b>8.24</b> How to fit LOESS curves in R?</a>
+<ul>
+<li class="chapter" data-level="8.24.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#model-fitting"><i class="fa fa-check"></i><b>8.24.1</b> Model fitting</a></li>
+<li class="chapter" data-level="8.24.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#showing-it-on-the-plot"><i class="fa fa-check"></i><b>8.24.2</b> Showing it on the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="8.25" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#why-non-parametric-regression"><i class="fa fa-check"></i><b>8.25</b> Why non-parametric regression?</a></li>
+<li class="chapter" data-level="8.26" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#bluegills"><i class="fa fa-check"></i><b>8.26</b> Bluegills</a></li>
+<li class="chapter" data-level="8.27" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#soil-resistivity-in-a-field"><i class="fa fa-check"></i><b>8.27</b> Soil resistivity in a field</a></li>
+<li class="chapter" data-level="8.28" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#conditioning-plots-coplots"><i class="fa fa-check"></i><b>8.28</b> Conditioning plots (Coplots)</a></li>
+<li class="chapter" data-level="8.29" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#coplots-via-ggplot2"><i class="fa fa-check"></i><b>8.29</b> Coplots via <code>ggplot2</code></a></li>
+</ul></li>
 <li class="chapter" data-level="9" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>9</b> Exploring data having a space and time context</a></li>
-<li class="chapter" data-level="10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>10</b> Is what you see really there?</a></li>
+<li class="chapter" data-level="10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>10</b> Is what you see really there?</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#revisiting-hypothesis-testing"><i class="fa fa-check"></i><b>10.1</b> Revisiting hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="10.1.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#testing-coin-bias"><i class="fa fa-check"></i><b>10.1.1</b> Testing coin bias</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#frequentist-hypotheses-testing-framework"><i class="fa fa-check"></i><b>10.2</b> (Frequentist) hypotheses testing framework</a></li>
+<li class="chapter" data-level="10.3" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#judicial-system"><i class="fa fa-check"></i><b>10.3</b> Judicial system</a></li>
+<li class="chapter" data-level="10.4" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference"><i class="fa fa-check"></i><b>10.4</b> Visual inference</a></li>
+<li class="chapter" data-level="10.5" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-more-formally"><i class="fa fa-check"></i><b>10.5</b> Visual inference more formally</a></li>
+<li class="chapter" data-level="10.6" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#uniformity-trial-of-peanuts"><i class="fa fa-check"></i><b>10.6</b> Uniformity trial of peanuts</a></li>
+<li class="chapter" data-level="10.7" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-and-practical-significance"><i class="fa fa-check"></i><b>10.7</b> Statistical significance and practical significance</a></li>
+<li class="chapter" data-level="10.8" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-of-the-data-plot"><i class="fa fa-check"></i><b>10.8</b> Statistical significance of the data plot</a></li>
+<li class="chapter" data-level="10.9" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#lineup-of-small-effect-difference"><i class="fa fa-check"></i><b>10.9</b> Lineup of small effect difference</a></li>
+<li class="chapter" data-level="10.10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#some-considerations-in-visual-inference"><i class="fa fa-check"></i><b>10.10</b> Some considerations in visual inference</a></li>
+<li class="chapter" data-level="10.11" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-with-the-nullabor"><i class="fa fa-check"></i><b>10.11</b> Visual inference with the <code>nullabor</code> 📦</a></li>
+<li class="chapter" data-level="10.12" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#potato-scab-infection"><i class="fa fa-check"></i><b>10.12</b> Potato scab infection</a></li>
+<li class="chapter" data-level="10.13" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#black-cherry-trees"><i class="fa fa-check"></i><b>10.13</b> Black Cherry Trees</a></li>
+<li class="chapter" data-level="10.14" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#temperatures-of-stars"><i class="fa fa-check"></i><b>10.14</b> Temperatures of stars</a></li>
+<li class="chapter" data-level="10.15" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#foreign-exchange-rate"><i class="fa fa-check"></i><b>10.15</b> Foreign exchange rate</a></li>
+</ul></li>
 <li class="chapter" data-level="11" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>11</b> Final words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -250,21 +360,9 @@ div.csl-indent {
             <section class="normal" id="section-">
 <div id="what-is-eda" class="section level1" number="2">
 <h1><span class="header-section-number">Chapter 2</span> What is exploratory data analysis?</h1>
-<p>Data analysis is a process of cleaning, transforming,
-inspecting and modelling data with the aim of extracting
-information.</p>
-<p>Data analysis includes:</p>
-<ul>
-<li>exploratory data analysis,</li>
-<li>confirmatory data analysis, and</li>
-<li>initial data analysis.</li>
-</ul>
-<!-- Modeling and prediction and EDA -->
-<p>Before modelling and predicting, data should first be explored to uncover the patterns and structures that exist. Exploratory data analysis involves both numerical and visual techniques designed to reveal interesting information that may be hidden in the data. However, an analyst must be cautious not to over-interpret apparent patterns, and to make efforts assess the results of a data exploration are reliable for the data being studied and potentially for new data.</p>
-<!-- Inference and EDA -->
-<p>In a confirmatory data analysis, the focus is on statistical inference and includes processes such as testing hypothesis, model selection, or predictive modelling. Initial data analysis is an important part of this, to check the sometimes strict assumptions made in order to conduct inference.</p>
-<div id="current-interpretations" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> Current interpretations</h2>
+<p>Exploratory data analysis is a term that became popular after John Tukey published his seminal book on the topic in 1977 <span class="citation">(<a href="#ref-tukey77" role="doc-biblioref">J. Tukey 1977</a>)</span>. What is actually refers to, though, is not very well-defined.</p>
+<div id="common-descriptions" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Common descriptions</h2>
 <!-- Some common explanations -->
 <p>EDA today is prevalent, and there are many descriptions. It’s interesting to compare and contrast these, in relation to the original scope.</p>
 <p>From <a href="https://en.wikipedia.org/wiki/Exploratory_data_analysis">wikipedia</a></p>
@@ -296,11 +394,21 @@ information.</p>
 <p>The purpose of doing the Exploratory Data Analysis or EDA is to find new information in data. The understanding of EDA that practitioners may not aware of, is the EDA uses a visually-examined dataset to understand and summarize the main characteristics of the dataset without having a prior hypothesis or relying upon statistical models.</p>
 </blockquote>
 </div>
-<div id="differentiating-from-traditional-analysis" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Differentiating from traditional analysis</h2>
-<div id="from-the-case-study" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> From the case study</h3>
-<p>In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled “Practical Data Analysis: Case Studies in Business Statistics” by Bryant and Smith <span class="citation">(<a href="#ref-bryantsmith1995" role="doc-biblioref">Bryant and Smith 1995</a>)</span>. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff’s wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous.</p>
+<div id="components-of-data-analysis" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Components of data analysis</h2>
+<p>Data analysis is a process of cleaning, transforming,
+inspecting and modelling data with the aim of extracting
+information. It might be exploratory or confirmatory, descriptive of predictive.</p>
+<!-- Modeling and prediction -->
+<p>Before modelling and predicting, data should first be explored to uncover the patterns and structures that exist. Data analysis involves both numerical and visual techniques designed to reveal interesting information that may be hidden in the data. However, an analyst must be cautious not to over-interpret apparent patterns, and to make efforts assess the results of an analysis are reliable for the data being studied and potentially for new data.</p>
+<!-- Inference -->
+<p>In a confirmatory data analysis (CDA), the focus is on answering a particular question, and includes processes such as testing hypothesis, model selection, or predictive modelling for the purposes of statistical inference. An important part of this is to check the sometimes strict assumptions made in order to conduct inference, and that problems in the data don’t compromise the inference. This is usually called <em>initial data analysis</em>. In addition, computing <em>model diagnostics</em>, like making residual plots, is an important part of checking that a predictive model appropriately fits the data.</p>
+</div>
+<div id="differentiating-eda-from-cda" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Differentiating EDA from CDA</h2>
+<div id="from-the-case-study" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> From the case study</h3>
+<p><em>Back-story</em>: In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled “Practical Data Analysis: Case Studies in Business Statistics” by Bryant and Smith <span class="citation">(<a href="#ref-bryantsmith1995" role="doc-biblioref">Bryant and Smith 1995</a>)</span>. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff’s wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous.</p>
 <div id="whatistipping" class="section level4 unnumbered">
 <h4>What is tipping?</h4>
 <p>According to <a href="https://www.washingtonpost.com/news/going-out-guide/wp/2016/09/15/tipping-can-be-complicated-these-are-the-basic-rules-you-should-know-about/">The basic rules of tipping that everyone should know about</a>:</p>
@@ -336,19 +444,19 @@ information.</p>
 <p><img src="images/tips.png" width="90%"></p>
 </div>
 <div id="casestudyprocedure" class="section level4 unnumbered">
-<h4>Case study procedure</h4>
-<p>The analysis of the data should follow these steps according to the book:</p>
-<ul>
-<li><em>Step 1</em>: Develop a model
+<h4>Case study procedure (which would be considered to be CDA)</h4>
+<p>To answer the question “What are the most important factors affecting tips?” the analysis should follow these steps according to <span class="citation"><a href="#ref-bryantsmith1995" role="doc-biblioref">Bryant and Smith</a> (<a href="#ref-bryantsmith1995" role="doc-biblioref">1995</a>)</span>:</p>
+<ol style="list-style-type: decimal">
+<li>Develop a model
 <ul>
 <li>Should the response be <code>tip</code> alone and use the total bill as a predictor?</li>
 <li>Should you create a new variable <code>tip rate</code> and use this as the response?</li>
 </ul></li>
-<li><em>Step 2</em>: Fit the full model with sex, smoker, day, time and size as predictors</li>
-<li><em>Step 3</em>: Refine model: Should some variables should be dropped?</li>
-<li><em>Step 4</em>: Check distribution of residuals</li>
-<li><em>Step 5</em>: Summarise the model, if X=something, what would be the expected tip</li>
-</ul>
+<li>Fit the full model with sex, smoker, day, time and size as predictors</li>
+<li>Refine model: Should some variables should be dropped?</li>
+<li>Check distribution of residuals</li>
+<li>Summarise the model, if X=something, what would be the expected tip</li>
+</ol>
 </div>
 <div id="step1" class="section level4 unnumbered">
 <h4>Step 1</h4>
@@ -560,11 +668,11 @@ p.value
 </tr>
 </tbody>
 </table>
-<p>🤔 Which variable(s) would be considered important for predicting tip %?</p>
+<p>From the model summary the most (and only) important variable for predicting tip is the size of the dining party. This decision is based on the <span class="math inline">\(t\)</span>-statistic and <span class="math inline">\(p\)</span>-values reported in the model summary. Size of the party is the only variable which has a really small <span class="math inline">\(p\)</span>-value. The small value indicates that it is very unlikely for the true parameter relating size of the party to tip % to be 0, that is, the relationship between these two variables is considered to be statistically significant. The same cannot be said for any of the other variables.</p>
 </div>
 <div id="step3" class="section level4 unnumbered">
 <h4>Step 3</h4>
-<p>Refine the model.</p>
+<p>Refine the model, by using only one predictor, size of the dining party.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="what-is-eda.html#cb6-1" aria-hidden="true" tabindex="-1"></a>tips_lm <span class="ot">&lt;-</span> tips <span class="sc">%&gt;%</span></span>
 <span id="cb6-2"><a href="what-is-eda.html#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tip_pct, size) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb6-3"><a href="what-is-eda.html#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">lm</span>(tip_pct <span class="sc">~</span> ., <span class="at">data=</span>.) </span>
@@ -632,7 +740,8 @@ size
 <p>As the size of the dining party increases by one person the tip decreases by approximately 1%.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="what-is-eda.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glance</span>(tips_lm) <span class="sc">%&gt;%</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb7-2"><a href="what-is-eda.html#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(r.squared, statistic, p.value) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="what-is-eda.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
+<span id="cb7-3"><a href="what-is-eda.html#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">`</span><span class="at">F statistic</span><span class="st">`</span> <span class="ot">=</span> statistic) <span class="sc">%&gt;%</span></span>
+<span id="cb7-4"><a href="what-is-eda.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable</span>(<span class="at">digits=</span><span class="dv">3</span>)</span></code></pre></div>
 <table>
 <thead>
 <tr>
@@ -640,7 +749,7 @@ size
 r.squared
 </th>
 <th style="text-align:right;">
-statistic
+F statistic
 </th>
 <th style="text-align:right;">
 p.value
@@ -662,10 +771,7 @@ p.value
 </tbody>
 </table>
 <p><span class="math inline">\(R^2 = 0.02\)</span>.</p>
-<p>This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be a good step to examine interaction terms.</p>
-<p><strong>What does <span class="math inline">\(R^2 = 0.02\)</span> mean?</strong></p>
-<p><span class="math inline">\(R^2 = 0.02\)</span> means that size explains just 2% of the variance in tip %. This is a very weak model.</p>
-<p>And <span class="math inline">\(R^2 = 0.04\)</span> is also a very weak model.</p>
+<p>This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be possible to bring the <span class="math inline">\(R^2\)</span> up a little by adding interaction terms to the model, for example, sex, or smoker, and size of the party. We won’t don that here, because the purpose is to illustrate the difference between exploratory and confirmatory rather than fitting the best possible model.</p>
 <p><strong>What do the <span class="math inline">\(F\)</span> statistic and <span class="math inline">\(p\)</span>-value mean?</strong></p>
 <p>Assume that we have a random sample from a population. Assume that the model for the population is</p>
 <p><span class="math display">\[ \widehat{tip %} = \beta_0 + \beta_1 sexM + ... + \beta_7 size \]</span>
@@ -697,43 +803,69 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb8-3"><a href="what-is-eda.html#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb8-4"><a href="what-is-eda.html#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span></span>
 <span id="cb8-5"><a href="what-is-eda.html#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) </span></code></pre></div>
-<p><img src="docs/images/res_hist-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/res_hist-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="what-is-eda.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb9-2"><a href="what-is-eda.html#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">sample=</span>.resid)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb9-3"><a href="what-is-eda.html#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq</span>() <span class="sc">+</span></span>
 <span id="cb9-4"><a href="what-is-eda.html#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_qq_line</span>() <span class="sc">+</span></span>
 <span id="cb9-5"><a href="what-is-eda.html#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;residuals&quot;</span>) <span class="sc">+</span></span>
 <span id="cb9-6"><a href="what-is-eda.html#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">aspect.ratio=</span><span class="dv">1</span>)</span></code></pre></div>
-<p><img src="docs/images/res_qq-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/res_qq-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="what-is-eda.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb10-2"><a href="what-is-eda.html#cb10-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>.fitted, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb10-3"><a href="what-is-eda.html#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb10-4"><a href="what-is-eda.html#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-5"><a href="what-is-eda.html#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">&quot;observed&quot;</span>) <span class="sc">+</span></span>
 <span id="cb10-6"><a href="what-is-eda.html#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;fitted&quot;</span>)</span></code></pre></div>
-<p><img src="docs/images/obs_fitted-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/obs_fitted-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="what-is-eda.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips_aug, </span>
 <span id="cb11-2"><a href="what-is-eda.html#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>size, <span class="at">y=</span>tip_pct)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb11-3"><a href="what-is-eda.html#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb11-4"><a href="what-is-eda.html#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method=</span><span class="st">&quot;lm&quot;</span>) <span class="sc">+</span></span>
 <span id="cb11-5"><a href="what-is-eda.html#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylab</span>(<span class="st">&quot;tip %&quot;</span>)</span></code></pre></div>
-<p><img src="docs/images/fitted_model-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/fitted_model-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see <a href="https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant">here</a>) and should also leave us with an unease that this policy is based on weak support.</p>
 </div>
+<div id="summarise-the-model-and-answer-the-question" class="section level4" number="2.3.1.1">
+<h4><span class="header-section-number">2.3.1.1</span> Summarise the model, and answer the question</h4>
+<p>The answer to the original question is that the only important factor affecting tip is the size of the dining party.</p>
+<p>The final model is</p>
+<p><span class="math display">\[\widehat{tip %} = 18.44 - 0.92 \times size\]</span></p>
+<p>The interpretation of the model is, <em>as the size of the dining party increases by one person the tip decreases by approximately 1%</em>.</p>
+<p><strong>What does <span class="math inline">\(R^2 = 0.02\)</span> mean?</strong></p>
+<p><span class="math inline">\(R^2 = 0.02\)</span> means that size explains just 2% of the variance in tip %. This is a very weak model.</p>
+<p>And <span class="math inline">\(R^2 = 0.04\)</span> is also a very weak model.</p>
 </div>
-<div id="eda-approach" class="section level3" number="2.2.2">
-<h3><span class="header-section-number">2.2.2</span> EDA approach</h3>
-<p>It’s a good idea to examine the data description, and the explanation of the variables. What does that look like here?
-- tip and totbill are quantitative, but generally we would think about tip as a percentage of the bill, so creating this new variable would be useful, too.
-- sex, smoker, day, time of day are categorical.
-- size is discrete/integer.</p>
+<div id="overview-of-cda-process" class="section level4" number="2.3.1.2">
+<h4><span class="header-section-number">2.3.1.2</span> Overview of CDA process</h4>
+<div class="figure" style="text-align: center"><span id="fig:cda"></span>
+<div id="htmlwidget-bd54864de9ffb1b8d7b5" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-bd54864de9ffb1b8d7b5">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"question/hypothesis\", shape = \"rectangle\", width = \"3.2\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"IDA\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"model/test\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"MD\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"conclusion\", shape = \"rectangle\", width = \"2.1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.1: Pipeline of confirmatory data analysis. It starts with a question.
+</p>
+</div>
+</div>
+</div>
+<div id="eda-approach" class="section level3" number="2.3.2">
+<h3><span class="header-section-number">2.3.2</span> EDA approach</h3>
+<p>First, examine the data description, and the explanation of the variables. In the tips example, this would be:</p>
+<ul>
+<li>tip and totbill are quantitative, but generally we would think about tip as a percentage of the bill, so creating this new variable would be useful, too.</li>
+<li>sex, smoker, day, time of day are categorical.</li>
+<li>size is discrete/integer.</li>
+</ul>
 <p>The types of variables suggest what summaries to make.</p>
-<p>For the quantitative variables we would calculate
-- means, standard deviations, median, quartiles, minimum and maximum, and
-- also make histograms or density plots and scatterplots to explore bivariate relationships.</p>
-<p>For categorical variables, and integer variables with few categories, compute
-- counts and proportions, and
-- make bar charts and mosaic plots</p>
+<p>For the quantitative variables we would calculate</p>
+<ul>
+<li>means, standard deviations, median, quartiles, minimum and maximum, and</li>
+<li>also make histograms or density plots and scatterplots to explore bivariate relationships.</li>
+</ul>
+<p>For categorical variables, and integer variables with few categories, compute</p>
+<ul>
+<li>counts and proportions, and</li>
+<li>make bar charts and mosaic plots</li>
+</ul>
 <p>Thinking about relationships between categorical and quantitative variables, we could
 - calculate the numerical summaries by the categorical variable levels, and
 - make histograms and scatterplots, facetted by the categorical variables.</p>
@@ -743,7 +875,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb12-2"><a href="what-is-eda.html#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb12-3"><a href="what-is-eda.html#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(</span>
 <span id="cb12-4"><a href="what-is-eda.html#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>)  </span></code></pre></div>
-<p><img src="docs/images/tips-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Because, one binwidth is never enough …</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="what-is-eda.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
 <span id="cb13-2"><a href="what-is-eda.html#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span></span>
@@ -752,7 +884,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb13-5"><a href="what-is-eda.html#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span> </span>
 <span id="cb13-6"><a href="what-is-eda.html#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb13-7"><a href="what-is-eda.html#cb13-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="docs/images/tips2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips2-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Big fat bins. Tips are skewed, which means most tips are relatively small.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="what-is-eda.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(tips, </span>
 <span id="cb14-2"><a href="what-is-eda.html#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">x=</span>tip)) <span class="sc">+</span> </span>
@@ -761,7 +893,7 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb14-5"><a href="what-is-eda.html#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">colour=</span><span class="st">&quot;white&quot;</span>) <span class="sc">+</span></span>
 <span id="cb14-6"><a href="what-is-eda.html#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(</span>
 <span id="cb14-7"><a href="what-is-eda.html#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span></code></pre></div>
-<p><img src="docs/images/tips3-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips3-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Skinny bins. Tips are multimodal, and occurring at the full dollar and 50c amounts.</p>
 </div>
 <div id="tiptotal" class="section level4 unnumbered">
@@ -772,56 +904,66 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <span id="cb15-4"><a href="what-is-eda.html#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
 <span id="cb15-5"><a href="what-is-eda.html#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks=</span><span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">11</span>,<span class="dv">1</span>))</span>
 <span id="cb15-6"><a href="what-is-eda.html#cb15-6" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="docs/images/tips_tot-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips_tot-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Adding a regression line, helps to focus on a tipping standard, and whether individual tips are above or below expected.</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="what-is-eda.html#cb16-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_abline</span>(<span class="at">intercept=</span><span class="dv">0</span>, <span class="co">#&lt;&lt;</span></span>
 <span id="cb16-2"><a href="what-is-eda.html#cb16-2" aria-hidden="true" tabindex="-1"></a>              <span class="at">slope=</span><span class="fl">0.2</span>) <span class="sc">+</span> <span class="co">#&lt;&lt;</span></span>
 <span id="cb16-3"><a href="what-is-eda.html#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="at">x=</span><span class="dv">45</span>, <span class="at">y=</span><span class="dv">10</span>, </span>
 <span id="cb16-4"><a href="what-is-eda.html#cb16-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">label=</span><span class="st">&quot;20% tip&quot;</span>) </span>
 <span id="cb16-5"><a href="what-is-eda.html#cb16-5" aria-hidden="true" tabindex="-1"></a>p</span></code></pre></div>
-<p><img src="docs/images/tips_tot2-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips_tot2-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <p>Most tips less than 20%, there are more “skin flints” than generous diners. There are a couple of big tips, and we can see the banding horizontally that is the rounding seen from the histogram of tips.</p>
 </div>
 <div id="tipcategorical" class="section level4 unnumbered">
 <h4>Examine the distributions across categorical variables.</h4>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="what-is-eda.html#cb17-1" aria-hidden="true" tabindex="-1"></a>p <span class="sc">+</span> <span class="fu">facet_grid</span>(smoker<span class="sc">~</span>sex) <span class="co">#&lt;&lt;</span></span></code></pre></div>
-<p><img src="docs/images/tips_sexsmoke-1.png" width="90%" style="display: block; margin: auto;" /></p>
+<p><img src="eda-book_files/figure-html/tips_sexsmoke-1.png" width="90%" style="display: block; margin: auto;" /></p>
 <ul>
 <li>The bigger bills tend to be paid by men (and females that smoke).</li>
 <li>Except for three diners, female non-smokers are very consistent tippers, probably around 15-18% though.</li>
 <li>The variability in the smokers is much higher than for the non-smokers.</li>
 </ul>
-<p><em>Isn’t this interesting?</em></p>
+<p><strong>Isn’t this interesting?</strong></p>
+</div>
+<div id="overview-of-eda-process" class="section level4" number="2.3.2.1">
+<h4><span class="header-section-number">2.3.2.1</span> Overview of EDA process</h4>
+<div class="figure" style="text-align: center"><span id="fig:eda"></span>
+<div id="htmlwidget-cbdb4f27d766128aa0d1" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cbdb4f27d766128aa0d1">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"abstraction\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"question\", shape = \"rectangle\", width = \"1.5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"what might you expect to see\", shape = \"rectangle\", width = \"5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"plot or calculate\", shape = \"rectangle\", width = \"3\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"is it what you expected?\", shape = \"rectangle\", width = \"4\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
+</p>
 </div>
 </div>
-<div id="summarising-the-difference" class="section level3" number="2.2.3">
-<h3><span class="header-section-number">2.2.3</span> Summarising the difference</h3>
+</div>
+<div id="what-we-learned-from-eda" class="section level3" number="2.3.3">
+<h3><span class="header-section-number">2.3.3</span> What we learned from EDA</h3>
 <p>In the above example we gained a wealth of insight in a short time. Using nothing but graphical methods we investigated univariate, bivariate, and multivariate relationships. We found both global features and local detail. We saw that tips were rounded; then we saw the obvious correlation between the tip and the size of the bill, noting the scarcity of generous tippers; finally we discovered differences in the tipping behavior of male and female smokers and non-smokers.</p>
 <p>Notice that we used very simple plots to explore some pretty complex relationships involving as many as four variables. Each plot shows a subset obtained by partitioning the data according to two binary variables. The statistical term for partitioning based on variables is “conditioning.” For example, the top left plot shows the dining parties that meet the condition that the bill payer was a male non-smoker: sex = male and smoking = False. In database terminology this plot would be called the result of “drill-down.” The idea of conditioning is richer than drill-down because it involves a structured partitioning of all data as opposed to the extraction of a single partition.</p>
 <p>Having generated the four plots, we arrange them in a two-by-two layout to reflect the two variables on which we conditioned. Although the axes in each plot are tip and bill, the axes of the overall figure are smoking (vertical) and sex (horizontal). The arrangement permits us to make several kinds of comparisons and to make observations about the partitions.</p>
 </div>
-<div id="reality-check" class="section level3" number="2.2.4">
-<h3><span class="header-section-number">2.2.4</span> Reality check</h3>
+<div id="reality-check" class="section level3" number="2.3.4">
+<h3><span class="header-section-number">2.3.4</span> Reality check</h3>
 <p>The preceding explanations may have given a somewhat misleading impression of the process of data analysis. In our account the data had no problems; for example, there were no missing values and no recording errors. Every step was logical and necessary. Every question we asked had a meaningful answer. Every plot that was produced was useful and informative. In actual data analysis, nothing could be further from the truth. Real datasets are rarely perfect; most choices are guided by intuition, knowledge, and judgment; most steps lead to dead ends; most plots end up in the wastebasket. This may sound daunting, but even though data analysis is a highly improvisational activity, it can be given some structure nonetheless.</p>
 </div>
-<div id="what-is-eda-1" class="section level3" number="2.2.5">
-<h3><span class="header-section-number">2.2.5</span> What is EDA?</h3>
+<div id="what-is-eda-1" class="section level3" number="2.3.5">
+<h3><span class="header-section-number">2.3.5</span> What is EDA?</h3>
 <p>In this stage in the analysis, we make time to “play in the sand” to allow us to find the unexpected, and come to some understanding of our data. We like to think of this as a little like traveling. We may have a purpose in visiting a new city, perhaps to attend a conference, but we need to take care of our basic necessities, such as finding eating places and gas stations. Some of our movements will be pre-determined, or guided by the advice of others, but some of the time we wander around by ourselves. We may find a cafe we particularly like or a cheaper gas station. This is all about getting to know the neighborhood.</p>
 <p>EDA has always depended heavily on graphics, even before the term data visualization was coined. Our favorite quote from John Tukey’s rich legacy is that we need good pictures to <em>“force the unexpected upon us.”</em></p>
 </div>
-<div id="isnt-it-data-snooping" class="section level3" number="2.2.6">
-<h3><span class="header-section-number">2.2.6</span> Isn’t it data snooping?</h3>
+<div id="isnt-it-data-snooping" class="section level3" number="2.3.6">
+<h3><span class="header-section-number">2.3.6</span> Isn’t it data snooping?</h3>
 <ul>
 <li>Because EDA is very graphical, it sometimes gives rise to a suspicion that patterns in the data are being detected and reported that are not really there.</li>
 <li>So many different combinations may be examined, that something is bound to be interesting.</li>
-<li>💀 Structure seen in the plot drives hypothesis testing (on same data).</li>
+<li>☠️ Structure seen in the plot drives hypothesis testing (on same data).</li>
 </ul>
 <p><em>Sometimes this is called data snooping.</em></p>
 <p>We snooped into the tips data, and from a few plots we learned an enormous amount of information about tipping: There is a scarcity of generous tippers, the variability in tips increases extraordinarily for smoking parties, and people tend to round their tips. These are very different types of tipping behaviors than what we learned from the regression model. The regression model was not compromised by what we learned from graphics, and indeed, <em>we have a richer and more informative analysis. Making plots of the data is just smart.</em></p>
 <p><strong>False discovery is the lesser danger when compared to non-discovery. Non-discovery is the failure to identify meaningful structure, and it may result in false or incomplete modeling. In a healthy scientific enterprise, the fear of non-discovery should be at least as great as the fear of false discovery.</strong></p>
 </div>
-<div id="why-arent-there-more-resources-on-eda" class="section level3" number="2.2.7">
-<h3><span class="header-section-number">2.2.7</span> Why aren’t there more resources on EDA?</h3>
+<div id="why-arent-there-more-resources-on-eda" class="section level3" number="2.3.7">
+<h3><span class="header-section-number">2.3.7</span> Why aren’t there more resources on EDA?</h3>
 <blockquote>
 <p>Teaching data analysis is not easy, and the time allowed is always far from sufficient. But these difficulties have been enhanced by the view that “avoidance of cookbookery and growth of understanding come only by mathematical treatment, with emphasis upon proofs.” The problem of cookbookery is not peculiar to data analysis. But the solution of concentrating upon mathematics and proof is. <span class="citation"><a href="#ref-tukey1962" role="doc-biblioref">J. W. Tukey</a> (<a href="#ref-tukey1962" role="doc-biblioref">1962</a>)</span></p>
 </blockquote>
@@ -832,8 +974,8 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <p><strong>But we argue that there is something missing from all of this. Almost all of these resources focus on what would be called initial data analysis. These don’t capture the spirit of EDA, as introduced by Tukey.</strong></p>
 </div>
 </div>
-<div id="the-origins-of-eda" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> The origins of EDA</h2>
+<div id="the-origins-of-eda" class="section level2" number="2.4">
+<h2><span class="header-section-number">2.4</span> The origins of EDA</h2>
 <p>The field of exploratory data analysis came of age with the appearance of Exploratory Data Analysis <span class="citation">(<a href="#ref-tukey77" role="doc-biblioref">J. Tukey 1977</a>)</span>.</p>
 <center>
 <img src="images/tukey_cover.png" width="50%">
@@ -849,8 +991,8 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 </ul>
 <p>The first 4.25 minutes are the best!</p>
 </div>
-<div id="guiding-principles" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Guiding principles</h3>
+<div id="guiding-principles" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Guiding principles</h3>
 <ul>
 <li><strong>It is important to understand what you CAN DO before you learn to measure how WELL you seem to have DONE it.</strong> Learning first what you can do will help you to work more easily and effectively.</li>
 <li>The book does not exist to make the case that exploratory data analysis is useful. Rather it exists to expose its readers and users to a considerable variety of techniques for looking more effectively at one’s data. The examples are not intended to be complete case histories. Rather they should isolated techniques in action on real data. The emphasis is on general techniques, rather than specific problems.</li>
@@ -878,8 +1020,8 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <p>Everything in Tukey’s EDA book could be done with pencil and paper.</p>
 </div>
 </div>
-<div id="scratching-down-numbers" class="section level3" number="2.3.2">
-<h3><span class="header-section-number">2.3.2</span> Scratching down numbers</h3>
+<div id="scratching-down-numbers" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Scratching down numbers</h3>
 <p>Prices of Chevrolet in the local used car newspaper ads of 1968.</p>
 <div class="do">
 <p>Scratch down these numbers to make a stem-and-leaf plot, one of Tukey’s contributions that can still be seen introductory statistics books.</p>
@@ -1096,21 +1238,21 @@ $('#exportcanvas1').click(function(){
 </div>
 <p>Wasn’t this fun! Sketching the numbers, checking them off, looking at the result.</p>
 </div>
-<div id="schematic-summary" class="section level3" number="2.3.3">
-<h3><span class="header-section-number">2.3.3</span> Schematic summary</h3>
+<div id="schematic-summary" class="section level3" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Schematic summary</h3>
 </div>
-<div id="easy-re-expression" class="section level3" number="2.3.4">
-<h3><span class="header-section-number">2.3.4</span> Easy re-expression</h3>
+<div id="easy-re-expression" class="section level3" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Easy re-expression</h3>
 </div>
-<div id="effective-comparison" class="section level3" number="2.3.5">
-<h3><span class="header-section-number">2.3.5</span> Effective comparison</h3>
+<div id="effective-comparison" class="section level3" number="2.4.5">
+<h3><span class="header-section-number">2.4.5</span> Effective comparison</h3>
 </div>
-<div id="plots-of-relationship" class="section level3" number="2.3.6">
-<h3><span class="header-section-number">2.3.6</span> Plots of relationship</h3>
+<div id="plots-of-relationship" class="section level3" number="2.4.6">
+<h3><span class="header-section-number">2.4.6</span> Plots of relationship</h3>
 </div>
 </div>
-<div id="exercises" class="section level2" number="2.4">
-<h2><span class="header-section-number">2.4</span> Exercises</h2>
+<div id="exercises" class="section level2" number="2.5">
+<h2><span class="header-section-number">2.5</span> Exercises</h2>
 <ol style="list-style-type: decimal">
 <li><p>Make a histogram of the total bill. Is there a similar pattern of multimodality?</p></li>
 <li><p>In the scatterplot of tip vs total bill, why is total on the horizontal axis?</p></li>

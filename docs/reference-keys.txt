@@ -131,3 +131,13 @@ potato-scab-infection
 black-cherry-trees
 temperatures-of-stars
 foreign-exchange-rate
+components-of-data-analysis
+current-descriptions
+common-descriptions
+differentiating-eda-from-cda
+summarise-the-model-and-answer-the-question
+fig:cda
+overview-of-cda-process
+fig:eda
+overview-of-eda-process
+what-we-learned-from-eda

@@ -16,23 +16,10 @@ knitr::opts_chunk$set(
 
 # What is exploratory data analysis? {#what-is-eda}
 
-Data analysis is a process of cleaning, transforming,
-inspecting and modelling data with the aim of extracting
-information.
+Exploratory data analysis is a term that became popular after John Tukey published his seminal book on the topic in 1977 [@tukey77]. What is actually refers to, though, is not very well-defined. 
 
-Data analysis includes:
 
-* exploratory data analysis,
-* confirmatory data analysis, and
-* initial data analysis.
-
-<!-- Modeling and prediction and EDA -->
-Before modelling and predicting, data should first be explored to uncover the patterns and structures that exist. Exploratory data analysis involves both numerical and visual techniques designed to reveal interesting information that may be hidden in the data. However, an analyst must be cautious not to over-interpret apparent patterns, and to make efforts assess the results of a data exploration are reliable for the data being studied and potentially for new data.
-
-<!-- Inference and EDA -->
-In a confirmatory data analysis, the focus is on statistical inference and includes processes such as testing hypothesis, model selection, or predictive modelling. Initial data analysis is an important part of this, to check the sometimes strict assumptions made in order to conduct inference. 
-
-## Current interpretations
+## Common descriptions
 <!-- Some common explanations -->
 EDA today is prevalent, and there are many descriptions. It's interesting to compare and contrast these, in relation to the original scope. 
 
@@ -64,11 +51,23 @@ General information site [Towards Data Science](https://towardsdatascience.com/i
 
 > The purpose of doing the Exploratory Data Analysis or EDA is to find new information in data. The understanding of EDA that practitioners may not aware of, is the EDA uses a visually-examined dataset to understand and summarize the main characteristics of the dataset without having a prior hypothesis or relying upon statistical models.
 
-## Differentiating from traditional analysis
+## Components of data analysis
+
+Data analysis is a process of cleaning, transforming,
+inspecting and modelling data with the aim of extracting
+information. It might be exploratory or confirmatory, descriptive of predictive.
+
+<!-- Modeling and prediction -->
+Before modelling and predicting, data should first be explored to uncover the patterns and structures that exist. Data analysis involves both numerical and visual techniques designed to reveal interesting information that may be hidden in the data. However, an analyst must be cautious not to over-interpret apparent patterns, and to make efforts assess the results of an analysis are reliable for the data being studied and potentially for new data.
+
+<!-- Inference -->
+In a confirmatory data analysis (CDA), the focus is on answering a particular question, and includes processes such as testing hypothesis, model selection, or predictive modelling for the purposes of statistical inference. An important part of this is to check the sometimes strict assumptions made in order to conduct inference, and that problems in the data don't compromise the inference. This is usually called *initial data analysis*. In addition, computing *model diagnostics*, like making residual plots, is an important part of checking that a predictive model appropriately fits the data. 
+
+## Differentiating EDA from CDA
 
 ### From the case study
 
-In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled "Practical Data Analysis: Case Studies in Business Statistics" by Bryant and Smith [@bryantsmith1995]. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff's wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous. 
+*Back-story*: In 1995 I (Di), as a newly fledged assistant professor, was asked to teach a Business Statistics course. In the process of looking for appropriate examples, I found a book titled "Practical Data Analysis: Case Studies in Business Statistics" by Bryant and Smith [@bryantsmith1995]. The example on tipping in restaurants caught my eye, because I had always found tipping to be a difficult. Perhaps this was because I was an Australian new to the practice after moving to the USA for graduate school, in 1988 and still uncomfortable with the culture almost a decade later. The types of questions that bounce around mentally, should I tip because the wait staff's wage comes mostly from this money, how much does the restaurant owner take from the worker, was the service good, have I just been paid and can be generous. 
 
 #### What is tipping? {-#whatistipping}
 
@@ -95,17 +94,17 @@ and a description of the variables is as reported in @cookswayne07:
 
 <img src="images/tips.png" width="90%">
 
-#### Case study procedure {-#casestudyprocedure}
+#### Case study procedure (which would be considered to be CDA) {-#casestudyprocedure}
 
-The analysis of the data should follow these steps according to the book:
+To answer the question "What are the most important factors affecting tips?", the analysis should follow these steps according to @bryantsmith1995:
 
-- *Step 1*: Develop a model
+1. Develop a model
     - Should the response be `tip` alone and use the total bill as a predictor?
     - Should you create a new variable `tip rate` and use this as the response?
-- *Step 2*: Fit the full model with sex, smoker, day, time and size as predictors
-- *Step 3*: Refine model: Should some variables should be dropped?
-- *Step 4*: Check distribution of residuals
-- *Step 5*: Summarise the model, if X=something, what would be the expected tip
+2.  Fit the full model with sex, smoker, day, time and size as predictors
+3.  Refine model: Should some variables should be dropped?
+4. Check distribution of residuals
+5. Summarise the model, if X=something, what would be the expected tip
 
 #### Step 1 {-#step1}
 
@@ -147,11 +146,11 @@ glance(tips_lm) %>% #<<
   kable(digits=3)
 ```
 
-`r emo::ji("thinking")` Which variable(s) would be considered important for predicting tip %?
+From the model summary the most (and only) important variable for predicting tip is the size of the dining party. This decision is based on the $t$-statistic and $p$-values reported in the model summary. Size of the party is the only variable which has a really small $p$-value. The small value indicates that it is very unlikely for the true parameter relating size of the party to tip % to be 0, that is, the relationship between these two variables is considered to be statistically significant. The same cannot be said for any of the other variables. 
 
 #### Step 3 {-#step3}
 
-Refine the model.
+Refine the model, by using only one predictor, size of the dining party.
 
 ```{r model_smalla, echo=TRUE}
 tips_lm <- tips %>%
@@ -169,18 +168,13 @@ As the size of the dining party increases by one person the tip decreases by app
 ```{r model_smallb, echo=TRUE}
 glance(tips_lm) %>% #<<
   select(r.squared, statistic, p.value) %>% 
+  rename(`F statistic` = statistic) %>%
   kable(digits=3)
 ```
 
 $R^2 = 0.02$.
 
-This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be a good step to examine interaction terms. 
-
-**What does $R^2 = 0.02$ mean?**
-
-$R^2 = 0.02$ means that size explains just 2% of the variance in tip %. This is a very weak model. 
-
-And $R^2 = 0.04$ is also a very weak model.
+This dropped by half from the full model, even though no other variables contributed significantly to the model. It might be possible to bring the $R^2$ up a little by adding interaction terms to the model, for example, sex, or smoker, and size of the party. We won't don that here, because the purpose is to illustrate the difference between exploratory and confirmatory rather than fitting the best possible model.
 
 **What do the $F$ statistic and $p$-value mean?**
 
@@ -254,9 +248,55 @@ ggplot(tips_aug,
 
 The result of this work would leave us with a model that could be used to impose a dining/tipping policy in restaurants (see [here](https://travel.stackexchange.com/questions/40543/can-i-refuse-to-pay-auto-gratuity-in-a-restaurant)) and should also leave us with an unease that this policy is based on weak support.
 
+#### Summarise the model, and answer the question
+
+The answer to the original question is that the only important factor affecting tip is the size of the dining party.
+
+The final model is
+
+$$\widehat{tip %} = 18.44 - 0.92 \times size$$
+
+The interpretation of the model is, *as the size of the dining party increases by one person the tip decreases by approximately 1%*.
+
+**What does $R^2 = 0.02$ mean?**
+
+$R^2 = 0.02$ means that size explains just 2% of the variance in tip %. This is a very weak model. 
+
+And $R^2 = 0.04$ is also a very weak model.
+
+#### Overview of CDA process
+
+```{r cda, fig.cap="Pipeline of confirmatory data analysis. It starts with a question."}
+library(DiagrammeR)
+cda_nodes <- create_node_df(n=6, 
+               type=c("action", "action",
+                      "action", "action",
+                      "action", "action"),
+               label = c("question/hypothesis",
+                          "data", "IDA",
+                          "model/test", "MD",
+                          "conclusion"),
+               shape = c("rectangle", "rectangle",
+                         "rectangle", "rectangle",
+                         "rectangle", "rectangle"),
+               width = c(3.2, 1, 1, 1.8, 1, 2.1),
+               fillcolor = c("grey90", "grey90",
+                             "grey90", "grey90",
+                             "grey90", "grey90"),
+               fontsize = c(24, 24, 24, 24, 24, 24)
+               )
+cda_edges <- create_edge_df(from = 1:5, to = 2:6, 
+                            color = "black")
+cda <- create_graph(cda_nodes, cda_edges, 
+                    directed = TRUE, 
+                    attr_theme = "tb")
+render_graph(cda)
+```
+
 ### EDA approach
 
-It's a good idea to examine the data description, and the explanation of the variables. What does that look like here?
+First, examine the data description, and the explanation of the variables. In the tips example, this would be:
+
 - tip and totbill are quantitative, but generally we would think about tip as a percentage of the bill, so creating this new variable would be useful, too.
 - sex, smoker, day, time of day are categorical.
 - size is discrete/integer.
@@ -264,10 +304,12 @@ It's a good idea to examine the data description, and the explanation of the var
 The types of variables suggest what summaries to make. 
 
 For the quantitative variables we would calculate 
+
 - means, standard deviations, median, quartiles, minimum and maximum, and 
 - also make histograms or density plots and scatterplots to explore bivariate relationships.
 
 For categorical variables, and integer variables with few categories, compute 
+
 - counts and proportions, and
 - make bar charts and mosaic plots
 
@@ -345,9 +387,38 @@ p + facet_grid(smoker~sex) #<<
 - Except for three diners, female non-smokers are very consistent tippers, probably around 15-18% though.
 - The variability in the smokers is much higher than for the non-smokers.
 
-*Isn't this interesting?*
+**Isn't this interesting?**
 
-### Summarising the difference
+#### Overview of EDA process
+
+```{r eda, fig.cap="Pipeline of exploratory data analysis. It starts with the data."}
+eda_nodes <- create_node_df(n=6, 
+               type=c("action", "action",
+                      "action", "action",
+                      "action", "action"),
+               label = c("data", "abstraction",
+                         "question", 
+                         "what might you expect to see",
+                         "plot or calculate", 
+                         "is it what you expected?"),
+               shape = c("rectangle", "rectangle",
+                         "rectangle", "rectangle",
+                         "rectangle", "rectangle"),
+               width = c(1, 1.8, 1.5, 5, 3, 4),
+               fillcolor = c("grey90", "grey90",
+                             "grey90", "grey90",
+                             "grey90", "grey90"),
+               fontsize = c(24, 24, 24, 24, 24, 24)
+               )
+eda_edges <- create_edge_df(from = 1:5, to = 2:6, 
+                            color = "black")
+eda <- create_graph(eda_nodes, eda_edges, 
+                    directed = TRUE, 
+                    attr_theme = "tb")
+render_graph(eda)
+```
+
+### What we learned from EDA
 
 In the above example we gained a wealth of insight in a short time. Using nothing but graphical methods we investigated univariate, bivariate, and multivariate relationships. We found both global features and local detail. We saw that tips were rounded; then we saw the obvious correlation between the tip and the size of the bill, noting the scarcity of generous tippers; finally we discovered differences in the tipping behavior of male and female smokers and non-smokers.
 
