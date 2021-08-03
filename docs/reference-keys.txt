@@ -141,3 +141,8 @@ overview-of-cda-process
 fig:eda
 overview-of-eda-process
 what-we-learned-from-eda
+example-stem-and-leaf
+example-1-stem-and-leaf
+example-2-boxplots
+example-3-making-tallies
+example-4-easy-re-expression

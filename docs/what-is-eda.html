@@ -61,9 +61,6 @@
 <script src="libs/viz-1.8.2/viz.js"></script>
 <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
 <script src="libs/grViz-binding-1.0.6.1/grViz.js"></script>
-<script src="libs/fabric-3.6.3/fabric.min.js"></script>
-<script src="libs/FileSaver-2.0.2/FileSaver.min.js"></script>
-<script src="libs/jQuery-3.5.1/jquery-3.5.1.min.js"></script>
 
 
 <style type="text/css">
@@ -187,11 +184,10 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.4</b> The origins of EDA</a>
 <ul>
-<li class="chapter" data-level="2.4.1" data-path="what-is-eda.html"><a href="what-is-eda.html#scratching-down-numbers"><i class="fa fa-check"></i><b>2.4.1</b> Scratching down numbers</a></li>
-<li class="chapter" data-level="2.4.2" data-path="what-is-eda.html"><a href="what-is-eda.html#schematic-summary"><i class="fa fa-check"></i><b>2.4.2</b> Schematic summary</a></li>
-<li class="chapter" data-level="2.4.3" data-path="what-is-eda.html"><a href="what-is-eda.html#easy-re-expression"><i class="fa fa-check"></i><b>2.4.3</b> Easy re-expression</a></li>
-<li class="chapter" data-level="2.4.4" data-path="what-is-eda.html"><a href="what-is-eda.html#effective-comparison"><i class="fa fa-check"></i><b>2.4.4</b> Effective comparison</a></li>
-<li class="chapter" data-level="2.4.5" data-path="what-is-eda.html"><a href="what-is-eda.html#plots-of-relationship"><i class="fa fa-check"></i><b>2.4.5</b> Plots of relationship</a></li>
+<li class="chapter" data-level="2.4.1" data-path="what-is-eda.html"><a href="what-is-eda.html#example-1-stem-and-leaf"><i class="fa fa-check"></i><b>2.4.1</b> Example 1: stem-and-leaf</a></li>
+<li class="chapter" data-level="2.4.2" data-path="what-is-eda.html"><a href="what-is-eda.html#example-2-boxplots"><i class="fa fa-check"></i><b>2.4.2</b> Example 2: Boxplots</a></li>
+<li class="chapter" data-level="2.4.3" data-path="what-is-eda.html"><a href="what-is-eda.html#example-3-making-tallies"><i class="fa fa-check"></i><b>2.4.3</b> Example 3: Making tallies</a></li>
+<li class="chapter" data-level="2.4.4" data-path="what-is-eda.html"><a href="what-is-eda.html#example-4-easy-re-expression"><i class="fa fa-check"></i><b>2.4.4</b> Example 4: Easy re-expression</a></li>
 </ul></li>
 <li class="chapter" data-level="2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.5</b> Exercises</a></li>
 </ul></li>
@@ -838,8 +834,8 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <div id="overview-of-cda-process" class="section level4" number="2.3.1.2">
 <h4><span class="header-section-number">2.3.1.2</span> Overview of CDA process</h4>
 <div class="figure" style="text-align: center"><span id="fig:cda"></span>
-<div id="htmlwidget-ff81729736088a9c05a7" style="width:90%;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-ff81729736088a9c05a7">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"question/hypothesis\", shape = \"rectangle\", width = \"3.2\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"IDA\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"model/test\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"MD\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"conclusion\", shape = \"rectangle\", width = \"2.1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1e07509b671cc86f3c73" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1e07509b671cc86f3c73">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"question/hypothesis\", shape = \"rectangle\", width = \"3.2\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"IDA\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"model/test\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"MD\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"conclusion\", shape = \"rectangle\", width = \"2.1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.1: Pipeline of confirmatory data analysis. It starts with a question.
 </p>
@@ -927,8 +923,8 @@ Figure 2.1: Pipeline of confirmatory data analysis. It starts with a question.
 <div id="overview-of-eda-process" class="section level4" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> Overview of EDA process</h4>
 <div class="figure" style="text-align: center"><span id="fig:eda"></span>
-<div id="htmlwidget-3a70b94a7512ff63c7d5" style="width:90%;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-3a70b94a7512ff63c7d5">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"abstraction\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"question\", shape = \"rectangle\", width = \"1.5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"what might you expect to see\", shape = \"rectangle\", width = \"5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"plot or calculate\", shape = \"rectangle\", width = \"3\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"is it what you expected?\", shape = \"rectangle\", width = \"4\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cd72d25b95d0e38f11d4" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd72d25b95d0e38f11d4">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"abstraction\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"question\", shape = \"rectangle\", width = \"1.5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"what might you expect to see\", shape = \"rectangle\", width = \"5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"plot or calculate\", shape = \"rectangle\", width = \"3\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"is it what you expected?\", shape = \"rectangle\", width = \"4\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 </p>
@@ -955,7 +951,7 @@ Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 <ul>
 <li>Because EDA is very graphical, it sometimes gives rise to a suspicion that patterns in the data are being detected and reported that are not really there.</li>
 <li>So many different combinations may be examined, that something is bound to be interesting.</li>
-<li>⚡ Structure seen in the plot drives hypothesis testing (on same data).</li>
+<li>💀 Structure seen in the plot drives hypothesis testing (on same data).</li>
 </ul>
 <p><em>Sometimes this is called data snooping.</em></p>
 <p>We snooped into the tips data, and from a few plots we learned an enormous amount of information about tipping: There is a scarcity of generous tippers, the variability in tips increases extraordinarily for smoking parties, and people tend to round their tips. These are very different types of tipping behaviors than what we learned from the regression model. The regression model was not compromised by what we learned from graphics, and indeed, <em>we have a richer and more informative analysis. Making plots of the data is just smart.</em></p>
@@ -990,26 +986,30 @@ Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 </ul>
 <p>The first 4.25 minutes are the best!</p>
 </div>
-<p>The orange book was written not to convince readers of the usefulness of EDA, not to provide a set of case studies, but to provide a huge number of isolated techniques that data analysts might find useful in their work. In this sense the book contains a wealth of data analysis wisdom, which also make it a bit impenetrable, and perhaps best read is small increments. When you do that you’ll find an amazing collection of creative ways to “scratch down numbers” peppered with snippets of wisdom for working with data. Here are a few of the words of wisdom.</p>
+<p>The orange book was written NOT to convince readers of the usefulness of EDA, NOT to provide a set of case studies, but to provide a huge number of individual and isolated techniques that data analysts might find useful in their work. In this sense the book contains a wealth of data analysis wisdom, which also make it a bit impenetrable, and perhaps best read is small increments. When you do that you’ll find an amazing collection of creative ways to “scratch down numbers” peppered with snippets of wisdom for working with data. Here are a few of our favourite snippets from the text, revealing words of wisdom.</p>
 <ul>
 <li><strong>It is important to understand what you CAN DO before you learn to measure how WELL you seem to have DONE it.</strong> Learning first what you can do will help you to work more easily and effectively.</li>
-<li>The book does not exist to make the case that exploratory data analysis is useful. Rather it exists to expose its readers and users to a considerable variety of techniques for looking more effectively at one’s data. The examples are not intended to be complete case histories. Rather they should isolated techniques in action on real data. The emphasis is on general techniques, rather than specific problems.</li>
-<li>A basic problem about any body of data is to make it more easily and effectively handleable by minds – our minds, her mind, his mind. To this general end:
+<li>A basic problem about any body of data is to make it <strong>more easily and effectively handleable by minds – our minds, her mind, his mind</strong>. To this general end:
 <ul>
 <li>anything that make a simpler description possible makes the description more easily handleable.</li>
 <li>anything that looks below the previously described surface makes the description more effective.</li>
 </ul></li>
 <li>So we shall always be glad (a) to simplify description and (b) to describe one layer deeper. In particular,
 <ul>
-<li>to be able to say that we looked one layer deeper, and found nothing, is a definite step forward – though not as far as to be able to say that we looked deeper and found thus-and-such.</li>
-<li>to be able to say that “if we change our point of view in the following way … things are simpler” is always a gain–though not quite so much as to be able to say “if we don’t bother to change out point of view (some other) things are equally simple.”</li>
+<li>to be able to say that we looked one layer deeper, and found nothing, is a definite step forward – though not as far as to be <strong>able to say that we looked deeper and found thus-and-such</strong>.</li>
+<li>to be able to say that “if we change our point of view in the following way … things are simpler” is always a gain–though not quite so much as to be able to say “if we don’t bother to change our point of view (some other) things are equally simple.”</li>
 </ul></li>
-<li>Consistent with this view, we believe, is a clear demand that pictures based on exploration of data should <em>force</em> their messages upon us. Pictures that emphasize what we already know–“security blankets” to reassure us–are frequently not worth the space they take. Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. <strong>The greatest value of a picture</strong> is when it <em>forces</em> us to notice <strong>what we never expected to see.</strong></li>
-<li>Once upon a time, statisticians only explored. Then they learned to confirm exactly–to confirm a few things exactly, each under very specific circumstances. As they emphasized exact confirmation, their techniques inevitably became less flexible. The connection of the most used techniques with past insights was weakened. Anything to which confirmatory procedure was not explicitly attached was decried as “mere descriptive statistics,” no matter how much we learned from it. Today, the flexibility of (approximate) confirmation by the jacknife (add simulation, bootstrap and permutation now) makes it relatively easy to ask, for almost any clearly specified exploration, “How far is it confirmed?” <strong>Today, exploratory and confirmatory can–and should–proceed side by side</strong>.</li>
+<li>Consistent with this view, we believe, is a clear demand that pictures based on exploration of data should <em>force</em> their messages upon us.
+<ul>
+<li><strong>Pictures that emphasize what we already know–“security blankets” to reassure us–are frequently not worth the space they take</strong>.</li>
+<li>Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect.</li>
+<li><strong>The greatest value of a picture</strong> is when it <em>forces</em> us to notice <strong>what we never expected to see.</strong></li>
+</ul></li>
+<li><strong>Once upon a time, statisticians only explored.</strong> Then they learned to confirm exactly–to confirm a few things exactly, each under very specific circumstances. As they emphasized exact confirmation, their techniques inevitably became less flexible. The connection of the most used techniques with past insights was weakened. Anything to which confirmatory procedure was not explicitly attached was decried as “mere descriptive statistics,” no matter how much we learned from it. Today, the flexibility of (approximate) confirmation by the jacknife (add simulation, bootstrap and permutation now) makes it relatively easy to ask, for almost any clearly specified exploration, “How far is it confirmed?” <strong>Today, exploratory and confirmatory can–and should–proceed side by side</strong>.</li>
 <li>both teacher and student need to realise that many problems do not have a single “right answer.”
 <ul>
-<li>There can be many ways to approach a body of data. Not all are equally good. For some bodies of data this may be clear, but for others we may not be able to tell from a single body of data which approach is preferred. Even several bodies of data about very similar situations may not be enough to show which approach should be preferred. Accordingly, it will often be quite reasonable for different analysts to reach somewhat different analyses.</li>
-<li>Yet more–to unlock the analysis of a body of day, to find the good way to approach it, may require a key, whose finding is a creative act. Not everyone can be expected to create the key to any one situation. And to continue to paraphrase Barnum, no one can be expected to create a key to each situation he or she meets.</li>
+<li><strong>There can be many ways to approach a body of data. Not all are equally good.</strong> For some bodies of data this may be clear, but for others we may not be able to tell from a single body of data which approach is preferred. Even several bodies of data about very similar situations may not be enough to show which approach should be preferred. Accordingly, it will often be quite reasonable for different analysts to reach somewhat different analyses.</li>
+<li>Yet more–to unlock the analysis of a body of day, to find the good way to approach it, may require a key, whose finding is a creative act. <strong>Not everyone can be expected to create the key to any one situation</strong>. And to continue to paraphrase Barnum, no one can be expected to create a key to each situation he or she meets.</li>
 <li><strong>To learn about data analysis, it is right that each of us try many things that do not work</strong>–that we tackle more problems than we make expert analyses of. We often learn less from an expertly done analysis than from one where, by not trying something, we missed–at least until we were told about it–an opportunity to learn more. Each teacher needs to recognize this in grading and commenting on problems.</li>
 <li>The teacher who heeds these words and admits that there need be <em>no one correct approach</em> may, I regret to contemplate, still want whatever is done to be digit perfect. (Under such a requirement, the write should still be able to pass the course, but it is not clear whether she would get an “A.”) One does, from time to time, have to produce digit-perfect, carefully checked results, but forgiving techniques that are not too distributed by unusual data are also, usually, <em>little disturbed by SMALL arithmetic errors</em>. The techniques we discuss here have been chosen to be forgiving. It is hoped, then, that small arithmetic errors will take little off the problem’s grades, leaving severe penalties for larger errors, either of arithmetic or concept.</li>
 </ul></li>
@@ -1017,9 +1017,12 @@ Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 <div class="aim">
 <p>Everything in Tukey’s EDA book could be done with pencil and paper.</p>
 </div>
-<div id="scratching-down-numbers" class="section level3" number="2.4.1">
-<h3><span class="header-section-number">2.4.1</span> Scratching down numbers</h3>
-<p>Prices of Chevrolet in the local used car newspaper ads of 1968.</p>
+<p>The sheer joy of working with numbers is one of the delights in reading the book. Here are some of the “scratching down numbers” techniques that we found surprising.</p>
+<div id="example-1-stem-and-leaf" class="section level3" number="2.4.1">
+<h3><span class="header-section-number">2.4.1</span> Example 1: stem-and-leaf</h3>
+<p>These are the prices of Chevrolet cars listed in the local used car newspaper ads in 1968.</p>
+<pre><code>##  [1]  250  150  795  895  695 1699 1499 1099 1693 1166  688 1333  895 1775  895
+## [16] 1895  795</code></pre>
 <div class="do">
 <p>Scratch down these numbers to make a stem-and-leaf plot, one of Tukey’s contributions that can still be seen introductory statistics books.</p>
 <!-- 1. Sort the numbers from lowest to highest
@@ -1038,223 +1041,29 @@ Then you have a boxplot!-->
 <li>The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.</li>
 <li>And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.</li>
 </ol>
-
-<input id = erasecanvas1 type = 'checkbox' title='Check it to erase !'>
-
-<input id = canvas1drawing-color type = 'color' value = '#005E7A' style = 'width:30px;'>
-
-<input id = exportcanvas1 type = 'button' style = 'width:55px;' value = 'Export'>
-
-<canvas id="canvas1" width="690" height="350"></canvas>
-<script>
-const canvas1 = new fabric.Canvas('canvas1', {
-    backgroundColor: '#a8a890',
-    isDrawingMode: true
-
-    });
-
-
-canvas1.freeDrawingBrush.width  = 3;
-
-
-canvas1drawingColorEl = document.getElementById('canvas1drawing-color');
-
-canvas1.freeDrawingBrush.color = canvas1drawingColorEl.value;
-
-canvas1drawingColorEl.onchange = function() {
-    canvas1.freeDrawingBrush.color = canvas1drawingColorEl.value;
-  };
-
-
- $('#erasecanvas1').click(function(){
-
-    if (this.checked) {
-
-      canvas1.freeDrawingBrush.color  = '#a8a890';
-
-    } else {
-
-      canvas1.freeDrawingBrush.color = canvas1drawingColorEl.value;
-
-    }
-
-
-
-});
-
-
-
-
-
- $('#erasecanvas1').click(function(){
-
-    if (this.checked) {
-
-      canvas1.freeDrawingBrush.width   = 10;
-
-    } else {
-
-      canvas1.freeDrawingBrush.width  = 3;
-
-    }
-
-
-});
-
-
-$('#exportcanvas1').click(function(){
-
-  $('#canvas1').get(0).toBlob(function(blob){
-
-    saveAs(blob, 'canvas1-IMG.png');
-
-
-  });
-
-
-});
-
-
-
-
-
-
-</script>
-<script>
-
-  var txt1 = new fabric.Text("250, 150, 795, 895, 695,  ", {
-
-  left: 10,
-  top: 10,
-  fontFamily: 'Courier',
-  fontSize: 18,
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  underline: false,
-  linethrough: false,
-  overline: false,
-  fill: '#2F3941',
-  angle: 0,
-  opacity: 1,
-  stroke: '#282A36',
-  strokeWidth: 1,
-  textAlign: 'center',
-  lineHeight: 1,
-  
-  selectable: true,
-  
-
-});
-
-  canvas1.add(txt1);
-</script>
-<script>
-
-  var txt2 = new fabric.Text("1699, 1499, 1099, 1693,", {
-
-  left: 10,
-  top: 40,
-  fontFamily: 'Courier',
-  fontSize: 18,
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  underline: false,
-  linethrough: false,
-  overline: false,
-  fill: '#2F3941',
-  angle: 0,
-  opacity: 1,
-  stroke: '#282A36',
-  strokeWidth: 1,
-  textAlign: 'center',
-  lineHeight: 1,
-  
-  selectable: true,
-  
-
-});
-
-  canvas1.add(txt2);
-</script>
-<script>
-
-  var txt3 = new fabric.Text("1166, 688, 1333, 895,", {
-
-  left: 10,
-  top: 70,
-  fontFamily: 'Courier',
-  fontSize: 18,
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  underline: false,
-  linethrough: false,
-  overline: false,
-  fill: '#2F3941',
-  angle: 0,
-  opacity: 1,
-  stroke: '#282A36',
-  strokeWidth: 1,
-  textAlign: 'center',
-  lineHeight: 1,
-  
-  selectable: true,
-  
-
-});
-
-  canvas1.add(txt3);
-</script>
-<script>
-
-  var txt3 = new fabric.Text("1775, 895, 1895, 795", {
-
-  left: 10,
-  top: 100,
-  fontFamily: 'Courier',
-  fontSize: 18,
-  fontStyle: 'normal',
-  fontWeight: 'normal',
-  underline: false,
-  linethrough: false,
-  overline: false,
-  fill: '#2F3941',
-  angle: 0,
-  opacity: 1,
-  stroke: '#282A36',
-  strokeWidth: 1,
-  textAlign: 'center',
-  lineHeight: 1,
-  
-  selectable: true,
-  
-
-});
-
-  canvas1.add(txt3);
-</script>
 </div>
 <p>Wasn’t this fun! Sketching the numbers, checking them off, looking at the result.</p>
 </div>
-<div id="schematic-summary" class="section level3" number="2.4.2">
-<h3><span class="header-section-number">2.4.2</span> Schematic summary</h3>
+<div id="example-2-boxplots" class="section level3" number="2.4.2">
+<h3><span class="header-section-number">2.4.2</span> Example 2: Boxplots</h3>
 </div>
-<div id="easy-re-expression" class="section level3" number="2.4.3">
-<h3><span class="header-section-number">2.4.3</span> Easy re-expression</h3>
+<div id="example-3-making-tallies" class="section level3" number="2.4.3">
+<h3><span class="header-section-number">2.4.3</span> Example 3: Making tallies</h3>
 </div>
-<div id="effective-comparison" class="section level3" number="2.4.4">
-<h3><span class="header-section-number">2.4.4</span> Effective comparison</h3>
-</div>
-<div id="plots-of-relationship" class="section level3" number="2.4.5">
-<h3><span class="header-section-number">2.4.5</span> Plots of relationship</h3>
+<div id="example-4-easy-re-expression" class="section level3" number="2.4.4">
+<h3><span class="header-section-number">2.4.4</span> Example 4: Easy re-expression</h3>
 </div>
 </div>
 <div id="exercises" class="section level2" number="2.5">
 <h2><span class="header-section-number">2.5</span> Exercises</h2>
 <ol style="list-style-type: decimal">
-<li><p>Make a histogram of the total bill. Is there a similar pattern of multimodality?</p></li>
+<li><p>Make a histogram of the total bill. Is there a similar pattern of multi-modality?</p></li>
 <li><p>In the scatterplot of tip vs total bill, why is total on the horizontal axis?</p></li>
 <li><p>Make a stem-and-leaf plot of these numbers.</p></li>
+<li><p>Use Tukey’s tallying system to count the number of runs for this cricket teams 10 over innings.</p></li>
 </ol>
+<pre><code>##  [1] 2 3 0 2 1 1 4 3 0 4 0 0 4 6 0 1 0 0 2 0 2 0 1 2 1 0 0 4 0 0 0 0 4 0 4 0 0 0
+## [39] 4 4 1 0 4 1 1 4 2 4 2 2 0 0 0 6 1 0 0 2 1 2</code></pre>
 
 </div>
 </div>

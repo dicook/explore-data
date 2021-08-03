@@ -480,21 +480,23 @@ Watch [John Tukey talking about exploring high-dimensional data with an amazing 
 The first 4.25 minutes are the best!
 :::
 
-The orange book was written not to convince readers of the usefulness of EDA, not to provide a set of case studies, but to provide a huge number of isolated techniques that data analysts might find useful in their work. In this sense the book contains a wealth of data analysis wisdom, which also make it a bit impenetrable, and perhaps best read is small increments. When you do that you'll find an amazing collection of creative ways to "scratch down numbers" peppered with snippets of wisdom for working with data. Here are a few of the words of wisdom. 
+The orange book was written NOT to convince readers of the usefulness of EDA, NOT to provide a set of case studies, but to provide a huge number of individual and isolated techniques that data analysts might find useful in their work. In this sense the book contains a wealth of data analysis wisdom, which also make it a bit impenetrable, and perhaps best read is small increments. When you do that you'll find an amazing collection of creative ways to "scratch down numbers" peppered with snippets of wisdom for working with data. Here are a few of our favourite snippets from the text, revealing words of wisdom. 
 
 - **It is important to understand  what you CAN DO before you learn to measure how WELL you seem to have DONE it.** Learning first what you can do will help you to work more easily and effectively. 
-- The book does not exist to make the case that exploratory data analysis is useful. Rather it exists to expose its readers and users to a considerable variety of techniques for looking more effectively at one's data.  The examples are not intended to be complete case histories. Rather they should isolated techniques in action on real data. The emphasis is on general techniques, rather than specific problems. 
-- A basic problem about any body of data is to make it more easily and effectively handleable by minds -- our minds, her mind, his mind. To this general end:
+- A basic problem about any body of data is to make it **more easily and effectively handleable by minds -- our minds, her mind, his mind**. To this general end:
     - anything that make a simpler description possible makes the description more easily handleable.
     - anything that looks below the previously described surface makes the description more effective.
 - So we shall always be glad (a) to simplify description and (b) to describe one layer deeper. In particular, 
-    - to be able to say that we looked one layer deeper, and found nothing, is a definite step forward -- though not as far as to be able to say that we looked deeper and found thus-and-such.
-    - to be able to say that "if we change our point of view in the following way ... things are simpler" is always a gain--though not quite so much as to be able to say "if we don't bother to change out point of view (some other) things are equally simple."
-- Consistent with this view, we believe, is a clear demand that pictures based on exploration of data should *force* their messages upon us. Pictures that emphasize what we already know--"security blankets" to reassure us--are frequently not worth the space they take. Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. **The greatest value of a picture** is when it *forces* us to notice **what we never expected to see.**
-- Once upon a time, statisticians only explored. Then they learned to confirm exactly--to confirm a few things exactly, each under very specific circumstances. As they emphasized exact confirmation, their techniques inevitably became less flexible. The connection of the most used techniques with past insights was weakened. Anything to which confirmatory procedure was not explicitly attached was decried as "mere descriptive statistics", no matter how much we learned from it. Today, the flexibility of (approximate) confirmation by the jacknife (add simulation, bootstrap and permutation now) makes it relatively easy to ask, for almost any clearly specified exploration, "How far is it confirmed?" **Today, exploratory and confirmatory can--and should--proceed side by side**.
+    - to be able to say that we looked one layer deeper, and found nothing, is a definite step forward -- though not as far as to be **able to say that we looked deeper and found thus-and-such**.
+    - to be able to say that "if we change our point of view in the following way ... things are simpler" is always a gain--though not quite so much as to be able to say "if we don't bother to change our point of view (some other) things are equally simple."
+- Consistent with this view, we believe, is a clear demand that pictures based on exploration of data should *force* their messages upon us. 
+    - **Pictures that emphasize what we already know--"security blankets" to reassure us--are frequently not worth the space they take**. 
+    - Pictures that have to be gone over with a reading glass to see the main point are wasteful of time and inadequate of effect. 
+    - **The greatest value of a picture** is when it *forces* us to notice **what we never expected to see.**
+- **Once upon a time, statisticians only explored.** Then they learned to confirm exactly--to confirm a few things exactly, each under very specific circumstances. As they emphasized exact confirmation, their techniques inevitably became less flexible. The connection of the most used techniques with past insights was weakened. Anything to which confirmatory procedure was not explicitly attached was decried as "mere descriptive statistics", no matter how much we learned from it. Today, the flexibility of (approximate) confirmation by the jacknife (add simulation, bootstrap and permutation now) makes it relatively easy to ask, for almost any clearly specified exploration, "How far is it confirmed?" **Today, exploratory and confirmatory can--and should--proceed side by side**.
 - both teacher and student need to realise that many problems do not have a single "right answer". 
-    - There can be many ways to approach a body of data. Not all are equally good. For some bodies of data this may be clear, but for others we may not be able to tell from a single body of data which approach is preferred. Even several bodies of data about very similar situations may not be enough to show which approach should be preferred. Accordingly, it will often be quite reasonable for different analysts to reach somewhat different analyses. 
-    - Yet more--to unlock the analysis of a body of day, to find the good way to approach it, may require a key, whose finding is a creative act. Not everyone can be expected to create the key to any one situation. And to continue to paraphrase Barnum, no one can be expected to create a key to each situation he or she meets. 
+    - **There can be many ways to approach a body of data. Not all are equally good.** For some bodies of data this may be clear, but for others we may not be able to tell from a single body of data which approach is preferred. Even several bodies of data about very similar situations may not be enough to show which approach should be preferred. Accordingly, it will often be quite reasonable for different analysts to reach somewhat different analyses. 
+    - Yet more--to unlock the analysis of a body of day, to find the good way to approach it, may require a key, whose finding is a creative act. **Not everyone can be expected to create the key to any one situation**. And to continue to paraphrase Barnum, no one can be expected to create a key to each situation he or she meets. 
     - **To learn about data analysis, it is right that each of us try many things that do not work**--that we tackle more problems than we make expert analyses of. We often learn less from an expertly done analysis than from one where, by not trying something, we missed--at least until we were told about it--an opportunity to learn more. Each teacher needs to recognize this in grading and commenting on problems. 
     - The teacher who heeds these words and admits that there need be *no one correct approach* may, I regret to contemplate, still want whatever is done to be digit perfect. (Under such a requirement, the write should still be able to pass the course, but it is not clear whether she would get an "A".) One does, from time to time, have to produce digit-perfect, carefully checked results, but forgiving techniques that are not too distributed by unusual data are also, usually, *little disturbed by SMALL arithmetic errors*. The techniques we discuss here have been chosen to be forgiving. It is hoped, then, that small arithmetic errors will take little off the problem's grades, leaving severe penalties for larger errors, either of arithmetic or concept.
 
@@ -503,18 +505,20 @@ Everything in Tukey's EDA book could be done with pencil and paper.
 
 :::
 
-### Scratching down numbers
+The sheer joy of working with numbers is one of the delights in reading the book. Here are some of the "scratching down numbers" techniques that we found surprising. 
 
-Prices of Chevrolet in the local used car newspaper ads of 1968. 
+### Example 1: stem-and-leaf 
+
+These are the prices of Chevrolet cars listed in the local used car newspaper ads in 1968. 
 
 ```{r}
-options(width=20)
+options(width=80)
 chevrolets <- tibble(
   prices = c(250, 150, 795, 895, 695, 
                1699, 1499, 1099, 1693, 1166,
                688, 1333, 895, 1775, 895,
                1895, 795))
-#chevrolets$prices
+chevrolets$prices
 ```
 
 ::: do
@@ -537,51 +541,34 @@ Then you have a boxplot!-->
 4. The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.
 5. And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.
 
-```{r}
-library(fabricerin)
-fabric_drawing(cid = "canvas1", 
-               cwidth = 690, 
-               cheight = 350, 
-               cfill = "#a8a890", 
-               drawingWidth = 3, 
-               gumSize = 10)
-fabric_text_add(cid = "canvas1", textId = "txt1",
-                text = "250, 150, 795, 895, 695,  ",
-                left = 10, top = 10, 
-                fontFamily = "Courier", fontSize = 18)
-fabric_text_add(cid = "canvas1", textId = "txt2",
-                text = "1699, 1499, 1099, 1693,",
-                left = 10, top = 40, 
-                fontFamily = "Courier", fontSize = 18)
-fabric_text_add(cid = "canvas1", textId = "txt3",
-                text = "1166, 688, 1333, 895,",
-                left = 10, top = 70, 
-                fontFamily = "Courier", fontSize = 18)
-fabric_text_add(cid = "canvas1", textId = "txt3",
-                text = "1775, 895, 1895, 795",
-                left = 10, top = 100, 
-                fontFamily = "Courier", fontSize = 18)
-```
-
 :::
 
 Wasn't this fun! Sketching the numbers, checking them off, looking at the result. 
 
-### Schematic summary
+### Example 2: Boxplots
 
-### Easy re-expression
+### Example 3: Making tallies
 
-### Effective comparison
-
-### Plots of relationship
-
+### Example 4: Easy re-expression
 
 
 
 ## Exercises
 
-1. Make a histogram of the total bill. Is there a similar pattern of multimodality? 
+1. Make a histogram of the total bill. Is there a similar pattern of multi-modality? 
 
 2. In the scatterplot of tip vs total bill, why is total on the horizontal axis?
 
 3. Make a stem-and-leaf plot of these numbers.
+
+4. Use Tukey's tallying system to count the number of runs for this cricket teams 10 over innings. 
+
+```{r}
+set.seed(20)
+options(width=80)
+runs <- sample(c(rep(0, 20), rep(1, 10), 
+                 rep(2, 10), rep(3, 3), 
+                 rep(4, 8), rep(6,2)), 
+               10*6, replace=TRUE)
+runs
+```
