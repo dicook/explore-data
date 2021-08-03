@@ -480,9 +480,9 @@ Watch [John Tukey talking about exploring high-dimensional data with an amazing 
 The first 4.25 minutes are the best!
 :::
 
-### Guiding principles
+The orange book was written not to convince readers of the usefulness of EDA, not to provide a set of case studies, but to provide a huge number of isolated techniques that data analysts might find useful in their work. In this sense the book contains a wealth of data analysis wisdom, which also make it a bit impenetrable, and perhaps best read is small increments. When you do that you'll find an amazing collection of creative ways to "scratch down numbers" peppered with snippets of wisdom for working with data. Here are a few of the words of wisdom. 
 
-- **It is important to understand  what you CAN DO before you learn to  measure how WELL you seem to have DONE it.** Learning first what you can do will help you to work more easily  and effectively. 
+- **It is important to understand  what you CAN DO before you learn to measure how WELL you seem to have DONE it.** Learning first what you can do will help you to work more easily and effectively. 
 - The book does not exist to make the case that exploratory data analysis is useful. Rather it exists to expose its readers and users to a considerable variety of techniques for looking more effectively at one's data.  The examples are not intended to be complete case histories. Rather they should isolated techniques in action on real data. The emphasis is on general techniques, rather than specific problems. 
 - A basic problem about any body of data is to make it more easily and effectively handleable by minds -- our minds, her mind, his mind. To this general end:
     - anything that make a simpler description possible makes the description more easily handleable.
