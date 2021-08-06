@@ -502,7 +502,6 @@ The orange book was written NOT to convince readers of the usefulness of EDA, NO
 
 ::: aim
 Everything in Tukey's EDA book could be done with pencil and paper.
-
 :::
 
 The sheer joy of working with numbers is one of the delights in reading the book. Here are some of the "scratching down numbers" techniques that we found surprising. 
@@ -522,7 +521,6 @@ chevrolets$prices
 ```
 
 ::: do
-
 Scratch down these numbers to make a stem-and-leaf plot, one of Tukey's contributions that can still be seen introductory statistics books.
 
 <!-- 1. Sort the numbers from lowest to highest
@@ -535,15 +533,17 @@ Scratch down these numbers to make a stem-and-leaf plot, one of Tukey's contribu
 
 Then you have a boxplot!-->
 
-1. Split the numbers between the 100$^{th}$ and 10$^{th}$ place digits. The left digits form the step and the right form the leaves of a stem-and-leaf plot. We will also drop the last digit, lose some precision but gain simplicity, making it easier to get an overall sense of the pattern of numbers. Thus 250 becomes 2 5, and 1099 becomes 10 9.
+1. Split the numbers between the 100$^{th}$ and 10$^{th}$ place digits. The left digits form the stem and the right form the leaves of a stem-and-leaf plot. We will also drop the last digit, lose some precision but gain simplicity, making it easier to get an overall sense of the pattern of numbers. Thus 250 becomes 2 5, and 1099 becomes 10 9.
 2. The range of the stem will run from 2 through 18. Write these numbers from smallest to largest vertical, keeping digits in place. Add a vertical line to the right of the numbers.
 3. Now work through the full set of numbers, writing the last digit against it's corresponding stem.
 4. The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.
 5. And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.
 
+![](images/stem_and_leaf/6.jpg)
 :::
 
-Wasn't this fun! Sketching the numbers, checking them off, looking at the result. 
+
+Hope that was fun! Sketching the numbers, checking them off, looking at the result. 
 
 ### Example 2: Boxplots
 
@@ -561,7 +561,7 @@ Wasn't this fun! Sketching the numbers, checking them off, looking at the result
 
 3. Make a stem-and-leaf plot of these numbers.
 
-4. Use Tukey's tallying system to count the number of runs for this cricket teams 10 over innings. 
+4. Use Tukey's tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team's 10 over innings. 
 
 ```{r}
 set.seed(20)

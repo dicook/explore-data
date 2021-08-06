@@ -24,7 +24,7 @@
 <meta name="author" content="Di Cook and Emi Tanaka" />
 
 
-<meta name="date" content="2021-08-03" />
+<meta name="date" content="2021-08-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -33,7 +33,7 @@
   
 <link rel="prev" href="index.html"/>
 <link rel="next" href="initial-data-analysis.html"/>
-<script src="libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="libs/header-attrs-2.9.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -834,8 +834,8 @@ The <span class="math inline">\(p\)</span>-value is the probability that we obse
 <div id="overview-of-cda-process" class="section level4" number="2.3.1.2">
 <h4><span class="header-section-number">2.3.1.2</span> Overview of CDA process</h4>
 <div class="figure" style="text-align: center"><span id="fig:cda"></span>
-<div id="htmlwidget-1e07509b671cc86f3c73" style="width:90%;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-1e07509b671cc86f3c73">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"question/hypothesis\", shape = \"rectangle\", width = \"3.2\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"IDA\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"model/test\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"MD\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"conclusion\", shape = \"rectangle\", width = \"2.1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d743c3a6f587097584f4" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d743c3a6f587097584f4">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"question/hypothesis\", shape = \"rectangle\", width = \"3.2\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"IDA\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"model/test\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"MD\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"conclusion\", shape = \"rectangle\", width = \"2.1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.1: Pipeline of confirmatory data analysis. It starts with a question.
 </p>
@@ -923,8 +923,8 @@ Figure 2.1: Pipeline of confirmatory data analysis. It starts with a question.
 <div id="overview-of-eda-process" class="section level4" number="2.3.2.1">
 <h4><span class="header-section-number">2.3.2.1</span> Overview of EDA process</h4>
 <div class="figure" style="text-align: center"><span id="fig:eda"></span>
-<div id="htmlwidget-cd72d25b95d0e38f11d4" style="width:90%;height:384px;" class="grViz html-widget"></div>
-<script type="application/json" data-for="htmlwidget-cd72d25b95d0e38f11d4">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"abstraction\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"question\", shape = \"rectangle\", width = \"1.5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"what might you expect to see\", shape = \"rectangle\", width = \"5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"plot or calculate\", shape = \"rectangle\", width = \"3\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"is it what you expected?\", shape = \"rectangle\", width = \"4\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ce12ec8f95b3363cf413" style="width:90%;height:384px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ce12ec8f95b3363cf413">{"x":{"diagram":"digraph {\n\ngraph [layout = \"dot\",\n       rankdir = \"TB\",\n       outputorder = \"edgesfirst\",\n       bgcolor = \"white\"]\n\nnode [fontname = \"Helvetica\",\n      fontsize = \"10\",\n      shape = \"circle\",\n      fixedsize = \"true\",\n      width = \"0.5\",\n      style = \"filled\",\n      fillcolor = \"aliceblue\",\n      color = \"gray70\",\n      fontcolor = \"gray50\"]\n\nedge [fontname = \"Helvetica\",\n     fontsize = \"8\",\n     len = \"1.5\",\n     color = \"gray80\",\n     arrowsize = \"0.5\"]\n\n  \"1\" [label = \"data\", shape = \"rectangle\", width = \"1\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"2\" [label = \"abstraction\", shape = \"rectangle\", width = \"1.8\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"3\" [label = \"question\", shape = \"rectangle\", width = \"1.5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"4\" [label = \"what might you expect to see\", shape = \"rectangle\", width = \"5\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"5\" [label = \"plot or calculate\", shape = \"rectangle\", width = \"3\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n  \"6\" [label = \"is it what you expected?\", shape = \"rectangle\", width = \"4\", fontsize = \"24\", fillcolor = \"#E5E5E5\", fontcolor = \"#000000\"] \n\"1\"->\"2\" [color = \"black\"] \n\"2\"->\"3\" [color = \"black\"] \n\"3\"->\"4\" [color = \"black\"] \n\"4\"->\"5\" [color = \"black\"] \n\"5\"->\"6\" [color = \"black\"] \n}","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
 <p class="caption">
 Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 </p>
@@ -1035,14 +1035,15 @@ Figure 2.2: Pipeline of exploratory data analysis. It starts with the data.
 
 Then you have a boxplot!-->
 <ol style="list-style-type: decimal">
-<li>Split the numbers between the 100<span class="math inline">\(^{th}\)</span> and 10<span class="math inline">\(^{th}\)</span> place digits. The left digits form the step and the right form the leaves of a stem-and-leaf plot. We will also drop the last digit, lose some precision but gain simplicity, making it easier to get an overall sense of the pattern of numbers. Thus 250 becomes 2 5, and 1099 becomes 10 9.</li>
+<li>Split the numbers between the 100<span class="math inline">\(^{th}\)</span> and 10<span class="math inline">\(^{th}\)</span> place digits. The left digits form the stem and the right form the leaves of a stem-and-leaf plot. We will also drop the last digit, lose some precision but gain simplicity, making it easier to get an overall sense of the pattern of numbers. Thus 250 becomes 2 5, and 1099 becomes 10 9.</li>
 <li>The range of the stem will run from 2 through 18. Write these numbers from smallest to largest vertical, keeping digits in place. Add a vertical line to the right of the numbers.</li>
 <li>Now work through the full set of numbers, writing the last digit against it’s corresponding stem.</li>
 <li>The last steps is to re-draw it so that the leaves are ordered from lowest (left) to highest on each stem.</li>
 <li>And finally, think about the pattern of the numbers in the display. You should see that there are several clumps of numbers in this data.</li>
 </ol>
+<p><img src="images/stem_and_leaf/6.jpg" /></p>
 </div>
-<p>Wasn’t this fun! Sketching the numbers, checking them off, looking at the result.</p>
+<p>Hope that was fun! Sketching the numbers, checking them off, looking at the result.</p>
 </div>
 <div id="example-2-boxplots" class="section level3" number="2.4.2">
 <h3><span class="header-section-number">2.4.2</span> Example 2: Boxplots</h3>
@@ -1060,7 +1061,7 @@ Then you have a boxplot!-->
 <li><p>Make a histogram of the total bill. Is there a similar pattern of multi-modality?</p></li>
 <li><p>In the scatterplot of tip vs total bill, why is total on the horizontal axis?</p></li>
 <li><p>Make a stem-and-leaf plot of these numbers.</p></li>
-<li><p>Use Tukey’s tallying system to count the number of runs for this cricket teams 10 over innings.</p></li>
+<li><p>Use Tukey’s tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team’s 10 over innings.</p></li>
 </ol>
 <pre><code>##  [1] 2 3 0 2 1 1 4 3 0 4 0 0 4 6 0 1 0 0 2 0 2 0 1 2 1 0 0 4 0 0 0 0 4 0 4 0 0 0
 ## [39] 4 4 1 0 4 1 1 4 2 4 2 2 0 0 0 6 1 0 0 2 1 2</code></pre>
