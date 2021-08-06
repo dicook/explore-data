@@ -146,3 +146,6 @@ example-1-stem-and-leaf
 example-2-boxplots
 example-3-making-tallies
 example-4-easy-re-expression
+example-2-stem-and-leaf
+example-1-making-tallies
+example-3-boxplots

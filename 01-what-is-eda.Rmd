@@ -506,9 +506,9 @@ Everything in Tukey's EDA book could be done with pencil and paper.
 
 The sheer joy of working with numbers is one of the delights in reading the book. Here are some of the "scratching down numbers" techniques that we found surprising. 
 
-### Example 1: stem-and-leaf 
+### Example 1: Stem-and-leaf 
 
-A stem-and-leaf plot is a neat way to plot numbers into a histogram type display when only pencil and paper is available. From the display the distribution of the numbers, such as symmetric, skewed, unimodal, multimodal and outliers can be observed. It keeps the digits of the numbers preserved (inexactly, but approximately right) allowing so that it is quick to locate the median and different quantiles. 
+A stem-and-leaf plot is a neat way to plot numbers into a histogram type display when only pencil and paper is available. From the display the distribution of the numbers, such as symmetric, skewed, unimodal, multimodal and outliers can be observed. It keeps the digits of the numbers preserved (inexactly, but approximately right) and the numbers are sorted (from lowest to highest or vice verse), so that it is quick to locate the median (middle observation) and different quantiles (eg number with 25% of observations below). 
 
 These are the prices of Chevrolet cars listed in the local used car newspaper ads in 1968, as taken from the orange book. 
 
@@ -547,9 +547,36 @@ Then you have a boxplot!-->
 
 Hope that was fun! Sketching the numbers, checking them off, looking at the result. 
 
-### Example 2: Boxplots
+### Example 1: Making tallies
 
-### Example 3: Making tallies
+Most of us have grown up using tally marks to count objects. Tukey provides an alternative way to tally, that he argues is less error prone. 
+
+::: info
+![](images/tally_marks.jpg)
+:::
+
+Instead he advocates for making boxes, with vertices, edges and diagonals, which would do tallying in chunks of 10, with less room for error.
+
+For example, let's play a car counting game where we count the cars of different colours that go by. Here is a sample of the colours of cars that we see:
+
+```{r}
+set.seed(5)
+cars <- sample(c("white", "white", "white", "white", "white", "white", "white", "white", "red", "red", "blue", "blue", "blue", "yellow"), 30, replace=TRUE)
+cars
+```
+
+::: do
+1. Make a square with dots to count observations up to 4
+2. Complete an edge for observations 5-8
+3. Sketch in the diagonals for observations 9, 10.
+4. Repeat the steps for more observations. 
+
+![](images/tally_box.jpg)
+:::
+
+We haven't seen this way of tallying before which suggests that the idea didn't catch on. It may be that its more cognitively difficult to switch between points and lines, and mistakes like continuing to draw the box edges to complete the box when only one side should be drawn, might also be made. Nevertheless, the idea of counting this way is neat!
+
+### Example 3: Boxplots
 
 ### Example 4: Easy re-expression
 
