@@ -508,7 +508,9 @@ The sheer joy of working with numbers is one of the delights in reading the book
 
 ### Example 1: stem-and-leaf 
 
-These are the prices of Chevrolet cars listed in the local used car newspaper ads in 1968. 
+A stem-and-leaf plot is a neat way to plot numbers into a histogram type display when only pencil and paper is available. From the display the distribution of the numbers, such as symmetric, skewed, unimodal, multimodal and outliers can be observed. It keeps the digits of the numbers preserved (inexactly, but approximately right) allowing so that it is quick to locate the median and different quantiles. 
+
+These are the prices of Chevrolet cars listed in the local used car newspaper ads in 1968, as taken from the orange book. 
 
 ```{r}
 options(width=80)
@@ -555,13 +557,19 @@ Hope that was fun! Sketching the numbers, checking them off, looking at the resu
 
 ## Exercises
 
-1. Make a histogram of the total bill. Is there a similar pattern of multi-modality? 
+1. Make a histogram of the total bill, using multiple bin widths. Does it also have a skewed distributions? Is there a similar pattern of multi-modality? 
 
 2. In the scatterplot of tip vs total bill, why is total on the horizontal axis?
 
-3. Make a stem-and-leaf plot of these numbers.
+3. Make a stem-and-leaf plot of these final exam scores. Is there an easy way to break the scores into distinct clusters?
 
-4. Use Tukey's tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team's 10 over innings. 
+```{r}
+set.seed(94)
+scores <- c(rnorm(77, 72, 8), rnorm(5, 93, 2), rnorm(10, 60, 3))
+```
+
+
+4. Use Tukey's tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team's 10 over innings. A cricket game has 6 balls per over. Why the number of observations a multiple of 6, do you think?
 
 ```{r}
 set.seed(20)
@@ -569,6 +577,6 @@ options(width=80)
 runs <- sample(c(rep(0, 20), rep(1, 10), 
                  rep(2, 10), rep(3, 3), 
                  rep(4, 8), rep(6,2)), 
-               10*6, replace=TRUE)
+               10*6+2, replace=TRUE)
 runs
 ```
