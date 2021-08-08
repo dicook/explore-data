@@ -545,7 +545,7 @@ Then you have a boxplot!-->
 :::
 
 
-Hope that was fun! Sketching the numbers, checking them off, looking at the result. 
+Sketching the numbers, checking them off, looking at the result. Hope that was fun! 
 
 ### Example 1: Making tallies
 
@@ -578,6 +578,32 @@ We haven't seen this way of tallying before which suggests that the idea didn't 
 
 ### Example 3: Boxplots
 
+Boxplots are based on a reduced numerical summary from the data:
+
+- Median: the observation that has 50% of the observations above and 50% below.
+- Hinges, or quartiles (Q1, Q3): the value that has 25% on one side and 75% of observations on the other side.
+- Inner fences: the observation that is the most extreme, but within 1.5 x the length of the difference between the hinges. 
+- Outer fences: twice that of the inner fence.
+
+Below are the maximum temperatures for Melbourne as measured at the airport for January 2016. 
+
+```{r}
+melb_temp <- read_csv(here::here("data/melb_temp.csv"))
+melb_temp_jan16 <- melb_temp %>%
+  filter(Year == 2016, Month == "01") %>%
+  select(Day, `Maximum temperature (Degree C)`) %>%
+  rename(temp_C = `Maximum temperature (Degree C)`)
+melb_temp_jan16$temp_C
+```
+
+::: do
+1. Make a stem-and-leaf of the temperature values. Decide on an appropriate stem size. I recommend using 2$^o$C for each stem.
+2. Compute the median (will be the 16$^{th}$ observation), the hinges (the 9$^{th}$ observation from each end), the H-spread, and inner fences.
+3. Sketch the resulting boxplot, making sure to mark any outliers as single points. 
+
+![](images/melb_temp_boxplot.jpg)
+:::
+
 ### Example 4: Easy re-expression
 
 
@@ -595,8 +621,36 @@ set.seed(94)
 scores <- c(rnorm(77, 72, 8), rnorm(5, 93, 2), rnorm(10, 60, 3))
 ```
 
+4. Make a stem-and-leaf plot of the monthly average pedestrian counts for Melbourne Central (its a shopping mall and a train station). Compute the median, and the hinges (and H-spread), the inner fences.  
 
-4. Use Tukey's tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team's 10 over innings. A cricket game has 6 balls per over. Why the number of observations a multiple of 6, do you think?
+```{r create the ped_MC data, eval=FALSE}
+library(rwalkr)
+library(lubridate)
+ped_MC <- melb_walk(
+  from = as.Date("2017-01-01"),
+  to = as.Date("2020-12-31")) %>%
+  filter(Sensor == "Melbourne Central") # This is SLOW!
+ped_MC <- ped_MC %>% 
+  mutate(year = year(Date), month = month(Date)) %>%
+  group_by(month, year) %>%
+  summarise(m = mean(Count, na.rm=TRUE)) %>%
+  mutate(m = round(m, 0))
+save(ped_MC, file = "data/ped_MC.rda")
+```
+
+```{r}
+load("data/ped_MC.rda")
+ped_MC$m
+```
+
+```{r eval=FALSE}
+stem(ped_MC$m)
+quantile(ped_MC$m, probs = c(0, 0.25, 0.5, 0.75, 1))
+```
+
+5. Turn your numerical summary of the Melbourne pedestrian sensor data into a boxplot. Be sure to mark the observations outside the inner fence as single points to indicate them as outliers.
+
+6. Use Tukey's tallying system to count the number of the different runs (0, 1, 2, 3, 4, 6) for this cricket team's 10 over innings. A cricket game has 6 balls per over. Why the number of observations a multiple of 6, do you think?
 
 ```{r}
 set.seed(20)
