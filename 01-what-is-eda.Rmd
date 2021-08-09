@@ -606,7 +606,67 @@ melb_temp_jan16$temp_C
 
 ### Example 4: Easy re-expression
 
+Tukey was a strong advocate of transforming data, especially for visualisation. Today we might focus on transforming data in order to satisfy model constraints such as normally distributed errors. The orange book quotes Tukey: 
 
+> We now regard re-expression as a tool, something to let us do a better job of grasping. The grasping is done with the eye and the better job is through a more symmetric appearance. 
+
+> Whatever the data, we can try to gain by straightening or by flattening. When we succeed in doing one or both, we almost always see more clearly what is going on.
+
+which places the focus on the plots. Examining a single distribution is made easier if the distribution is symmetric. Examining the relationship between two variables is easier of the relationship is straighter, or flattened.
+
+Below is a plot of the population estimate of the USA from 1790 through to 2020. The relationship is far from linear. 
+
+```{r uspop}
+uspop <- read_csv(here::here("data/us_population.csv")) 
+ggplot(uspop, aes(x=year, y=population)) + geom_line()
+```
+
+Tukey would suggest re-expressing `y` using a log transformation. The base of the log doesn't so much matter, but a `log10` will make it easier to reflect the original numbers, because it is powers of 10. 
+
+When a response variable is transformed to a log scale, the relationship between `x` and `y` can be interpreted as a ratio. 
+
+::: do
+1. In Tukey's approach to linearising this relationship, the approach would be to 
+    a. put the data on a log scale (transform the y variable), 
+    b. fit a linear model to the top part of the data, after 1900, and 
+    c. examine the residuals. 
+:::
+
+
+    
+```{r uspop_lin, fig.height = 3}
+library(patchwork)
+uspop <- uspop %>%
+  mutate(year1790 = year - 1790, 
+         year1900 = year - 1900, 
+         log_population = log10(population)) 
+uspop_mod <- lm(log_population~year1900,
+                data=dplyr::filter(uspop, year > 1900))
+uspop_lm <- augment(uspop_mod, newdata=uspop) 
+pop1 <- ggplot(uspop) +
+  geom_point(aes(x=year, y=population)) +
+  scale_y_log10("Population (millions, log scale)", 
+                breaks = c(10000000, 30000000, 
+                           100000000, 300000000), 
+                labels = c("10", "30", "100", "300")) +
+  geom_smooth(data = dplyr::filter(uspop, year > 1900), 
+              aes(x=year, y=population), 
+              method = "lm", se=F, fullrange = TRUE) +
+  xlab("") + ylab("Population (log scale)")
+pop2 <- ggplot(dplyr::filter(uspop_lm, year > 1900)) +
+  geom_point(aes(x=year, y=.resid)) +
+  geom_line(aes(x=year, y=.resid)) +
+  scale_x_continuous("", breaks = seq(1920, 2020, 20))
+pop1 + pop2
+```
+
+Population on a log scale over time is roughly linear after 1900. That means that it follows an exponential growth. The residuals tells a story about world events, that in the decade of the Great Depression, population declined substantially. There is also a hint that in the recent decade that the rate of growth has changed again.
+
+The fitted model `r round(tidy(uspop_mod)$estimate[1], 5)` + `r round(tidy(uspop_mod)$estimate[2], 5)`$\times$ (year-1900). This would be interpreted as the population increasing geometrically by $10^{0.0516} = 1.126$ each decade, from approximately 85 million in 1900. That means the population would be expected to be about 95 million in 1910, about 153 million by 1950, and go beyond 300 million by 2010. 
+
+Similarly, the pattern prior to 1900 is roughly linear on a log scale, which implies an exponential growth, but at a slow rate than after 1900. 
+
+A single log scale is not sufficient to linearise the full relationship, but a piece-wise linear fit on the log scale fits the pattern well, at least up to 2020.
 
 ## Exercises
 
@@ -661,3 +721,5 @@ runs <- sample(c(rep(0, 20), rep(1, 10),
                10*6+2, replace=TRUE)
 runs
 ```
+
+7.  Follow the re-expression example of the US population fitting a linear model to the data prior to 1900. Examine the residuals for drops or booms in the population.
