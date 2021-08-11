@@ -156,3 +156,9 @@ language-and-terminology
 anscombes-quartet
 datasaurus-dozen
 case-study-olympics
+case-study-1-olympics
+case-study-2-movies
+case-study-3-cars
+case-study-4-soils
+case-study-5-covid
+checking-association-with-permutations

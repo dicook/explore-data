@@ -36,9 +36,18 @@ If the relationship is NOT linear, call use the term association to describe it.
 
 ### DatasauRus dozen
 
-### Case study: olympics
+### Case study 1: olympics
 
 
+### Case study 2: movies
+
+### Case study 3: cars
+
+### Case study 4: soils
+
+### Case study 5: COVID 
+
+### Checking association with permutations
 
 
 
