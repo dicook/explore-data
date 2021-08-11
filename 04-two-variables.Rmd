@@ -1,3 +1,45 @@
 # Bivariate dependencies and relationships
 
+## Motivation
+
+The story of the galloping horse
+
+- My own painting: hills 
+- Reflection of lemons
+- Green trees
+
+Tendency to repeat what other people have reported, or impose prior beliefs. 
+
+Look again, see with fresh eyes
+
+## The humble scatterplot
+
+> Scatter plots are glorious. Of all the major chart types, they are by far the most powerful. They allow us to .monash-orange2[quickly understand relationships] that would be nearly impossible to recognize in a table or a different type of chart. ... Michael Friendly and Daniel Denis, psychologists and historians of graphics, call the scatter plot the most "generally useful invention in the history of statistical graphics." [Dan Kopf](https://qz.com/1235712/the-origins-of-the-scatter-plot-data-visualizations-greatest-invention/)
+
+### History
+
+Descartes provided the Cartesian coordinate system in the 17$^{th}$ century, with perpendicular lines indicating two axes. 
+
+It wasn't until 1832 that the scatterplot appeared, when [John Frederick Herschel](http://www.datavis.ca/milestones/index.php?group=1800%2B) [@friendly_denis] plotted position and time of double stars.
+This is 50 years after [bar charts and line charts](http://www.datavis.ca/milestones/index.php?group=1700s) appeared, used in the work of William Playfair to examine economic data. Kopf argues that *The scatter plot, by contrast, proved more useful for scientists*, but it clearly is useful for economics today.
+
+
+### Language and terminology
+
+The words "correlation" and "association" are NOT interchangeable. In the English language correlation means a mutual relationship or connection between two things. However, the statistic called correlation ONLY describes linear relationships. 
+
+::: info
+If the relationship is NOT linear, call use the term association to describe it. Use the term correlated only for linear relationships to avoid confusion related to the statistic.]
+:::
+
+### Anscombe's quartet
+
+### DatasauRus dozen
+
+### Case study: olympics
+
+
+
+
+
 transformations to linearise

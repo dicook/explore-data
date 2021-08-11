@@ -149,3 +149,10 @@ example-4-easy-re-expression
 example-2-stem-and-leaf
 example-1-making-tallies
 example-3-boxplots
+motivation
+the-humble-scatterplot
+history
+language-and-terminology
+anscombes-quartet
+datasaurus-dozen
+case-study-olympics
