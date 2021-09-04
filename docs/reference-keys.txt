@@ -164,3 +164,14 @@ case-study-5-covid
 checking-association-with-permutations
 tab:unnamed-chunk-1
 exercises-1
+common-features-and-terminology
+exr:unlabeled-div-1
+common-features-and-their-names
+how-many-athletes-in-the-different-sports
+consolidate-factor-levels
+split-by-sport
+remove-missings-add-colour-for-sex
+comparing-association
+comparing-variability
+summary-1
+scatterplot-modifications-and-purpose
