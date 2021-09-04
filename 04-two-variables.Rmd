@@ -1,5 +1,13 @@
 # Bivariate dependencies and relationships
 
+```{r 04-libraries}
+library(tidyverse)
+library(patchwork)
+library(VGAMdata)
+library(nycflights13)
+library(ggplot2movies)
+```
+
 ## Motivation
 
 The story of the galloping horse
@@ -38,6 +46,20 @@ If the relationship is NOT linear, call use the term association to describe it.
 
 ### Case study 1: olympics
 
+```{r}
+data(oly12, package = "VGAMdata")
+skimr::skim(oly12)
+oly12 <- oly12 %>% 
+  mutate(Sport = as.character(Sport)) %>%
+  mutate(Sport = ifelse(grepl("Cycling", Sport), #<<
+                        "Cycling", Sport)) %>%  #<<
+  mutate(Sport = ifelse(grepl("Gymnastics", Sport),
+                        "Gymnastics", Sport)) %>% 
+  mutate(Sport = ifelse(grepl("Athletics", Sport),
+                        "Athletics", Sport)) %>% 
+  mutate(Sport = as.factor(Sport))
+
+```
 
 ### Case study 2: movies
 
@@ -52,3 +74,125 @@ If the relationship is NOT linear, call use the term association to describe it.
 
 
 transformations to linearise
+
+## Exercises
+
+1. For each of the following scatterplots, of different Olympic athlete's height and weight identify the visible features, and which is the most surprising.
+
+```{r}
+q1a <- oly12 %>% 
+  filter(Sport == "Wrestling", 
+         Sex == "F") %>%
+  ggplot(aes(x=Height, y=Weight)) + 
+  geom_point(alpha=0.9, size=3)  +
+  ggtitle("Women's wrestling") +
+  theme(aspect.ratio=1)
+q1b <- oly12 %>% 
+  filter(Sport == "Sailing", 
+         Sex == "M") %>%
+  ggplot(aes(x=Height, y=Weight)) + 
+  geom_point(alpha=0.9, size=3)  +
+  ggtitle("Men's sailing") +
+  theme(aspect.ratio=1)
+q1c <- oly12 %>% 
+  filter(Sport == "Archery", 
+         Sex == "F") %>%
+  ggplot(aes(x=Height, y=Weight)) + 
+  geom_point(alpha=0.9, size=3)  +
+  ggtitle("Female archery") +
+  theme(aspect.ratio=1)
+q1d <- oly12 %>% 
+  filter(Sport == "Rowing", 
+         Sex == "F") %>%
+  ggplot(aes(x=Height, y=Weight)) + 
+  geom_point(alpha=0.9, size=3)  +
+  ggtitle("Female rowing") +
+  theme(aspect.ratio=1)
+q1a + q1b + q1c + q1d
+```
+
+<!--
+a. positive linear association, discreteness. Most surprising is the discreteness, probably due to weight limits on competition groups.
+b. positive linear association, discreteness in both x and y, hint of clumpiness, increasing variance as both x and y increase. Probably the most surprising is the discreteness in both directions. Is there a height limit for some roles on the boat?
+c. positive linear association, outlier. The outlier is the most surprising it is a tall and extra heavy archer.
+d. positive linear association, clumpiness. Probably some positions in the crew are smaller people, the coxswain. 
+-->
+
+2. Guess the correlation between the two variables in each of the previous scatterplots. 
+
+```{r eval=FALSE}
+oly12 %>% 
+  filter(Sport == "Wrestling", 
+         Sex == "F") %>% 
+  select(Height, Weight) %>%
+  correlate()
+oly12 %>% 
+  filter(Sport == "Sailing", 
+         Sex == "M") %>%
+  select(Height, Weight) %>%
+  correlate()
+oly12 %>% 
+  filter(Sport == "Archery", 
+         Sex == "F") %>%
+  select(Height, Weight) %>%
+  correlate()
+oly12 %>% 
+  filter(Sport == "Rowing", 
+         Sex == "F") %>%
+  select(Height, Weight) %>%
+  correlate()
+
+```
+
+3. From the following scatterplot, of diamond size and price, what are the most prominent features? 
+
+```{r}
+set.seed(344)
+diamonds_small <- diamonds %>%
+  sample_n(1000)
+ggplot(diamonds_small, 
+       aes(x=carat, y=price)) +
+  geom_point()
+```
+
+<!--
+positive nonlinear association, heteroskedasticity, outliers, gaps or clumping.
+-->
+
+4. In the previous plot of diamonds, what transformation would be recommended based on the "circle of transformations"?
+
+<!-- transform price, down the ladder of powere -->
+
+5. In the following plot of arrival delay and departure delay of flights into and out of the New York City area, what are the most prominent features? 
+
+```{r}
+ggplot(flights, 
+       aes(x=dep_delay, y=arr_delay)) +
+  geom_point()
+```
+
+<!--
+strong positive association, barrier (arrival delays are not possible to be less than some function of departure delays, might depend on length of flight), heteroskedastic
+-->
+
+6. Which of these would be a surprising feature learned from this plot? Why?
+
+- There are negative departure and arrival delays <!-- A bit surprising, but mostly these are small, so some flights leave a fraction early which could happen if all passengers are on board. Early arriving flights are common. -->
+- If a flight has a delay in departure it likely will be delayed on arrival <!-- Not surprising, because most likely a flight will be delayed arriving if it started late. -->
+- Some flights with negative departure delay have long arrival delays <!-- This is the most surprising, because it means a flight left early but arrived quite late. Physics-wise an early departure should lead to an early arrival. So it makes one think about how the flight could arrive quite late: diverted to avoid a storm, or sat on tarmac after pushing back from gate, or before getting to gate. Requires you to know that departure and arrival times are from and to the gate. -->
+- Some flights have long delays <!-- This is reasonably common so it's not surprising.-->
+- Some flights with negative arrival delays have positive departure delays <!-- Not so surprising, because a plane can catch up to schedule in-flight. -->
+
+7. A dominant feature in the plot of average rating by number of ratings of  movies in the IMDB database is a barrier, or two barriers, both top and bottom of plot. What is a plausible explanation for this feature?
+
+```{r}
+ggplot(movies, aes(x=votes, y=rating)) +
+  geom_point() + 
+  scale_y_continuous("rating", breaks = seq(0, 10, 2))
+```
+
+- As movies become more popular ratings invariably go down <!-- This makes no sense. If it's popular then it will be mostly rated highly. --> 
+- There are just very few frequently rated movies and this means it is unlikely to see high values. <!-- A nonsense statement -->
+- The lesser rated movies have a lot of variance in their ratings, producing a barrier for the more frequently rated movies. <!-- We could remove the lesser rates movies, and the barrier for frequently rated movies would still exist. -->
+- The lesser rated movies have a lot of variance in their ratings, producing a barrier for the more frequently rated movies. <!-- Generally, it is the case that skewness will appear in a plot as less variance in the sparser plot regions. But that is not the pattern causing the barrier in the movies plot. -->
+- The average of many values tends to be unlikely to be at the highest and lowest possible values. <!-- This is correct, is a number crunching phenomenon, regression to the mean (?)  -->
