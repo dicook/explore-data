@@ -8,6 +8,10 @@ library(nycflights13)
 library(ggplot2movies)
 library(datasauRus)
 library(gt)
+library(mvtnorm)
+library(ggExtra)
+library(ggthemes)
+library(nullabor)
 ```
 
 ## Motivation
@@ -640,19 +644,593 @@ tribble(~Modification, ~Example, ~Purpose,
 - What could be informed by what is learned from this sample?
 :::
 
+## Numerical measures of association
+
+### Correlation
+
+Correlation between variables $x_1$ and $x_2$, with $n$ observations in each.
+
+$$r = \frac{\sum_{i=1}^n (x_{i1}-\bar{x}_1)(x_{i2}-\bar{x}_2)}{\sqrt{\sum_{i=1}^n(x_{i1}-\bar{x}_1)^2\sum_{i=1}^n(x_{i2}-\bar{x}_2)^2}} = \frac{\mbox{covariance}(x_1, x_2)}{(n-1)s_{x_1}s_{x_2}}$$
+- Test for statistical significance, whether population correlation could be 0 based on observed $r$, using a $t_{n-2}$ distribution:
+
+$$t=\frac{r}{\sqrt{1-r^2}}\sqrt{n-2}$$
+TO DO: Tabulate the examples below
+
+```{r}
+set.seed(45)
+d1 <- tibble(x=runif(200)-0.5) %>%
+  mutate(y = 2*x + rnorm(200))
+d1_p <- ggplot(d1, aes(x=x, y=y)) + 
+  geom_point() +
+  theme(aspect.ratio=1)
+d1_p
+```
+
+```{r echo=TRUE}
+cor(d1$x, d1$y) 
+```
+
+```{r echo=TRUE, highlight.output = c(5)}
+cor.test(d1$x, d1$y) 
+```
+
+
+```{r}
+d2 <- tibble(x=runif(200)-0.5) %>%
+  mutate(y = x^2 + rnorm(200)*0.01)
+d2_p <- ggplot(d2, aes(x=x, y=y)) + 
+  geom_point() +
+  theme(aspect.ratio=1)
+d2_p
+```
+
+```{r echo=TRUE}
+cor(d2$x, d2$y) 
+```
+
+```{r echo=TRUE, highlight.output = c(5)}
+cor.test(d2$x, d2$y) 
+```
+
+```{r}
+d3 <- tibble(x = c(rnorm(200), 10)) %>%
+  mutate(y = c(rnorm(200), 10))
+d3_p <- ggplot(d3, aes(x=x, y=y)) + 
+  geom_point() +
+  theme(aspect.ratio=1)
+d3_p 
+```
+
+All observations
+
+```{r echo=FALSE, highlight.output = c(2,3,9,10)}
+cor.test(d3$x, d3$y)[c(4,1,3)] 
+```
+
+Without outlier
+
+```{r echo=FALSE, highlight.output = c(2,3,9,10)}
+cor.test(d3$x[1:200], d3$y[1:200])[c(4,1,3)] 
+```
+
+### Peceiving correlation
+
+```{r simcor, fig.width=10, fig.height=5, out.width="70%"}
+set.seed(7777)
+vc <- matrix(c(1,0,0,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p1 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,0.4,0.4,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p2 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,0.6,0.6,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p3 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,0.8,0.8,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p4 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,-0.2,-0.2,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p5 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,-0.5,-0.5,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p6 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,-0.7,-0.7,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p7 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+vc <- matrix(c(1,-0.9,-0.9,1), ncol=2, byrow=T)
+d <- as_tibble(rmvnorm(500, sigma=vc))
+p8 <- ggplot(d, aes(x=V1, y=V2)) +
+  geom_point() + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+p1 + p2 + p3 + p4 + p5 + p6 + p7 + p8 + plot_layout(ncol=4)
+```
+
+
+```{r fig.width = 4, fig.height = 2, out.width="40%"}
+a1 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = 0.0")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a2 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = 0.4")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a3 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = 0.6")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a4 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = 0.8")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a5 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = -0.2")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a6 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = -0.5")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a7 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = -0.7")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a8 <- ggplot() +
+  geom_text(aes(x=0, y=0, label="r = -0.9")) + 
+  theme_void() +
+  theme(aspect.ratio=1, 
+        plot.background=element_rect(fill="gray90"))
+a1 + a2 + a3 + a4 + a5 + a6 + a7 + a8 + plot_layout(ncol=4)
+```
+
+Generally, people don't do very well at this task. Typically people under-estimate $r$ from scatterplots, particularly when it is around 0.4-0.7. The variation in a scatterplot perceptually doesn't vary is not linearly with $r$.
+
+::: info
+When someone says *correlation is 0.5* it sounds impressive. BUT when someone shows you a scatterplot of data that has correlation 0.5, you will say that's a weak relationship.
+:::
+
+### Robust correlation measures 
+
+- Spearman (based on ranks)
+    - Sort each variable, and return rank (of actual value)
+    - Compute correlation between ranks of each variable
+
+```{r}
+set.seed(60)
+df <- tibble(x=c(round(rnorm(5), 1), 10), 
+             y=c(round(rnorm(5), 1), 10)) %>%
+  mutate(xr = rank(x), yr = rank(y))
+df
+```
+
+```{r echo=TRUE}
+cor(df$x, df$y)
+cor(df$xr, df$yr)
+cor(df$x, df$y, method = "spearman")
+```
+
+### Robust correlation measures 
+
+- Kendall $\tau$ (based on comparing pairs of observations)
+    - Sort each variable, and return rank (of actual value)
+    - For all pairs of observations $(x_i, y_i), (x_j, y_j)$, determine  if **concordant**, $x_i < x_j, y_i < y_j$ or $x_i > x_j, y_i > y_j$, or **discordant**, $x_i < x_j, y_i > y_j$ or $x_i > x_j, y_i < y_j$.
+
+$$\tau = \frac{n_c-n_d}{\frac12 n(n-1)}$$
+
+```{r out.width="70%"}
+ggplot(df, aes(x=x, y=y)) + 
+  annotate("rect", xmin = -2, xmax = df$x[2], 
+           ymin = -2, ymax = df$y[2],
+           fill="red", alpha=0.5, colour=NA) +
+  annotate("rect", xmin = df$x[2], xmax = 11, 
+           ymin = df$y[2], ymax = 11,
+           fill="red", alpha=0.5, colour=NA) +
+  annotate("text", x = 3, y = 10, label = "concordant", colour="red") +
+  annotate("text", x = 5, y = -1.5, label = "disconcordant") +
+  geom_point() +
+  annotate("point", x = df$x[2], y = df$y[2], color="red") +
+  theme(aspect.ratio=1)
+```
+
+```{r echo=TRUE}
+cor(df$x, df$y)
+cor(df$x, df$y, method = "kendall")
+```
+
+### Comparison of correlation measures
+
+```{r diffscatter, fig.height=2, fig.width=2, include=FALSE}
+d1_p + 
+  theme_void() + 
+  theme(legend.position="none", aspect.ratio = 1, 
+        axis.line.x = element_line(color = "black", size = 2),
+        axis.line.y = element_line(color = "black", size = 2))
+d2_p + 
+  theme_void() + 
+  theme(legend.position="none", aspect.ratio = 1, 
+        axis.line.x = element_line(color = "black", size = 2),
+        axis.line.y = element_line(color = "black", size = 2))
+d3_p + 
+  theme_void() + 
+  theme(legend.position="none", aspect.ratio = 1, 
+        axis.line.x = element_line(color = "black", size = 2),
+        axis.line.y = element_line(color = "black", size = 2))
+```
+
+```{r corr-table}
+tribble(~sample, ~corr, ~spearman, ~kendall,
+        '<img src="images/lecture-05B/diffscatter-1.png" height ="100px">', 
+        cor(d1$x, d1$y), 
+        cor(d1$x, d1$y, method="spearman"), 
+        cor(d1$x, d1$y, method="kendall"),
+        '<img src="images/lecture-05B/diffscatter-2.png" height ="100px">', 
+        cor(d2$x, d2$y), 
+        cor(d2$x, d2$y, method="spearman"), 
+        cor(d2$x, d2$y, method="kendall"),
+        '<img src="images/lecture-05B/diffscatter-3.png" height ="100px">', 
+        cor(d3$x, d3$y), 
+        cor(d3$x, d3$y, method="spearman"), 
+        cor(d3$x, d3$y, method="kendall")
+) %>% 
+  knitr::kable(escape = FALSE, digits=3) %>% 
+  kableExtra::kable_styling(full_width = FALSE) %>%
+  kableExtra::kable_classic()
+```
+
 ## Case study 2: movies
+
+```{r movies, fig.width=6, fig.height=6, out.width="80%"}
+ggplot(movies, aes(x=votes, y=rating)) +
+  geom_point() + 
+  scale_y_continuous("rating", breaks = seq(0, 10, 2))
+```
+
+- `votes`: Number of IMDB users who rated this movie
+- `rating`: Average IMDB user rating
+
+Describe the relationship between rating and votes. 
+
+- Odd pattern, almost looks like an "r"
+- No films with lots of votes and low rating
+- No film with lots of votes has rating close to maximum possible: **barrier?**
+- Films with very high ratings only have a few votes
+- Generally, rating appears to increase as votes increases (its hard to really read this with so few points though)
+- A few films with really large number of votes: **outliers?** or just **skewness?**
+- Films with few votes have ratings that span the range of the scale.
+
+**Examine votes on a log scale**
+
+```{r logmovies, fig.width=6, fig.height=6, out.width="80%"}
+ggplot(movies, aes(x=votes, y=rating)) +
+  geom_point(alpha=0.1) + 
+  geom_smooth(se=F, colour="orange", size=2) +
+  scale_x_log10() + 
+  scale_y_continuous("rating", breaks = seq(0, 10, 2))
+```
+
+- Some positive association between two variables only for large number of votes.
+- *Note*: Used transparency (because there is a lot of data) and a loess smooth (because I am interested in assessing the trend between votes and rating).
+
+Correlation between raw variables is `r round(cor(movies$votes, movies$rating), 2)` and between transformed `log(votes)` and `rating` is `r round(cor(log10(movies$votes), movies$rating), 2)`. Which more accurately reflects the relationship?
 
 ## Case study 3: cars
 
+```{r cars, fig.width=6, fig.height=6, out.width="80%"}
+data(mtcars)
+ggplot(mtcars, aes(x=hp, y=mpg)) +
+  geom_point() + 
+  geom_smooth(colour="forestgreen", se=F) 
+```
+
+- `mpg`: Miles/(US) gallon
+- `hp`: Gross horsepower
+
+
+- negative: as horsepower increases fuel efficiency is worse
+- nonlinear: for lower horse power the decrease in efficieny is more
+- strong: very little variation between cars, looks fundamentally like a physics problem
+- outlier: one car with high horse power has unusually high efficiency
+
+**Transform horsepower on log scale**
+
+```{r logcars, fig.width=6, fig.height=6, out.width="80%"}
+ggplot(mtcars, aes(x=hp, y=mpg)) +
+  geom_point() + 
+  scale_y_log10("log mpg") + #<<
+  geom_smooth(method="lm", colour="forestgreen", se=F) +
+  geom_smooth(data=filter(mtcars, hp<300), method="lm", colour="orangered", se=F, lty=2)
+```
+
+Log transforming `mpg` linearised the relationship between horsepower and mpg. 
+
+Correlation between raw variables is `r round(cor(mtcars$hp, mtcars$mpg), 2)` <br> and between transformed `log(mpg)` and `hp` is `r round(cor(log10(mtcars$hp), mtcars$mpg), 2)`. Which more accurately reflects the relationship?
+
+How does the correlation change if outlier is removed?
+
+## Circle of transformations for linearising
+
+```{r circleoftrans, fig.width=5, fig.height=5, out.width="80%"}
+x <- c(seq(-0.95, -0.1, 0.025), seq(0.1, 0.95, 0.025))
+x <- c(x, x)
+d <- tibble(x, y = sqrt(1-x^2), 
+            q=c(rep("4", 35), 
+                rep("1", 35),
+                rep("3", 35),
+                rep("2", 35)))
+d$y[71:140] <- -d$y[71:140]
+ggplot(d, aes(x=x, y=y, colour=q, group=q)) +
+  geom_line(size=2) +
+  annotate("text", x=c(0.5, 0.5, -0.5, -0.5),
+           y=c(0.5, -0.5, -0.5, 0.5), 
+           label=c("x up, y up", "x up, y down", 
+                   "x down, y down", "x down, y up"),
+           size=5) +
+  geom_vline(xintercept=0) + geom_hline(yintercept=0) +
+  annotate("text", x=0, y=0, label="(0,0)", size=10) +
+  theme_void() +
+  theme(aspect.ratio=1, legend.position = "none")
+```
+
+
+Remember the power ladder: 
+
+-1, 0, 1/3, 1/2, .monash-orange2[1], 2, 3, 4 
+
+1. Look at the shape of the relationship. 
+2. Imagine this to be a number plane, and depending on which quadrant the shape falls in, you either transform $x$ or $y$, up or down the ladder: `+,+` both up; `+,-` x up, y down; `-,-` both down;  `-,+` x down, y up
+    
+If there is heteroskedasticity, try transforming $y$, may or may not help.
+
 ## Case study 4: soils
+
+```{r baker, fig.width=5, fig.height=5, out.width="80%"}
+baker <- read_csv("data/baker.csv")
+p <- ggplot(baker, aes(x=B, y=Corn97BU)) +
+  geom_point() +
+  xlab("Boron (ppm)") +
+  ylab("Corn Yield (bushells)") 
+ggMarginal(p, type="density")
+```
+
+Interplay between skewness and association
+
+Data is from a soil chemical analysis of a farm field in Iowa. Is there a relationship between Yield and Boron?
+
+You can get a marginal plot of each variable added to the scatterplot using `ggMarginal`. This is useful for assessing the skewness in each variable. 
+
+Boron is right-skewed Yield is left-skewed. With skewed distributions in marginal variables it is .monash-orange2[hard] to assess the relationship between the two. Make a transformation to fix, first.
+
+```{r transfbaker, fig.width=5, fig.height=5, out.width="80%"}
+p <- ggplot(baker, 
+            aes(x=B, y=Corn97BU^2)) + #<<
+  geom_point() +
+  xlab("log Boron (ppm)") +
+  ylab("Corn Yield^2 (bushells)") +
+  scale_x_log10() #<<
+ggMarginal(p, type="density") #<<
+```
+
+
+```{r bakeriron, fig.width=5, fig.height=5, out.width="80%"}
+p <- ggplot(baker, 
+            aes(x=Fe, y=Corn97BU^2)) + 
+  geom_density2d(colour="orange") +
+  geom_point() +
+  xlab("Iron (ppm)") +#<<
+  ylab("Corn Yield^2 (bushells)") 
+ggMarginal(p, type="density") 
+```
+
+Lurking variable?
+
+```{r bakerironca, fig.width=5, fig.height=5, out.width="100%"}
+ggplot(baker, aes(x=Fe, y=Corn97BU^2,
+       colour=ifelse(Ca>5200, #<<
+                     "high", "low"))) + #<<
+  geom_point() +
+  xlab("Iron (ppm)") +
+  ylab("Corn Yield^2 (bushells)") +
+  scale_colour_brewer("", palette="Dark2") +
+  theme(aspect.ratio=1, 
+        legend.position = "bottom",
+        legend.direction = "horizontal")
+```
+
+Colour high calcium (>5200ppm) calcium values
+
+If calcium levels in the soil are high, yield is consistently high. If calcium levels are low, then there is a positive relationship between yield and iron, with higher iron leading to higher yields.
+
+
+
 
 ## Case study 5: COVID 
 
+```{r prepdata, eval=FALSE}
+# Read data
+nyt_county <- read_csv("https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv")
+
+# Add centroid lat/long
+geoCounty_new <- geoCounty %>% as_tibble() %>%
+  mutate(fips = as.character(fips),
+         county = as.character(county),
+         state = as.character(state)) %>%
+  select(fips, lon, lat)
+nyt_county_total <- nyt_county %>% 
+  group_by(fips) %>%
+  filter(date == max(date)) %>%
+  left_join(geoCounty_new, by=c("fips"="fips"))
+
+save(nyt_county_total, file="../data/nyt_covid.rda")
+```
+
+```{r usacovid, fig.width = 10, fig.height = 6.7, out.width="60%"}
+load("data/nyt_covid.rda")
+usa <- map_data("state")
+ggplot() +
+  geom_polygon(data=usa, 
+               aes(x=long, y=lat, group=group), 
+               fill="grey90", colour="white") +
+  geom_point(data=nyt_county_total, 
+             aes(x=lon, y=lat, size=cases), 
+             colour="red", shape=1) +
+  geom_point(data=nyt_county_total, 
+             aes(x=lon, y=lat, size=cases), 
+             colour="red", fill="red", alpha=0.1, shape=16) +
+  scale_size("", range=c(1, 30)) + 
+  theme_map() + theme(legend.position="none")
+```
+
+Bubble plots, size of point is mapped to another variable.
+
+This bubble plot here shows total count of COVID-19 incidence (as of Aug 30, 2020) for every county in the USA, inspired by the [New York Times coverage](https://www.nytimes.com/news-event/coronavirus).
+
+Where has COVID-19 hit the hardest?
+<br>
+
+Where are there more people?
+<br>
+
+This plot tells you NOTHING except where the population centres are in the USA. To understand relative incidence/risk, report COVID numbers relative the population. For example,  number of cases per 100,000 people.
+
+
+## Beyond quantitative variables
+
+The type of variable determines the choice of mapping.
+
+- Continuous and categorical $\longrightarrow$ side-by-side boxplots, side-by-side density plots
+- Both categorical $\longrightarrow$ faceted bar charts, stacked bar charts, mosaic plots, double decker plots
+
+# Simpsons paradox
+
+There is an additional variable, which if used for conditioning, changes the association between the variables, you have a paradox `r emo::ji("upside_down_face")`.
+
+```{r generate_more_data}
+set.seed(2222)
+df <- tibble(x=c(rnorm(500)*0.2, runif(300)+1)) %>%
+  mutate(y1=c(-2*x[1:500]+rnorm(500), 
+              3*x[501:800] + rexp(300)), 
+         y2=c(rep("A", 500), rep("B", 300)))
+```
+
+```{r scat, fig.width=3, fig.height=3, out.width="70%"}
+ggplot(df, aes(x=x, y=y1)) +
+  geom_point(alpha=0.5) + xlab("") + ylab("") +
+  annotate("text", x=0, y=8, label=paste0("r = ", round(cor(df$x,df$y1), 2))) +
+  theme_minimal() 
+```
+
+```{r scatcol, fig.width=3, fig.height=3, out.width="70%"}
+ggplot(df, aes(x=x, y=y1, colour=y2)) +
+  geom_point(alpha=0.5) + xlab("") + ylab("") +
+  scale_colour_brewer("", palette="Dark2") +
+  annotate("text", x=0, y=8, label=paste0("r = ", round(cor(df$x[df$y2=="A"],df$y1[df$y2=="A"]), 2)), colour="forestgreen") +
+    annotate("text", x=1.5, y=0, label=paste0("r = ", round(cor(df$x[df$y2=="B"],df$y1[df$y2=="B"]), 2)), colour="orangered") +
+  theme_minimal() + theme(legend.position="none")
+```
+
+```{r berkeley, fig.width=10, fig.height=4, out.width="90%"}
+ucba <- as_tibble(UCBAdmissions)
+a <- ggplot(ucba, aes(Dept)) +
+  geom_bar(aes(weight=n))
+b <- ggplot(ucba, aes(Admit)) +
+  geom_bar(aes(weight=n)) +
+  facet_wrap(~Gender)
+a + b
+```
+
+Did Berkeley .monash-orange2[discriminate] against female applicants?
+
+```{r berkeleydd, fig.width=10, fig.height=4, out.width="100%"}
+library(vcd)
+ucba <- ucba %>%
+  mutate(Admit = factor(Admit, 
+            levels=c("Rejected", "Admitted")),
+         Gender = factor(Gender, 
+            levels=c("Male", "Female"),
+            labels=c("M","F")))
+doubledecker(xtabs(n~Dept+Gender+Admit, data=ucba),
+             gp = gpar(fill=c("grey90", "orangered")))
+```
+
+Based on separately examining each department, there is .monash-orange2[no evidence of discrimination] against female applicants.
+
+## Spurious association
+
+
 ## Checking association with permutations
 
+```{r soils-lineup, fig.width=10, fig.height=7, out.width="60%"}
+ggplot(lineup(null_permute("Corn97BU"), baker, n=12), 
+       aes(x=B, y=Corn97BU)) +
+  geom_point() +
+  facet_wrap(~.sample, ncol=4)
+```
 
+11 of the panels have had the association broken by permuting one variable. There is no association in these data sets, and hence plots. Does the data plot stand out as being different from the null (no association) plots?
 
-transformations to linearise
+```{r oly-lineup, fig.width=10, fig.height=7, out.width="60%"}
+data(oly12, package = "VGAMdata") 
+oly12_sub <- oly12 %>%
+  filter(Sport %in% c("Swimming", "Archery",
+                      "Hockey", "Tennis")) %>%
+  filter(Sex == "F") %>%
+  mutate(Sport = fct_drop(Sport), Sex=fct_drop(Sex)) 
+
+ggplot(lineup(null_permute("Sport"), oly12_sub, n=12),
+       aes(x=Height, y=Weight, colour=Sport)) + 
+  geom_smooth(method="lm", se=FALSE) + 
+  scale_colour_brewer("", palette="Dark2") +
+  facet_wrap(~.sample, ncol=4) +
+  theme(legend.position="none")
+```
+
+11 of the panels have had the association broken by permuting the Sport label. There is no difference in the association between weight and height across sports in these data sets, and hence plots. Does the data plot stand out as being different from the null (no association difference between sports) plots?
+
+# Resources
+
+- Friendly and Denis "Milestones in History of Thematic Cartography, Statistical Graphics and Data Visualisation" available at http://www.datavis.ca/milestones/
+- Unwin (2015) [Graphical Data Analysis with R](http://www.gradaanwr.net)
+- Graphics using [ggplot2](https://ggplot2.tidyverse.org)
+- Wilke (2019) Fundamentals of Data Visualization https://clauswilke.com/dataviz/
+
 
 ## Exercises
 
@@ -720,7 +1298,6 @@ oly12 %>%
          Sex == "F") %>%
   select(Height, Weight) %>%
   correlate()
-
 ```
 
 3. From the following scatterplot, of diamond size and price, what are the most prominent features? 

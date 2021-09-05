@@ -175,3 +175,14 @@ comparing-association
 comparing-variability
 summary-1
 scatterplot-modifications-and-purpose
+numerical-measures-of-association
+correlation
+peceiving-correlation
+robust-correlation-measures
+robust-correlation-measures-1
+comparison-of-correlation-measures
+circle-of-transformations-for-linearising
+beyond-quantitative-variables
+simpsons-paradox
+spurious-association
+resources
