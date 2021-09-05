@@ -1138,7 +1138,7 @@ The type of variable determines the choice of mapping.
 - Continuous and categorical $\longrightarrow$ side-by-side boxplots, side-by-side density plots
 - Both categorical $\longrightarrow$ faceted bar charts, stacked bar charts, mosaic plots, double decker plots
 
-# Simpsons paradox
+## Simpsons paradox
 
 There is an additional variable, which if used for conditioning, changes the association between the variables, you have a paradox `r emo::ji("upside_down_face")`.
 
@@ -1224,7 +1224,7 @@ ggplot(lineup(null_permute("Sport"), oly12_sub, n=12),
 
 11 of the panels have had the association broken by permuting the Sport label. There is no difference in the association between weight and height across sports in these data sets, and hence plots. Does the data plot stand out as being different from the null (no association difference between sports) plots?
 
-# Resources
+## Resources
 
 - Friendly and Denis "Milestones in History of Thematic Cartography, Statistical Graphics and Data Visualisation" available at http://www.datavis.ca/milestones/
 - Unwin (2015) [Graphical Data Analysis with R](http://www.gradaanwr.net)
