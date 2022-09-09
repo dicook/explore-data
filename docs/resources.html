@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Resources | Exploratory Data Analysis in the 21st Century</title>
+  <meta name="description" content="This is a book about EDA today." />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Resources | Exploratory Data Analysis in the 21st Century" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a book about EDA today." />
+  <meta name="github-repo" content="https://github.com/dicook/explore-data" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Resources | Exploratory Data Analysis in the 21st Century" />
+  
+  <meta name="twitter:description" content="This is a book about EDA today." />
+  
+
+<meta name="author" content="Di Cook and Emi Tanaka" />
+
+
+<meta name="date" content="2021-09-05" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="simpsons-paradox.html"/>
+<link rel="next" href="going-beyond-two-variables.html"/>
+<script src="libs/header-attrs-2.10.2/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+<link href="libs/font-awesome-animation-1.0/font-awesome-animation-emi.css" rel="stylesheet" />
+<script src="libs/fontawesome-5.0.13/js/fontawesome-all.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">This is a book about EDA today. </a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
+<li class="chapter" data-level="2" data-path="what-is-eda.html"><a href="what-is-eda.html"><i class="fa fa-check"></i><b>2</b> What is exploratory data analysis?</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="what-is-eda.html"><a href="what-is-eda.html#common-descriptions"><i class="fa fa-check"></i><b>2.1</b> Common descriptions</a></li>
+<li class="chapter" data-level="2.2" data-path="what-is-eda.html"><a href="what-is-eda.html#components-of-data-analysis"><i class="fa fa-check"></i><b>2.2</b> Components of data analysis</a></li>
+<li class="chapter" data-level="2.3" data-path="what-is-eda.html"><a href="what-is-eda.html#differentiating-eda-from-cda"><i class="fa fa-check"></i><b>2.3</b> Differentiating EDA from CDA</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="what-is-eda.html"><a href="what-is-eda.html#from-the-case-study"><i class="fa fa-check"></i><b>2.3.1</b> From the case study</a></li>
+<li class="chapter" data-level="2.3.2" data-path="what-is-eda.html"><a href="what-is-eda.html#eda-approach"><i class="fa fa-check"></i><b>2.3.2</b> EDA approach</a></li>
+<li class="chapter" data-level="2.3.3" data-path="what-is-eda.html"><a href="what-is-eda.html#what-we-learned-from-eda"><i class="fa fa-check"></i><b>2.3.3</b> What we learned from EDA</a></li>
+<li class="chapter" data-level="2.3.4" data-path="what-is-eda.html"><a href="what-is-eda.html#reality-check"><i class="fa fa-check"></i><b>2.3.4</b> Reality check</a></li>
+<li class="chapter" data-level="2.3.5" data-path="what-is-eda.html"><a href="what-is-eda.html#what-is-eda-1"><i class="fa fa-check"></i><b>2.3.5</b> What is EDA?</a></li>
+<li class="chapter" data-level="2.3.6" data-path="what-is-eda.html"><a href="what-is-eda.html#isnt-it-data-snooping"><i class="fa fa-check"></i><b>2.3.6</b> Isn’t it data snooping?</a></li>
+<li class="chapter" data-level="2.3.7" data-path="what-is-eda.html"><a href="what-is-eda.html#why-arent-there-more-resources-on-eda"><i class="fa fa-check"></i><b>2.3.7</b> Why aren’t there more resources on EDA?</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="what-is-eda.html"><a href="what-is-eda.html#the-origins-of-eda"><i class="fa fa-check"></i><b>2.4</b> The origins of EDA</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="what-is-eda.html"><a href="what-is-eda.html#example-1-stem-and-leaf"><i class="fa fa-check"></i><b>2.4.1</b> Example 1: Stem-and-leaf</a></li>
+<li class="chapter" data-level="2.4.2" data-path="what-is-eda.html"><a href="what-is-eda.html#example-1-making-tallies"><i class="fa fa-check"></i><b>2.4.2</b> Example 1: Making tallies</a></li>
+<li class="chapter" data-level="2.4.3" data-path="what-is-eda.html"><a href="what-is-eda.html#example-3-boxplots"><i class="fa fa-check"></i><b>2.4.3</b> Example 3: Boxplots</a></li>
+<li class="chapter" data-level="2.4.4" data-path="what-is-eda.html"><a href="what-is-eda.html#example-4-easy-re-expression"><i class="fa fa-check"></i><b>2.4.4</b> Example 4: Easy re-expression</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="what-is-eda.html"><a href="what-is-eda.html#exercises"><i class="fa fa-check"></i><b>2.5</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html"><i class="fa fa-check"></i><b>3</b> Initial Data Analysis</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#data-description"><i class="fa fa-check"></i><b>3.1</b> Data description</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-type"><i class="fa fa-check"></i><b>3.1.1</b> Checking the data type</a></li>
+<li class="chapter" data-level="3.1.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#checking-the-data-quality"><i class="fa fa-check"></i><b>3.1.2</b> Checking the data quality</a></li>
+<li class="chapter" data-level="3.1.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-on-data-collection-method"><i class="fa fa-check"></i><b>3.1.3</b> Check on data collection method</a></li>
+<li class="chapter" data-level="3.1.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#check-for-experimental-data"><i class="fa fa-check"></i><b>3.1.4</b> Check for experimental data</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation"><i class="fa fa-check"></i><b>3.2</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#review-linear-models-in-r"><i class="fa fa-check"></i><b>3.2.1</b> Review: Linear models in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#model-formulation-1"><i class="fa fa-check"></i><b>3.3</b> Model formulation</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#experimental-design"><i class="fa fa-check"></i><b>3.3.1</b> Experimental Design</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="initial-data-analysis.html"><a href="initial-data-analysis.html#summary"><i class="fa fa-check"></i><b>3.4</b> Summary</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html"><i class="fa fa-check"></i><b>4</b> Working with a single variable</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#possible-features-of-continuous-variables"><i class="fa fa-check"></i><b>4.1</b> Possible features of continuous variables</a></li>
+<li class="chapter" data-level="4.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-features-of-a-single-contiuous-variables"><i class="fa fa-check"></i><b>4.2</b> Numerical features of a single contiuous variables</a></li>
+<li class="chapter" data-level="4.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#outliers"><i class="fa fa-check"></i><b>4.3</b> Outliers</a></li>
+<li class="chapter" data-level="4.4" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#closer-look-at-the-boxplot"><i class="fa fa-check"></i><b>4.4</b> Closer look at the <em>boxplot</em></a></li>
+<li class="chapter" data-level="4.5" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-central-tendency"><i class="fa fa-check"></i><b>4.5</b> Robust statistics: measure of central tendency</a></li>
+<li class="chapter" data-level="4.6" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#robust-statistics-measure-of-dispersion"><i class="fa fa-check"></i><b>4.6</b> Robust statistics: measure of dispersion</a></li>
+<li class="chapter" data-level="4.7" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#transformations"><i class="fa fa-check"></i><b>4.7</b> Transformations</a></li>
+<li class="chapter" data-level="4.8" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-variables"><i class="fa fa-check"></i><b>4.8</b> Categorical variables</a>
+<ul>
+<li class="chapter" data-level="4.8.1" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#categorical-factors-un-r"><i class="fa fa-check"></i><b>4.8.1</b> Categorical factors un R</a></li>
+<li class="chapter" data-level="4.8.2" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#numerical-factors-in-r"><i class="fa fa-check"></i><b>4.8.2</b> Numerical factors in R</a></li>
+<li class="chapter" data-level="4.8.3" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-german-bundestag-election-2009"><i class="fa fa-check"></i><b>4.8.3</b> Example: German Bundestag Election 2009</a></li>
+</ul></li>
+<li class="chapter" data-level="4.9" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#order-nominal-variables-meaningfully"><i class="fa fa-check"></i><b>4.9</b> Order nominal variables meaningfully</a></li>
+<li class="chapter" data-level="4.10" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#example-aspirin-use-after-heart-attack"><i class="fa fa-check"></i><b>4.10</b> Example: Aspirin use after heart attack</a></li>
+<li class="chapter" data-level="4.11" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#consider-combining-factor-levels-with-low-frequencies"><i class="fa fa-check"></i><b>4.11</b> Consider combining factor levels with low frequencies</a></li>
+<li class="chapter" data-level="4.12" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#anorexia"><i class="fa fa-check"></i><b>4.12</b> Anorexia</a></li>
+<li class="chapter" data-level="4.13" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#titanic"><i class="fa fa-check"></i><b>4.13</b> Titanic</a></li>
+<li class="chapter" data-level="4.14" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#coloring-bars"><i class="fa fa-check"></i><b>4.14</b> Coloring bars</a></li>
+<li class="chapter" data-level="4.15" data-path="working-with-a-single-variable.html"><a href="working-with-a-single-variable.html#opinion-poll-in-ireland-aug-2013"><i class="fa fa-check"></i><b>4.15</b> Opinion poll in Ireland Aug 2013</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html"><i class="fa fa-check"></i><b>5</b> Bivariate dependencies and relationships</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#motivation"><i class="fa fa-check"></i><b>5.1</b> Motivation</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#history"><i class="fa fa-check"></i><b>5.1.1</b> History</a></li>
+<li class="chapter" data-level="5.1.2" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#language-and-terminology"><i class="fa fa-check"></i><b>5.1.2</b> Language and terminology</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#common-features-and-their-names"><i class="fa fa-check"></i><b>5.2</b> Common features and their names</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#anscombes-quartet"><i class="fa fa-check"></i><b>5.2.1</b> Anscombe’s quartet</a></li>
+<li class="chapter" data-level="5.2.2" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#datasaurus-dozen"><i class="fa fa-check"></i><b>5.2.2</b> DatasauRus dozen</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#case-study-1-olympics"><i class="fa fa-check"></i><b>5.3</b> Case study 1: olympics</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#how-many-athletes-in-the-different-sports"><i class="fa fa-check"></i><b>5.3.1</b> How many athletes in the different sports?</a></li>
+<li class="chapter" data-level="5.3.2" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#consolidate-factor-levels"><i class="fa fa-check"></i><b>5.3.2</b> Consolidate factor levels</a></li>
+<li class="chapter" data-level="5.3.3" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#split-by-sport"><i class="fa fa-check"></i><b>5.3.3</b> Split by sport</a></li>
+<li class="chapter" data-level="5.3.4" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#remove-missings-add-colour-for-sex"><i class="fa fa-check"></i><b>5.3.4</b> Remove missings, add colour for sex</a></li>
+<li class="chapter" data-level="5.3.5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#comparing-association"><i class="fa fa-check"></i><b>5.3.5</b> Comparing association</a></li>
+<li class="chapter" data-level="5.3.6" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#comparing-variability"><i class="fa fa-check"></i><b>5.3.6</b> Comparing variability</a></li>
+<li class="chapter" data-level="5.3.7" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#summary-1"><i class="fa fa-check"></i><b>5.3.7</b> Summary</a></li>
+<li class="chapter" data-level="5.3.8" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#scatterplot-modifications-and-purpose"><i class="fa fa-check"></i><b>5.3.8</b> Scatterplot modifications and purpose</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#numerical-measures-of-association"><i class="fa fa-check"></i><b>5.4</b> Numerical measures of association</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#correlation"><i class="fa fa-check"></i><b>5.4.1</b> Correlation</a></li>
+<li class="chapter" data-level="5.4.2" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#peceiving-correlation"><i class="fa fa-check"></i><b>5.4.2</b> Peceiving correlation</a></li>
+<li class="chapter" data-level="5.4.3" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#robust-correlation-measures"><i class="fa fa-check"></i><b>5.4.3</b> Robust correlation measures</a></li>
+<li class="chapter" data-level="5.4.4" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#robust-correlation-measures-1"><i class="fa fa-check"></i><b>5.4.4</b> Robust correlation measures</a></li>
+<li class="chapter" data-level="5.4.5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#comparison-of-correlation-measures"><i class="fa fa-check"></i><b>5.4.5</b> Comparison of correlation measures</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#case-study-2-movies"><i class="fa fa-check"></i><b>5.5</b> Case study 2: movies</a></li>
+<li class="chapter" data-level="5.6" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#case-study-3-cars"><i class="fa fa-check"></i><b>5.6</b> Case study 3: cars</a></li>
+<li class="chapter" data-level="5.7" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#circle-of-transformations-for-linearising"><i class="fa fa-check"></i><b>5.7</b> Circle of transformations for linearising</a></li>
+<li class="chapter" data-level="5.8" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#case-study-4-soils"><i class="fa fa-check"></i><b>5.8</b> Case study 4: soils</a></li>
+<li class="chapter" data-level="5.9" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#case-study-5-covid"><i class="fa fa-check"></i><b>5.9</b> Case study 5: COVID</a></li>
+<li class="chapter" data-level="5.10" data-path="bivariate-dependencies-and-relationships.html"><a href="bivariate-dependencies-and-relationships.html#beyond-quantitative-variables"><i class="fa fa-check"></i><b>5.10</b> Beyond quantitative variables</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="simpsons-paradox.html"><a href="simpsons-paradox.html"><i class="fa fa-check"></i><b>6</b> Simpsons paradox</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="simpsons-paradox.html"><a href="simpsons-paradox.html#spurious-association"><i class="fa fa-check"></i><b>6.1</b> Spurious association</a></li>
+<li class="chapter" data-level="6.2" data-path="simpsons-paradox.html"><a href="simpsons-paradox.html#checking-association-with-permutations"><i class="fa fa-check"></i><b>6.2</b> Checking association with permutations</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i><b>7</b> Resources</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="resources.html"><a href="resources.html#exercises-1"><i class="fa fa-check"></i><b>7.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="going-beyond-two-variables.html"><a href="going-beyond-two-variables.html"><i class="fa fa-check"></i><b>8</b> Going beyond two variables</a></li>
+<li class="chapter" data-level="9" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html"><i class="fa fa-check"></i><b>9</b> Making comparisons between groups and strata</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize"><i class="fa fa-check"></i><b>9.1</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="9.2" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#maize-kernels"><i class="fa fa-check"></i><b>9.2</b> Maize kernels</a></li>
+<li class="chapter" data-level="9.3" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-like-with-like"><i class="fa fa-check"></i><b>9.3</b> Comparing like-with-like</a></li>
+<li class="chapter" data-level="9.4" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#multi-environment-soybean-trial"><i class="fa fa-check"></i><b>9.4</b> Multi-environment soybean trial</a></li>
+<li class="chapter" data-level="9.5" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#types-of-comparison"><i class="fa fa-check"></i><b>9.5</b> Types of comparison</a></li>
+<li class="chapter" data-level="9.6" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-of-calves-with-different-diets"><i class="fa fa-check"></i><b>9.6</b> Weight of calves with different diets</a></li>
+<li class="chapter" data-level="9.7" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#swiss-bank-notes"><i class="fa fa-check"></i><b>9.7</b> Swiss bank notes</a></li>
+<li class="chapter" data-level="9.8" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#comparing-graphically"><i class="fa fa-check"></i><b>9.8</b> Comparing graphically</a></li>
+<li class="chapter" data-level="9.9" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#barley-yield"><i class="fa fa-check"></i><b>9.9</b> Barley Yield</a></li>
+<li class="chapter" data-level="9.10" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#olive-oils"><i class="fa fa-check"></i><b>9.10</b> Olive oils</a></li>
+<li class="chapter" data-level="9.11" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#england-and-east-indies-trade-data"><i class="fa fa-check"></i><b>9.11</b> England and East Indies trade data</a></li>
+<li class="chapter" data-level="9.12" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#melbournes-daily-maximum-temperature"><i class="fa fa-check"></i><b>9.12</b> Melbourne’s daily maximum temperature</a></li>
+<li class="chapter" data-level="9.13" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#modelling-and-testing-for-comparisons"><i class="fa fa-check"></i><b>9.13</b> Modelling and testing for comparisons</a></li>
+<li class="chapter" data-level="9.14" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#pest-resistance-maize-1"><i class="fa fa-check"></i><b>9.14</b> Pest resistance maize</a></li>
+<li class="chapter" data-level="9.15" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-parametric-tests-t-test"><i class="fa fa-check"></i><b>9.15</b> Two-sample parametric tests: <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="9.16" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#confidence-interval-for-two-sample-difference"><i class="fa fa-check"></i><b>9.16</b> Confidence interval for two sample difference</a></li>
+<li class="chapter" data-level="9.17" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#two-sample-non-parametric-tests"><i class="fa fa-check"></i><b>9.17</b> Two sample non-parametric tests</a>
+<ul>
+<li class="chapter" data-level="9.17.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#wilcoxon-rank-sum-test"><i class="fa fa-check"></i><b>9.17.1</b> Wilcoxon rank-sum test</a></li>
+</ul></li>
+<li class="chapter" data-level="9.18" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves"><i class="fa fa-check"></i><b>9.18</b> Weight gain of calves</a>
+<ul>
+<li class="chapter" data-level="9.18.1" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#weight-gain-of-calves-1"><i class="fa fa-check"></i><b>9.18.1</b> Weight gain of calves</a></li>
+</ul></li>
+<li class="chapter" data-level="9.19" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#soil-nitrogen"><i class="fa fa-check"></i><b>9.19</b> Soil nitrogen</a></li>
+<li class="chapter" data-level="9.20" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#controlling-the-family-wise-error-rate"><i class="fa fa-check"></i><b>9.20</b> Controlling the family-wise error rate</a></li>
+<li class="chapter" data-level="9.21" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#unadjusted"><i class="fa fa-check"></i><b>9.21</b> Unadjusted</a></li>
+<li class="chapter" data-level="9.22" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#bonferonni-adjustment"><i class="fa fa-check"></i><b>9.22</b> Bonferonni adjustment</a></li>
+<li class="chapter" data-level="9.23" data-path="making-comparisons-between-groups-and-strata.html"><a href="making-comparisons-between-groups-and-strata.html#mystery-data"><i class="fa fa-check"></i><b>9.23</b> Mystery data</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html"><i class="fa fa-check"></i><b>10</b> Sculpting data using models</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#parametric-regression"><i class="fa fa-check"></i><b>10.1</b> Parametric regression</a></li>
+<li class="chapter" data-level="10.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#example"><i class="fa fa-check"></i><b>10.2</b> Example</a></li>
+<li class="chapter" data-level="10.3" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-parametric-models"><i class="fa fa-check"></i><b>10.3</b> Simulating data from parametric models</a></li>
+<li class="chapter" data-level="10.4" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#logistic-regression"><i class="fa fa-check"></i><b>10.4</b> Logistic regression</a></li>
+<li class="chapter" data-level="10.5" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#menarche"><i class="fa fa-check"></i><b>10.5</b> Menarche</a></li>
+<li class="chapter" data-level="10.6" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#simulating-data-from-logistic-regression"><i class="fa fa-check"></i><b>10.6</b> Simulating data from logistic regression</a></li>
+<li class="chapter" data-level="10.7" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-logistic-regression-models"><i class="fa fa-check"></i><b>10.7</b> Diagnostics for logistic regression models</a></li>
+<li class="chapter" data-level="10.8" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#diagnostics-for-linear-models"><i class="fa fa-check"></i><b>10.8</b> Diagnostics for linear models</a></li>
+<li class="chapter" data-level="10.9" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a1-eepsilon_i-0-for-i1ldotsn"><i class="fa fa-check"></i><b>10.9</b> Assessing (A1) <span class="math inline">\(E(\epsilon_i) = 0\)</span> for <span class="math inline">\(i=1,\ldots,n\)</span></a></li>
+<li class="chapter" data-level="10.10" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#assessing-a2-a3"><i class="fa fa-check"></i><b>10.10</b> Assessing (A2)-(A3)</a>
+<ul>
+<li class="chapter" data-level="10.10.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#in-r"><i class="fa fa-check"></i><b>10.10.1</b> In R</a></li>
+</ul></li>
+<li class="chapter" data-level="10.11" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#examining-the-simulated-data-further"><i class="fa fa-check"></i><b>10.11</b> Examining the simulated data further</a></li>
+<li class="chapter" data-level="10.12" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#revisiting-outliers"><i class="fa fa-check"></i><b>10.12</b> Revisiting outliers</a></li>
+<li class="chapter" data-level="10.13" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#pop-quiz"><i class="fa fa-check"></i><b>10.13</b> Pop Quiz</a></li>
+<li class="chapter" data-level="10.14" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#outlying-values"><i class="fa fa-check"></i><b>10.14</b> Outlying values</a></li>
+<li class="chapter" data-level="10.15" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#leverage"><i class="fa fa-check"></i><b>10.15</b> Leverage</a></li>
+<li class="chapter" data-level="10.16" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#studentized-residuals"><i class="fa fa-check"></i><b>10.16</b> Studentized residuals</a></li>
+<li class="chapter" data-level="10.17" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#cooks-distance"><i class="fa fa-check"></i><b>10.17</b> Cook’s distance</a></li>
+<li class="chapter" data-level="10.18" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#social-media-marketing"><i class="fa fa-check"></i><b>10.18</b> Social media marketing</a></li>
+<li class="chapter" data-level="10.19" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#extracting-values-from-models-in-r"><i class="fa fa-check"></i><b>10.19</b> Extracting values from models in R</a></li>
+<li class="chapter" data-level="10.20" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#non-parametric-regression"><i class="fa fa-check"></i><b>10.20</b> Non-parametric regression</a>
+<ul>
+<li class="chapter" data-level="10.20.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#loess"><i class="fa fa-check"></i><b>10.20.1</b> LOESS</a></li>
+</ul></li>
+<li class="chapter" data-level="10.21" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-span-changes-the-loess-fit"><i class="fa fa-check"></i><b>10.21</b> How <code>span</code> changes the loess fit</a></li>
+<li class="chapter" data-level="10.22" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-loess-works"><i class="fa fa-check"></i><b>10.22</b> How <code>loess</code> works</a></li>
+<li class="chapter" data-level="10.23" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#us-economic-time-series"><i class="fa fa-check"></i><b>10.23</b> US economic time series</a></li>
+<li class="chapter" data-level="10.24" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#how-to-fit-loess-curves-in-r"><i class="fa fa-check"></i><b>10.24</b> How to fit LOESS curves in R?</a>
+<ul>
+<li class="chapter" data-level="10.24.1" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#model-fitting"><i class="fa fa-check"></i><b>10.24.1</b> Model fitting</a></li>
+<li class="chapter" data-level="10.24.2" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#showing-it-on-the-plot"><i class="fa fa-check"></i><b>10.24.2</b> Showing it on the plot</a></li>
+</ul></li>
+<li class="chapter" data-level="10.25" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#why-non-parametric-regression"><i class="fa fa-check"></i><b>10.25</b> Why non-parametric regression?</a></li>
+<li class="chapter" data-level="10.26" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#bluegills"><i class="fa fa-check"></i><b>10.26</b> Bluegills</a></li>
+<li class="chapter" data-level="10.27" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#soil-resistivity-in-a-field"><i class="fa fa-check"></i><b>10.27</b> Soil resistivity in a field</a></li>
+<li class="chapter" data-level="10.28" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#conditioning-plots-coplots"><i class="fa fa-check"></i><b>10.28</b> Conditioning plots (Coplots)</a></li>
+<li class="chapter" data-level="10.29" data-path="sculpting-data-using-models.html"><a href="sculpting-data-using-models.html#coplots-via-ggplot2"><i class="fa fa-check"></i><b>10.29</b> Coplots via <code>ggplot2</code></a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="exploring-data-having-a-space-and-time-context.html"><a href="exploring-data-having-a-space-and-time-context.html"><i class="fa fa-check"></i><b>11</b> Exploring data having a space and time context</a></li>
+<li class="chapter" data-level="12" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html"><i class="fa fa-check"></i><b>12</b> Is what you see really there?</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#revisiting-hypothesis-testing"><i class="fa fa-check"></i><b>12.1</b> Revisiting hypothesis testing</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#testing-coin-bias"><i class="fa fa-check"></i><b>12.1.1</b> Testing coin bias</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#frequentist-hypotheses-testing-framework"><i class="fa fa-check"></i><b>12.2</b> (Frequentist) hypotheses testing framework</a></li>
+<li class="chapter" data-level="12.3" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#judicial-system"><i class="fa fa-check"></i><b>12.3</b> Judicial system</a></li>
+<li class="chapter" data-level="12.4" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference"><i class="fa fa-check"></i><b>12.4</b> Visual inference</a></li>
+<li class="chapter" data-level="12.5" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-more-formally"><i class="fa fa-check"></i><b>12.5</b> Visual inference more formally</a></li>
+<li class="chapter" data-level="12.6" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#uniformity-trial-of-peanuts"><i class="fa fa-check"></i><b>12.6</b> Uniformity trial of peanuts</a></li>
+<li class="chapter" data-level="12.7" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-and-practical-significance"><i class="fa fa-check"></i><b>12.7</b> Statistical significance and practical significance</a></li>
+<li class="chapter" data-level="12.8" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#statistical-significance-of-the-data-plot"><i class="fa fa-check"></i><b>12.8</b> Statistical significance of the data plot</a></li>
+<li class="chapter" data-level="12.9" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#lineup-of-small-effect-difference"><i class="fa fa-check"></i><b>12.9</b> Lineup of small effect difference</a></li>
+<li class="chapter" data-level="12.10" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#some-considerations-in-visual-inference"><i class="fa fa-check"></i><b>12.10</b> Some considerations in visual inference</a></li>
+<li class="chapter" data-level="12.11" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#visual-inference-with-the-nullabor"><i class="fa fa-check"></i><b>12.11</b> Visual inference with the <code>nullabor</code> 📦</a></li>
+<li class="chapter" data-level="12.12" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#potato-scab-infection"><i class="fa fa-check"></i><b>12.12</b> Potato scab infection</a></li>
+<li class="chapter" data-level="12.13" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#black-cherry-trees"><i class="fa fa-check"></i><b>12.13</b> Black Cherry Trees</a></li>
+<li class="chapter" data-level="12.14" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#temperatures-of-stars"><i class="fa fa-check"></i><b>12.14</b> Temperatures of stars</a></li>
+<li class="chapter" data-level="12.15" data-path="is-what-you-see-really-there.html"><a href="is-what-you-see-really-there.html#foreign-exchange-rate"><i class="fa fa-check"></i><b>12.15</b> Foreign exchange rate</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>13</b> Final words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href= https://github.com/dicook/exploratory-data-analysis-in-the-21st-century" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Exploratory Data Analysis in the 21st Century</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="resources" class="section level1" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Resources</h1>
+<ul>
+<li>Friendly and Denis “Milestones in History of Thematic Cartography, Statistical Graphics and Data Visualisation” available at <a href="http://www.datavis.ca/milestones/" class="uri">http://www.datavis.ca/milestones/</a></li>
+<li>Unwin (2015) <a href="http://www.gradaanwr.net">Graphical Data Analysis with R</a></li>
+<li>Graphics using <a href="https://ggplot2.tidyverse.org">ggplot2</a></li>
+<li>Wilke (2019) Fundamentals of Data Visualization <a href="https://clauswilke.com/dataviz/" class="uri">https://clauswilke.com/dataviz/</a></li>
+</ul>
+<div id="exercises-1" class="section level2" number="7.1">
+<h2><span class="header-section-number">7.1</span> Exercises</h2>
+<ol style="list-style-type: decimal">
+<li>For each of the following scatterplots, of different Olympic athlete’s height and weight identify the visible features, and which is the most surprising.</li>
+</ol>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<!--
+a. positive linear association, discreteness. Most surprising is the discreteness, probably due to weight limits on competition groups.
+b. positive linear association, discreteness in both x and y, hint of clumpiness, increasing variance as both x and y increase. Probably the most surprising is the discreteness in both directions. Is there a height limit for some roles on the boat?
+c. positive linear association, outlier. The outlier is the most surprising it is a tall and extra heavy archer.
+d. positive linear association, clumpiness. Probably some positions in the crew are smaller people, the coxswain. 
+-->
+<ol start="2" style="list-style-type: decimal">
+<li><p>Guess the correlation between the two variables in each of the previous scatterplots.</p></li>
+<li><p>From the following scatterplot, of diamond size and price, what are the most prominent features?</p></li>
+</ol>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<!--
+positive nonlinear association, heteroskedasticity, outliers, gaps or clumping.
+-->
+<ol start="4" style="list-style-type: decimal">
+<li>In the previous plot of diamonds, what transformation would be recommended based on the “circle of transformations?”</li>
+</ol>
+<!-- transform price, down the ladder of powere -->
+<ol start="5" style="list-style-type: decimal">
+<li>In the following plot of arrival delay and departure delay of flights into and out of the New York City area, what are the most prominent features?</li>
+</ol>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<!--
+strong positive association, barrier (arrival delays are not possible to be less than some function of departure delays, might depend on length of flight), heteroskedastic
+-->
+<ol start="6" style="list-style-type: decimal">
+<li>Which of these would be a surprising feature learned from this plot? Why?</li>
+</ol>
+<ul>
+<li>There are negative departure and arrival delays <!-- A bit surprising, but mostly these are small, so some flights leave a fraction early which could happen if all passengers are on board. Early arriving flights are common. --></li>
+<li>If a flight has a delay in departure it likely will be delayed on arrival <!-- Not surprising, because most likely a flight will be delayed arriving if it started late. --></li>
+<li>Some flights with negative departure delay have long arrival delays <!-- This is the most surprising, because it means a flight left early but arrived quite late. Physics-wise an early departure should lead to an early arrival. So it makes one think about how the flight could arrive quite late: diverted to avoid a storm, or sat on tarmac after pushing back from gate, or before getting to gate. Requires you to know that departure and arrival times are from and to the gate. --></li>
+<li>Some flights have long delays <!-- This is reasonably common so it's not surprising.--></li>
+<li>Some flights with negative arrival delays have positive departure delays <!-- Not so surprising, because a plane can catch up to schedule in-flight. --></li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>A dominant feature in the plot of average rating by number of ratings of movies in the IMDB database is a barrier, or two barriers, both top and bottom of plot. What is a plausible explanation for this feature?</li>
+</ol>
+<p><img src="eda-book_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<ul>
+<li>As movies become more popular ratings invariably go down <!-- This makes no sense. If it's popular then it will be mostly rated highly. --></li>
+<li>There are just very few frequently rated movies and this means it is unlikely to see high values. <!-- A nonsense statement --></li>
+<li>The lesser rated movies have a lot of variance in their ratings, producing a barrier for the more frequently rated movies. <!-- We could remove the lesser rates movies, and the barrier for frequently rated movies would still exist. --></li>
+<li>The lesser rated movies have a lot of variance in their ratings, producing a barrier for the more frequently rated movies. <!-- Generally, it is the case that skewness will appear in a plot as less variance in the sparser plot regions. But that is not the pattern causing the barrier in the movies plot. --></li>
+<li>The average of many values tends to be unlikely to be at the highest and lowest possible values. <!-- This is correct, is a number crunching phenomenon, regression to the mean (?)  --></li>
+</ul>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="simpsons-paradox.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="going-beyond-two-variables.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["eda-book.pdf", "eda-book.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
