@@ -186,3 +186,4 @@ beyond-quantitative-variables
 simpsons-paradox
 spurious-association
 resources
+numerical-features-of-a-single-continuous-variables

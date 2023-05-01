@@ -2,7 +2,11 @@
 
 making transformations, detecting outliers, using robust statistics
 
-
+```{r biv-libraries}
+library(tidyverse)
+library(colorspace)
+library(readr)
+```
 
 ## Possible features of continuous variables
 
@@ -58,15 +62,15 @@ ggplot(some_df, aes(x7)) +
 
 Feature | Example | Description
 --- | --- | ---
-Asymmetry | <img src="../_bookdown_files/eda-book_files/figure-html/plots-1.png" height ="58px">| The distribution is not symmetrical.
-Outliers |<img src="../_bookdown_files/eda-book_files/figure-html/plots-2.png" height ="58px"> | Some observations are that are far from the rest.
-Multimodality | <img src="../_bookdown_files/eda-book_files/figure-html/plots-3.png" height ="58px">  | There are more than one "peak" in the observations. 
-Gaps |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-4.png" height ="58px"> | Some continuous interval that are contained within the range but no observations exists. 
-Heaping |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-5.png" height ="58px"> |  Some values occur unexpectedly often.
-Discretized |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-6.png" height ="58px"> | Only certain values are found, e.g. due to rounding.
-Implausible |  <img src="../_bookdown_files/eda-book_files/figure-html/plots-7.png" height ="58px"> | Values outside of plausible or likely range.
+Asymmetry | <img src="_bookdown_files/eda-book_files/figure-html/plots-1.png" height ="58px">| The distribution is not symmetrical.
+Outliers |<img src="_bookdown_files/eda-book_files/figure-html/plots-2.png" height ="58px"> | Some observations are that are far from the rest.
+Multimodality | <img src="_bookdown_files/eda-book_files/figure-html/plots-3.png" height ="58px">  | There are more than one "peak" in the observations. 
+Gaps |  <img src="_bookdown_files/eda-book_files/figure-html/plots-4.png" height ="58px"> | Some continuous interval that are contained within the range but no observations exists. 
+Heaping |  <img src="_bookdown_files/eda-book_files/figure-html/plots-5.png" height ="58px"> |  Some values occur unexpectedly often.
+Discretized |  <img src="_bookdown_files/eda-book_files/figure-html/plots-6.png" height ="58px"> | Only certain values are found, e.g. due to rounding.
+Implausible |  <img src="_bookdown_files/eda-book_files/figure-html/plots-7.png" height ="58px"> | Values outside of plausible or likely range.
 
-## Numerical features of a single contiuous variables
+## Numerical features of a single continuous variables
 
 ```{r example-plot, fig.height = 1.3}
 ggplot(some_df, aes(x1)) + 
@@ -327,15 +331,15 @@ Boston housing data
 
 
 ```{r boston-data, include = FALSE}
-data(bostonc, package = "DAAG")
-df5 <- read_tsv(bostonc[10:length(bostonc)]) 
+data(boston, package = "spData")
+df5 <- boston.c #read_tsv(bostonc[10:length(bostonc)]) 
 ```
 
 ```{r boston-data-longer, include = FALSE}
-df5long <- df5 %>% pivot_longer(MEDV:LSTAT,
+df5long <- df5 %>% pivot_longer(c(MEDV:CRIM, 
+                                  INDUS, NOX:PTRATIO, LSTAT),
                              names_to = "var",
-                             values_to = "value") %>% 
-  filter(!var %in% c("CHAS", "B", "ZN"))
+                             values_to = "value") 
 ```
 
 ```{r boston-plot1, fig.width = 6.4}
@@ -729,6 +733,7 @@ df9 %>%
 ## Coloring bars
 
 ```{r, fig.width = 10}
+library(patchwork)
 g1 <- df9 %>% 
   group_by(Class) %>% 
   summarise(total = sum(n)) %>% 
