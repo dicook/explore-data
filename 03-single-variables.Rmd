@@ -62,13 +62,13 @@ ggplot(some_df, aes(x7)) +
 
 Feature | Example | Description
 --- | --- | ---
-Asymmetry | <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-1.png" height ="58px">| The distribution is not symmetrical.
-Outliers |<img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-2.png" height ="58px"> | Some observations are that are far from the rest.
-Multimodality | <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-3.png" height ="58px">  | There are more than one "peak" in the observations. 
-Gaps |  <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-4.png" height ="58px"> | Some continuous interval that are contained within the range but no observations exists. 
-Heaping |  <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-5.png" height ="58px"> |  Some values occur unexpectedly often.
-Discretized |  <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-6.png" height ="58px"> | Only certain values are found, e.g. due to rounding.
-Implausible |  <img src="https://github.com/dicook/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/plots-7.png" height ="58px"> | Values outside of plausible or likely range.
+Asymmetry | <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-1.png" height ="58px">| The distribution is not symmetrical.
+Outliers |<img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-2.png" height ="58px"> | Some observations are that are far from the rest.
+Multimodality | <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-3.png" height ="58px">  | There are more than one "peak" in the observations. 
+Gaps |  <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-4.png" height ="58px"> | Some continuous interval that are contained within the range but no observations exists. 
+Heaping |  <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-5.png" height ="58px"> |  Some values occur unexpectedly often.
+Discretized |  <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-6.png" height ="58px"> | Only certain values are found, e.g. due to rounding.
+Implausible |  <img src="https://github.com/dicook/explore-data/blob/master/docs/_bookdown_files/eda-book_files/figure-html/plots-7.png" height ="58px"> | Values outside of plausible or likely range.
 
 ## Numerical features of a single continuous variables
 
