@@ -285,23 +285,23 @@ weighted %>%
 
 ```{r feature-table, echo=FALSE}
 tribble(~Feature, ~Example, ~Description,
-        "positive trend", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-1.png" height ="54px">',  "Low value corresponds to low value, and high to high.",
-        "negative trend", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-2.png" height ="54px">', "Low value corresponds to high value, and high to low.",
-        "no trend", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-3.png" height ="54px">', 'No relationship',
-        "strong", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-4.png" height ="54px">',  "Very little variation around the trend",
-        "moderate", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-5.png" height ="54px">', "Variation around the trend is almost as much as the trend",
-        "weak", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots-6.png" height ="54px">', 'A lot of variation making it hard to see any trend',
-        "linear form", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-1.png" height ="54px">',  "The shape is linear",
-        "nonlinear form", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-2.png" height ="54px">', "The shape is more of a curve",
-        "nonlinear form", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-3.png" height ="54px">', 'The shape is more of a curve',
-        "outliers", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-4.png" height ="54px">', 'There are one or more points that do not fit the pattern on the others',
-        "clusters", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-5.png" height ="54px">', 'The observations group into multiple clumps',
-        "gaps", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots2-6.png" height ="54px">', 'There is a gap, or gaps, but its not clumped',
-        "barrier", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots3-1.png" height ="54px">', 'There is combination of the variables which appears impossible',
-        "l-shape", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots3-2.png" height ="54px">', 'When one variable changes the other is approximately constant',
-        "discreteness", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots3-3.png" height ="54px">', 'Relationship between two variables is different from the overall, and observations are in a striped pattern',
-        "heteroskedastic", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots3-4.png" height ="54px">', 'Variation is different in different areas, maybe depends on value of x variable',
-        "weighted", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatterplots3-5.png" height ="54px">', 'If observations have an associated weight,  reflect in scatterplot, e.g. bubble chart'
+        "positive trend", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-1.png" height ="54px">',  "Low value corresponds to low value, and high to high.",
+        "negative trend", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-2.png" height ="54px">', "Low value corresponds to high value, and high to low.",
+        "no trend", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-3.png" height ="54px">', 'No relationship',
+        "strong", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-4.png" height ="54px">',  "Very little variation around the trend",
+        "moderate", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-5.png" height ="54px">', "Variation around the trend is almost as much as the trend",
+        "weak", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots-6.png" height ="54px">', 'A lot of variation making it hard to see any trend',
+        "linear form", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-1.png" height ="54px">',  "The shape is linear",
+        "nonlinear form", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-2.png" height ="54px">', "The shape is more of a curve",
+        "nonlinear form", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-3.png" height ="54px">', 'The shape is more of a curve',
+        "outliers", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-4.png" height ="54px">', 'There are one or more points that do not fit the pattern on the others',
+        "clusters", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-5.png" height ="54px">', 'The observations group into multiple clumps',
+        "gaps", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots2-6.png" height ="54px">', 'There is a gap, or gaps, but its not clumped',
+        "barrier", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots3-1.png" height ="54px">', 'There is combination of the variables which appears impossible',
+        "l-shape", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots3-2.png" height ="54px">', 'When one variable changes the other is approximately constant',
+        "discreteness", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots3-3.png" height ="54px">', 'Relationship between two variables is different from the overall, and observations are in a striped pattern',
+        "heteroskedastic", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots3-4.png" height ="54px">', 'Variation is different in different areas, maybe depends on value of x variable',
+        "weighted", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatterplots3-5.png" height ="54px">', 'If observations have an associated weight,  reflect in scatterplot, e.g. bubble chart'
 ) %>% 
   knitr::kable(escape = FALSE) %>% 
   kableExtra::kable_classic()
@@ -623,14 +623,14 @@ ggplot(df, aes(x=x, y=y1, colour=y2)) +
 
 ```{r feature-table4, echo=FALSE}
 tribble(~Modification, ~Example, ~Purpose,
-        "none", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-1.png" height ="54px">', 'raw information',
-        "alpha-blend", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-2.png" height ="54px">', 'alleviate overplotting to examine density at centre',
-        "model overlay", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-3.png" height ="54px">', 'focus on the trend',
-        "model + data", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-4.png" height ="54px">', 'trend plus variation',
-        "density", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-5.png" height ="54px">', 'overall distribution, variation and clustering',
-        "filled density", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-6.png" height ="54px">', 'high density locations in distribution (modes), variation and clustering',
-        "colour", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-7.png" height ="54px">', 'relationship with conditioning and lurking variables',
-        "colour + density", '<img src="https://dicook.github.io/explore-data/_bookdown_files/eda-book_files/figure-html/scatmodify-8.png" height ="54px">', 'relationship with conditioning and lurking variables'
+        "none", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-1.png" height ="54px">', 'raw information',
+        "alpha-blend", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-2.png" height ="54px">', 'alleviate overplotting to examine density at centre',
+        "model overlay", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-3.png" height ="54px">', 'focus on the trend',
+        "model + data", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-4.png" height ="54px">', 'trend plus variation',
+        "density", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-5.png" height ="54px">', 'overall distribution, variation and clustering',
+        "filled density", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-6.png" height ="54px">', 'high density locations in distribution (modes), variation and clustering',
+        "colour", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-7.png" height ="54px">', 'relationship with conditioning and lurking variables',
+        "colour + density", '<img src="https://dicook.github.io/explore-data/blob/master/_bookdown_files/eda-book_files/figure-html/scatmodify-8.png" height ="54px">', 'relationship with conditioning and lurking variables'
 ) %>% 
   knitr::kable(escape = FALSE) %>% 
   kableExtra::kable_classic()
