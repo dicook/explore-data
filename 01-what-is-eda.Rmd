@@ -266,6 +266,8 @@ And $R^2 = 0.04$ is also a very weak model.
 
 #### Overview of CDA process
 
+In this example, the analysis has basically followed the CDA process outlined in Figure \@ref(fig:cda). It started from a specific and clearly defined question, skipped the IDA, to go straight into modeling, followed by diagnostics, which should have been finished with a statement of conclusion.
+
 ```{r cda, fig.cap="Pipeline of confirmatory data analysis. It starts with a question."}
 library(DiagrammeR)
 cda_nodes <- create_node_df(n=6, 
@@ -391,20 +393,22 @@ p + facet_grid(smoker~sex) #<<
 
 #### Overview of EDA process
 
+The process of EDA here roughly follows the outline provided in Figure \@ref(fig:eda). We looked at what variables were available, and thought of the different ways we might look at them, implicitly determining a question relevant for each. Once we made each plot, we thought about what was the pattern, what it suggested, and whether this was surprising. 
+
 ```{r eda, fig.cap="Pipeline of exploratory data analysis. It starts with the data."}
 eda_nodes <- create_node_df(n=6, 
                type=c("action", "action",
                       "action", "action",
                       "action", "action"),
-               label = c("data", "abstraction",
-                         "question", 
+               label = c("data", "what variables are available",
+                         "lots of open questions", 
                          "what might you expect to see",
                          "plot or calculate", 
-                         "is it what you expected?"),
+                         "is this what you expected?"),
                shape = c("rectangle", "rectangle",
                          "rectangle", "rectangle",
                          "rectangle", "rectangle"),
-               width = c(1, 1.8, 1.5, 5, 3, 4),
+               width = c(1, 5, 4, 5, 3, 4),
                fillcolor = c("grey90", "grey90",
                              "grey90", "grey90",
                              "grey90", "grey90"),
