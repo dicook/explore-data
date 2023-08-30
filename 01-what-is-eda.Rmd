@@ -393,22 +393,23 @@ p + facet_grid(smoker~sex) #<<
 
 #### Overview of EDA process
 
-The process of EDA here roughly follows the outline provided in Figure \@ref(fig:eda). We looked at what variables were available, and thought of the different ways we might look at them, implicitly determining a question relevant for each. Once we made each plot, we thought about what was the pattern, what it suggested, and whether this was surprising. 
+The process of EDA here roughly follows the outline provided in Figure \@ref(fig:eda). It started from looking at what variables were available in the data provided, followed by thinking about the different ways we might look at them. These implicitly defined relevant questions. Then we studied each plot, describing what patterns were visible, what these suggested, and whether this was surprising. These are common steps in EDA. One aspect that wasn't done that is an exciting new approach is using modern computational inference, to help answer whether the patterns are surprising or not. 
 
 ```{r eda, fig.cap="Pipeline of exploratory data analysis. It starts with the data."}
 eda_nodes <- create_node_df(n=6, 
                type=c("action", "action",
                       "action", "action",
                       "action", "action"),
-               label = c("data", "what variables are available",
-                         "lots of open questions", 
-                         "what might you expect to see",
-                         "plot or calculate", 
-                         "is this what you expected?"),
+               label = c("what variables are in the data, and how was it collected?",
+                         "lots of open-ended questions", 
+                         "lots of plots and numerical summaries and even models",
+                         "what do you see", 
+                         "are these patterns likely to occur by chance",
+                         "summarise findings"),
                shape = c("rectangle", "rectangle",
                          "rectangle", "rectangle",
                          "rectangle", "rectangle"),
-               width = c(1, 5, 4, 5, 3, 4),
+               width = c(9, 5, 9, 3, 7, 4),
                fillcolor = c("grey90", "grey90",
                              "grey90", "grey90",
                              "grey90", "grey90"),
